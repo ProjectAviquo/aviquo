@@ -20,7 +20,7 @@ class EditProfileForm(forms.ModelForm):
         fields = ['username', 'email', 'first_name', 'last_name']
 
 def home(request):
-    return render(request, 'users/home.html', {})
+    return render(request, 'home.html', {})
 
 @login_required
 def profile(request):
@@ -36,6 +36,13 @@ def profile(request):
         form = EditProfileForm(instance=user)
 
     return render(request, 'users/profile.html', {'user': user, 'form': form})
+
+@login_required
+def OpportunityView(request):
+     data = Opportunity.objects.all()
+
+    # Render the template with the data
+     return render(request, 'oppDetails.html', {'data': data})
 
 
 
@@ -55,9 +62,7 @@ class ForumView(generics.CreateAPIView):
     queryset = Forum.objects.all()
     serializer_class = ForumSerializer
 
-class OpportunityView(generics.CreateAPIView):
-    queryset = Opportunity.objects.all
-    serializer_class  = OpportunitySerializer
+
 
 class WaitlistView(generics.CreateAPIView):
     queryset = Waitlist.objects.all
