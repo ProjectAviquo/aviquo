@@ -4,7 +4,7 @@ from django.db import models
 
 
 class User(AbstractUser):
-    # usable fields from AbstractUser:
+    # other usable fields from AbstractUser:
     #  username, first_name, last_name, email, is_staff, is_active, date_joined, last_login
     bio = models.TextField(verbose_name="Bio", max_length=4000, blank=True, null=True)
     date_registered = models.DateTimeField(auto_now_add=True, null=True)
@@ -40,6 +40,10 @@ class Tag(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=255)
 
+    class Meta:
+        ordering = ["name"]
+        verbose_name_plural = "Categories"
+
 
 # parent model
 class Forum(models.Model):
@@ -51,6 +55,9 @@ class Forum(models.Model):
 
     def __str__(self):
         return str(self.id)
+
+    class Meta:
+        ordering = ["date_created"]
 
 
 class Opportunity(models.Model):
@@ -64,6 +71,10 @@ class Opportunity(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        ordering = ["name"]
+        verbose_name_plural = "Opportunities"
+
 
 class Waitlist(models.Model):
     email = models.EmailField(max_length=70, blank=True, unique=True)
@@ -71,3 +82,6 @@ class Waitlist(models.Model):
 
     def __str__(self):
         return str(self.email)
+
+    class Meta:
+        ordering = ["-date_created"]
