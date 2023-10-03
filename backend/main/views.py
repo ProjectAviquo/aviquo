@@ -43,6 +43,12 @@ def OpportunityView(request):
     return render(request, "opportunity_list.html", {"opportunities": opportunities})
 
 
+@login_required
+def ForumView(request):
+    forums = Forum.objects.all()
+
+    return render(request, "forum_list.html", {"forums": forums})
+
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True)  # Make the email field required
 
@@ -57,9 +63,9 @@ class SignUp(CreateView):
     template_name = "registration/signup.html"
 
 
-class ForumView(generics.CreateAPIView):
-    queryset = Forum.objects.all()
-    serializer_class = ForumSerializer
+# class ForumView(generics.CreateAPIView):
+#     queryset = Forum.objects.all()
+#     serializer_class = ForumSerializer
 
 
 class WaitlistView(generics.CreateAPIView):
