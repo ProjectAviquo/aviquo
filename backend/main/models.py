@@ -75,6 +75,10 @@ class Opportunity(models.Model):
         ordering = ["name"]
         verbose_name_plural = "Opportunities"
 
+    def list_tags(self):
+        tags = self.tags.order_by("name")
+        return " " + ", ".join([tag.name for tag in tags]) if tags else ""
+
 
 class Waitlist(models.Model):
     email = models.EmailField(max_length=70, blank=True, unique=True)
