@@ -49,6 +49,7 @@ class Opportunity(models.Model):
     description = models.TextField(
         max_length=4000, verbose_name="Description", help_text="Detailed description of the opportunity"
     )
+    URL = models.URLField(max_length=200, blank=True)
     tags = models.ManyToManyField(Tag, blank=True)
 
     def __str__(self):
