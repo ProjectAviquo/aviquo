@@ -1,41 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Opportunity List</title>
-    </head>
-    <body>
-        <h1>Opportunity List</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>URL</th>
-                    <th>Tags</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for opportunity in opportunities %}
-                <tr>
-                    
-                    <td>{{ opportunity.id }}</td>
-                    <td>{{ opportunity.name }}</td>
-                    <td>{{ opportunity.description }}</td>
-                    <td>
-                        <a href="{{opportunity.URL}}" target="_blank">{{opportunity.URL}}</a>
-                    </td>
-                    <td>
-                        <ul>
-                            {% for tag in opportunity.tags.all %}
-                            <li>{{ tag.name }}</li>
-                            {% endfor %}
-                        </ul>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </body>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Opportunity List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #E5D1FF;
+        }
+
+        h1 {
+            color: #8A2BE2;
+        }
+
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 80%;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border: 1px solid #8A2BE2;
+        }
+
+        th {
+            background-color: #FF66B2;
+            color: white;
+        }
+
+        td a {
+            text-decoration: none;
+            color: #8A2BE2;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 5px 0;
+            color: #8A2BE2;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Opportunity List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>URL</th>
+                <th>Tags</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for opportunity in opportunities %}
+            <tr>
+                <td>{{ opportunity.id }}</td>
+                <td>{{ opportunity.name }}</td>
+                <td>{{ opportunity.description }}</td>
+                <td><a href="{{ opportunity.URL }}" target="_blank">{{ opportunity.URL }}</a></td>
+                <td>
+                    <ul>
+                        {% for tag in opportunity.tags.all %}
+                        <li>{{ tag.name }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
 </html>

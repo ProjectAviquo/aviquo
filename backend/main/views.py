@@ -6,7 +6,6 @@ from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from rest_framework import generics
-
 from .models import Forum, Opportunity, User, Waitlist
 from .serializers import ForumSerializer, WaitlistSerializer
 
@@ -56,7 +55,6 @@ def ForumView(request):
 
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True)  # Make the email field required
-
     class Meta:
         model = User
         fields = UserCreationForm.Meta.fields + ("email",)

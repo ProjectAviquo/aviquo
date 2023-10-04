@@ -1,19 +1,73 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>User Profile</title>
-    </head>
-    <body>
-        <h1>User Profile</h1>
-        <p><strong>Username:</strong> {{ user.username }}</p>
-        <p><strong>Email:</strong> {{ user.email }}</p>
-        <p><strong>First Name:</strong> {{ user.first_name }}</p>
-        <p><strong>Last Name:</strong> {{ user.last_name }}</p>
-        <h2>Edit Profile</h2>
-        <form method="post">
-            {% csrf_token %} {{ form.as_p }}
-            <button type="submit">Save Changes</button>
-        </form>
-        <button onclick="window.location.href = '/'">Back to Home</button>
-    </body>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <!-- Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(to right, #FF99CC, #E5D1FF, #FFFFFF);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .profile-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            max-width: 400px;
+            text-align: left;
+            color: #8A2BE2;
+        }
+
+        .profile-list-item {
+            margin-bottom: 10px;
+        }
+
+        .btn-pink {
+            background-color: #FF66B2;
+            border-color: #FF66B2;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="profile-container">
+                    <h1>User Profile</h1>
+                    <ul>
+                        <li class="profile-list-item"><strong>Username:</strong> {{ user.username }}</li>
+                        <li class="profile-list-item"><strong>Email:</strong> {{ user.email }}</li>
+                        <li class="profile-list-item"><strong>First Name:</strong> {{ user.first_name }}</li>
+                        <li class="profile-list-item"><strong>Last Name:</strong> {{ user.last_name }}</li>
+                    </ul>
+                    <h2>Edit Profile</h2>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-pink btn-block">Save Changes</button>
+                    </form>
+                    <button onclick="window.location.href = '/'" class="btn btn-pink btn-block mt-3">Back to
+                        Home</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and jQuery scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
 </html>

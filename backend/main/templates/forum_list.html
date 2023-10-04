@@ -1,33 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Opportunity List</title>
-    </head>
-    <body>
-        <h1>Forum List</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Creator</th>
-                    <th>Topic</th>
-                    <th>Description</th>
-                    <th>Parent ID</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for forum in forums %}
-                <tr>
-                    
-                    <td>{{ forum.id }}</td>
-                    <td>{{ forum.username }}</td>
-                    <td>{{ forum.topic }}</td>
-                    <td>{{ forum.description }}</td>
-                    <td>{{ forum.parent_post.id }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </body>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Forum List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #E5D1FF;
+        }
+
+        h1 {
+            color: #8A2BE2;
+        }
+
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 80%;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border: 1px solid #8A2BE2;
+        }
+
+        th {
+            background-color: #FF66B2;
+            color: white;
+        }
+
+        td a {
+            text-decoration: none;
+            color: #8A2BE2;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Forum List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Creator</th>
+                <th>Topic</th>
+                <th>Description</th>
+                <th>Parent ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for forum in forums %}
+            <tr>
+                <td>{{ forum.id }}</td>
+                <td>{{ forum.username }}</td>
+                <td>{{ forum.topic }}</td>
+                <td>{{ forum.description }}</td>
+                <td>{{ forum.parent_post.id }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
 </html>

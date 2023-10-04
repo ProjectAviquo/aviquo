@@ -1,38 +1,84 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <style>
-            body {
-                color: pink;
-                text-align: center;
-            }
-            ul {
-                list-style: none;
-            }
-        </style>
-    </head>
-    <body>
+
+<head>
+    <style>
+        body {
+            background-color: #FF99CC;
+            color: pink;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-top: 20px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #8A2BE2;
+            font-size: 20px;
+            margin: 0 10px;
+        }
+
+        a:hover {
+            color: #FF66B2;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .auth-links {
+            margin-top: 20px;
+        }
+
+        .divider {
+            border-top: 2px solid #8A2BE2;
+            margin: 20px 0;
+            width: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
         <h1>Hello, {{ user.username|default:'Guest' }}</h1>
-
-        <p>Welcome to the Our site</p>
-        <div>
-            {% if user.is_authenticated %}
+        <p>Welcome to Our Site</p>
+        <div class="auth-links">
             <ul>
-                <a href="{% url 'logout' %}">Logout</a>
-                <a href="{% url 'profile' %}">View Profile</a>
-                <div>
-                    <a href="{% url 'opportunity' %}">Opportunities</a>
-                </div>
-                <div>
-                    <a href="{% url 'forum' %}">Forum</a>
-                </div>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+                <li><a href="{% url 'profile' %}">View Profile</a></li>
+                <li><a href="{% url 'opportunity' %}">Opportunities</a></li>
+                <li><a href="{% url 'forum' %}">Forum</a></li>
+                {% else %}
+                <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+                {% endif %}
             </ul>
-
-            {% else %}
-            <a href="{% url 'signup' %}">Sign Up</a>
-            <a href="{% url 'login' %}">Login</a>
-
-            {% endif %}
         </div>
+        <div class="divider"></div>
         <ul></ul>
-    </body>
+    </div>
+</body>
+
 </html>
