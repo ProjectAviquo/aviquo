@@ -19,6 +19,8 @@ class EditProfileForm(forms.ModelForm):
 def home(request):
     return render(request, "home.html", {})
 
+def waitlist(request):
+    return render(request, "Waitlist/landing_page.html", {})
 def clogout(request):
     if request.user.is_authenticated:
         logout(request)

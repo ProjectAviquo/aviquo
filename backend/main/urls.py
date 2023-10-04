@@ -1,7 +1,7 @@
 from django.urls import path
 
 from .email_sender import CustomPasswordResetView
-from .views import ForumView, OpportunityView, SignUp, WaitlistView, home, profile, clogout
+from .views import ForumView, OpportunityView, SignUp, WaitlistView, home, profile, clogout, waitlist
 
 
 urlpatterns = [
@@ -12,5 +12,6 @@ urlpatterns = [
     path("waitlist/", WaitlistView.as_view(), name="waitlist"),
     path("forum/", ForumView, name="forum"),
     path("profile/", profile, name="profile"),
+    path("Waitlist/", waitlist, name="waitlist"),
     path("password_reset/", CustomPasswordResetView.as_view(), name="password_reset"),
 ]
