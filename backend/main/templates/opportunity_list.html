@@ -19,10 +19,13 @@
             <tbody>
                 {% for opportunity in opportunities %}
                 <tr>
+                    
                     <td>{{ opportunity.id }}</td>
                     <td>{{ opportunity.name }}</td>
                     <td>{{ opportunity.description }}</td>
-                    <td href="{{" opportunity.URL }}>{{ opportunity.URL }}</td>
+                    <td>
+                        <a href="{{opportunity.URL}}" target="_blank">{{opportunity.URL}}</a>
+                    </td>
                     <td>
                         <ul>
                             {% for tag in opportunity.tags.all %}

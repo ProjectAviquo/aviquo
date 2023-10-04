@@ -9,7 +9,7 @@ urlpatterns = [
     path("signup/", SignUp.as_view(), name="signup"),
     path("opportunity/", OpportunityView, name="opportunity"),
     path("waitlist/", WaitlistView.as_view(), name="waitlist"),
-    path("forum/", ForumView.as_view(), name="forum"),
+    path("forum/", ForumView, name="forum"),
     path("profile/", profile, name="profile"),
     path("password_reset/", CustomPasswordResetView.as_view(), name="password_reset"),
 ]

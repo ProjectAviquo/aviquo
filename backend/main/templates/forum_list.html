@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Opportunity List</title>
+    </head>
+    <body>
+        <h1>Forum List</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Creator</th>
+                    <th>Topic</th>
+                    <th>Description</th>
+                    <th>Parent ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for forum in forums %}
+                <tr>
+                    
+                    <td>{{ forum.id }}</td>
+                    <td>{{ forum.username }}</td>
+                    <td>{{ forum.topic }}</td>
+                    <td>{{ forum.description }}</td>
+                    <td>{{ forum.parent_post.id }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </body>
+</html>
