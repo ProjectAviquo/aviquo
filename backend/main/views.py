@@ -15,12 +15,24 @@ class EditProfileForm(forms.ModelForm):
         model = User
         fields = ["username", "email", "first_name", "last_name"]
 
+class AddWaitlistForm(forms.ModelForm):
+    class Meta:
+        model = Waitlist
+        fields = ["email"]
 
 def home(request):
     return render(request, "home.html", {})
 
 def waitlist(request):
-    return render(request, "Waitlist/landing_page.html", {})
+    if request.method == "POST":
+        form = AddWaitlistForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("profile")
+
+    else:
+        form = AddWaitlistForm()
+    return render(request, "Waitlist/landing_page.html", {"form":form})
 def clogout(request):
     if request.user.is_authenticated:
         logout(request)

@@ -26,10 +26,13 @@
             <span>companion</span>
         </h3>
         <nav>
-            <form action="" method="POST">
-                <input type="email" name="email" placeholder="Email Address" id="wl-email" />
-                <input type="submit" value="Join Waitlist" id="wl-submit" />
+            
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-pink btn-block">Join Waitlist</button>
             </form>
+
         </nav>
     </header>
     <main class="w-85">
