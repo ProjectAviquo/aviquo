@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import logout
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
@@ -19,6 +20,10 @@ class EditProfileForm(forms.ModelForm):
 def home(request):
     return render(request, "home.html", {})
 
+def clogout(request):
+    if request.user.is_authenticated:
+        logout(request)
+    return home(request=request) 
 
 @login_required
 def profile(request):
