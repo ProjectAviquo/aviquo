@@ -26,6 +26,7 @@ class AddForumForm(forms.ModelForm):
         fields = ["topic", "description"]
 
 def home(request):
+    return redirect("waitlist")
     if request.user.is_authenticated:
        return redirect("profile")
     return render(request, "home.html", {})
@@ -35,7 +36,7 @@ def waitlist(request):
         form = AddWaitlistForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("profile")
+            return redirect("waitlist")
 
     else:
         form = AddWaitlistForm()

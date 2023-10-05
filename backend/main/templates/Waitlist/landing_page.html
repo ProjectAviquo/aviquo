@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>aviquo</title>
+  <title>Aviquo</title>
   <!--<link rel="stylesheet" href="landing_page.css">-->
   <style>
     @charset "UTF-8";
@@ -585,12 +585,14 @@ footer #bottom p {
 
 <body id="App">
   <header class="w-85">
+
     <img src="https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaAdFGf5kke7t5ANvi-jkvH9YOWafnqatz8d5yUfg6SWX_vuc1NsiAx0X0DuhpqJCATZiwXiPgFGGytJFpgCoiLzO0aXkQ=w3584-h2070" alt="AVQ" id="main-logo">
     <h1>Aviquo</h1>
     <h3>
       <span class="h3-bigger">Your</span>
       <span>High School</span>
       <span>Companion</span>
+      
     </h3>
     <nav>
       <form action="" method="POST">
@@ -603,7 +605,7 @@ footer #bottom p {
   <main class="w-85">
     <section id="sponsors">
       <aside>
-        <h5>backed by:</h5>
+        <h5>backed by students from:</h5>
       </aside>
       <figure>
         <img src="https://cdn.freebiesupply.com/images/large/2x/mit-logo-transparent.png">
@@ -641,21 +643,21 @@ footer #bottom p {
         <p>unlock your career's full potential with our comprehensive resources. from expert career guidance to
           personalized skill development, we're here to support your journey to success. discover the tools
           you need to shape a brighter future today.</p>
-        <a href="#" class="link-button">learn more</a>
+        <a onclick="goUp()" class="link-button">learn more</a>
       </div>
       <div class="product-box center-box">
         <h5>extracurriculars</h5>
         <p>elevate your extracurricular experience with our dedicated resources. whether you're a student
           looking to boost your resume or an enthusiast pursuing a passion project, we provide the support you
           need to excel.</p>
-        <a href="#" class="link-button">learn more</a>
+      <a onclick="goUp()" class="link-button">learn more</a>
       </div>
       <div class="product-box">
         <h5>college applications</h5>
         <p>empower your college application journey with our invaluable resources. from guidance on
           crafting standout essays to comprehensive application strategies, help you secure your
           dream college is here.</p>
-        <a href="#" class="link-button">learn more</a>
+        <a onclick="goUp()" class="link-button">learn more</a>
       </div>
     </article>
     <section id="wip">
@@ -663,7 +665,7 @@ footer #bottom p {
       <p>academics, mental health, time managment</p>
     </section>
     <section id="are-ya-ready-kids">
-      <h3 onclick="join_the_soviet_union()">Ready? Join the <span id="soviet">Waitlist</span></h3>
+      <h3 onclick="goUp()">Ready? Join the <span id="soviet">Waitlist</span></h3>
     </section>
     <section id="discord">
       <aside id="join-our-discord">
@@ -676,7 +678,7 @@ footer #bottom p {
     </section>
   </main>
   <footer>
-    <h4><a href="#" target="_blank">follow us!</a></h4>
+    <h4><a onclick="goUp()" class="link-button">Follow us!</a></h4>
     <div id="icons">
       <a href="https://www.linkedin.com/company/aviquo" target="_blank"><i class="fa fa-linkedin-square"></i>Linkedin</a>
       <a href="https://www.youtube.com/@Aviquo_" target="_blank"><i class="fa fa-youtube-play"></i>Youtube</a>
@@ -684,7 +686,7 @@ footer #bottom p {
       <a href="https://twitter.com/Aviquo_" target="_blank"><i class="fa fa-twitter"></i>Twitter</a>
     </div>
     <div id="bottom">
-      <a class="bigger-text" href="#">questions?</a>
+      <a class="bigger-text" onclick="goUp()">questions?</a>
       <p class="smaller-text">contact: <a href="mailto:aviquocompany@gmail.com">aviquocompany@gmail.com</a></p>
     </div>
     <div id="copy">
@@ -703,37 +705,12 @@ footer #bottom p {
     gsap.registerPlugin(ScrollToPlugin);
     gsap.registerPlugin(ScrollTrigger);
 
-    function join_the_soviet_union() {
-      tl.clear();
-      tl.to(window, { duration: 0.5, scrollTo: "#App" });
-      tl.to("#wl-email", {
-        scale: 1.2,
-        ease: "power2.out"
+    function goUp() {
+      console.log("clicked")
+       window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
       });
-      tl.to("#wl-email", {
-        scale: 1,
-        ease: "power2.out"
-      });
-      tl.to("#wl-submit", {
-        scale: 1.2,
-        ease: "power2.out"
-      });
-      tl.to(
-        "#wl-submit",
-        {
-          filter: "hue-rotate(360deg)",
-          duration: 0.5
-        },
-        "<"
-      );
-      tl.to(
-        "#wl-submit",
-        {
-          scale: 1,
-          ease: "power2.out"
-        },
-        "<0.15"
-      );
     }
 
 </script>

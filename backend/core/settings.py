@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     # custom apps below
 ]
 
-LOGIN_REDIRECT_URL = '/profile'
+# LOGIN_REDIRECT_URL = '/profile'
 
 
 MIDDLEWARE = [
