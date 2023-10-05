@@ -595,7 +595,7 @@ footer #bottom p {
     <nav>
       <form action="" method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
+        <input type="email" name="email" placeholder="Email Address" id="wl-email" />
         <input type="submit" value="Join Waitlist" id="wl-submit" />
       </form>
     </nav>
