@@ -4,7 +4,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Opportunity List</title>
+    {% block title %}
+        <title>Opportunities</title>
+    {% endblock %}
+
 </head>
 
 <body>
@@ -14,7 +17,7 @@
     <style>
     body {
             background-color: #E5D1FF;
-            height: 100vh;
+            height: 70vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -25,13 +28,13 @@
         h1 {
             color: #8A2BE2;
         }
-    
+
         table {
             margin: 20px auto;
             border-collapse: collapse;
-            width: 80%;
+            width: 70%;
         }
-    
+  
         th,
         td {
             padding: 10px;
@@ -57,7 +60,6 @@
             color: #8A2BE2;
         } */
     </style>
-    <h1>Opportunity List</h1>
     <table>
         <thead>
             <tr>

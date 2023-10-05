@@ -4,7 +4,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Forum List</title>
+    {% block title %}
+    <title>Forum</title>
+    {% endblock %}
     
 </head>
 
@@ -17,22 +19,23 @@
     <style>
          body {
             background-color: #E5D1FF;
-            height: 100vh;
+            height: 70vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin: 0;
+            /* justify-content: center; */
+            /* margin: 0; */
             font-family: Arial, sans-serif;
         }
     
         h1 {
             color: #8A2BE2;
+
         }
     
         table {
             margin: 20px auto;
             border-collapse: collapse;
-            width: 80%;
+            width: 70%;
         }
     
         th,
@@ -51,29 +54,34 @@
             color: #8A2BE2;
         }
     </style> 
-    <h1>Forum List</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Creator</th>
-                <th>Topic</th>
-                <th>Description</th>
-                <th>Parent ID</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for forum in forums %}
-            <tr>
-                <td>{{ forum.id }}</td>
-                <td>{{ forum.username }}</td>
-                <td>{{ forum.topic }}</td>
-                <td>{{ forum.description }}</td>
-                <td>{{ forum.parent_post.id }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Creator</th>
+                    <th>Topic</th>
+                    <th>Description</th>
+                    <th>Parent ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for forum in forums %}
+                <tr>
+                    <td>{{ forum.id }}</td>
+                    <td>{{ forum.username }}</td>
+                    <td>{{ forum.topic }}</td>
+                    <td>{{ forum.description }}</td>
+                    <td>{{ forum.parent_post.id }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-pink btn-block">Save Changes</button>
+        </form>
+    
     {%endblock%}
 </body>
 

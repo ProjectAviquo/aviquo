@@ -20,6 +20,11 @@ class AddWaitlistForm(forms.ModelForm):
         model = Waitlist
         fields = ["email"]
 
+class AddForumForm(forms.ModelForm):
+    class Meta:
+        model = Forum
+        fields = ["topic", "description"]
+
 def home(request):
     if request.user.is_authenticated:
        return redirect("profile")
@@ -59,15 +64,31 @@ def profile(request):
 @login_required
 def OpportunityView(request):
     opportunities = Opportunity.objects.all()
-
+    
     return render(request, "lists/opportunity_list.html", {"opportunities": opportunities})
 
 
 @login_required
 def ForumView(request):
     forums = Forum.objects.all()
+    user = request.user
+    if request.method == "POST":
+        form = AddForumForm(request.POST)
+        if form.is_valid():
+           # Create a new Forum instance but don't save it yet
+            new_forum = form.save(commit=False)
+            
+            # Set the username field of the forum to the user's username
+            new_forum.username = user.username
+            
+            # Save the forum object with the updated username
+            new_forum.save()
+            
+            return redirect("forum")
 
-    return render(request, "lists/forum_list.html", {"forums": forums})
+    else:
+        form = AddForumForm()
+    return render(request, "lists/forum_list.html", {"forums": forums, "form":form})
 
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True)  # Make the email field required
