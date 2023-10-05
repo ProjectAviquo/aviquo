@@ -1,43 +1,53 @@
+{% extends 'base.html' %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <title>Opportunity List</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #E5D1FF;
-        }
+</head>
 
+<body>
+    {%block content%}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <style>
+    body {
+            background-color: #E5D1FF;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+    
         h1 {
             color: #8A2BE2;
         }
-
+    
         table {
             margin: 20px auto;
             border-collapse: collapse;
             width: 80%;
         }
-
+    
         th,
         td {
             padding: 10px;
             border: 1px solid #8A2BE2;
         }
-
+    
         th {
             background-color: #FF66B2;
             color: white;
         }
-
+    
         td a {
             text-decoration: none;
             color: #8A2BE2;
         }
-
-        ul {
+        /* ul {
             list-style: none;
             padding: 0;
         }
@@ -45,11 +55,8 @@
         li {
             margin: 5px 0;
             color: #8A2BE2;
-        }
+        } */
     </style>
-</head>
-
-<body>
     <h1>Opportunity List</h1>
     <table>
         <thead>
@@ -79,6 +86,8 @@
             {% endfor %}
         </tbody>
     </table>
+    {%endblock%}
+    
 </body>
 
 </html>

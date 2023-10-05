@@ -1,16 +1,71 @@
 <!DOCTYPE html>
 <html>
-    {% load staticfiles %}
-
     <head>
         <style>
             body {
                 color: pink;
                 text-align: center;
             }
+            .sidebar {
+            background-color: #FF99CC;
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 20px;
+            z-index: 1;
+        }
+
+        .sidebar a {
+            padding: 15px 25px;
+            text-decoration: none;
+            font-size: 20px;
+            color: pink;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            color: #FF66B2;
+        }
+
+        /* Add styles for the content area */
+        .content {
+            margin-left: 250px;
+            /* Adjust to the sidebar width */
+            transition: 0.3s;
+            padding: 20px;
+        }
+
+        /* Show the sidebar when the user is authenticated */
+        .authenticated .sidebar-container {
+            display: block;
+        }
+
+        /* Hide the content when the sidebar is open */
+        .authenticated .sidebar {
+            left: 0;
+        }
+       
         </style>
     </head>
     <body>
-        {% block content %} {% endblock %}
+
+        <div class="sidebar-container">
+            <!-- Sidebar -->
+            <div class="sidebar" id="sidebar">
+                <ul>
+                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                    <li><a href="{% url 'opportunity' %}">Opportunities</a></li>
+                    <li><a href="{% url 'forum' %}">Forum</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    {% block content %}
+    {% endblock %}
     </body>
 </html>

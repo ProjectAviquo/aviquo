@@ -21,6 +21,8 @@ class AddWaitlistForm(forms.ModelForm):
         fields = ["email"]
 
 def home(request):
+    if request.user.is_authenticated:
+       return redirect("profile")
     return render(request, "home.html", {})
 
 def waitlist(request):
@@ -36,7 +38,7 @@ def waitlist(request):
 def clogout(request):
     if request.user.is_authenticated:
         logout(request)
-    return home(request=request) 
+    return redirect("home")
 
 @login_required
 def profile(request):
