@@ -4,7 +4,7 @@
         <style>
             body {
                 color: pink;
-                text-align: center;
+
             }
             .sidebar {
             background-color: #FF99CC;
@@ -31,25 +31,6 @@
         .sidebar a:hover {
             color: #FF66B2;
         }
-
-        /* Add styles for the content area */
-        .content {
-            margin-left: 250px;
-            /* Adjust to the sidebar width */
-            transition: 0.3s;
-            padding: 20px;
-        }
-
-        /* Show the sidebar when the user is authenticated */
-        .authenticated .sidebar-container {
-            display: block;
-        }
-
-        /* Hide the content when the sidebar is open */
-        .authenticated .sidebar {
-            left: 0;
-        }
-       
         </style>
         {% block title %}
         {% endblock %}
