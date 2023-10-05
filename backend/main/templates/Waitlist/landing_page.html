@@ -1,4 +1,14 @@
-@charset "UTF-8";
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>aviquo</title>
+  <!--<link rel="stylesheet" href="landing_page.css">-->
+  <style>
+    @charset "UTF-8";
 * {
   box-sizing: border-box;
   font-family: inherit;
@@ -17,7 +27,10 @@
     --nav-form-width: calc(50vw + 100px);
     --nav-fs: calc(5px + 0.7vw);
     --spon-marg-top: 70px;
-    --spon-height: calc(var(--spona-height) + var(--sponf-hegiht) + var(--spon-pad)*2 + var(--spon-between));
+    --spon-height: calc(
+        var(--spona-height) + var(--sponf-hegiht) + var(--spon-pad) * 2 +
+            var(--spon-between)
+    );
     --spon-pad: 25px;
     --spon-between: calc(3vw + 10px);
     --spona-height: 50px;
@@ -33,7 +46,7 @@
     --quote-marg-top: 50px;
     --quote-pad: 7vw 6vw;
     --quote-normal-fs: calc(13px + 2.1vw);
-    --quote-smoool-fs: calc(13px + 1.0vw);
+    --quote-smoool-fs: calc(13px + 1vw);
     --quote-chngus-fs: calc(17px + 2.6vw);
     --quote-line-hght: calc(30px + 2.5vw);
     --intro-mg-top: 50px;
@@ -41,7 +54,7 @@
     --intro-sml: calc(5px + 1.5vw);
     --pb-width: calc(80vw + 50px);
     --pb-min-width: 550px;
-    --pb-pad: calc(10px + 1vw) calc(5px + 1.0vw) calc(7px + 1.5vw);
+    --pb-pad: calc(10px + 1vw) calc(5px + 1vw) calc(7px + 1.5vw);
     --pb-box-width: calc(10vw + 100px);
     --pb-box-height: 90%;
     --pb-h5: calc(6px + 0.8vw);
@@ -65,8 +78,8 @@
     --foot-pad-top: 10px;
     --foot-h4: calc(7px + 1vw);
     --foot-i-width: 2.5vw;
-    --foot-i-fs: 2.0vw;
-    --foot-a-fs: 1.0vw;
+    --foot-i-fs: 2vw;
+    --foot-a-fs: 1vw;
     --bottom-fs: calc(8px + 0.6vw);
   }
 }
@@ -82,7 +95,10 @@
     --nav-form-width: 100%;
     --nav-fs: calc(5px + 0.7vw);
     --spon-marg-top: 30px;
-    --spon-height: calc(var(--spona-height) + var(--sponf-hegiht) + var(--spon-pad)*2 + var(--spon-between));
+    --spon-height: calc(
+        var(--spona-height) + var(--sponf-hegiht) + var(--spon-pad) * 2 +
+            var(--spon-between)
+    );
     --spon-pad: 15px;
     --spon-between: calc(2vw + 10px);
     --spona-height: 50px;
@@ -98,7 +114,7 @@
     --quote-marg-top: 20px;
     --quote-pad: 7vw 6vw;
     --quote-normal-fs: calc(10px + 2.1vw);
-    --quote-smoool-fs: calc(10px + 1.0vw);
+    --quote-smoool-fs: calc(10px + 1vw);
     --quote-chngus-fs: calc(13px + 2.6vw);
     --quote-line-hght: calc(25px + 2.5vw);
     --intro-mg-top: 20px;
@@ -106,7 +122,7 @@
     --intro-sml: calc(5px + 1.5vw);
     --pb-width: 95%;
     --pb-min-width: 0px;
-    --pb-pad: calc(5px + 0.5vw) calc(3px + 0.5vw) calc(4px + 1.0vw);
+    --pb-pad: calc(5px + 0.5vw) calc(3px + 0.5vw) calc(4px + 1vw);
     --pb-box-width: 25vw;
     --pb-box-height: 90%;
     --pb-h5: calc(6px + 0.8vw);
@@ -130,8 +146,8 @@
     --foot-pad-top: 10px;
     --foot-h4: calc(7px + 3vw);
     --foot-i-width: 7vw;
-    --foot-i-fs: 6.0vw;
-    --foot-a-fs: 4.0vw;
+    --foot-i-fs: 6vw;
+    --foot-a-fs: 4vw;
     --bottom-fs: calc(7px + 1vw);
   }
 }
@@ -158,7 +174,7 @@ header {
   padding: var(--head-pad);
   padding-bottom: 0;
   border-radius: 10px;
-  background-color: #EEE;
+  background-color: #eee;
 }
 header h1 {
   grid-row-start: 1;
@@ -204,12 +220,12 @@ header nav form {
 }
 header nav form #wl-email {
   width: 60%;
-  border: 2px solid #DADADA;
-  background-color: #EEE;
+  border: 2px solid #dadada;
+  background-color: #eee;
 }
 header nav form #wl-email:hover,
 header nav form #wl-submit:focus {
-  border-color: #BABABA;
+  border-color: #bababa;
 }
 header nav form #wl-submit {
   width: 30%;
@@ -227,6 +243,7 @@ header nav form input {
   font-size: var(--nav-fs);
   font-family: "Poppins", sans-serif;
   font-weight: 500;
+  transform: scale(1);
 }
 
 #sponsors {
@@ -241,7 +258,7 @@ header nav form input {
   padding: var(--spon-pad);
   margin-top: var(--spon-marg-top);
   border-radius: 10px;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
 }
 #sponsors figure {
   display: flex;
@@ -253,12 +270,12 @@ header nav form input {
   padding: var(--sponf-pad);
   margin: 0;
   margin-bottom: var(--sponf-marg-bot);
-  border: 2px solid #CACACA;
+  border: 2px solid #cacaca;
   border-top-width: 0;
   border-bottom-width: 3px;
   border-radius: 15px;
-  box-shadow: 0 1px 2px 1px #CACACA;
-  background-color: #EEE;
+  box-shadow: 0 1px 2px 1px #cacaca;
+  background-color: #eee;
   z-index: 5;
 }
 #sponsors figure img {
@@ -289,7 +306,7 @@ header nav form input {
   border-bottom-width: 4px;
   border-top-width: 0;
   border-radius: 15px;
-  background-color: #EEE;
+  background-color: #eee;
 }
 
 #quote-text {
@@ -302,7 +319,7 @@ header nav form input {
   margin-top: var(--quote-marg-top);
   padding: var(--quote-pad);
   --how-much: 15%;
-  background: linear-gradient(rgb(219, 202, 214), transparent var(--how-much), transparent calc(100% - var(--how-much)), rgb(219, 202, 214)), linear-gradient(90deg, rgb(219, 202, 214), transparent var(--how-much), transparent calc(100% - var(--how-much)), rgb(219, 202, 214)), radial-gradient(circle, #ffcfcf 20%, #ccb3e9 80%);
+  background: linear-gradient(#dbcad6, transparent var(--how-much), transparent calc(100% - var(--how-much)), #dbcad6), linear-gradient(90deg, #dbcad6, transparent var(--how-much), transparent calc(100% - var(--how-much)), #dbcad6), radial-gradient(circle, #ffcfcf 20%, #ccb3e9 80%);
 }
 #quote-text p {
   margin: 0;
@@ -388,7 +405,7 @@ header nav form input {
 }
 #product-boxes .center-box {
   width: calc(var(--pb-box-width) * var(--pb-big-scale-factor));
-  background-color: #EAEAEA;
+  background-color: #eaeaea;
   z-index: 5052;
 }
 #product-boxes .center-box h5 {
@@ -557,5 +574,174 @@ footer #bottom p {
   align-self: end;
   justify-self: end;
 }
+  </style>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Young+Serif&family=Roboto+Slab:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+</head>
 
-/*# sourceMappingURL=landing_page.css.map */
+<body id="App">
+  <header class="w-85">
+    <img src="https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaAdFGf5kke7t5ANvi-jkvH9YOWafnqatz8d5yUfg6SWX_vuc1NsiAx0X0DuhpqJCATZiwXiPgFGGytJFpgCoiLzO0aXkQ=w3584-h2070" alt="AVQ" id="main-logo">
+    <h1>Aviquo</h1>
+    <h3>
+      <span class="h3-bigger">Your</span>
+      <span>High School</span>
+      <span>Companion</span>
+    </h3>
+    <nav>
+      <form action="" method="POST">
+        {% csrf_token %}
+        <input type="email" name="email" placeholder="Email Address" id="wl-email" />
+        <input type="submit" value="Join Waitlist" id="wl-submit" />
+      </form>
+    </nav>
+  </header>
+  <main class="w-85">
+    <section id="sponsors">
+      <aside>
+        <h5>backed by:</h5>
+      </aside>
+      <figure>
+        <img src="https://cdn.freebiesupply.com/images/large/2x/mit-logo-transparent.png">
+        <figcaption>MIT</figcaption>
+      </figure>
+      <figure>
+        <img src="https://seeklogo.com/images/S/stanford-cardinal-logo-8BF3F4F539-seeklogo.com.png">
+        <figcaption>Stanford</figcaption>
+      </figure>
+      <figure>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/University_of_Chicago_Coat_of_arms.png">
+        <figcaption>UChicago</figcaption>
+      </figure>
+      <figure>
+        <img src="https://seeklogo.com/images/C/cornell-logo-BA6000C172-seeklogo.com.png">
+        <figcaption>Cornell</figcaption>
+      </figure>
+    </section>
+    <article id="quote-text">
+      <p>
+        made by people like <span class="big-text">you.</span><br>
+        <span class="small-text">we know how it feels like because</span><br>
+        we felt it ourselves.<br>
+        <span class="small-text">that's why we made something that</span><br>
+        solves everything.
+      </p>
+    </article>
+    <article id="introducing">
+      <h5>introducing:</h5>
+      <h2>aviquo</h2>
+    </article>
+    <article id="product-boxes">
+      <div class="product-box">
+        <h5>future carrer</h5>
+        <p>unlock your career's full potential with our comprehensive resources. from expert career guidance to
+          personalized skill development, we're here to support your journey to success. discover the tools
+          you need to shape a brighter future today.</p>
+        <a href="#" class="link-button">learn more</a>
+      </div>
+      <div class="product-box center-box">
+        <h5>extracurriculars</h5>
+        <p>elevate your extracurricular experience with our dedicated resources. whether you're a student
+          looking to boost your resume or an enthusiast pursuing a passion project, we provide the support you
+          need to excel.</p>
+        <a href="#" class="link-button">learn more</a>
+      </div>
+      <div class="product-box">
+        <h5>college applications</h5>
+        <p>empower your college application journey with our invaluable resources. from guidance on
+          crafting standout essays to comprehensive application strategies, help you secure your
+          dream college is here.</p>
+        <a href="#" class="link-button">learn more</a>
+      </div>
+    </article>
+    <section id="wip">
+      <h6>works in progress:</h6>
+      <p>academics, mental health, time managment</p>
+    </section>
+    <section id="are-ya-ready-kids">
+      <h3 onclick="join_the_soviet_union()">Ready? Join the <span id="soviet">Waitlist</span></h3>
+    </section>
+    <section id="discord">
+      <aside id="join-our-discord">
+        <h3>join our discord!</h3>
+      </aside>
+      <a href="https://discord.gg/FsfHAffXNk" target="_blank" clas="" i>
+        <img src="https://static-00.iconduck.com/assets.00/discord-icon-2048x2048-nnt62s2u.png" id="discord-icon">
+        <p>recieve updates, connect with other high schoolers and join a tight-knit community!</p>
+      </a>
+    </section>
+  </main>
+  <footer>
+    <h4><a href="#" target="_blank">follow us!</a></h4>
+    <div id="icons">
+      <a href="https://www.linkedin.com/company/aviquo" target="_blank"><i class="fa fa-linkedin-square"></i>Linkedin</a>
+      <a href="https://www.youtube.com/@Aviquo_" target="_blank"><i class="fa fa-youtube-play"></i>Youtube</a>
+      <a href="https://www.instagram.com/aviquo_/" target="_blank"><i class="fa fa-instagram"></i>Instagram</a>
+      <a href="https://twitter.com/Aviquo_" target="_blank"><i class="fa fa-twitter"></i>Twitter</a>
+    </div>
+    <div id="bottom">
+      <a class="bigger-text" href="#">questions?</a>
+      <p class="smaller-text">contact: <a href="mailto:aviquocompany@gmail.com">aviquocompany@gmail.com</a></p>
+    </div>
+    <div id="copy">
+      <p>&copy 2023 aviquo<br>all rights reserved</p>
+    </div>
+  </footer>
+</body>
+<script>
+  let tl = gsap.timeline({
+      defaults: {
+        duration: 0.15
+      }
+    });
+
+    gsap.registerPlugin(EaselPlugin);
+    gsap.registerPlugin(ScrollToPlugin);
+    gsap.registerPlugin(ScrollTrigger);
+
+    function join_the_soviet_union() {
+      tl.clear();
+      tl.to(window, { duration: 0.5, scrollTo: "#App" });
+      tl.to("#wl-email", {
+        scale: 1.2,
+        ease: "power2.out"
+      });
+      tl.to("#wl-email", {
+        scale: 1,
+        ease: "power2.out"
+      });
+      tl.to("#wl-submit", {
+        scale: 1.2,
+        ease: "power2.out"
+      });
+      tl.to(
+        "#wl-submit",
+        {
+          filter: "hue-rotate(360deg)",
+          duration: 0.5
+        },
+        "<"
+      );
+      tl.to(
+        "#wl-submit",
+        {
+          scale: 1,
+          ease: "power2.out"
+        },
+        "<0.15"
+      );
+    }
+
+</script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/EaselPlugin.min.js"></script>
+
+</html>
