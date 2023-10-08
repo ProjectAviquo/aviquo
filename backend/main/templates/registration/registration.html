@@ -24,7 +24,7 @@
         <form method="post">
             {% csrf_token %}
             {% for input in form %}
-            {% if (not showmore) and (input.name == "password2" or input.name == "email") %}
+            {% if (!showmore) and (input.name == "password2" or input.name == "email") %}
             {{ input.label_tag }}
             {{ input }}
             <script>
