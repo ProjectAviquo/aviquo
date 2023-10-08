@@ -22,7 +22,7 @@ body {
     width: 100vw;
     margin: 0;
 
-    background: repeating-linear-gradient(90deg, #fdb9db, #E5D1FF, rgb(219, 202, 214), #fdb9db 25%)
+    background: repeating-linear-gradient(90deg, #fdb9db, #E5D1FF, rgb(219, 202, 214), #fdb9db 25%);
     background-size: 600% 100%;
     animation-name: background-thing;
     animation-duration: 100s;
