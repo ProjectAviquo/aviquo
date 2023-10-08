@@ -22,13 +22,7 @@ body {
     width: 100vw;
     margin: 0;
 
-    background: repeating-linear-gradient(90deg,
-            #fdb9db,
-            #E5D1FF,
-            rgb(219, 202, 214),
-            #fdb9db 25%);
-
-    background-size: 600% 100%;
+    background-size: 600% 100% !important;
     animation-name: background-thing;
     animation-duration: 100s;
     animation-iteration-count: infinite;
@@ -88,6 +82,8 @@ label {
 
 input:not([type="submit"]) {
     width: 45%;
+    height: 1.8em;
+    align-self: center;
     flex-basis: 50%;
     flex-grow: 0;
 

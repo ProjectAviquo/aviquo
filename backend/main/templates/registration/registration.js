@@ -42,3 +42,31 @@ for (let i = 0; i < formChild.length; i++) {
     }, "<75%"
     );
 }
+/* Looks ugly
+
+function getRandomNumber(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
+const radialGradients = [];
+const amt = 10;
+
+for (let i = 0; i < amt; i++) {
+    const x = getRandomNumber(0, 100);
+    const y = getRandomNumber(0, 100);
+
+    radialGradients.push(
+        "radial-gradient(circle at " +
+        getRandomNumber(i*(100/amt), (i+1)*(100/amt)) +
+        "% " +
+        getRandomNumber(0, 100) +
+        "%, #FFFAFA40 " +
+        getRandomNumber(3/5, 4/5) +
+        "%, transparent " +
+        getRandomNumber(6/5, 7/5) +
+        "%)"
+    );
+}*/
+
+const bodyDiv = document.getElementById("body");
+bodyDiv.style.background = radialGradients.join(", ") + ", repeating-linear-gradient(90deg, #fdb9db, #E5D1FF, rgb(219, 202, 214), #fdb9db 25%)";

@@ -18,8 +18,8 @@
     {% block validation_javascript %}{% endblock %}
 </head>
 
-<body>
-    <main id="App">
+<body id="body">
+    <main id="App" style="position: relative">
         <h2>{% block h2 %}{% endblock %}</h2>
         <form method="post">
             {% csrf_token %}
