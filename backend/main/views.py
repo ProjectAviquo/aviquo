@@ -26,7 +26,7 @@ class AddForumForm(forms.ModelForm):
         fields = ["topic", "description"]
 
 def home(request):
-    return redirect("waitlist")
+    # return redirect("waitlist")
     if request.user.is_authenticated:
        return redirect("profile")
     return render(request, "home.html", {})
