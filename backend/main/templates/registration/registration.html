@@ -41,7 +41,7 @@
             {% endfor %}
             <div id="combined">
                 <input type="submit" value="{{ button }}" />
-                <a href="{{ backtourl }}">{{ backto }}</a>
+                <a href="{% url 'login' %}">Back to Login</a>
             </div>
         </form>
     </main>
