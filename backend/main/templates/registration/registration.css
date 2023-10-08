@@ -1,0 +1,177 @@
+@keyframes background-thing {
+    0% {
+        background-position-x: -150%;
+    }
+
+    100% {
+        background-position-x: 150%;
+    }
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+body {
+    display: flex;
+
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+
+    background: repeating-linear-gradient(90deg,
+            #FF99CC,
+            #E5D1FF,
+            rgb(219, 202, 214),
+            #FF99CC 25%);
+
+    background: repeating-linear-gradient(90deg,
+            hsl(0, 100%, 90%),
+            hsl(30, 100%, 90%),
+            hsl(60, 100%, 90%),
+            hsl(120, 100%, 90%),
+            hsl(240, 100%, 90%),
+            hsl(270, 100%, 90%),
+            hsl(0, 100%, 90%) 50%);
+
+    background-size: 600% 100%;
+    animation-name: background-thing;
+    animation-duration: 20s;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+
+    align-items: center;
+    justify-content: center;
+
+    font-family: "Poppins", sans-serif;
+    /* Change the font to Arial or another clean font */
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: calc(300px + 10vw);
+    max-width: 90vw;
+
+    padding: 20px;
+
+    border-radius: 40px;
+    box-shadow: 0 2px 3px 2px #BBB;
+
+    background-color: #f3f3f3;
+
+    font-size: 16px;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 20px;
+}
+
+label {
+    display: flex;
+    justify-content: space-between;
+
+    width: 90%;
+
+    margin: 5px 0;
+
+    font-size: 1em;
+}
+
+.input-span {
+    width: 45%;
+}
+
+input {
+    width: 45%;
+    flex-basis: 50%;
+    flex-grow: 0;
+
+    border: 1px solid #CCC;
+    border-radius: 3px;
+
+    background-color: #FFF;
+    color: black;
+
+    box-shadow: 0 2px 3px 2px #BBB;
+}
+
+div#combined {
+    display: flex;
+    justify-content: space-around;
+
+    width: 80%;
+
+    margin-top: 20px;
+}
+
+div#combined * {
+    --button-pad: 0.5em;
+
+    width: 45%;
+    height: calc(1em + var(--button-pad)*2);
+
+    padding: var(--button-pad) 0;
+
+    border: none;
+    border-radius: 10px;
+
+    background-color: #FFF;
+    color: black;
+
+    box-shadow: 0 2px 2px 1px #BBB;
+
+    font-size: 1em;
+    text-align: center;
+    line-height: 1em;
+}
+
+input, a {
+    background-color: #FFF;
+    box-shadow: 0 2px 2px 1px #BBB;
+    transition: box-shadow 0.2s;
+}
+
+input:hover, a:hover {
+    box-shadow: 0 3px 2px 2px #AAA;
+}
+
+h2, input, a, span {
+    color: rgb(99, 68, 89);
+}
+
+@media (max-width: 600px) {
+    main {
+        font-size: 14px;
+    }
+
+    div#combined {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    div#combined * {
+        width: 80%;
+        margin: 5px 0;
+    }
+}
+
+@media (min-width: 1400px) {
+    main {
+        font-size: 20px;
+    }
+}

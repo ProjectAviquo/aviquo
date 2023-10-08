@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {{title}} {% endblock %}</title>
+    <!-- Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/registration/registration.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Young+Serif&family=Roboto+Slab:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap JS and jQuery scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <main>
+        <h2>{{ title }}</h2>
+        <form method="post">
+            {% csrf_token %}
+            {% for input in form %}
+            {{ input.label_tag }}
+            {{ input }}
+            <script>
+                { // Acts as a scope blocker dont remove or js will be mad >:(
+                    let me = document.currentScript;
+                    let input = me.previousElementSibling;
+                    let label = input.previousElementSibling;
+                    let label_text = (" " + label.innerText).slice(1);
+                    label.textContent = "";
+                    $(label).prepend($("<span class='input-span'>" + label_text + "</span>"));
+                    $(input).detach().appendTo(label);
+                    me.remove();
+                }
+            </script>
+            {% endfor %}
+            <div id="combined">
+                <input type="submit" value="{{ button }}" />
+                <a href="{{ backtourl }}">{{ backto }}</a>
+            </div>
+        </form>
+    </main>
+    <audio id="audio"
+        src="https://archive.org/download/DELTARUNE_Chapter_2_OST/Chapter%202%20OST%20FLAC/27%20KEYGEN.mp3" preload
+        loop></audio>
+    <button id="keygen" onclick="keygen()"
+        style="position: absolute; width: 100vw; height: 100vh; top: 0; left: 0; border : 0;">
+        Open page
+    </button>
+    <script>
+        function keygen() {
+            $("#keygen").remove();
+            document.getElementById("audio").play();
+        }
+    </script>
+</body>
+
+</html>

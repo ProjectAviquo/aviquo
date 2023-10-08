@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import logout
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
@@ -65,7 +65,7 @@ def profile(request):
 @login_required
 def OpportunityView(request):
     opportunities = Opportunity.objects.all()
-    
+
     return render(request, "lists/opportunity_list.html", {"opportunities": opportunities})
 
 
@@ -78,13 +78,13 @@ def ForumView(request):
         if form.is_valid():
            # Create a new Forum instance but don't save it yet
             new_forum = form.save(commit=False)
-            
+
             # Set the username field of the forum to the user's username
             new_forum.username = user.username
-            
+
             # Save the forum object with the updated username
             new_forum.save()
-            
+
             return redirect("forum")
 
     else:
@@ -100,8 +100,30 @@ class CustomUserCreationForm(UserCreationForm):
 
 class SignUp(CreateView):
     form_class = CustomUserCreationForm
-    success_url = reverse_lazy("login")
-    template_name = "registration/signup.html"
+    success_url = reverse_lazy("login/")
+    template_name = "registration/registration.html"
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['title'] = "Registration"
+        context['button'] = "Sign Up"
+        context['backto'] = "Back to login"
+        context['backtourl'] = "/login"
+        return context
+
+
+class LogIn(CreateView):
+    form_class = CustomUserCreationForm
+    success_url = reverse_lazy("/")
+    template_name = "registration/registration.html"
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['title'] = "Log In"
+        context['button'] = "Log In"
+        context['backto'] = "Forgot password?"
+        context['backtourl'] = "/password_reset"
+        return context
 
 
 # class ForumView(generics.CreateAPIView):
