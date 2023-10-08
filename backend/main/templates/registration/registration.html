@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %} {{title}} {% endblock %}</title>
+    <title>{% block title %}{% endblock %}</title>
     <!-- Bootstrap CSS link -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/registration/registration.css">
@@ -16,15 +16,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    {% block validation_javascript %}{% endblock %}
 </head>
 
 <body>
     <main>
-        <h2>{{ title }}</h2>
+        <h2>{% block h2 %}{% endblock %}</h2>
         <form method="post">
             {% csrf_token %}
             {% for input in form %}
-            {% if (!showmore) and (input.name == "password2" or input.name == "email") %}
             {{ input.label_tag }}
             {{ input }}
             <script>
@@ -37,21 +38,19 @@
                     label.textContent = "";
                     $(label).prepend($("<span class='input-span'>" + label_text + "</span>"));
                     $(input).detach().appendTo(label);
+                    $(label).attr("id", "{{ input.name }}");
 
                     me.remove();
                 }
             </script>
-            {% endif %}
             {% endfor %}
             <div id="combined">
-                <input type="submit" value="{{ button }}" />
-                <a href="{{ backtourl }}">{{ backto }}</a>
+                {% block buttons %}{% endblock %}
             </div>
         </form>
     </main>
-    <!--
-    Pride month mode
 
+    {% if pridemonthmode %}
     <audio id="audio"
         src="https://archive.org/download/DELTARUNE_Chapter_2_OST/Chapter%202%20OST%20FLAC/27%20KEYGEN.mp3" preload
         loop></audio>
@@ -64,7 +63,9 @@
             $("#keygen").remove();
             document.getElementById("audio").play();
         }
-    </script>-->
+    </script>
+    <link rel="stylesheet" href="/static/registration/pridemonthmode.css">
+    {% endif %}
 </body>
 
 </html>

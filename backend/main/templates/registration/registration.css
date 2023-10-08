@@ -28,22 +28,9 @@ body {
             rgb(219, 202, 214),
             #fdb9db 25%);
 
-    /*
-    Pride month mode
-
-    background: repeating-linear-gradient(90deg,
-            hsl(0, 100%, 90%),
-            hsl(30, 100%, 90%),
-            hsl(60, 100%, 90%),
-            hsl(120, 100%, 90%),
-            hsl(240, 100%, 90%),
-            hsl(270, 100%, 90%),
-            hsl(0, 100%, 90%) 50%);*/
-
     background-size: 600% 100%;
     animation-name: background-thing;
-    animation-duration: 150s;
-    /*animation-duration: 3s;*/
+    animation-duration: 100s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
 
@@ -114,9 +101,11 @@ div#combined {
     display: flex;
     justify-content: space-around;
 
-    width: 80%;
+    width: 90%;
 
     margin-top: 20px;
+
+    font-size: 0.9em;
 }
 
 div#combined * {
@@ -138,6 +127,10 @@ div#combined * {
     font-size: 1em;
     text-align: center;
     line-height: 1em;
+}
+
+a {
+    text-decoration: underline;
 }
 
 input, a, div#combined * {

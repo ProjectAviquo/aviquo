@@ -96,32 +96,35 @@ class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = User
         fields = UserCreationForm.Meta.fields + ("email",)
+
+class CustomAuthForm(UserCreationForm):
+    def __init__(self, *args, **kwargs):
+        super(CustomAuthForm, self).__init__(*args, **kwargs)
+        self.fields.pop('password1')
+        self.fields.pop('password2')
+
+    class Meta:
+        model = User
+        fields = ["username", "password"]
+
 class SignUp(CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy("login")
-    template_name = "registration/registration.html"
+    template_name = "registration/signup.html"
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        context['title'] = "Registration"
-        context['button'] = "Sign Up"
-        context['backto'] = "Back to login"
-        context['backtourl'] = "/login"
-        context['showmore'] = True;
+        context['pridemonthmode'] = False;
         return context
 
 class LogIn(CreateView):
-    form_class = CustomUserCreationForm
+    form_class = CustomAuthForm
     success_url = reverse_lazy("/")
-    template_name = "registration/registration.html"
+    template_name = "registration/login.html"
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        context['title'] = "Log In"
-        context['button'] = "Log In"
-        context['backto'] = "Lost password?"
-        context['backlink'] = "/forgot_password"
-        context['showmore'] = False;
+        context['pridemonthmode'] = False;
         return context
 
 
