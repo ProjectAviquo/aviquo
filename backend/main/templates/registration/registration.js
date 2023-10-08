@@ -66,7 +66,8 @@ for (let i = 0; i < amt; i++) {
         getRandomNumber(6/5, 7/5) +
         "%)"
     );
-}*/
+}
 
 const bodyDiv = document.getElementById("body");
 bodyDiv.style.background = radialGradients.join(", ") + ", repeating-linear-gradient(90deg, #fdb9db, #E5D1FF, rgb(219, 202, 214), #fdb9db 25%)";
+*/
