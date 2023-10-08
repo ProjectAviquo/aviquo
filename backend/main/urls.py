@@ -7,7 +7,7 @@ from .views import ForumView, OpportunityView, SignUp, LogIn, WaitlistView, home
 
 urlpatterns = [
     path("", home, name="home"),
-    path("Waitlist/", waitlist, name="waitlist"),
+    path("waitlist/", waitlist, name="waitlist"),
 ]
 
 if settings.DEBUG:
@@ -16,7 +16,6 @@ if settings.DEBUG:
         path("signup/", SignUp.as_view(), name="signup"),
         path("login/", LogIn.as_view(), name="login"),
         path("opportunity/", OpportunityView, name="opportunity"),
-        path("waitlist/", WaitlistView.as_view(), name="waitlist"),
         path("forum/", ForumView, name="forum"),
         path("profile/", profile, name="profile"),
         path("password_reset/", CustomPasswordResetView.as_view(),

@@ -23,10 +23,13 @@ body {
     margin: 0;
 
     background: repeating-linear-gradient(90deg,
-            #FF99CC,
+            #fdb9db,
             #E5D1FF,
             rgb(219, 202, 214),
-            #FF99CC 25%);
+            #fdb9db 25%);
+
+    /*
+    Pride month mode
 
     background: repeating-linear-gradient(90deg,
             hsl(0, 100%, 90%),
@@ -35,12 +38,12 @@ body {
             hsl(120, 100%, 90%),
             hsl(240, 100%, 90%),
             hsl(270, 100%, 90%),
-            hsl(0, 100%, 90%) 50%);
+            hsl(0, 100%, 90%) 50%);*/
 
     background-size: 600% 100%;
     animation-name: background-thing;
-    animation-duration: 20s;
-    animation-duration: 3s;
+    animation-duration: 150s;
+    /*animation-duration: 3s;*/
     animation-iteration-count: infinite;
     animation-timing-function: linear;
 
@@ -48,7 +51,6 @@ body {
     justify-content: center;
 
     font-family: "Poppins", sans-serif;
-    /* Change the font to Arial or another clean font */
 }
 
 main {
@@ -106,8 +108,6 @@ input {
 
     background-color: #FFF;
     color: black;
-
-    box-shadow: 0 2px 3px 2px #BBB;
 }
 
 div#combined {
@@ -133,21 +133,19 @@ div#combined * {
     background-color: #FFF;
     color: black;
 
-    box-shadow: 0 2px 2px 1px #BBB;
-
     font-size: 1em;
     text-align: center;
     line-height: 1em;
 }
 
-input, a {
+input, a, div#combined * {
     background-color: #FFF;
     box-shadow: 0 2px 2px 1px #BBB;
     transition: box-shadow 0.2s;
 }
 
-input:hover, a:hover {
-    box-shadow: 0 3px 2px 2px #AAA;
+input:hover, a:hover, div#combined *:hover {
+    box-shadow: 0 3px 2px 1px #AAA;
 }
 
 h2, input, a, span {
