@@ -26,25 +26,8 @@
             {% for input in form %}
             {{ input.label_tag }}
             {{ input }}
-            <script>
-                { // Acts as a scope blocker dont remove or js will be mad >:(
-                    let me = document.currentScript;
-                    let input = me.previousElementSibling;
-                    let label = input.previousElementSibling;
-                    let label_text = (" " + label.innerText).slice(1);
-
-                    label.textContent = "";
-                    $(label).prepend($("<span class='input-span'>" + label_text + "</span>"));
-                    $(input).detach().appendTo(label);
-                    $(label).attr("id", "{{ input.name }}");
-
-                    me.remove();
-                }
-            </script>
             {% endfor %}
-            <div id="combined">
-                {% block buttons %}{% endblock %}
-            </div>
+            {% block buttons %}{% endblock %}
         </form>
     </main>
 

@@ -41,10 +41,10 @@ main {
     flex-direction: column;
     align-items: center;
 
-    width: calc(300px + 10vw);
+    width: calc(350px + 10vw);
     max-width: 90vw;
 
-    padding: 30px;
+    padding: 30px 15px;
 
     border-radius: 40px;
     box-shadow: 0 2px 3px 2px #BBB;
@@ -59,21 +59,19 @@ h2 {
 }
 
 form {
-    display: flex;
-    flex-direction: column;
+    display: grid;
     align-items: center;
+    justify-items: center;
+
+    grid-template-columns: 1fr 1fr;
+    row-gap: 10px;
 
     margin-top: 20px;
 }
 
 label {
-    display: flex;
-    justify-content: space-between;
-
     width: 90%;
-
-    margin: 5px 0;
-
+    margin: 0;
     font-size: 1em;
 }
 
@@ -82,11 +80,13 @@ label {
 }
 
 input:not([type="submit"]) {
-    width: 45%;
+    width: 90%;
     height: 1.8em;
     align-self: center;
     flex-basis: 50%;
     flex-grow: 0;
+
+    margin: 0;
 
     border: 1px solid #CCC;
     border-radius: 3px;
@@ -95,18 +95,7 @@ input:not([type="submit"]) {
     color: black;
 }
 
-div#combined {
-    display: flex;
-    justify-content: space-around;
-
-    width: 90%;
-
-    margin-top: 20px;
-
-    font-size: 0.9em;
-}
-
-div#combined * {
+input[type="submit"], a {
     --button-pad: 0.5em;
 
     display: inline-block;
@@ -114,6 +103,7 @@ div#combined * {
     width: fit-content;
     height: calc(1em + var(--button-pad)*2);
 
+    margin-top: 10px;
     padding: var(--button-pad) calc(var(--button-pad)*3);
 
     border: none;

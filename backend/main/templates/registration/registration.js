@@ -39,7 +39,7 @@ for (let i = 0; i < formChild.length; i++) {
         cur_label, {
         duration: 0.2,
         opacity: 1
-    }, "<75%"
+    }, "<50%"
     );
 }
 /* Looks ugly
