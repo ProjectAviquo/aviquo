@@ -111,7 +111,6 @@ class SignUp(CreateView):
         context['backtourl'] = "/login"
         return context
 
-
 class LogIn(CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy("/")
