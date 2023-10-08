@@ -24,6 +24,7 @@
         <form method="post">
             {% csrf_token %}
             {% for input in form %}
+            {% if (not showmore) and (input.name == "password2" or input.name == "email") %}
             {{ input.label_tag }}
             {{ input }}
             <script>
@@ -32,16 +33,15 @@
                     let input = me.previousElementSibling;
                     let label = input.previousElementSibling;
                     let label_text = (" " + label.innerText).slice(1);
+
                     label.textContent = "";
                     $(label).prepend($("<span class='input-span'>" + label_text + "</span>"));
                     $(input).detach().appendTo(label);
 
-                    if ((label_text == "Password confirmation:" || label_text == "Email:") && "{{ showmore }}" == "False") {
-                        $(label).remove();
-                    }
                     me.remove();
                 }
             </script>
+            {% endif %}
             {% endfor %}
             <div id="combined">
                 <input type="submit" value="{{ button }}" />
