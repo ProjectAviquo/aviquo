@@ -1,1 +1,1 @@
-../../templates/Waitlist/landing_page.css.js
+../../templates/Waitlist/landing_page.js

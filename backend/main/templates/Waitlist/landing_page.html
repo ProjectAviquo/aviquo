@@ -14,7 +14,6 @@
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Young+Serif&family=Roboto+Slab:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
 </head>
-
 <body id="App">
   <header class="w-85">
 
@@ -129,31 +128,11 @@
     </div>
   </footer>
 </body>
-<script>
-  let tl = gsap.timeline({
-    defaults: {
-      duration: 0.15
-    }
-  });
-
-  gsap.registerPlugin(EaselPlugin);
-  gsap.registerPlugin(ScrollToPlugin);
-  gsap.registerPlugin(ScrollTrigger);
-
-  function join_the_soviet_union() {
-    console.log("clicked")
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  }
-
-</script>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"
   integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/EaselPlugin.min.js"></script>
-
+<script src="/static/Waitlist/landing_page.js"></script>
 </html>
