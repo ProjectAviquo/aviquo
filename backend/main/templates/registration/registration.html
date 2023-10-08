@@ -35,13 +35,17 @@
                     label.textContent = "";
                     $(label).prepend($("<span class='input-span'>" + label_text + "</span>"));
                     $(input).detach().appendTo(label);
+
+                    if ((label_text == "Password confirmation:" || label_text == "Email:") && "{{ showmore }}" == "False") {
+                        $(label).remove();
+                    }
                     me.remove();
                 }
             </script>
             {% endfor %}
             <div id="combined">
                 <input type="submit" value="{{ button }}" />
-                <a href="{% url 'login' %}">Back to Login</a>
+                <a href="{{ backtourl }}">{{ backto }}</a>
             </div>
         </form>
     </main>

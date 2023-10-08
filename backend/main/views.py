@@ -96,8 +96,6 @@ class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = User
         fields = UserCreationForm.Meta.fields + ("email",)
-
-
 class SignUp(CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy("login")
@@ -108,9 +106,23 @@ class SignUp(CreateView):
         context['title'] = "Registration"
         context['button'] = "Sign Up"
         context['backto'] = "Back to login"
+        context['backtourl'] = "/login"
+        context['showmore'] = True;
         return context
 
+class LogIn(CreateView):
+    form_class = CustomUserCreationForm
+    success_url = reverse_lazy("/")
+    template_name = "registration/registration.html"
 
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['title'] = "Log In"
+        context['button'] = "Log In"
+        context['backto'] = "Lost password?"
+        context['backlink'] = "/forgot_password"
+        context['showmore'] = False;
+        return context
 
 
 # class ForumView(generics.CreateAPIView):

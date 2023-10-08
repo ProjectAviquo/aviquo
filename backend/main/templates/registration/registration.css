@@ -98,7 +98,7 @@ label {
     width: 45%;
 }
 
-input {
+input:not([type="submit"]) {
     width: 45%;
     flex-basis: 50%;
     flex-grow: 0;
@@ -122,10 +122,12 @@ div#combined {
 div#combined * {
     --button-pad: 0.5em;
 
-    width: 45%;
+    display: inline-block;
+
+    width: fit-content;
     height: calc(1em + var(--button-pad)*2);
 
-    padding: var(--button-pad) 0;
+    padding: var(--button-pad) calc(var(--button-pad)*3);
 
     border: none;
     border-radius: 10px;
@@ -168,7 +170,7 @@ h2, input, a, span {
     }
 }
 
-@media (min-width: 1400px) {
+@media (min-width: 1800px) {
     main {
         font-size: 20px;
     }
