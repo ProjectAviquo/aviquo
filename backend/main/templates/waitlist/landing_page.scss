@@ -5,14 +5,14 @@
 
 $light-pink: #ffcfcf;
 $less-light-pink: #ffbaba;
-$more-light-pink: #FFD3E6;
+$more-light-pink: #ffd3e6;
 $purple: #805c9c;
 $more-purple: #904c7c;
 $even-more-purple: rgb(99, 68, 89);
 $dark-purple: #402c4c;
 $light-purple: #e6afed;
 $primary-1: #1c133b;
-$primary-2: #B37F9C;
+$primary-2: #b37f9c;
 $primary-3: #775967;
 $primary-4: #804c74;
 
@@ -35,7 +35,7 @@ $primary-4: #804c74;
         --spon-box-shadow-size: 5px;
 
         --spon-aside-vert-padd: 1vw;
-        --spon-aside-head-size: calc(1.6vw + 8px);
+        --spon-aside-head-size: calc(2vw + 8px);
 
         --figcaption-font-size: calc(6px + 2vw);
         --fig-img-height: calc(25px + 10vw);
@@ -48,9 +48,9 @@ $primary-4: #804c74;
         --intro-h5: 3vw;
         --intro-h2: var(--main-title-font-size);
 
-        --product-box-h5: 2.6vw;
+        --product-box-h5: 2.45vw;
         --product-box-h5-marg-top: 10px;
-        --product-box-p: 1.6vw;
+        --product-box-p: 1.8vw;
         --product-box-a: 3vw;
         --product-box-a-pad: 3px;
         --product-box-a-width: 80%;
@@ -93,7 +93,7 @@ $primary-4: #804c74;
         --spon-box-shadow-size: 15px;
 
         --spon-aside-vert-padd: 2vw;
-        --spon-aside-head-size: 40px;
+        --spon-aside-head-size: calc(2.2vw + 8px);
 
         --figcaption-font-size: calc(10px + 1.5vw);
         --fig-img-height: calc(30px + 6vw);
@@ -108,7 +108,7 @@ $primary-4: #804c74;
 
         --product-box-h5: 2vw;
         --product-box-h5-marg-top: 20px;
-        --product-box-p: 1.1vw;
+        --product-box-p: calc(1.1vw + 3px);
         --product-box-a: 1.3vw;
         --product-box-a-pad: 12px;
         --product-box-a-width: 60%;
@@ -164,7 +164,7 @@ header {
     h3 {
         margin: 0;
 
-        color: #F6EDFF;
+        color: #f6edff;
 
         font-size: var(--main-subtitle-font-size);
         font-weight: 600;
@@ -204,7 +204,8 @@ header {
 
             box-shadow: -3px 3px 3px 1px $dark-purple;
 
-            transition: background 0.3s, color 0.3s, box-shadow 0.3s, z-index 0.3s;
+            transition: background 0.3s, color 0.3s, box-shadow 0.3s,
+                z-index 0.3s;
         }
 
         #wl-email {
@@ -239,10 +240,12 @@ header {
 }
 
 main {
-    background: linear-gradient($primary-2 1%,
-            $primary-3 10vw,
-            $primary-3 15vw,
-            $primary-4 20vw);
+    background: linear-gradient(
+        $primary-2 1%,
+        $primary-3 10vw,
+        $primary-3 15vw,
+        $primary-4 20vw
+    );
     width: 100vw;
     min-height: 100vw;
 
@@ -334,12 +337,13 @@ main {
         padding: var(--quote-pad) 0 var(--quote-pad);
 
         background: radial-gradient(#fdd6 15%, transparent 60%),
-            linear-gradient($primary-3,
+            linear-gradient(
+                $primary-3,
                 transparent 30%,
                 transparent 70%,
-                $primary-4 100%),
-            radial-gradient(#fdd 15%,
-                $primary-3);
+                $primary-4 100%
+            ),
+            radial-gradient(#fdd 15%, $primary-3);
 
         p {
             width: fit-content;
@@ -547,7 +551,6 @@ main {
         h3:hover {
             transform: scale(1.1);
         }
-
     }
 
     section#discord {
@@ -616,15 +619,17 @@ footer {
     align-items: center;
 
     border: 1px solid transparent;
-    background: linear-gradient($light-pink, $light-purple 130%);
+    background: linear-gradient($light-pink, $light-purple 200%);
 
     h4 {
-        font-size: 1.5rem;
+        font-size: 2rem;
 
         width: fit-content;
 
         a {
             color: $more-purple;
+            cursor: pointer;
+            text-decoration: underline;
         }
 
         a::before,
@@ -657,7 +662,9 @@ footer {
         .bigger-text {
             color: $more-purple;
             font-weight: 600;
-            font-size: calc(5px + 1vw);
+            font-size: calc(5px + 3vw);
+            text-decoration: underline;
+            cursor: pointer;
         }
 
         .smaller-text,
@@ -668,14 +675,27 @@ footer {
         }
     }
 
+    img {
+        --img-size: 5vw;
+
+        position: absolute;
+        right: 1vw;
+        bottom: 0;
+        left: calc(99vw - var(--img-size));
+
+        width: var(--img-size);
+        height: auto;
+    }
+
     #copy {
         position: absolute;
         bottom: 0;
-        left: 5px;
+        left: 0;
 
         color: $dark-purple;
 
         font-size: var(--copy);
         text-align: center;
+        font-weight: 600;
     }
 }
