@@ -1,0 +1,1 @@
+../../templates/waitlist/landing_page.js

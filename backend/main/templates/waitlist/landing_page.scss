@@ -1,38 +1,33 @@
 * {
     box-sizing: border-box;
-    //border: 1px solid black;
-
     font-family: inherit;
 }
 
 $light-pink: #ffcfcf;
 $less-light-pink: #ffbaba;
+$more-light-pink: #FFD3E6;
 $purple: #805c9c;
 $more-purple: #904c7c;
-$even-more-purple:rgb(99, 68, 89);
+$even-more-purple: rgb(99, 68, 89);
 $dark-purple: #402c4c;
 $light-purple: #e6afed;
-$primary-1: #322249;
-$primary-2: #916d87;
+$primary-1: #1c133b;
+$primary-2: #B37F9C;
 $primary-3: #775967;
 $primary-4: #804c74;
 
 @media (max-width: 600px) {
     :root {
-        --header-column-diff: 3vw;
-        --header-size-padding: 7vw;
-
-        --main-title-font-size: calc(1px + 8vw);
+        --main-title-font-size: calc(5px + 14vw);
         --main-subtitle-font-size: calc(1px + 4vw);
-        --main-big-subtitle-font-size: calc(1.5px + 5.5vw);
-        --logo-column-start: 2;
+
+        --head-pad-top: 50px;
+        --head-pad-bottom: 40px;
 
         --nav-bottom-pad: calc(0.3px + 1.3vw);
         --wl-font-size: calc(1.5vw + 3px);
         --wl-padd-size: calc(1.5vw + 3px);
-        --wl-submit-gcs: 1;
 
-        --spon-extra-width: 15px;
         --spon-top: 25px;
         --spon-top-pad: 15px;
         --spon-box-shadow-size: 5px;
@@ -72,20 +67,16 @@ $primary-4: #804c74;
 
 @media (min-width: 601px) {
     :root {
-        --header-column-diff: 20vw;
-        --header-size-padding: 4vw;
-
         --main-title-font-size: calc(1px + 5vw);
         --main-subtitle-font-size: calc(1px + 2vw);
-        --main-big-subtitle-font-size: calc(1.5px + 3.5vw);
-        --logo-column-start: 1;
+
+        --head-pad-top: 50px;
+        --head-pad-bottom: 40px;
 
         --nav-bottom-pad: 1vw;
         --wl-font-size: calc(0.5vw + 8px);
         --wl-padd-size: calc(0.7vw + 6px);
-        --wl-submit-gcs: 2;
 
-        --spon-extra-width: 25px;
         --spon-top: 70px;
         --spon-top-pad: 25px;
         --spon-box-shadow-size: 15px;
@@ -130,57 +121,30 @@ body {
     font-family: "Poppins", sans-serif;
     font-weight: 400;
 
-    background: linear-gradient(90deg, #444 20px, $primary-4 20px, $primary-4 calc(100% - 20px), #444 calc(100% - 20px), #444);
-    padding: 0 20px;
+    overflow-x: hidden;
 }
 
 header {
-    display: grid;
-    grid-template-columns: minmax(0, calc(50% - var(--header-column-diff))) minmax(0, calc(50% + var(--header-column-diff)));
-    grid-template-rows: minmax(0, 1fr) fit-content;
-    row-gap: 1vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    padding: 15px var(--header-size-padding) 30px;
+    padding: var(--head-pad-top) 0 var(--head-pad-bottom);
 
-    background: linear-gradient($primary-1 20%, $primary-2);
-
-    img#main-logo {
-        height: var(--main-title-font-size);
-
-        margin-left: auto;
-        margin-right: auto;
-
-        align-self: center;
-        grid-row-start: 1;
-        grid-column-start: var(--logo-column-start);
-        grid-column-end: 3;
-
-        font-size: calc(var(--main-title-font-size) - 10px);
-        color: #D08EA1;
-    }
-
-    h1,
-    h3 {
-        margin: 0;
-        grid-column-start: 1;
-    }
+    background: linear-gradient($primary-1 40%, $primary-2);
 
     h1 {
-        grid-row-start: 1;
+        margin: 0;
 
-        color: $light-pink;
+        color: $more-light-pink;
 
         font-size: var(--main-title-font-size);
     }
 
     h3 {
-        grid-row-start: 2;
-        align-self: center;
+        margin: 0;
 
-        display: flex;
-        flex-direction: column;
-
-        color: #fff;
+        color: #F6EDFF;
 
         font-size: var(--main-subtitle-font-size);
         font-weight: 600;
@@ -194,80 +158,62 @@ header {
 
         .h3-bigger {
             font-size: var(--main-big-subtitle-font-size);
+            color: #804c74;
         }
     }
 
-    nav {
-        grid-row-start: 2;
-
+    form {
+        width: 70%;
         height: fit-content;
-        width: 100%;
-        height: 100%;
 
         display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
+        justify-content: space-between;
 
-        padding-bottom: var(--nav-bottom-pad);
+        input {
+            height: calc(var(--wl-font-size) + var(--wl-padd-size)*2);
 
-        form {
-            width: 100%;
-            height: fit-content;
+            border: none;
+            border-radius: 10px;
 
-            display: grid;
-            row-gap: calc(var(--wl-padd-size) * 1.2);
-            column-gap: 5vw;
+            font-size: var(--wl-font-size);
+            font-weight: 500;
 
-            input {
-                width: 100%;
-                height: calc(var(--wl-font-size) + var(--wl-padd-size)*2);
+            box-shadow: 2px 2px 5px #333;
 
-                border: none;
-                border-radius: 1vw;
+            transition: background 0.3s, color 0.3s, box-shadow 0.3s, z-index 0.3s;
 
-                font-size: var(--wl-font-size);
-                font-weight: 500;
-                text-align: center;
+            z-index: 56;
+        }
 
-                box-shadow: 2px 2px 5px #333;
+        #wl-email {
+            width: 60%;
+            padding: var(--padd-size);
+            padding-left: 15px;
+        }
 
-                transition: background 0.3s, color 0.3s, box-shadow 0.3s, z-index 0.3s;
+        #wl-submit {
+            width: 30%;
 
-                z-index: 56;
-            }
+            background-color: $purple;
+            color: white;
 
-            input::placeholder {
-                color: $purple;
-            }
+            text-align: center;
+        }
 
-            input:hover,
-            input:active,
-            #wl-email {
-                background-color: $light-pink;
-                color: $purple;
-            }
+        input::placeholder {
+            color: $purple;
+        }
 
-            input:hover,
-            #wl-email:focus {
-                box-shadow: 0 0 5px 10px $primary-1;
-                z-index: 55;
-            }
+        input:hover,
+        #wl-email:focus {
+            box-shadow: 0 0 3px 5px $primary-1;
+            z-index: 55;
+        }
 
-            #wl-email {
-                padding: var(--padd-size);
-            }
-
-            #wl-submit {
-                background-color: $purple;
-                color: white;
-                grid-column-start: var(--wl-submit-gcs);
-            }
-
-            #wl-submit:hover {
-                background-color: $light-pink;
-                color: black;
-                cursor: pointer;
-            }
+        #wl-submit:hover {
+            background-color: $light-pink;
+            color: black;
+            cursor: pointer;
         }
     }
 }

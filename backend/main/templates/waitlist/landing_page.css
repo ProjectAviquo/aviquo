@@ -6,17 +6,13 @@
 
 @media (max-width: 600px) {
   :root {
-    --header-column-diff: 3vw;
-    --header-size-padding: 7vw;
-    --main-title-font-size: calc(1px + 8vw);
+    --main-title-font-size: calc(5px + 14vw);
     --main-subtitle-font-size: calc(1px + 4vw);
-    --main-big-subtitle-font-size: calc(1.5px + 5.5vw);
-    --logo-column-start: 2;
+    --head-pad-top: 50px;
+    --head-pad-bottom: 40px;
     --nav-bottom-pad: calc(0.3px + 1.3vw);
     --wl-font-size: calc(1.5vw + 3px);
     --wl-padd-size: calc(1.5vw + 3px);
-    --wl-submit-gcs: 1;
-    --spon-extra-width: 15px;
     --spon-top: 25px;
     --spon-top-pad: 15px;
     --spon-box-shadow-size: 5px;
@@ -46,17 +42,13 @@
 }
 @media (min-width: 601px) {
   :root {
-    --header-column-diff: 20vw;
-    --header-size-padding: 4vw;
     --main-title-font-size: calc(1px + 5vw);
     --main-subtitle-font-size: calc(1px + 2vw);
-    --main-big-subtitle-font-size: calc(1.5px + 3.5vw);
-    --logo-column-start: 1;
+    --head-pad-top: 50px;
+    --head-pad-bottom: 40px;
     --nav-bottom-pad: 1vw;
     --wl-font-size: calc(0.5vw + 8px);
     --wl-padd-size: calc(0.7vw + 6px);
-    --wl-submit-gcs: 2;
-    --spon-extra-width: 25px;
     --spon-top: 70px;
     --spon-top-pad: 25px;
     --spon-box-shadow-size: 15px;
@@ -89,45 +81,24 @@ body {
   margin: 0;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
-  background: linear-gradient(90deg, #444 20px, #804c74 20px, #804c74 calc(100% - 20px), #444 calc(100% - 20px), #444);
-  padding: 0 20px;
+  overflow-x: hidden;
 }
 
 header {
-  display: grid;
-  grid-template-columns: minmax(0, calc(50% - var(--header-column-diff))) minmax(0, calc(50% + var(--header-column-diff)));
-  grid-template-rows: minmax(0, 1fr) fit-content;
-  row-gap: 1vh;
-  padding: 15px var(--header-size-padding) 30px;
-  background: linear-gradient(#322249 20%, #916d87);
-}
-header img#main-logo {
-  height: var(--main-title-font-size);
-  margin-left: auto;
-  margin-right: auto;
-  align-self: center;
-  grid-row-start: 1;
-  grid-column-start: var(--logo-column-start);
-  grid-column-end: 3;
-  font-size: calc(var(--main-title-font-size) - 10px);
-  color: #D08EA1;
-}
-header h1,
-header h3 {
-  margin: 0;
-  grid-column-start: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--head-pad-top) 0 var(--head-pad-bottom);
+  background: linear-gradient(#1c133b 40%, #B37F9C);
 }
 header h1 {
-  grid-row-start: 1;
-  color: #ffcfcf;
+  margin: 0;
+  color: #FFD3E6;
   font-size: var(--main-title-font-size);
 }
 header h3 {
-  grid-row-start: 2;
-  align-self: center;
-  display: flex;
-  flex-direction: column;
-  color: #fff;
+  margin: 0;
+  color: #F6EDFF;
   font-size: var(--main-subtitle-font-size);
   font-weight: 600;
   white-space: nowrap;
@@ -138,66 +109,51 @@ header h3 span {
 }
 header h3 .h3-bigger {
   font-size: var(--main-big-subtitle-font-size);
+  color: #804c74;
 }
-header nav {
-  grid-row-start: 2;
+header form {
+  width: 70%;
   height: fit-content;
-  width: 100%;
-  height: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding-bottom: var(--nav-bottom-pad);
+  justify-content: space-between;
 }
-header nav form {
-  width: 100%;
-  height: fit-content;
-  display: grid;
-  row-gap: calc(var(--wl-padd-size) * 1.2);
-  column-gap: 5vw;
-}
-header nav form input {
-  width: 100%;
+header form input {
   height: calc(var(--wl-font-size) + var(--wl-padd-size) * 2);
   border: none;
-  border-radius: 1vw;
+  border-radius: 10px;
   font-size: var(--wl-font-size);
   font-weight: 500;
-  text-align: center;
   box-shadow: 2px 2px 5px #333;
   transition: background 0.3s, color 0.3s, box-shadow 0.3s, z-index 0.3s;
   z-index: 56;
 }
-header nav form input::placeholder {
-  color: #805c9c;
-}
-header nav form input:hover,
-header nav form input:active,
-header nav form #wl-email {
-  background-color: #ffcfcf;
-  color: #805c9c;
-}
-header nav form input:hover,
-header nav form #wl-email:focus {
-  box-shadow: 0 0 5px 10px #322249;
-  z-index: 55;
-}
-header nav form #wl-email {
+header form #wl-email {
+  width: 60%;
   padding: var(--padd-size);
+  padding-left: 15px;
 }
-header nav form #wl-submit {
+header form #wl-submit {
+  width: 30%;
   background-color: #805c9c;
   color: white;
-  grid-column-start: var(--wl-submit-gcs);
+  text-align: center;
 }
-header nav form #wl-submit:hover {
+header form input::placeholder {
+  color: #805c9c;
+}
+header form input:hover,
+header form #wl-email:focus {
+  box-shadow: 0 0 3px 5px #1c133b;
+  z-index: 55;
+}
+header form #wl-submit:hover {
   background-color: #ffcfcf;
   color: black;
   cursor: pointer;
 }
 
 main {
-  background: linear-gradient(#916d87 1%, #775967 10vw, #775967 15vw, #804c74 20vw);
+  background: linear-gradient(#B37F9C 1%, #775967 10vw, #775967 15vw, #804c74 20vw);
   min-height: 100vw;
 }
 main #sponsors {
@@ -210,7 +166,7 @@ main #sponsors {
   padding: var(--spon-top-pad) 0 5px;
   background-color: #ffcfcf;
   justify-content: space-evenly;
-  box-shadow: 0 5px var(--spon-box-shadow-size) #322249;
+  box-shadow: 0 5px var(--spon-box-shadow-size) #1c133b;
 }
 main #sponsors aside {
   --aside-calc: calc(var(--spon-aside-head-size) + var(--spon-aside-vert-padd) * 3);
@@ -347,7 +303,7 @@ main #product-boxes .product-box a {
   padding: var(--product-box-a-pad);
   margin-bottom: 10px;
   border-radius: 20px;
-  background-color: #916d87;
+  background-color: #B37F9C;
   color: white;
   font-size: var(--product-box-a);
   text-align: center;
@@ -405,7 +361,7 @@ main section#discord aside#join-our-discord {
   margin-bottom: 10px;
   padding: 15px;
   background-color: #ffcfcf;
-  box-shadow: 0 5px 5px #322249;
+  box-shadow: 0 5px 5px #1c133b;
 }
 main section#discord aside#join-our-discord h3 {
   font-size: var(--discord-h3);

@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import logout
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
@@ -26,7 +26,6 @@ class AddForumForm(forms.ModelForm):
         fields = ["topic", "description"]
 
 def home(request):
-    return redirect("waitlist")
     if request.user.is_authenticated:
        return redirect("profile")
     return render(request, "home.html", {})
@@ -40,7 +39,7 @@ def waitlist(request):
 
     else:
         form = AddWaitlistForm()
-    return render(request, "Waitlist/landing_page.html", {"form":form})
+    return render(request, "waitlist/landing_page.html", {"form":form})
 def clogout(request):
     if request.user.is_authenticated:
         logout(request)
@@ -65,7 +64,7 @@ def profile(request):
 @login_required
 def OpportunityView(request):
     opportunities = Opportunity.objects.all()
-    
+
     return render(request, "lists/opportunity_list.html", {"opportunities": opportunities})
 
 
@@ -78,13 +77,13 @@ def ForumView(request):
         if form.is_valid():
            # Create a new Forum instance but don't save it yet
             new_forum = form.save(commit=False)
-            
+
             # Set the username field of the forum to the user's username
             new_forum.username = user.username
-            
+
             # Save the forum object with the updated username
             new_forum.save()
-            
+
             return redirect("forum")
 
     else:
@@ -97,11 +96,35 @@ class CustomUserCreationForm(UserCreationForm):
         model = User
         fields = UserCreationForm.Meta.fields + ("email",)
 
+class CustomAuthForm(UserCreationForm):
+    def __init__(self, *args, **kwargs):
+        super(CustomAuthForm, self).__init__(*args, **kwargs)
+        self.fields.pop('password1')
+        self.fields.pop('password2')
+
+    class Meta:
+        model = User
+        fields = ["username", "password"]
 
 class SignUp(CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy("login")
     template_name = "registration/signup.html"
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['pridemonthmode'] = False;
+        return context
+
+class LogIn(CreateView):
+    form_class = CustomAuthForm
+    success_url = reverse_lazy("/")
+    template_name = "registration/login.html"
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['pridemonthmode'] = False;
+        return context
 
 
 # class ForumView(generics.CreateAPIView):
