@@ -84,6 +84,16 @@ body {
   overflow-x: hidden;
 }
 
+ /* Increase the font size of the icons */
+  #icons a i {
+    font-size: 100px; /* Adjust the size as needed */
+  }
+
+  /* Add padding around the icons for expansion */
+  #icons a {
+    padding-left: 132px; /* Adjust the padding as needed */
+  }
+  
 header {
   display: flex;
   flex-direction: column;
