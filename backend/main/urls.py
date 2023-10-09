@@ -2,12 +2,12 @@ from django.urls import path
 from django.conf import settings
 
 from .email_sender import CustomPasswordResetView
-from .views import ForumView, OpportunityView, SignUp, LogIn, WaitlistView, home, profile, clogout, waitlist
+from .views import ForumView, OpportunityView, SignUp, LogIn, home, profile, clogout, waitlist
 
 
 urlpatterns = [
     path("", home, name="home"),
-    path("waitlist/", waitlist, name="waitlist"),
+    path("Waitlist/", waitlist, name="waitlist"),
 ]
 
 if settings.DEBUG:
@@ -19,5 +19,6 @@ if settings.DEBUG:
         path("forum/", ForumView, name="forum"),
         path("profile/", profile, name="profile"),
         path("password_reset/", CustomPasswordResetView.as_view(),
-             name="password_reset")
+             name="password_reset"),
+        # path("Waitlist/", waitlist, name="waitlist")
     ]
