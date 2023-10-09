@@ -26,7 +26,6 @@ class AddForumForm(forms.ModelForm):
         fields = ["topic", "description"]
 
 def home(request):
-
     if request.user.is_authenticated:
        return redirect("profile")
     return render(request, "home.html", {})
@@ -40,7 +39,7 @@ def waitlist(request):
 
     else:
         form = AddWaitlistForm()
-    return render(request, "Waitlist/landing_page.html", {"form":form})
+    return render(request, "waitlist/landing_page.html", {"form":form})
 def clogout(request):
     if request.user.is_authenticated:
         logout(request)
