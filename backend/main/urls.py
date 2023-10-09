@@ -14,7 +14,7 @@ if settings.DEBUG:
     urlpatterns += [
         path('logout/', clogout, name='logout'),
         path("signup/", SignUp.as_view(), name="signup"),
-        path("account/login/", LogIn.as_view(), name="login"),
+        # path("account/login/", LogIn.as_view(), name="login"),
         path("opportunity/", OpportunityView, name="opportunity"),
         path("forum/", ForumView, name="forum"),
         path("profile/", profile, name="profile"),
