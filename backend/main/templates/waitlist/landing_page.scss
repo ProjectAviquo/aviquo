@@ -21,7 +21,7 @@ $primary-4: #804c74;
         --main-title-font-size: calc(5px + 14vw);
         --main-subtitle-font-size: calc(1px + 4vw);
 
-        --head-pad-top: 30px;
+        --head-pad-top: 50px;
         --head-pad-bottom: 40px;
 
         --nav-bottom-pad: calc(0.3px + 1.3vw);
@@ -120,6 +120,8 @@ body {
 
     font-family: "Poppins", sans-serif;
     font-weight: 400;
+
+    overflow-x: hidden;
 }
 
 header {
@@ -132,12 +134,16 @@ header {
     background: linear-gradient($primary-1 40%, $primary-2);
 
     h1 {
+        margin: 0;
+
         color: $more-light-pink;
 
         font-size: var(--main-title-font-size);
     }
 
     h3 {
+        margin: 0;
+
         color: #F6EDFF;
 
         font-size: var(--main-subtitle-font-size);
@@ -156,77 +162,58 @@ header {
         }
     }
 
-    nav {
-        grid-row-start: 2;
-
+    form {
+        width: 70%;
         height: fit-content;
-        width: 100%;
-        height: 100%;
 
         display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
+        justify-content: space-between;
 
-        padding-bottom: var(--nav-bottom-pad);
+        input {
+            height: calc(var(--wl-font-size) + var(--wl-padd-size)*2);
 
-        form {
-            width: 100%;
-            height: fit-content;
+            border: none;
+            border-radius: 10px;
 
-            display: grid;
-            row-gap: calc(var(--wl-padd-size) * 1.2);
-            column-gap: 5vw;
+            font-size: var(--wl-font-size);
+            font-weight: 500;
 
-            input {
-                width: 100%;
-                height: calc(var(--wl-font-size) + var(--wl-padd-size)*2);
+            box-shadow: 2px 2px 5px #333;
 
-                border: none;
-                border-radius: 1vw;
+            transition: background 0.3s, color 0.3s, box-shadow 0.3s, z-index 0.3s;
 
-                font-size: var(--wl-font-size);
-                font-weight: 500;
-                text-align: center;
+            z-index: 56;
+        }
 
-                box-shadow: 2px 2px 5px #333;
+        #wl-email {
+            width: 60%;
+            padding: var(--padd-size);
+            padding-left: 15px;
+        }
 
-                transition: background 0.3s, color 0.3s, box-shadow 0.3s, z-index 0.3s;
+        #wl-submit {
+            width: 30%;
 
-                z-index: 56;
-            }
+            background-color: $purple;
+            color: white;
 
-            input::placeholder {
-                color: $purple;
-            }
+            text-align: center;
+        }
 
-            input:hover,
-            input:active,
-            #wl-email {
-                background-color: $light-pink;
-                color: $purple;
-            }
+        input::placeholder {
+            color: $purple;
+        }
 
-            input:hover,
-            #wl-email:focus {
-                box-shadow: 0 0 5px 10px $primary-1;
-                z-index: 55;
-            }
+        input:hover,
+        #wl-email:focus {
+            box-shadow: 0 0 3px 5px $primary-1;
+            z-index: 55;
+        }
 
-            #wl-email {
-                padding: var(--padd-size);
-            }
-
-            #wl-submit {
-                background-color: $purple;
-                color: white;
-                grid-column-start: var(--wl-submit-gcs);
-            }
-
-            #wl-submit:hover {
-                background-color: $light-pink;
-                color: black;
-                cursor: pointer;
-            }
+        #wl-submit:hover {
+            background-color: $light-pink;
+            color: black;
+            cursor: pointer;
         }
     }
 }

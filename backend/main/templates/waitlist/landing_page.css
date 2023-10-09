@@ -8,7 +8,7 @@
   :root {
     --main-title-font-size: calc(5px + 14vw);
     --main-subtitle-font-size: calc(1px + 4vw);
-    --head-pad-top: 30px;
+    --head-pad-top: 50px;
     --head-pad-bottom: 40px;
     --nav-bottom-pad: calc(0.3px + 1.3vw);
     --wl-font-size: calc(1.5vw + 3px);
@@ -81,6 +81,7 @@ body {
   margin: 0;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
+  overflow-x: hidden;
 }
 
 header {
@@ -91,10 +92,12 @@ header {
   background: linear-gradient(#1c133b 40%, #B37F9C);
 }
 header h1 {
+  margin: 0;
   color: #FFD3E6;
   font-size: var(--main-title-font-size);
 }
 header h3 {
+  margin: 0;
   color: #F6EDFF;
   font-size: var(--main-subtitle-font-size);
   font-weight: 600;
@@ -108,58 +111,42 @@ header h3 .h3-bigger {
   font-size: var(--main-big-subtitle-font-size);
   color: #804c74;
 }
-header nav {
-  grid-row-start: 2;
+header form {
+  width: 70%;
   height: fit-content;
-  width: 100%;
-  height: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding-bottom: var(--nav-bottom-pad);
+  justify-content: space-between;
 }
-header nav form {
-  width: 100%;
-  height: fit-content;
-  display: grid;
-  row-gap: calc(var(--wl-padd-size) * 1.2);
-  column-gap: 5vw;
-}
-header nav form input {
-  width: 100%;
+header form input {
   height: calc(var(--wl-font-size) + var(--wl-padd-size) * 2);
   border: none;
-  border-radius: 1vw;
+  border-radius: 10px;
   font-size: var(--wl-font-size);
   font-weight: 500;
-  text-align: center;
   box-shadow: 2px 2px 5px #333;
   transition: background 0.3s, color 0.3s, box-shadow 0.3s, z-index 0.3s;
   z-index: 56;
 }
-header nav form input::placeholder {
-  color: #805c9c;
-}
-header nav form input:hover,
-header nav form input:active,
-header nav form #wl-email {
-  background-color: #ffcfcf;
-  color: #805c9c;
-}
-header nav form input:hover,
-header nav form #wl-email:focus {
-  box-shadow: 0 0 5px 10px #1c133b;
-  z-index: 55;
-}
-header nav form #wl-email {
+header form #wl-email {
+  width: 60%;
   padding: var(--padd-size);
+  padding-left: 15px;
 }
-header nav form #wl-submit {
+header form #wl-submit {
+  width: 30%;
   background-color: #805c9c;
   color: white;
-  grid-column-start: var(--wl-submit-gcs);
+  text-align: center;
 }
-header nav form #wl-submit:hover {
+header form input::placeholder {
+  color: #805c9c;
+}
+header form input:hover,
+header form #wl-email:focus {
+  box-shadow: 0 0 3px 5px #1c133b;
+  z-index: 55;
+}
+header form #wl-submit:hover {
   background-color: #ffcfcf;
   color: black;
   cursor: pointer;
