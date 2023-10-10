@@ -93,7 +93,7 @@ $primary-4: #804c74;
         --spon-box-shadow-size: 15px;
 
         --spon-aside-vert-padd: 2vw;
-        --spon-aside-head-size: calc(2.2vw + 8px);
+        --spon-aside-head-size: calc(2.2vw + 6px);
 
         --figcaption-font-size: calc(10px + 1.5vw);
         --fig-img-height: calc(30px + 6vw);
@@ -269,25 +269,30 @@ main {
             left: 0;
             top: -1.8em;
 
-            background-color: $light-pink;
             color: $even-more-purple;
-
-            border-right: var(--aside-calc) solid transparent;
-            border-bottom: var(--aside-calc) solid $light-pink;
-            border-top-right-radius: 2vw;
 
             font-size: var(--spon-aside-head-size);
 
             h5 {
                 display: inline-block;
-                height: fit-content;
+                height: 2.5em;
 
                 padding: 0 1em;
                 margin: 0;
 
+                background-color: $light-pink;
+
                 font-weight: 700;
                 line-height: 2.5em;
             }
+        }
+
+        aside::after {
+            content: "";
+            border-right: 3em solid transparent;
+            border-bottom: 2.5em solid $light-pink;
+            position: relative;
+            top: -1.65em;
         }
 
         figure {
@@ -622,7 +627,7 @@ footer {
     background: linear-gradient($light-pink, $light-purple 200%);
 
     h4 {
-        font-size: 2rem;
+        font-size: calc(8px + 1.5vw);
 
         width: fit-content;
 
@@ -671,7 +676,7 @@ footer {
         .smaller-text a {
             color: $more-purple;
             font-weight: 500;
-            font-size: calc(3px + 1vw);
+            font-size: calc(4px + 1vw);
         }
     }
 
