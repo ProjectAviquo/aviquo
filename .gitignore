@@ -162,7 +162,7 @@ cython_debug/
 
 .DS_Store
 
+# Frontend Leftovers
 package.json
-
-
 package-lock.json
+.sass-cache/
