@@ -72,4 +72,4 @@ for (let i = 0; i < quotelines.length; i++) {
     fadeTl.to(element, { opacity: 1, y: 0 }, "<20%");
 }
 
-fadeTl.to(element)
+fadeTl.to(element);
