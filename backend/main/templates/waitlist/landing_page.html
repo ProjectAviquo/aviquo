@@ -10,8 +10,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/brands.js" integrity="sha384-sCI3dTBIJuqT6AwL++zH7qL8ZdKaHpxU43dDt9SyOzimtQ9eyRhkG3B7KMl6AO19" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Young+Serif&family=Roboto+Slab:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/brands.js" integrity="sha384-sCI3dTBIJuqT6AwL++zH7qL8ZdKaHpxU43dDt9SyOzimtQ9eyRhkG3B7KMl6AO19" crossorigin="anonymous"></script>
 </head>
 
 <body id="App">
@@ -27,7 +28,7 @@
     <main>
         <section id="sponsors">
             <aside>
-                <h5>backed by students from:</h5>
+                <h5>backed by:</h5>
             </aside>
             <figure>
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/MIT_logo.svg/2560px-MIT_logo.svg.png">
@@ -48,11 +49,11 @@
         </section>
         <article id="quote-text">
             <p>
-                <span>made by people like <span class="big-text">you.</span></span><br>
-                <span></span><span class="small-text">we know how it feels because</span></span><br>
-                <span></span>we felt it ourselves.</span><br>
-                <span></span><span class="small-text">that's why we made something that</span></span><br>
-                <span></span><span class="h3-bigger">solves everything</span></span>
+                made by people like <span class="big-text">you.</span><br>
+                <span class="small-text">we know how it feels because</span><br>
+                we felt it ourselves.<br>
+                <span class="small-text">that's why we made something that</span><br>
+                <span class="h3-bigger">solves everything.</span>
             </p>
         </article>
         <article id="introducing">
@@ -119,6 +120,7 @@ justify-content: center;"> -->
     </main>
 
     <footer style="">
+
         <h4><a onclick="join_the_soviet_union()">Follow us!</a></h4>
         <div id="icons">
             <a href="https://www.linkedin.com/company/aviquo" target="_blank"><i class="fa fa-linkedin-square"></i></a>
@@ -134,7 +136,11 @@ justify-content: center;"> -->
             <img src="https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaAdFGf5kke7t5ANvi-jkvH9YOWafnqatz8d5yUfg6SWX_vuc1NsiAx0X0DuhpqJCATZiwXiPgFGGytJFpgCoiLzO0aXkQ=w3584-h2070" alt="Your Image">
     </footer>
 </body>
-{% include "imports/gsap.html" %}
-{% include "imports/jquery.html" %}
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/EaselPlugin.min.js"></script>
 <script src="/static/waitlist/landing_page.js"></script>
+
 </html>

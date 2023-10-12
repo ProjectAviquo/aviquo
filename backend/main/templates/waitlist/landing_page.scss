@@ -60,14 +60,13 @@ $primary-4: #804c74;
         --wip-p: 3vw;
 
         --ready-width: 85%;
-        --ready-marg-top: 0;
+        --ready-marg-top: 20px;
         --ready-fs: calc(2vw + 5px);
 
         --discord-h3: 8vw;
-        --discord-icon-size: 15vw;
-        --discord-pad: 25px;
-        --discord-pad-top: 40px;
-        --discord-fs: calc(2vw + 4px);
+        --discord-icon-size: 20vw;
+        --discord-pad: 25px 0;
+        --discord-fs: calc(2.7vw + 3px);
 
         --icons-justify: space-evenly;
 
@@ -104,8 +103,8 @@ $primary-4: #804c74;
         --quote-p: calc(2px + 2.5vw);
         --quote-big: calc(3px + 2vw);
 
-        --intro-h5: 2vw;
-        --intro-h2: 7vw;
+        --intro-h5: 3vw;
+        --intro-h2: 10vw;
 
         --product-box-h5: 2vw;
         --product-box-h5-marg-top: 20px;
@@ -117,17 +116,16 @@ $primary-4: #804c74;
         --wip-h6: 2.2vw;
         --wip-p: 1.7vw;
 
-        --ready-width: 50%;
-        --ready-marg-top: 20px;
+        --ready-width: 60%;
+        --ready-marg-top: 40px;
         --ready-fs: calc(1.8vw + 5px);
 
         --discord-h3: 3vw;
-        --discord-icon-size: 12vw;
-        --discord-pad: 3vw 10vw;
-        --discord-pad-top: 60px;
-        --discord-fs: calc(1.8vw + 3px);
+        --discord-icon-size: 20vw;
+        --discord-pad: 3vw 0;
+        --discord-fs: calc(2.4vw + 5px);
 
-        --icons-justify: center;
+        --icons-justify: space-evenly;
 
         --copy: 6px;
     }
@@ -190,7 +188,7 @@ header {
         display: flex;
         justify-content: var(--form-just);
 
-        margin-top: 30px;
+        margin-top: 70px;
 
         font-size: var(--wl-font-size);
 
@@ -243,7 +241,9 @@ header {
 main {
     background: linear-gradient(
         $primary-2 1%,
-        $primary-3 calc(var(--fig-img-height) + var(--figcaption-font-size) * 1.2)
+        $primary-3 10vw,
+        $primary-3 15vw,
+        $primary-4 20vw
     );
     width: 100vw;
     min-height: 100vw;
@@ -356,6 +356,7 @@ main {
             color: $dark-purple;
 
             font-size: var(--quote-p);
+            line-height: calc(var(--quote-p) * 2);
             font-weight: 500;
             text-align: center;
 
@@ -373,6 +374,7 @@ main {
 
     article#introducing {
         margin: 0;
+        margin-bottom: 30px;
 
         background-color: $primary-4;
 
@@ -504,7 +506,7 @@ main {
 
         border: 1px solid transparent;
 
-        padding-bottom: 30px;
+        padding-top: 10px;
 
         h6 {
             color: $more-light-pink;
@@ -560,7 +562,8 @@ main {
     section#discord {
         background: $primary-4;
 
-        padding-top: var(--discord-pad-top);
+        padding: var(--discord-pad);
+        margin-top: 50px;
 
         aside#join-our-discord {
             position: relative;
@@ -570,7 +573,7 @@ main {
             width: calc(100% + var(--spon-extra-width));
 
             margin-bottom: 10px;
-            padding: 15px;
+            padding: 25px 10px;
 
             background-color: $light-pink;
 
@@ -622,6 +625,7 @@ footer {
     flex-direction: column;
     align-items: center;
 
+    padding: 15px 0;
     border: 1px solid transparent;
     background: linear-gradient($light-pink, $light-purple 200%);
 
@@ -644,11 +648,11 @@ footer {
 
     #icons {
         display: flex;
-        width: 80%;
+        width: 60%;
 
         justify-content: var(--icons-justify);
 
-        font-size: 30px;
+        font-size: calc(10px + 3.5vw);
 
         i {
             color: $dark-purple;
