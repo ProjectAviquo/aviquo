@@ -37,13 +37,12 @@
     --wip-h6: 4vw;
     --wip-p: 3vw;
     --ready-width: 85%;
-    --ready-marg-top: 0;
+    --ready-marg-top: 20px;
     --ready-fs: calc(2vw + 5px);
     --discord-h3: 8vw;
-    --discord-icon-size: 15vw;
-    --discord-pad: 25px;
-    --discord-pad-top: 40px;
-    --discord-fs: calc(2vw + 4px);
+    --discord-icon-size: 20vw;
+    --discord-pad: 25px 0;
+    --discord-fs: calc(2.7vw + 3px);
     --icons-justify: space-evenly;
     --copy: 1.5vw;
   }
@@ -70,8 +69,8 @@
     --quote-small: calc(1px + 1.5vw);
     --quote-p: calc(2px + 2.5vw);
     --quote-big: calc(3px + 2vw);
-    --intro-h5: 2vw;
-    --intro-h2: 7vw;
+    --intro-h5: 3vw;
+    --intro-h2: 10vw;
     --product-box-h5: 2vw;
     --product-box-h5-marg-top: 20px;
     --product-box-p: calc(1.1vw + 3px);
@@ -80,15 +79,14 @@
     --product-box-a-width: 60%;
     --wip-h6: 2.2vw;
     --wip-p: 1.7vw;
-    --ready-width: 50%;
-    --ready-marg-top: 20px;
+    --ready-width: 60%;
+    --ready-marg-top: 40px;
     --ready-fs: calc(1.8vw + 5px);
     --discord-h3: 3vw;
-    --discord-icon-size: 12vw;
-    --discord-pad: 3vw 10vw;
-    --discord-pad-top: 60px;
-    --discord-fs: calc(1.8vw + 3px);
-    --icons-justify: center;
+    --discord-icon-size: 20vw;
+    --discord-pad: 3vw 0;
+    --discord-fs: calc(2.4vw + 5px);
+    --icons-justify: space-evenly;
     --copy: 6px;
   }
 }
@@ -133,7 +131,7 @@ header form {
   height: fit-content;
   display: flex;
   justify-content: var(--form-just);
-  margin-top: 30px;
+  margin-top: 70px;
   font-size: var(--wl-font-size);
 }
 header form input {
@@ -169,7 +167,7 @@ header form #wl-submit:hover {
 }
 
 main {
-  background: linear-gradient(#b37f9c 1%, #775967 calc(var(--fig-img-height) + var(--figcaption-font-size) * 1.2));
+  background: linear-gradient(#b37f9c 1%, #775967 10vw, #775967 15vw, #804c74 20vw);
   width: 100vw;
   min-height: 100vw;
 }
@@ -251,6 +249,7 @@ main article#quote-text p {
   margin: 0;
   color: #402c4c;
   font-size: var(--quote-p);
+  line-height: calc(var(--quote-p) * 2);
   font-weight: 500;
   text-align: center;
 }
@@ -264,6 +263,7 @@ main article#quote-text p .big-text {
 }
 main article#introducing {
   margin: 0;
+  margin-bottom: 30px;
   background-color: #804c74;
   text-align: center;
 }
@@ -360,7 +360,7 @@ main #wip {
   align-items: center;
   background: #804c74;
   border: 1px solid transparent;
-  padding-bottom: 30px;
+  padding-top: 10px;
 }
 main #wip h6 {
   color: #ffd3e6;
@@ -400,14 +400,15 @@ main #are-ya-ready-kids h3:hover {
 }
 main section#discord {
   background: #804c74;
-  padding-top: var(--discord-pad-top);
+  padding: var(--discord-pad);
+  margin-top: 50px;
 }
 main section#discord aside#join-our-discord {
   position: relative;
   left: calc(-0.5 * var(--spon-extra-width));
   width: calc(100% + var(--spon-extra-width));
   margin-bottom: 10px;
-  padding: 15px;
+  padding: 25px 10px;
   background-color: #ffcfcf;
   box-shadow: 0 5px 5px #1c133b;
 }
@@ -443,6 +444,7 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 15px 0;
   border: 1px solid transparent;
   background: linear-gradient(#ffcfcf, #e6afed 200%);
 }
@@ -461,9 +463,9 @@ footer h4 a::after {
 }
 footer #icons {
   display: flex;
-  width: 80%;
+  width: 60%;
   justify-content: var(--icons-justify);
-  font-size: 30px;
+  font-size: calc(10px + 3.5vw);
 }
 footer #icons i {
   color: #402c4c;
