@@ -169,7 +169,7 @@ header form #wl-submit:hover {
 }
 
 main {
-  background: linear-gradient(#b37f9c 1%, #775967 10vw, #775967 15vw, #804c74 20vw);
+  background: linear-gradient(#b37f9c 1%, #775967 calc(var(--fig-img-height) + var(--figcaption-font-size) * 1.2));
   width: 100vw;
   min-height: 100vw;
 }

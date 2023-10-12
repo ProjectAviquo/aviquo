@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
     font-family: inherit;
+    //border: 1px solid black;
 }
 
 $light-pink: #ffcfcf;
@@ -242,9 +243,7 @@ header {
 main {
     background: linear-gradient(
         $primary-2 1%,
-        $primary-3 10vw,
-        $primary-3 15vw,
-        $primary-4 20vw
+        $primary-3 calc(var(--fig-img-height) + var(--figcaption-font-size) * 1.2)
     );
     width: 100vw;
     min-height: 100vw;

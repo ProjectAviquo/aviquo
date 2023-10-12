@@ -48,11 +48,21 @@ function join_the_soviet_union() {
 $("header > *").css("opacity", "0");
 $("header > *").css("transform", "translate(0, -20px)");
 $("#sponsors").css("opacity", "0");
-$("#sponsors").css("transform", "translate(0, 20px)");
+$("#sponsors").css("transform", "translate(0, 40px)");
+$("#sponsors aside").css("transform", "translate(-100vw, 0)");
 
-var fadeTl = gsap.timeline({ defaults: { duration: 1 } });
+var fadeTl = gsap.timeline({ defaults: { duration: 1, ease: "power2.out" } });
 
 fadeTl.to("h1", { opacity: 1, delay: 0.3, y: 0 });
 fadeTl.to("header h3", { opacity: 1, y: 0 }, "<30%");
-fadeTl.to("form", { opacity: 1, y: 0 }, "<50%");
-fadeTl.to("#sponsors", { opacity: 1, y: 0 }, "<50%");
+fadeTl.to("form", { opacity: 1, y: 0 }, "<30%");
+fadeTl.to("#sponsors", { opacity: 1, y: 0, duration: 0.7 }, "<30%");
+fadeTl.to("#sponsors aside", { x: 0 }, "<-0.4");
+
+var quotelines = document.querySelectorAll("#quote-text > p > *");
+for (let i = 0; i < quotelines.length; i++) {
+    const element = quotelines[i];
+    if (element.tagName == "br") {
+        continue;
+    }
+}
