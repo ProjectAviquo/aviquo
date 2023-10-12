@@ -17,7 +17,7 @@ SECRET_KEY = os.environ.get("AVIQUO_SECRET_KEY", "django-insecure-+%s$-n=0kotg$t
 DEBUG = os.environ.get("AVIQUO_DEBUG", False)
 DEBUG = os.environ.get("AVIQUO_DEBUG", True)  # TODO
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
