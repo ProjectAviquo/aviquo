@@ -262,10 +262,7 @@ main article#quote-text p .big-text {
   font-size: var(--quote-big);
 }
 main article#introducing {
-  margin: 0;
-  margin-bottom: 30px;
   background-color: #804c74;
-  text-align: center;
 }
 main article#introducing h5 {
   margin: 0;
