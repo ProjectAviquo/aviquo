@@ -14,8 +14,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/brands.js" integrity="sha384-sCI3dTBIJuqT6AwL++zH7qL8ZdKaHpxU43dDt9SyOzimtQ9eyRhkG3B7KMl6AO19" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Young+Serif&family=Roboto+Slab:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/brands.js" integrity="sha384-sCI3dTBIJuqT6AwL++zH7qL8ZdKaHpxU43dDt9SyOzimtQ9eyRhkG3B7KMl6AO19" crossorigin="anonymous"></script>
 </head>
 
 <body id="App">
@@ -23,7 +24,7 @@
         <h1>aviquo.</h1>
         <h3>your high school companion</h3>
         <form action="" method="POST" , style="margin-top: 20px;">
-            <span style="display: none">{% csrf_token %}</span> <!-- For codepen -->
+            {% csrf_token %}
             <input type="email" name="email" placeholder="Email or Phone" id="wl-email" />
             <input type="submit" value="Join Waitlist" id="wl-submit" />
         </form>
@@ -31,7 +32,7 @@
     <main>
         <section id="sponsors">
             <aside>
-                <h5>backed by students from:</h5>
+                <h5>backed by:</h5>
             </aside>
             <figure>
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/MIT_logo.svg/2560px-MIT_logo.svg.png">
@@ -52,11 +53,11 @@
         </section>
         <article id="quote-text">
             <p>
-                made by people like <span class="big-text">you.</span><br>
-                <span class="small-text">we know how it feels because</span><br>
-                we felt it ourselves.<br>
-                <span class="small-text">that's why we made something that</span><br>
-                <span class="h3-bigger">solves everything</span>
+                <span>made by people like <span class="big-text">you.</span></span><br>
+                <span><span class="small-text">we know how it feels because</span></span><br>
+                <span>we felt it ourselves.</span><br>
+                <span><span class="small-text">that's why we made something that</span></span><br>
+                <span><span class="h3-bigger">solves everything.</span></span>
             </p>
         </article>
         <article id="introducing">
