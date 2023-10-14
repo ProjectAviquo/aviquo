@@ -262,10 +262,7 @@ main article#quote-text p .big-text {
   font-size: var(--quote-big);
 }
 main article#introducing {
-  margin: 0;
-  margin-bottom: 30px;
   background-color: #804c74;
-  text-align: center;
 }
 main article#introducing h5 {
   margin: 0;
@@ -499,14 +496,6 @@ footer img {
   width: var(--img-size);
   height: auto;
 }
-footer #copy {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  color: #402c4c;
-  font-size: var(--copy);
-  text-align: center;
-  font-weight: 600;
-}
+
 
 /*# sourceMappingURL=landing_page.css.map */
