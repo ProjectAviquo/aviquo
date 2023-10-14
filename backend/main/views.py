@@ -116,17 +116,6 @@ class SignUp(CreateView):
         context['pridemonthmode'] = False;
         return context
 
-class LogIn(CreateView):
-    form_class = CustomAuthForm
-    success_url = reverse_lazy("/")
-    template_name = "registration/login.html"
-
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
-        context['pridemonthmode'] = False;
-        return context
-
-
 # class ForumView(generics.CreateAPIView):
 #     queryset = Forum.objects.all()
 #     serializer_class = ForumSerializer

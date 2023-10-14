@@ -2,7 +2,7 @@ from django.urls import path
 from django.conf import settings
 
 from .email_sender import CustomPasswordResetView
-from .views import ForumView, OpportunityView, SignUp, LogIn, home, profile, clogout, waitlist
+from .views import ForumView, OpportunityView, SignUp, home, profile, clogout, waitlist
 
 
 urlpatterns = [
