@@ -1,142 +1,79 @@
-@charset "UTF-8";
 * {
   box-sizing: border-box;
   font-family: inherit; }
 
 @media (max-width: 600px) {
   :root {
-    --main-title-font-size: calc(5px + 14vw);
-    --main-subtitle-font-size: calc(1px + 4vw);
-    --head-pad-top: 60px;
-    --head-pad-bottom: 80px;
-    --nav-bottom-pad: calc(0.3px + 1.3vw);
-    --wl-font-size: calc(1.5vw + 3px);
-    --wl-padd-size: calc(1.5vw + 3px);
-    --wl-email-width: 60%;
-    --wl-submit-width: 35%;
-    --form-just: space-between;
-    --spon-pad: 20px;
-    --spon-box-shadow-size: 5px;
-    --spon-aside-vert-padd: 1vw;
-    --spon-aside-head-size: calc(2vw + 8px);
-    --figcaption-font-size: calc(6px + 2vw);
-    --fig-img-height: calc(25px + 10vw);
-    --quote-pad: 4vh;
-    --quote-p: calc(4px + 3vw);
-    --quote-small: 0.8em;
-    --quote-big: 1.2em;
-    --intro-h5: 3vw;
-    --intro-h2: var(--main-title-font-size);
-    --product-box-h5: 2.45vw;
     --product-box-h5-marg-top: 10px;
-    --product-box-p: 1.8vw;
-    --product-box-a: 3vw;
     --product-box-a-pad: 3px;
     --product-box-a-width: 80%;
-    --wip-h6: 4vw;
-    --wip-p: 3vw;
-    --ready-width: 85%;
-    --ready-marg-top: 20px;
-    --ready-fs: calc(2vw + 5px);
-    --discord-h3: 8vw;
-    --discord-icon-size: vw;
-    --discord-pad: 2px 0;
-    --discord-fs: calc(2.7vw + 3px);
-    --icons-justify: space-evenly;
-    --copy: 1.5vw; } }
+    --discord-icon-size: 20vw; } }
 @media (min-width: 601px) {
   :root {
-    --main-title-font-size: calc(10px + 8vw);
-    --main-subtitle-font-size: calc(5px + 2vw);
-    --head-pad-top: 80px;
-    --head-pad-bottom: 150px;
-    --nav-bottom-pad: 1vw;
-    --wl-font-size: calc(0.8vw + 8px);
-    --wl-padd-size: calc(1vw + 6px);
-    --wl-email-width: 60%;
-    --wl-submit-width: 20%;
-    --form-just: space-evenly;
-    --spon-pad: 50px;
-    --spon-box-shadow-size: 15px;
-    --spon-aside-vert-padd: 2vw;
-    --spon-aside-head-size: calc(2.2vw + 6px);
-    --figcaption-font-size: calc(10px + 1.5vw);
-    --fig-img-height: calc(30px + 6vw);
-    --quote-pad: 4vh;
-    --quote-small: calc(1px + 1.5vw);
-    --quote-p: calc(2px + 2.5vw);
-    --quote-big: calc(3px + 2vw);
-    --intro-h5: 3vw;
-    --intro-h2: 10vw;
-    --product-box-h5: 2vw;
     --product-box-h5-marg-top: 20px;
-    --product-box-p: calc(1.1vw + 3px);
-    --product-box-a: 1.3vw;
     --product-box-a-pad: 12px;
     --product-box-a-width: 60%;
-    --wip-h6: 2.2vw;
-    --wip-p: 1.7vw;
-    --ready-width: 60%;
-    --ready-marg-top: 40px;
-    --ready-fs: calc(1.8vw + 5px);
-    --discord-h3: 3vw;
-    --discord-icon-size: 15vw;
-    --discord-pad: 0vw 0;
-    --discord-fs: calc(1.5vw + 5px);
-    --icons-justify: space-evenly;
-    --copy: 6px; } }
+    --discord-icon-size: 30vh; } }
+@media (min-width: 601px) {
+  html {
+    font-size: calc(0.5vw + 9px); } }
+@media (max-width: 600px) {
+  html {
+    font-size: calc(1.4vw + 3px); } }
+
 body {
   width: 100vw;
   padding: 0;
   margin: 0;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  overflow-y: hidden; }
+
+#wrap {
+  background: linear-gradient(#1c133b 80vh, #b37f9c 132.5vh, #775967 200vh, #775967 255vh, #804c74 255vh, #804c74 420vh, #b37f9c 425vh, #b37f9c 525vh); }
 
 header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: var(--head-pad-top) 0 var(--head-pad-bottom);
-  background: linear-gradient(#1c133b 60%, #b37f9c); }
+  justify-content: center;
+  height: 100vh; }
   header h1 {
     margin: 0;
     color: #ffd3e6;
-    font-size: var(--main-title-font-size); }
+    font-size: 6em; }
   header h3 {
     margin: 0;
     color: #f6edff;
-    font-size: var(--main-subtitle-font-size);
+    font-size: 2em;
     font-weight: 600;
     white-space: nowrap; }
     header h3 span {
       width: fit-content;
       display: inline-block; }
-    header h3 .h3-bigger {
-      font-size: var(--main-big-subtitle-font-size);
-      color: #804c74; }
   header form {
-    width: 70%;
+    width: 30em;
     height: fit-content;
     display: flex;
-    justify-content: var(--form-just);
-    margin-top: 70px;
-    font-size: var(--wl-font-size); }
+    justify-content: space-between;
+    margin-top: 15em;
+    font-size: 1.2em; }
     header form input {
       height: 3em;
       border: none;
-      border-radius: 15px;
-      font-size: var(--wl-font-size);
+      border-radius: 0.5em;
       font-weight: 500;
+      font-size: 1em;
       box-shadow: -3px 3px 3px 1px #402c4c;
       transition: background 0.3s, color 0.3s, box-shadow 0.3s, z-index 0.3s; }
     header form #wl-email {
-      width: var(--wl-email-width);
+      width: 60%;
       padding: var(--padd-size);
-      padding-left: 3vw;
+      padding-left: 1em;
       background-color: #ffcfcf; }
     header form #wl-submit {
-      width: var(--wl-submit-width);
+      width: 30%;
       background-color: #805c9c;
       color: white;
       text-align: center; }
@@ -144,296 +81,280 @@ header {
       color: #805c9c; }
     header form input:hover,
     header form #wl-email:focus {
-      box-shadow: -4px 4px 3px 2px #1c133b; }
+      box-shadow: -2px 2px 2px 1px #b37f9c; }
     header form #wl-submit:hover {
       cursor: pointer; }
 
 main {
-  background: linear-gradient(#b37f9c 1%, #775967 10vw, #775967 15vw, #804c74 20vw);
-  width: 100vw;
-  min-height: 100vw; }
-  main #sponsors {
-    position: relative;
-    display: flex;
-    flex-flow: wrap;
-    justify-content: space-evenly;
-    width: 100%;
-    padding: var(--spon-pad) 0;
-    margin-top: var(--spon-top);
-    background-color: #ffcfcf;
-    box-shadow: 0 2px 10px #1c133b; }
-    main #sponsors aside {
-      position: absolute;
-      display: inline-block;
-      left: 0;
-      top: -1.8em;
-      color: #634459;
-      font-size: var(--spon-aside-head-size); }
-      main #sponsors aside h5 {
-        display: inline-block;
-        height: 2.5em;
-        padding: 0 1em;
-        margin: 0;
-        background-color: #ffcfcf;
-        font-weight: 700;
-        line-height: 2.5em; }
-    main #sponsors aside::after {
-      content: "";
-      border-right: 3em solid transparent;
-      border-bottom: 2.5em solid #ffcfcf;
-      position: relative;
-      top: -1.65em; }
-    main #sponsors figure {
-      display: flex;
-      width: 16%;
-      margin: 0;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between; }
-      @media (max-width: 350px) {
-        main #sponsors figure {
-          width: 40%;
-          margin: 6px 0; } }
-      main #sponsors figure img {
-        height: var(--fig-img-height);
-        max-width: 90%;
-        object-fit: contain; }
-        @media (max-width: 350px) {
-          main #sponsors figure img {
-            height: 24vw; } }
-      main #sponsors figure figcaption {
-        margin-top: 10px;
-        color: #1c133b;
-        font-size: var(--figcaption-font-size);
-        font-family: "Young Serif", serif; }
-  main article#quote-text {
-    /* display: flex; */
+  width: 100vw; }
 
-    justify-content: center;
-    width: 100%;
-    margin: 0;
-    padding: var(--quote-pad) 0 var(--quote-pad);
-    background: radial-gradient(#fdd6 15%, transparent 60%), linear-gradient(#775967, transparent 30%, transparent 70%, #804c74 100%), radial-gradient(#fdd 15%, #775967); }
-    main article#quote-text p {
-      width: fit-content;
-      margin: 0;
-      color: #402c4c;
-      font-size: var(--quote-p);
-      line-height: calc(var(--quote-p) * 2);
-      font-weight: 500;
-      text-align: center; }
-      main article#quote-text p .small-text {
-        font-weight: 400;
-        font-size: var(--quote-small); }
-      main article#quote-text p .big-text {
-        font-weight: 600;
-        font-size: var(--quote-big); }
-  main article#introducing {
-    margin: 0;
-    margin-bottom: 30px;
-    background-color: #804c74;
-    text-align: center; }
-    main article#introducing h5 {
-       color: black;
-
-text-align: center;
-font-family: Poppins;
-font-size: 80px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
-    }
-    main article#introducing h2 {
-      margin: 0 0 15px 0;
-      color: #ffd3e6;
-      font-size: var(--intro-h2); }
-  main #product-boxes {
-    background: #804c74;
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 30px; }
-    @media (max-width: 350px) {
-      main #product-boxes {
-        flex-direction: column;
-        align-items: center; } }
-    main #product-boxes .product-box {
+#sponsors {
+  position: relative;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  height: 35vh;
+  margin: 20vh 0 0 0;
+  border: 5px solid #ffcfcf;
+  background-color: #ffcfcf;
+  box-shadow: 0 2px 10px #1c133b;
+  font-size: 2em; }
+  #sponsors aside {
+    --aside-height: 1.8em;
+    position: absolute;
+    display: inline-flex;
+    height: var(--aside-height);
+    left: -5px;
+    top: calc(-1 * var(--aside-height));
+    color: #634459;
+    vertical-align: middle; }
+    #sponsors aside h5 {
       display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: space-around;
-      width: 27%;
-      min-height: 20vh;
-      border-radius: 3vw;
-      background-color: #ccadbe;
-      transform: scale(1);
-      transition: transform 0.5s, background 0.5s;
-      box-shadow: -5px 5px 4px 2px #402c4c; }
-      @media (max-width: 350px) {
-        main #product-boxes .product-box {
-          width: 90%;
-          margin: 10px 0 0 0; } }
-      main #product-boxes .product-box h5 {
-        margin: 0;
-        margin-top: var(--product-box-h5-marg-top);
-        color: #775967;
-        font-size: var(--product-box-h5);
-        font-weight: 700;
-        text-align: center; }
-      main #product-boxes .product-box p {
-        width: 85%;
-        font-size: var(--product-box-p);
-        text-align: justify; }
-      main #product-boxes .product-box a {
-        width: var(--product-box-a-width);
-        padding: var(--product-box-a-pad);
-        margin-bottom: calc(var(--product-box-h5-marg-top) + 10px);
-        border-radius: 1.2vw;
-        background-color: #904c7c;
-        color: white;
-        font-size: var(--product-box-a);
-        text-align: center;
-        text-decoration: none;
-        font-weight: 400;
-        box-shadow: -2px 2px 3px 1px #402c4c; }
-      @media (max-width: 350px) {
-        main #product-boxes .product-box h5 {
-          font-size: 5vw; }
-        main #product-boxes .product-box p {
-          font-size: 3.5vw; } }
-    @media (min-width: 351px) {
-      main #product-boxes .product-box:first-child {
-        margin-left: 2vw; }
-      main #product-boxes .product-box:last-child {
-        margin-right: 2vw; } }
-    main #product-boxes .product-box:nth-of-type(2) {
-      transform: scale(1.1);
-      background: #ffcfcf; }
-  main #wip {
+      height: 100%;
+      padding: 0 1em;
+      margin: 0 0 2vh 0;
+      background-color: #ffcfcf;
+      font-weight: 700;
+      vertical-align: middle; }
+  #sponsors aside::after {
+    content: "";
+    display: inline-block;
+    border-right: var(--aside-height) solid transparent;
+    border-bottom: var(--aside-height) solid #ffcfcf; }
+  #sponsors figure {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #804c74;
-    border: 1px solid transparent;
-    padding-top: 10px; }
-    main #wip h6 {
-      color: #ffd3e6;
-      margin-top: 25px;
-      margin-bottom: 0;
-      font-size: var(--wip-h6); }
-    main #wip p {
-      margin-top: 5px;
-      color: white;
-      font-size: var(--wip-p);
-      text-align: center;
-      font-weight: 500; }
-  main #are-ya-ready-kids {
-    width: var(--ready-width);
-    margin: auto;
-    margin-top: var(--ready-marg-top);
-    font-size: var(--ready-fs);
-    text-align: center;
-    color: #804c74; }
-    main #are-ya-ready-kids h3 {
-      margin: 0;
-      border-radius: 15px;
-      padding: 15px;
-      background-color: #ffcfcf;
-      transform: scale(1);
-      transition: all 0.05s;
-      box-shadow: -4px 4px 3px 1px #402c4c; }
-      main #are-ya-ready-kids h3 #soviet {
-        color: red; }
-    main #are-ya-ready-kids h3:hover {
-      transform: scale(1.1); }
-  main section#discord {
-    background: linear-gradient(180deg, rgba(50, 35, 106, 0.56) 8.85%, rgba(179, 127, 156, 0.56) 19.5%, rgba(255, 181, 185, 0.56) 27.08%, rgba(210, 105, 220, 0.45) 61.46%, rgba(252, 176, 176, 0.56) 89.06%, rgba(216, 104, 171, 0.32) 98.44%);
-    /* box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); */
-    padding: var(--discord-pad);
-    margin-top: 50px; }
-    main section#discord aside#join-our-discord {
-      position: relative;
-      left: calc(-0.5 * var(--spon-extra-width));
-      width: calc(100% + var(--spon-extra-width));
+    justify-content: flex-end;
+    width: 20%;
+    height: 30vh;
+    margin: 0;
+    padding: 0 2%;
+    background-color: #ffdada;
+    box-shadow: -2px 2px 3px 2px #daa;
+    border-radius: 0.3em; }
+    #sponsors figure img {
+      margin: auto;
+      padding-top: 10px;
+      width: auto;
+      height: calc(10vh + 5vw);
+      object-fit: contain; }
+    #sponsors figure img.MIT {
+      width: 100%;
+      height: auto; }
+    #sponsors figure figcaption {
       margin-bottom: 10px;
-      padding: 25px 10px;
-      background-color: #ffcfcf;
-      box-shadow: 0 5px 5px #1c133b; }
-      main section#discord aside#join-our-discord h3 {
-        font-size: var(--discord-h3);
-        text-align: center;
-        color: #904c7c;
-        margin: 0; }
-    main section#discord a {
-      padding: var(--discord-pad);
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      background-color: linear-gradient(#804c74, #775967);
-      text-decoration: none; }
-      main section#discord a img {
-        border-radius: 15%;
-        /* box-shadow: -5px 5px 10px 3px #402c4c; */
-        width: var(--discord-icon-size);
-        height: var(--discord-icon-size); }
-      main section#discord a p {
-        width: 70vw;
-        color: white;
-        font-weight: 600;
-        font-size: var(--discord-fs); }
+      color: #1c133b;
+      font-size: 0.9em;
+      font-family: "Young Serif", serif;
+      justify-self: flex-end; }
 
-footer {
-  position: relative;
+article#quote-text {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  background: radial-gradient(#fdd6 15%, transparent 60%), linear-gradient(transparent, -10%, #775967 0%, transparent 20%, transparent 80%, #804c74 100%), radial-gradient(#fdd 15%, #775967); }
+  article#quote-text p {
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+    color: #402c4c;
+    font-size: 2.3em;
+    line-height: 2em;
+    font-weight: 500;
+    text-align: center; }
+    article#quote-text p .small-text {
+      font-weight: 400;
+      font-size: 0.7em; }
+    article#quote-text p .big-text {
+      font-weight: 600;
+      font-size: 1.4em; }
+
+article#introducing {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0px 0;
-  border: 1px solid transparent;
-  background: linear-gradient(#ffcfcf, #e6afed 200%); }
-  footer h4 {
-    font-size: calc(8px + 1.5vw);
-    width: fit-content; }
-    footer h4 a {
-      color: #904c7c;
-      cursor: pointer;
-      text-decoration: underline; }
-    footer h4 a::before,
-    footer h4 a::after {
-      content: " • "; }
-  footer #icons {
-    display: flex;
-    width: 60%;
-    justify-content: var(--icons-justify);
-    font-size: calc(10px + 3.5vw); }
-    footer #icons i {
-      color: #402c4c;
-      margin: 0 10px; }
-  footer #bottom {
+  justify-content: center;
+  height: 60vh;
+  margin: 0;
+  text-align: center; }
+  article#introducing h5 {
+    margin: 0;
+    color: white;
+    font-size: 2.5em; }
+  article#introducing h2 {
+    margin: 0;
+    color: #ffd3e6;
+    font-size: 6.5em; }
+
+#section-3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100vh; }
+
+#product-boxes {
+  display: flex;
+  justify-content: space-around;
+  height: 70vh;
+  padding-top: 10vh; }
+  #product-boxes .product-box {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px; }
-    footer #bottom .bigger-text {
+    justify-content: space-around;
+    width: 27%;
+    min-height: 20vh;
+    border-radius: 3vw;
+    background-color: #ccadbe;
+    transform: scale(1);
+    transition: transform 0.5s, background 0.5s;
+    box-shadow: -5px 5px 4px 2px #402c4c; }
+    @media (max-width: 350px) {
+      #product-boxes .product-box {
+        width: 90%;
+        margin: 10px 0 0 0; } }
+    #product-boxes .product-box h5 {
+      margin: 0;
+      margin-top: var(--product-box-h5-marg-top);
+      color: #775967;
+      font-size: 1.2em;
+      font-weight: 700;
+      text-align: center; }
+    #product-boxes .product-box p {
+      width: 85%;
+      font-size: 0.95em;
+      text-align: justify; }
+    #product-boxes .product-box a {
+      width: var(--product-box-a-width);
+      padding: var(--product-box-a-pad);
+      margin-bottom: calc(var(--product-box-h5-marg-top) + 10px);
+      border-radius: 1.2vw;
+      background-color: #904c7c;
+      color: white;
+      font-size: var(--product-box-a);
+      text-align: center;
+      text-decoration: none;
+      font-weight: 400;
+      box-shadow: -2px 2px 3px 1px #402c4c; }
+  #product-boxes .product-box:nth-of-type(2) {
+    transform: scale(1.1);
+    background: #ffcfcf; }
+
+#wip {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 30vh;
+  border: 1px solid transparent; }
+  #wip h6 {
+    color: #ffd3e6;
+    margin-top: 25px;
+    margin-bottom: 0;
+    font-size: 1.1em; }
+  #wip p {
+    margin-top: 5px;
+    color: white;
+    font-size: 1.3em;
+    text-align: center;
+    font-weight: 500; }
+
+section#discord {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  grid-template-rows: 20vh 35vh;
+  row-gap: 5vh;
+  height: 70vh;
+  width: 100%;
+  padding-top: 5vh; }
+  section#discord aside#join-our-discord {
+    display: flex;
+    align-content: center;
+    width: 100%;
+    height: 20vh;
+    background-color: #ffcfcf;
+    box-shadow: 0 2px 4px 1px #775967; }
+    section#discord aside#join-our-discord h3 {
+      font-size: 4em;
+      text-align: center;
       color: #904c7c;
+      margin: auto; }
+  section#discord a {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 80vw;
+    height: 35vh;
+    background-color: linear-gradient(#804c74, #775967);
+    text-decoration: none; }
+    section#discord a img {
+      border-radius: 15%;
+      box-shadow: -5px 5px 10px 4px #775967;
+      width: var(--discord-icon-size);
+      height: var(--discord-icon-size); }
+    section#discord a p {
+      width: 45vw;
+      color: white;
       font-weight: 600;
-      font-size: calc(5px + 3vw);
-      text-decoration: underline;
-      cursor: pointer; }
-    footer #bottom .smaller-text,
-    footer #bottom .smaller-text a {
-      color: #904c7c;
-      font-weight: 500;
-      font-size: calc(4px + 1vw); }
+      font-size: 1.4em; }
+
+footer {
+  position: relative;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 2fr 1fr;
+  height: 30vh;
+  padding: 15px 0;
+  border: 1px solid transparent;
+  background: linear-gradient(#ffcfcf, #e6afed 200%);
+  box-shadow: 0 -2px 4px 1px #775967; }
+  footer #icons {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    display: flex;
+    width: 60%;
+    max-width: 500px;
+    justify-content: space-evenly;
+    font-size: 3em; }
+    footer #icons i {
+      color: #402c4c;
+      margin: 0 10px; }
   footer img {
-    --img-size: 8vw;
-    position: absolute;
-    bottom: 1vw;
-    left: calc(95vw - var(--img-size));
-    width: var(--img-size);
-    height: auto; }
+    justify-self: right;
+    width: 7vw;
+    height: auto;
+    margin-right: 2.5vw; }
   footer #copy {
+    justify-self: left;
     color: #402c4c;
-    font-size: 20px;
+    margin-left: 2.5vw;
+    font-size: 0.8em;
     text-align: center;
     font-weight: 600; }
+    footer #copy a {
+      color: #402c4c; }
+
+/*
+header, main > section, main > article, footer {
+    position: absolute;
+    top: 100vh;
+    width: 100%;
+    height: 100vh;
+}
+
+header {
+    top: 0;
+}
+*/
 
 /*# sourceMappingURL=landing_page.css.map */
