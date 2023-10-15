@@ -21,12 +21,21 @@
     <header>
         <h1>aviquo.</h1>
         <h3>your high school companion</h3>
-        <form action="" method="POST" , style="margin-top: 20px;">
+        <form action="" method="POST" , style="margin-top: 20px;" onsubmit="al()">
             <span style="display: none">{% csrf_token %}</span> <!-- For codepen -->
-            <input type="email" name="email" placeholder="Email or Phone" id="wl-email" />
+            <input type="email" name="email" placeholder="Email" id="wl-email" required="true"/>
             <input type="submit" value="Join Waitlist" id="wl-submit" />
         </form>
     </header>
+    <script>
+        function al(){
+             var emailInput = document.getElementById('wl-email');
+            var emailValue = emailInput.value.trim();
+            if (emailValue === ''){
+
+            }  else alert("Joined waitlist")
+        }
+    </script>
     <main>
         <section id="sponsors">
             <aside>
@@ -50,7 +59,7 @@
             </figure>
         </section>
         <article id="quote-text", style="height: 800px; padding-top: 100px; padding-bottom: 100px;">
-            <p>
+            <p style="margin-left: 575px;">
                 <span>made by people like <span style="font-size: 60px;">you.</span></span><br>
                 <span><span class="small-text">we know how it feels because</span></span><br>
                 <span>we felt it ourselves.</span><br>
