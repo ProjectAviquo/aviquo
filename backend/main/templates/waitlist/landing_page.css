@@ -80,9 +80,9 @@
     --ready-marg-top: 40px;
     --ready-fs: calc(1.8vw + 5px);
     --discord-h3: 3vw;
-    --discord-icon-size: 20vw;
+    --discord-icon-size: 15vw;
     --discord-pad: 0vw 0;
-    --discord-fs: calc(2.4vw + 5px);
+    --discord-fs: calc(1.5vw + 5px);
     --icons-justify: space-evenly;
     --copy: 6px; } }
 body {
