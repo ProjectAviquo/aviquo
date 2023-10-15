@@ -7,11 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/waitlist/landing_page.css">
     <title>Aviquo</title>
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
         crossorigin="anonymous" />
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Young+Serif&family=Roboto+Slab:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -24,7 +22,7 @@
         <h1>aviquo.</h1>
         <h3>your high school companion</h3>
         <form action="" method="POST" , style="margin-top: 20px;">
-            {% csrf_token %}
+            <span style="display: none">{% csrf_token %}</span> <!-- For codepen -->
             <input type="email" name="email" placeholder="Email or Phone" id="wl-email" />
             <input type="submit" value="Join Waitlist" id="wl-submit" />
         </form>
@@ -60,17 +58,9 @@
                 <span><span class="h3-bigger">solves everything.</span></span>
             </p>
         </article>
-        <article style="background-color: #804c74;
-  text-align: center;
-  margin-bottom: 35px;">
-            <h5 style=" margin: 0;
-            color: white;
-            font-size: 3vw;">introducing</h5>
-            <h2 style="margin: 0 0 15px 0;
-
-            color: #ffd3e6;
-
-            font-size: 200px;">aviquo</h2>
+        <article id="introducing">
+            <h5>introducing</h5>
+            <h2>aviquo</h2>
         </article>
         <article id="product-boxes">
             <div class="product-box">
@@ -111,38 +101,42 @@
                 <p>recieve updates, connect with other high schoolers and join a tight-knit community!</p>
             </a>
         </section>
+        <!--
+For the names of the allbeings of all religions, explain to me what in the bloddy fiddlesticks is this for.
 
+<div style="width: 100%; height: 300px;
+flex-shrink: 0;
+fill: #E9BFC3;
+stroke-width: 1px;
+stroke: #FFF;
+filter: drop-shadow(23px 25px 50px #231442);">
+
+        </div>
+        <div style="width: 100%;
+height: 400px;
+background: linear-gradient(180deg, rgba(50, 35, 106, 0.56) 8.85%, rgba(179, 127, 156, 0.56) 19.5%, rgba(255, 181, 185, 0.56) 27.08%, rgba(210, 105, 220, 0.45) 61.46%, rgba(252, 176, 176, 0.56) 89.06%, rgba(216, 104, 171, 0.32) 98.44%);
+box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+display: flex;
+justify-content: center;"> -->
         </div>
     </main>
 
-    <footer>
+    <footer style="">
 
         <h4><a onclick="join_the_soviet_union()">Follow us!</a></h4>
         <div id="icons">
-            <a href="https://www.linkedin.com/company/aviquo" target="_blank" style="font-size: 100px;
-    padding: 0 50px;"><i class="fab fa-linkedin"></i></a>
-            <a href="https://www.youtube.com/@Aviquo_" target="_blank" style="font-size: 100px;
-    padding: 0 50px;"><i class="fab fa-youtube"></i></a>
-            <a href="https://www.instagram.com/aviquo_/" target="_blank" style="font-size: 100px;
-    padding: 0 50px;"><i class="fab fa-instagram"></i></a>
-            <a href="https://twitter.com/Aviquo_" target="_blank" style="font-size: 100px;
-    padding: 0 50px;"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.tiktok.com/@_aviquo" target="_blank" style="font-size: 100px;
-                padding: 0 50px;"><i  class="fab fa-tiktok"></i></a>
+            <a href="https://www.linkedin.com/company/aviquo" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.youtube.com/@Aviquo_" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.instagram.com/aviquo_/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com/Aviquo_" target="_blank"><i class="fab fa-twitter"></i></a>
+             <a href="https://tiktok.com/@aviquo_" target="_blank"><i class="fab fa-tiktok"></i></a>
         </div>
         <div id="bottom">
             <a class="bigger-text" onclick="join_the_soviet_union()">questions?</a>
             <p class="smaller-text">contact: <a href="mailto:aviquocompany@gmail.com">aviquocompany@gmail.com</a></p>
         </div>
-        <p id="copy" style="
-flex-shrink: 0; color: #4D1C47;
-font-family: Poppins;
-font-size: 15px;
-font-style: normal;
-font-weight: 600;
-">&copy 2023 aviquo 
-<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp all rights reserved</id>
-        <img src="https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaAdFGf5kke7t5ANvi-jkvH9YOWafnqatz8d5yUfg6SWX_vuc1NsiAx0X0DuhpqJCATZiwXiPgFGGytJFpgCoiLzO0aXkQ=w3584-h2070" alt="Your Image">
+        <p id="copy">&copy 2023 aviquo<br>all rights reserved</id>
+            <img src="https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaAdFGf5kke7t5ANvi-jkvH9YOWafnqatz8d5yUfg6SWX_vuc1NsiAx0X0DuhpqJCATZiwXiPgFGGytJFpgCoiLzO0aXkQ=w3584-h2070" alt="Your Image">
     </footer>
 </body>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
