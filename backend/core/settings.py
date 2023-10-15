@@ -9,7 +9,10 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("AVIQUO_SECRET_KEY", "django-insecure-+%s$-n=0kotg$tt#e$wrk=um#68gxa8(0^joabpuml9xm*q@sp")
+SECRET_KEY = os.environ.get(
+    "AVIQUO_SECRET_KEY",
+    "django-insecure-+%s$-n=0kotg$tt#e$wrk=um#68gxa8(0^joabpuml9xm*q@sp",
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG is False only when in the OS environment DEBUG='' or DEBUG is unset
@@ -17,7 +20,8 @@ SECRET_KEY = os.environ.get("AVIQUO_SECRET_KEY", "django-insecure-+%s$-n=0kotg$t
 DEBUG = os.environ.get("AVIQUO_DEBUG", False)
 DEBUG = os.environ.get("AVIQUO_DEBUG", True)  # TODO
 
-ALLOWED_HOSTS = ['*']
+
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -38,7 +42,7 @@ INSTALLED_APPS = [
     # custom apps below
 ]
 
-LOGIN_REDIRECT_URL = '/profile'
+LOGIN_REDIRECT_URL = "/profile"
 
 
 MIDDLEWARE = [
@@ -123,9 +127,11 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 
-STATICFILES_DIRS = [
-    BASE_DIR / 'main/static'
-]
+# STATICFILES_DIRS = [
+#     BASE_DIR / 'main/static'
+# ]
+
+STATIC_ROOT = BASE_DIR / "static"
 
 
 # Default primary key field type
