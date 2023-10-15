@@ -39,8 +39,8 @@
     --ready-marg-top: 20px;
     --ready-fs: calc(2vw + 5px);
     --discord-h3: 8vw;
-    --discord-icon-size: 20vw;
-    --discord-pad: 25px 0;
+    --discord-icon-size: vw;
+    --discord-pad: 2px 0;
     --discord-fs: calc(2.7vw + 3px);
     --icons-justify: space-evenly;
     --copy: 1.5vw; } }
@@ -81,7 +81,7 @@
     --ready-fs: calc(1.8vw + 5px);
     --discord-h3: 3vw;
     --discord-icon-size: 20vw;
-    --discord-pad: 3vw 0;
+    --discord-pad: 0vw 0;
     --discord-fs: calc(2.4vw + 5px);
     --icons-justify: space-evenly;
     --copy: 6px; } }
@@ -339,7 +339,8 @@ main {
     main #are-ya-ready-kids h3:hover {
       transform: scale(1.1); }
   main section#discord {
-    background: #804c74;
+    background: linear-gradient(180deg, rgba(50, 35, 106, 0.56) 8.85%, rgba(179, 127, 156, 0.56) 19.5%, rgba(255, 181, 185, 0.56) 27.08%, rgba(210, 105, 220, 0.45) 61.46%, rgba(252, 176, 176, 0.56) 89.06%, rgba(216, 104, 171, 0.32) 98.44%);
+    /* box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); */
     padding: var(--discord-pad);
     margin-top: 50px; }
     main section#discord aside#join-our-discord {
@@ -364,11 +365,11 @@ main {
       text-decoration: none; }
       main section#discord a img {
         border-radius: 15%;
-        box-shadow: -5px 5px 10px 3px #402c4c;
+        /* box-shadow: -5px 5px 10px 3px #402c4c; */
         width: var(--discord-icon-size);
         height: var(--discord-icon-size); }
       main section#discord a p {
-        width: 50vw;
+        width: 70vw;
         color: white;
         font-weight: 600;
         font-size: var(--discord-fs); }
@@ -378,7 +379,7 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 15px 0;
+  padding: 0px 0;
   border: 1px solid transparent;
   background: linear-gradient(#ffcfcf, #e6afed 200%); }
   footer h4 {
@@ -416,18 +417,15 @@ footer {
       font-weight: 500;
       font-size: calc(4px + 1vw); }
   footer img {
-    --img-size: 5vw;
+    --img-size: 8vw;
     position: absolute;
-    bottom: 0;
+    bottom: 1vw;
     left: calc(95vw - var(--img-size));
     width: var(--img-size);
     height: auto; }
   footer #copy {
-    position: absolute;
-    bottom: 0;
-    left: 2vw;
     color: #402c4c;
-    font-size: var(--copy);
+    font-size: 20px;
     text-align: center;
     font-weight: 600; }
 
