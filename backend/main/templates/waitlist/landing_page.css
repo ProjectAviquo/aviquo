@@ -21,7 +21,7 @@
     --spon-aside-head-size: calc(2vw + 8px);
     --figcaption-font-size: calc(6px + 2vw);
     --fig-img-height: calc(25px + 10vw);
-    --quote-pad: 10vh;
+    --quote-pad: 4vh;
     --quote-p: calc(4px + 3vw);
     --quote-small: 0.8em;
     --quote-big: 1.2em;
@@ -62,7 +62,7 @@
     --spon-aside-head-size: calc(2.2vw + 6px);
     --figcaption-font-size: calc(10px + 1.5vw);
     --fig-img-height: calc(30px + 6vw);
-    --quote-pad: 25vh;
+    --quote-pad: 4vh;
     --quote-small: calc(1px + 1.5vw);
     --quote-p: calc(2px + 2.5vw);
     --quote-big: calc(3px + 2vw);
@@ -207,7 +207,8 @@ main {
         font-size: var(--figcaption-font-size);
         font-family: "Young Serif", serif; }
   main article#quote-text {
-    display: flex;
+    /* display: flex; */
+    
     justify-content: center;
     width: 100%;
     margin: 0;
@@ -233,9 +234,15 @@ main {
     background-color: #804c74;
     text-align: center; }
     main article#introducing h5 {
-      margin: 0;
-      color: white;
-      font-size: var(--intro-h5); }
+       color: black;
+
+text-align: center;
+font-family: Poppins;
+font-size: 80px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;   
+    }
     main article#introducing h2 {
       margin: 0 0 15px 0;
       color: #ffd3e6;
