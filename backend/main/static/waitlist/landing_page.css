@@ -233,16 +233,7 @@ main {
     margin-bottom: 30px;
     background-color: #804c74;
     text-align: center; }
-    main article#introducing h5 {
-       color: black;
-
-text-align: center;
-font-family: Poppins;
-font-size: 80px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;   
-    }
+    
     main article#introducing h2 {
       margin: 0 0 15px 0;
       color: #ffd3e6;
