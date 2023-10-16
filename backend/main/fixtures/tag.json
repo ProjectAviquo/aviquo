@@ -1,0 +1,65 @@
+[
+{
+  "model": "main.tag",
+  "pk": 1,
+  "fields": {
+    "name": "scholarship"
+  }
+},
+{
+  "model": "main.tag",
+  "pk": 2,
+  "fields": {
+    "name": "extracurricular activity"
+  }
+},
+{
+  "model": "main.tag",
+  "pk": 3,
+  "fields": {
+    "name": "internship"
+  }
+},
+{
+  "model": "main.tag",
+  "pk": 4,
+  "fields": {
+    "name": "job"
+  }
+},
+{
+  "model": "main.tag",
+  "pk": 5,
+  "fields": {
+    "name": "project"
+  }
+},
+{
+  "model": "main.tag",
+  "pk": 6,
+  "fields": {
+    "name": "research"
+  }
+},
+{
+  "model": "main.tag",
+  "pk": 7,
+  "fields": {
+    "name": "volunteer"
+  }
+},
+{
+  "model": "main.tag",
+  "pk": 8,
+  "fields": {
+    "name": "competition"
+  }
+},
+{
+  "model": "main.tag",
+  "pk": 9,
+  "fields": {
+    "name": "paid"
+  }
+}
+]

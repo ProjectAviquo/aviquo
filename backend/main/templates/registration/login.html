@@ -1,0 +1,12 @@
+{% extends "registration/registration.html" %}
+
+{% block validation_javascript %}{% endblock %}
+
+{% block title %}Sign In{% endblock %}
+{% block h2 %}Sign In{% endblock %}
+
+{% block buttons %}
+<a href="{% url 'password_reset' %}">Lost password?</a>
+<input type="submit" value="Sign In"/>
+
+{% endblock %}

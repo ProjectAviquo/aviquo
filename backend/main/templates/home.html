@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        /* Your existing CSS styles here */
+
+        /* Add styles for the sidebar container */
+        .sidebar-container {
+            display: none;
+        }
+
+        /* Add styles for the sidebar */
+        .sidebar {
+            background-color: #FF99CC;
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 20px;
+            z-index: 1;
+        }
+
+        .sidebar a {
+            padding: 15px 25px;
+            text-decoration: none;
+            font-size: 20px;
+            color: pink;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            color: #FF66B2;
+        }
+
+        /* Add styles for the content area */
+        .content {
+            margin-left: 250px;
+            /* Adjust to the sidebar width */
+            transition: 0.3s;
+            padding: 20px;
+        }
+
+        /* Show the sidebar when the user is authenticated */
+        .authenticated .sidebar-container {
+            display: block;
+        }
+
+        /* Hide the content when the sidebar is open */
+        .authenticated .sidebar {
+            left: 0;
+        }
+
+        /* Adjust content position when the sidebar is open */
+        .authenticated .content {
+            margin-left: 0;
+        }
+        body {
+            background-color: #FF99CC;
+            color: pink;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-top: 20px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #8A2BE2;
+            font-size: 20px;
+            margin: 0 10px;
+        }
+
+        a:hover {
+            color: #FF66B2;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .auth-links {
+            margin-top: 20px;
+        }
+
+        .divider {
+            border-top: 2px solid #8A2BE2;
+            margin: 20px 0;
+            width: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Add a class to the body when the user is authenticated -->
+
+    <body class="{% if user.is_authenticated %}authenticated{% endif %}">
+
+        <!-- Sidebar container -->
+        <div class="sidebar-container">
+            <!-- Sidebar -->
+            <div class="sidebar" id="sidebar">
+                <ul>
+                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                    <li><a href="{% url 'opportunity' %}">Opportunities</a></li>
+                    <li><a href="{% url 'forum' %}">Forum</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- JavaScript to toggle the sidebar -->
+        <script>
+            const sidebarContainer = document.querySelector(".sidebar-container");
+            const sidebar = document.getElementById("sidebar");
+
+            sidebarContainer.addEventListener("click", () => {
+                sidebar.classList.toggle("active");
+            });
+        </script>
+    </body>
+    <!-- Content area -->
+
+    <div class="container">
+        <h1>Hello, {{ user.username|default:'Guest' }}</h1>
+        <p>Welcome to Our Site</p>
+        <div class="auth-links">
+            <ul>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+                <li><a href="{% url 'profile' %}">View Profile</a></li>
+                <li><a href="{% url 'opportunity' %}">Opportunities</a></li>
+                <li><a href="{% url 'forum' %}">Forum</a></li>
+                {% else %}
+                <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+                {% endif %}
+            </ul>
+        </div>
+        <div class="divider"></div>
+        <ul></ul>
+    </div>
+</body>
+
+</html>
