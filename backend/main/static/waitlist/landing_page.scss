@@ -226,6 +226,7 @@ main {
 
         width: 20%;
         height: 30vh;
+        max-height: calc(20vh + 5vw);
 
         margin: 0;
         padding: 0 2%;
@@ -353,7 +354,9 @@ article#introducing {
         justify-content: space-around;
 
         width: 27%;
-        min-height: 20vh;
+        min-height: calc(30em - 5vw);
+        max-hegiht: 50vh;
+        margin: auto;
 
         border-radius: 3vw;
 
@@ -364,14 +367,9 @@ article#introducing {
 
         box-shadow: -5px 5px 4px 2px $dark-purple;
 
-        @media (max-width: 350px) {
-            width: 90%;
-            margin: 10px 0 0 0;
-        }
-
         h5 {
             margin: 0;
-            margin-top: var(--product-box-h5-marg-top);
+            margin-top: 1em;
 
             color: $primary-3;
 
@@ -391,14 +389,14 @@ article#introducing {
             width: var(--product-box-a-width);
 
             padding: var(--product-box-a-pad);
-            margin-bottom: calc(var(--product-box-h5-marg-top) + 10px);
+            margin-bottom: 1.5em;
 
             border-radius: 1.2vw;
 
             background-color: $more-purple;
             color: white;
 
-            font-size: var(--product-box-a);
+            font-size: 1.2em;
             text-align: center;
             text-decoration: none;
 

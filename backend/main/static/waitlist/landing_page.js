@@ -34,7 +34,7 @@ tl.from("h1", {
         "<30%"
     );
 
-tl.from("#sponsors", {
+/*tl.from("#sponsors", {
     x: "-100vw",
     scrollTrigger: {
         trigger: "#sponsor-wrap",
@@ -44,7 +44,7 @@ tl.from("#sponsors", {
         markers: false,
         once: true
     }
-});
+});*/
 
 let figures = $("#sponsors").get(0).children;
 
@@ -54,9 +54,9 @@ for (let i = 0; i < figures.length; i++) {
         x: "-100vw",
         scrollTrigger: {
             trigger: "#sponsor-wrap",
-            start: 90 + i * 10 + "% bottom",
+            start: 50 + i * 10 + "% bottom",
             end: "+=25%",
-            scrub: 0.5,
+            scrub: true,
             markers: false,
             once: true
         }
@@ -74,7 +74,7 @@ for (let i = 0; i < quotetexts.length; i++) {
             trigger: quotetext,
             start: "bottom bottom",
             end: "+=15%",
-            scrub: 1,
+            scrub: true,
             markers: false
         }
     });
@@ -89,7 +89,7 @@ tl.from("#introducing h5", {
         start: "bottom bottom",
         end: "+=250",
         once: true,
-        scrub: 1,
+        scrub: true,
         markers: false
     }
 });
@@ -103,7 +103,7 @@ tl.from("#introducing h2", {
         start: "bottom bottom",
         end: "+=250",
         once: true,
-        scrub: 1,
+        scrub: true,
         markers: false
     }
 });
@@ -115,7 +115,7 @@ tl.from(".product-box", {
         start: "center bottom",
         end: "+=50",
         once: true,
-        scrub: 1,
+        scrub: true,
         markers: false
     }
 });
