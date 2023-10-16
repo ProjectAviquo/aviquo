@@ -1,0 +1,142 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'waitlist/landing_page.css' %}">
+    <title>Aviquo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Young+Serif&family=Roboto+Slab:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/brands.js" integrity="sha384-sCI3dTBIJuqT6AwL++zH7qL8ZdKaHpxU43dDt9SyOzimtQ9eyRhkG3B7KMl6AO19" crossorigin="anonymous"></script>
+</head>
+
+<body id="App">
+    <header>
+        <h1>aviquo.</h1>
+        <h3>your high school companion</h3>
+        <form action="" method="POST" , style="margin-top: 20px;" onsubmit="al()">
+            <span style="display: none">{% csrf_token %}</span> <!-- For codepen -->
+            <input type="email" name="email" placeholder="Email" id="wl-email" required="true"/>
+            <input type="submit" value="Join Waitlist" id="wl-submit" />
+        </form>
+    </header>
+    <script>
+        function al(){
+             var emailInput = document.getElementById('wl-email');
+            var emailValue = emailInput.value.trim();
+            if (emailValue === ''){
+
+            }  else alert("Joined waitlist")
+        }
+    </script>
+    <main>
+        <section id="sponsors">
+            <aside>
+                <h5>backed by:</h5>
+            </aside>
+            <figure>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/MIT_logo.svg/2560px-MIT_logo.svg.png">
+                <figcaption>MIT</figcaption>
+            </figure>
+            <figure>
+                <img src="https://seeklogo.com/images/S/stanford-cardinal-logo-8BF3F4F539-seeklogo.com.png">
+                <figcaption>Stanford</figcaption>
+            </figure>
+            <figure>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/University_of_Chicago_Coat_of_arms.png">
+                <figcaption>UChicago</figcaption>
+            </figure>
+            <figure>
+                <img src="https://seeklogo.com/images/C/cornell-logo-BA6000C172-seeklogo.com.png">
+                <figcaption>Cornell</figcaption>
+            </figure>
+        </section>
+        <article id="quote-text", style="height: 800px; padding-top: 100px; padding-bottom: 100px;">
+            <p style="margin-left: 585px;">
+                <span>made by people like <span style="font-size: 60px;">you.</span></span><br>
+                <span><span class="small-text">we know how it feels because</span></span><br>
+                <span>we felt it ourselves.</span><br>
+                <span><span class="small-text">that's why we made something that</span></span><br>
+                <span><span class="h3-bigger">solves everything.</span></span>
+            </p>
+        </article>
+        <article id="introducing">
+            <h5 style="color: #F6EDFF;
+text-align: center;
+font-family: Poppins;
+font-size: 50px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;">introducing: </h5>
+            <h2>aviquo</h2>
+        </article>
+        <article id="product-boxes">
+            <div class="product-box">
+                <h5>future careers</h5>
+                <p>unlock your career's full potential with our comprehensive resources. from expert career guidance to
+                    personalized skill development, we're here to support your journey to success. discover the tools
+                    you need to shape a brighter future today.</p>
+                <a onclick="join_the_soviet_union()" class="link-button">Learn more</a>
+            </div>
+            <div class="product-box center-box">
+                <h5>extracurriculars</h5>
+                <p>elevate your extra-curricular experience with our extensive resources. whether you're a student
+                    looking to boost your resume or an enthusiast pursuing a passion project, we provide the support you
+                    need to excel.</p>
+                <a onclick="join_the_soviet_union()" class="link-button">Learn more</a>
+            </div>
+            <div class="product-box">
+                <h5>college applications</h5>
+                <p>empower your college application journey with our invaluable resources. from AI-powered guidance on
+                    crafting standout essays to comprehensive application strategies, we are here
+                    to help you secure a spot in your dream college</p>
+                <a onclick="join_the_soviet_union()" class="link-button">Learn more</a>
+            </div>
+        </article>
+        <section id="wip">
+            <h6>works in progress:</h6>
+            <p>academics, forums, time-managment</p>
+        </section>
+
+        <section id="discord">
+            <aside id="join-our-discord">
+                <h3>join our discord!</h3>
+            </aside>
+            <a href="https://discord.gg/FsfHAffXNk" target="_blank" class="" i>
+                <img src="https://s3-alpha-sig.figma.com/img/a5f8/9398/c229f55782c47ec0ab969fdbc6905da8?Expires=1698019200&Signature=EQ6-eIamMDiUoE6rzGYr08sC1TUdiDik-WLlbFJiSjUR4ARqzGg51VXCvca1yffOprlZYIkeZ65OCpuOs2BI1Hb90y3VNh399lhHR4r2MKrQxrE8lfIykjaanH2rSpMX7uZi-uZEX4eyzJNP20J7v~Y~hwz6TjvpuF9~nhVFRXZA8Kyxb6RPS9o2n7K1CA0J6eS6ttgMkP70u8Aouj36ElXG9-J~4rq40JXszumohxyhdYZGorr~nck2qVMY5PS1DgugR5ZBADowLG6DPHpbWVgifuS9xyNlodugGId7CgxDOer52nstbb0y6zuhIEPcMUTRYMQ9xIoDwCImw73zdg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" id="discord-icon">
+                <p>recieve updates, connect with other high schoolers and join a tight-knit community!</p>
+            </a>
+        </section>
+        </div>
+    </main>
+
+    <footer>
+        <div id="icons", style="margin-top: 35px;">
+            <a href="https://www.linkedin.com/company/aviquo" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.youtube.com/@Aviquo_" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.instagram.com/aviquo_/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com/Aviquo_" target="_blank"><i class="fab fa-twitter"></i></a>
+             <a href="https://tiktok.com/@_aviquo" target="_blank"><i class="fab fa-tiktok"></i></a>
+        </div>
+        <div id="bottom">
+            <p id="copy">&copy 2023 aviquo <br> <a href="mailto:aviquocompany@gmail.com">aviquocompany@gmail.com</a></id>
+        </div>
+
+        <img src="https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaAdFGf5kke7t5ANvi-jkvH9YOWafnqatz8d5yUfg6SWX_vuc1NsiAx0X0DuhpqJCATZiwXiPgFGGytJFpgCoiLzO0aXkQ=w3584-h2070" alt="AVQ">
+    </footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/EaselPlugin.min.js"></script>
+<script src="/static/waitlist/landing_page.js"></script>
+
+</html>

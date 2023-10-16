@@ -1,0 +1,11 @@
+{% extends "registration/registration.html" %}
+
+{% block validation_javascript %}{% endblock %}
+
+{% block title %}Sign Up{% endblock %}
+{% block h2 %}Registration{% endblock %}
+
+{% block buttons %}
+<a href="{% url 'login' %}">Back to Login</a>
+<input type="submit" value="Sign Up" />
+{% endblock %}
