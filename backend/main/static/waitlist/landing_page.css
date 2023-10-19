@@ -425,6 +425,15 @@ main #product-boxes .product-box:nth-of-type(2) {
     background: #ffcfcf;
 }
 
+#prev-btn,
+#next-btn {
+    font-size: 24px;
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
 main #wip {
     display: flex;
     flex-direction: column;
