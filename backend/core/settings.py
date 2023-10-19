@@ -9,7 +9,10 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("AVIQUO_SECRET_KEY")
+SECRET_KEY = os.environ.get(
+    "AVIQUO_SECRET_KEY",
+    "django-insecure-+%s$-n=0kotg$tt#e$wrk=um#68gxa8(0^joabpuml9xm*q@sp",
+)
 
 # SECURITY: don't run with debugging on in production!
 # DEBUG is False only when in the OS environment DEBUG='' or DEBUG is unset
