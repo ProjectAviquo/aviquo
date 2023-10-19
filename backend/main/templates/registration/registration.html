@@ -1,3 +1,4 @@
+{%load static%}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +8,7 @@
     <title>{% block title %}{% endblock %}</title>
     <!-- Bootstrap CSS link -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/registration/registration.css">
+    <link rel="stylesheet" href="{% static 'registration/registration.css' %}">
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Young+Serif&family=Roboto+Slab:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">

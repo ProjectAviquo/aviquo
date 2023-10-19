@@ -1,18 +1,19 @@
 * {
     box-sizing: border-box;
     font-family: inherit;
+    //border: 1px solid black;
 }
 
 $light-pink: #ffcfcf;
 $less-light-pink: #ffbaba;
-$more-light-pink: #FFD3E6;
+$more-light-pink: #ffd3e6;
 $purple: #805c9c;
 $more-purple: #904c7c;
 $even-more-purple: rgb(99, 68, 89);
 $dark-purple: #402c4c;
 $light-purple: #e6afed;
 $primary-1: #1c133b;
-$primary-2: #B37F9C;
+$primary-2: #b37f9c;
 $primary-3: #775967;
 $primary-4: #804c74;
 
@@ -21,43 +22,51 @@ $primary-4: #804c74;
         --main-title-font-size: calc(5px + 14vw);
         --main-subtitle-font-size: calc(1px + 4vw);
 
-        --head-pad-top: 50px;
-        --head-pad-bottom: 40px;
+        --head-pad-top: 60px;
+        --head-pad-bottom: 80px;
 
         --nav-bottom-pad: calc(0.3px + 1.3vw);
         --wl-font-size: calc(1.5vw + 3px);
         --wl-padd-size: calc(1.5vw + 3px);
+        --wl-email-width: 60%;
+        --wl-submit-width: 35%;
+        --form-just: space-between;
 
-        --spon-top: 25px;
-        --spon-top-pad: 15px;
+        --spon-pad: 20px;
         --spon-box-shadow-size: 5px;
 
         --spon-aside-vert-padd: 1vw;
-        --spon-aside-head-size: calc(1.3vw + 8px);
+        --spon-aside-head-size: calc(2vw + 8px);
 
-        --figcaption-font-size: calc(4px + 3vw);
-        --fig-img-height: calc(30px + 12vw);
+        --figcaption-font-size: calc(6px + 2vw);
+        --fig-img-height: calc(25px + 10vw);
 
-        --quote-pad: 15vh;
-        --quote-small: calc(1px + 2.5vw);
-        --quote-p: calc(2px + 3.5vw);
-        --quote-big: calc(3px + 4vw);
+        --quote-pad: 10vh;
+        --quote-p: calc(4px + 3vw);
+        --quote-small: 0.8em;
+        --quote-big: 1.2em;
 
         --intro-h5: 3vw;
-        --intro-h2: 10vw;
+        --intro-h2: var(--main-title-font-size);
 
-        --product-box-marg-top: 10px;
-        --product-box-h5: 2.6vw;
-        --product-box-p: 2vw;
+        --product-box-h5: 2.45vw;
+        --product-box-h5-marg-top: 10px;
+        --product-box-p: 1.8vw;
         --product-box-a: 3vw;
         --product-box-a-pad: 3px;
+        --product-box-a-width: 80%;
 
         --wip-h6: 4vw;
         --wip-p: 3vw;
 
+        --ready-width: 85%;
+        --ready-marg-top: 20px;
+        --ready-fs: calc(2vw + 5px);
+
         --discord-h3: 8vw;
-        --discord-icon-size: 15vw;
-        --discord-pad: 25px;
+        --discord-icon-size: 20vw;
+        --discord-pad: 25px 0;
+        --discord-fs: calc(2.7vw + 3px);
 
         --icons-justify: space-evenly;
 
@@ -67,54 +76,64 @@ $primary-4: #804c74;
 
 @media (min-width: 601px) {
     :root {
-        --main-title-font-size: calc(1px + 5vw);
-        --main-subtitle-font-size: calc(1px + 2vw);
+        --main-title-font-size: calc(10px + 8vw);
+        --main-subtitle-font-size: calc(5px + 2vw);
 
-        --head-pad-top: 50px;
-        --head-pad-bottom: 40px;
+        --head-pad-top: 80px;
+        --head-pad-bottom: 150px;
 
         --nav-bottom-pad: 1vw;
-        --wl-font-size: calc(0.5vw + 8px);
-        --wl-padd-size: calc(0.7vw + 6px);
+        --wl-font-size: calc(0.8vw + 8px);
+        --wl-padd-size: calc(1vw + 6px);
+        --wl-email-width: 60%;
+        --wl-submit-width: 20%;
+        --form-just: space-evenly;
 
-        --spon-top: 70px;
-        --spon-top-pad: 25px;
+        --spon-pad: 50px;
         --spon-box-shadow-size: 15px;
 
-        --spon-aside-vert-padd: 1vw;
-        --spon-aside-head-size: 24px;
+        --spon-aside-vert-padd: 2vw;
+        --spon-aside-head-size: calc(2.2vw + 6px);
 
         --figcaption-font-size: calc(10px + 1.5vw);
-        --fig-img-height: calc(30px + 8vw);
+        --fig-img-height: calc(30px + 6vw);
 
-        --quote-pad: 20vh;
+        --quote-pad: 25vh;
         --quote-small: calc(1px + 1.5vw);
         --quote-p: calc(2px + 2.5vw);
         --quote-big: calc(3px + 2vw);
 
-        --intro-h5: 2vw;
-        --intro-h2: 7vw;
+        --intro-h5: 3vw;
+        --intro-h2: 10vw;
 
-        --product-box-marg-top: 10px;
         --product-box-h5: 2vw;
-        --product-box-p: 1.1vw;
-        --product-box-a: 1.5vw;
-        --product-box-a-pad: 5px;
+        --product-box-h5-marg-top: 20px;
+        --product-box-p: calc(1.1vw + 3px);
+        --product-box-a: 1.3vw;
+        --product-box-a-pad: 12px;
+        --product-box-a-width: 60%;
 
         --wip-h6: 2.2vw;
-        --wip-p: 1.5vw;
+        --wip-p: 1.7vw;
+
+        --ready-width: 60%;
+        --ready-marg-top: 40px;
+        --ready-fs: calc(1.8vw + 5px);
 
         --discord-h3: 3vw;
-        --discord-icon-size: 10vw;
-        --discord-pad: 10vw;
+        --discord-icon-size: 20vw;
+        --discord-pad: 3vw 0;
+        --discord-fs: calc(2.4vw + 5px);
 
-        --icons-justify: center;
+        --icons-justify: space-evenly;
 
         --copy: 6px;
     }
 }
 
 body {
+    width: 100vw;
+
     padding: 0;
     margin: 0;
 
@@ -131,7 +150,7 @@ header {
 
     padding: var(--head-pad-top) 0 var(--head-pad-bottom);
 
-    background: linear-gradient($primary-1 40%, $primary-2);
+    background: linear-gradient($primary-1 60%, $primary-2);
 
     h1 {
         margin: 0;
@@ -144,7 +163,7 @@ header {
     h3 {
         margin: 0;
 
-        color: #F6EDFF;
+        color: #f6edff;
 
         font-size: var(--main-subtitle-font-size);
         font-weight: 600;
@@ -167,32 +186,36 @@ header {
         height: fit-content;
 
         display: flex;
-        justify-content: space-between;
+        justify-content: var(--form-just);
+
+        margin-top: 70px;
+
+        font-size: var(--wl-font-size);
 
         input {
-            height: calc(var(--wl-font-size) + var(--wl-padd-size)*2);
+            height: 3em;
 
             border: none;
-            border-radius: 10px;
+            border-radius: 15px;
 
             font-size: var(--wl-font-size);
             font-weight: 500;
 
-            box-shadow: 2px 2px 5px #333;
+            box-shadow: -3px 3px 3px 1px $dark-purple;
 
-            transition: background 0.3s, color 0.3s, box-shadow 0.3s, z-index 0.3s;
-
-            z-index: 56;
+            transition: background 0.3s, color 0.3s, box-shadow 0.3s,
+                z-index 0.3s;
         }
 
         #wl-email {
-            width: 60%;
+            width: var(--wl-email-width);
             padding: var(--padd-size);
-            padding-left: 15px;
+            padding-left: 3vw;
+            background-color: $light-pink;
         }
 
         #wl-submit {
-            width: 30%;
+            width: var(--wl-submit-width);
 
             background-color: $purple;
             color: white;
@@ -206,79 +229,75 @@ header {
 
         input:hover,
         #wl-email:focus {
-            box-shadow: 0 0 3px 5px $primary-1;
-            z-index: 55;
+            box-shadow: -4px 4px 3px 2px $primary-1;
         }
 
         #wl-submit:hover {
-            background-color: $light-pink;
-            color: black;
             cursor: pointer;
         }
     }
 }
 
 main {
-    background: linear-gradient($primary-2 1%,
-            $primary-3 10vw,
-            $primary-3 15vw,
-            $primary-4 20vw);
+    background: linear-gradient(
+        $primary-2 1%,
+        $primary-3 10vw,
+        $primary-3 15vw,
+        $primary-4 20vw
+    );
+    width: 100vw;
     min-height: 100vw;
 
     #sponsors {
         position: relative;
         display: flex;
         flex-flow: wrap;
-
-        width: calc(100% + var(--spon-extra-width));
-
-        top: var(--spon-top);
-        left: calc(var(--spon-extra-width) * -0.5);
-
-        padding: var(--spon-top-pad) 0 5px;
-
-        background-color: $light-pink;
-
         justify-content: space-evenly;
 
-        box-shadow: 0 5px var(--spon-box-shadow-size) $primary-1;
+        width: 100%;
+        padding: var(--spon-pad) 0;
+        margin-top: var(--spon-top);
+
+        background-color: $light-pink;
+        box-shadow: 0 2px 10px $primary-1;
 
         aside {
-            --aside-calc: calc(var(--spon-aside-head-size) + var(--spon-aside-vert-padd) * 3);
-
-            display: inline-block;
             position: absolute;
-
-            height: var(--aside-calc);
+            display: inline-block;
 
             left: 0;
-            top: calc(-1 * var(--aside-calc));
+            top: -1.8em;
 
             color: $even-more-purple;
 
-            border-right: var(--aside-calc) solid transparent;
-            border-bottom: var(--aside-calc) solid $light-pink;
-
+            font-size: var(--spon-aside-head-size);
 
             h5 {
-                position: relative;
-                display: inline;
-                top: var(--spon-aside-vert-padd);
+                display: inline-block;
+                height: 2.5em;
 
-                padding: var(--spon-aside-vert-padd);
-
-                border: 1px solid transparent;
+                padding: 0 1em;
+                margin: 0;
 
                 background-color: $light-pink;
-                font-size: var(--spon-aside-head-size);
+
                 font-weight: 700;
+                line-height: 2.5em;
             }
+        }
+
+        aside::after {
+            content: "";
+            border-right: 3em solid transparent;
+            border-bottom: 2.5em solid $light-pink;
+            position: relative;
+            top: -1.65em;
         }
 
         figure {
             display: flex;
 
-            width: 18%;
+            width: 16%;
 
             @media (max-width: 350px) {
                 width: 40%;
@@ -289,10 +308,11 @@ main {
 
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
 
             img {
                 height: var(--fig-img-height);
+                max-width: 90%;
 
                 @media (max-width: 350px) {
                     height: 24vw;
@@ -302,6 +322,9 @@ main {
             }
 
             figcaption {
+                margin-top: 10px;
+                color: $primary-1;
+
                 font-size: var(--figcaption-font-size);
                 font-family: "Young Serif", serif;
             }
@@ -315,15 +338,16 @@ main {
         width: 100%;
 
         margin: 0;
-        padding: var(--quote-pad) 0 calc(var(--quote-pad) * 0.7);
+        padding: var(--quote-pad) 0 var(--quote-pad);
 
-        background: linear-gradient($primary-3 -10%,
-                transparent 20%,
+        background: radial-gradient(#fdd6 15%, transparent 60%),
+            linear-gradient(
+                $primary-3,
+                transparent 30%,
                 transparent 70%,
-                $primary-4 100%),
-            radial-gradient(#edd,
-                $light-pink 25%,
-                $more-purple 95%);
+                $primary-4 100%
+            ),
+            radial-gradient(#fdd 15%, $primary-3);
 
         p {
             width: fit-content;
@@ -332,6 +356,7 @@ main {
             color: $dark-purple;
 
             font-size: var(--quote-p);
+            line-height: calc(var(--quote-p) * 2);
             font-weight: 500;
             text-align: center;
 
@@ -349,6 +374,7 @@ main {
 
     article#introducing {
         margin: 0;
+        margin-bottom: 30px;
 
         background-color: $primary-4;
 
@@ -356,7 +382,7 @@ main {
 
         h5 {
             margin: 0;
-            color: #ddd;
+            color: white;
 
             font-size: var(--intro-h5);
         }
@@ -364,7 +390,7 @@ main {
         h2 {
             margin: 0 0 15px 0;
 
-            color: $light-pink;
+            color: $more-light-pink;
 
             font-size: var(--intro-h2);
         }
@@ -374,7 +400,7 @@ main {
         background: $primary-4;
 
         display: flex;
-        justify-content: space-evenly;
+        justify-content: space-around;
 
         margin-bottom: 30px;
 
@@ -387,18 +413,19 @@ main {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-between;
+            justify-content: space-around;
 
-            width: 28%;
-            min-height: 30vh;
+            width: 27%;
+            min-height: 20vh;
 
-            border-radius: 15px;
+            border-radius: 3vw;
 
-            background-color: $less-light-pink;
+            background-color: rgb(204, 173, 190);
 
             transform: scale(1);
-
             transition: transform 0.5s, background 0.5s;
+
+            box-shadow: -5px 5px 4px 2px $dark-purple;
 
             @media (max-width: 350px) {
                 width: 90%;
@@ -406,8 +433,8 @@ main {
             }
 
             h5 {
-                margin-top: var(--product-box-marg-top);
-                margin-bottom: 5px;
+                margin: 0;
+                margin-top: var(--product-box-h5-marg-top);
 
                 color: $primary-3;
 
@@ -417,28 +444,30 @@ main {
             }
 
             p {
-                width: 90%;
+                width: 85%;
 
                 font-size: var(--product-box-p);
-                text-align: center;
+                text-align: justify;
             }
 
             a {
-                width: 90%;
+                width: var(--product-box-a-width);
 
                 padding: var(--product-box-a-pad);
-                margin-bottom: 10px;
+                margin-bottom: calc(var(--product-box-h5-marg-top) + 10px);
 
-                border-radius: 20px;
+                border-radius: 1.2vw;
 
-                background-color: $primary-2;
+                background-color: $more-purple;
                 color: white;
 
                 font-size: var(--product-box-a);
                 text-align: center;
                 text-decoration: none;
 
-                font-weight: 500;
+                font-weight: 400;
+
+                box-shadow: -2px 2px 3px 1px $dark-purple;
             }
 
             @media (max-width: 350px) {
@@ -473,14 +502,14 @@ main {
         flex-direction: column;
         align-items: center;
 
-        background: linear-gradient($primary-4, $primary-3 80%);
+        background: $primary-4;
 
         border: 1px solid transparent;
 
-        padding-bottom: 30px;
+        padding-top: 10px;
 
         h6 {
-            color: $light-pink;
+            color: $more-light-pink;
 
             margin-top: 25px;
             margin-bottom: 0;
@@ -499,8 +528,42 @@ main {
         }
     }
 
+    #are-ya-ready-kids {
+        width: var(--ready-width);
+        margin: auto;
+        margin-top: var(--ready-marg-top);
+
+        font-size: var(--ready-fs);
+        text-align: center;
+        color: $primary-4;
+
+        h3 {
+            margin: 0;
+            border-radius: 15px;
+            padding: 15px;
+
+            background-color: $light-pink;
+
+            transform: scale(1);
+            transition: all 0.05s;
+
+            box-shadow: -4px 4px 3px 1px $dark-purple;
+
+            #soviet {
+                color: red;
+            }
+        }
+
+        h3:hover {
+            transform: scale(1.1);
+        }
+    }
+
     section#discord {
-        background: linear-gradient($primary-3 20%, $primary-4);
+        background: $primary-4;
+
+        padding: var(--discord-pad);
+        margin-top: 50px;
 
         aside#join-our-discord {
             position: relative;
@@ -510,7 +573,7 @@ main {
             width: calc(100% + var(--spon-extra-width));
 
             margin-bottom: 10px;
-            padding: 15px;
+            padding: 25px 10px;
 
             background-color: $light-pink;
 
@@ -520,22 +583,26 @@ main {
                 font-size: var(--discord-h3);
                 text-align: center;
 
-                color: $purple;
+                color: $more-purple;
 
                 margin: 0;
             }
         }
 
-        div {
-            padding: 25px var(--discord-pad);
+        a {
+            padding: var(--discord-pad);
 
             display: flex;
             align-items: center;
             justify-content: space-around;
 
+            background-color: linear-gradient($primary-4, $primary-3);
+
+            text-decoration: none;
+
             img {
                 border-radius: 15%;
-                box-shadow: 0 0 10px 3px $dark-purple;
+                box-shadow: -5px 5px 10px 3px $dark-purple;
                 width: var(--discord-icon-size);
                 height: var(--discord-icon-size);
             }
@@ -546,7 +613,7 @@ main {
                 color: white;
 
                 font-weight: 600;
-                font-size: calc(2vw + 4px);
+                font-size: var(--discord-fs);
             }
         }
     }
@@ -558,16 +625,19 @@ footer {
     flex-direction: column;
     align-items: center;
 
+    padding: 15px 0;
     border: 1px solid transparent;
-    background-color: $light-purple;
+    background: linear-gradient($light-pink, $light-purple 200%);
 
     h4 {
-        font-size: 1.5rem;
+        font-size: calc(8px + 1.5vw);
 
         width: fit-content;
 
         a {
             color: $more-purple;
+            cursor: pointer;
+            text-decoration: underline;
         }
 
         a::before,
@@ -578,11 +648,11 @@ footer {
 
     #icons {
         display: flex;
-        width: 80%;
+        width: 60%;
 
         justify-content: var(--icons-justify);
 
-        font-size: 30px;
+        font-size: calc(10px + 3.5vw);
 
         i {
             color: $dark-purple;
@@ -600,25 +670,39 @@ footer {
         .bigger-text {
             color: $more-purple;
             font-weight: 600;
-            font-size: calc(5px + 1vw);
+            font-size: calc(5px + 3vw);
+            text-decoration: underline;
+            cursor: pointer;
         }
 
         .smaller-text,
         .smaller-text a {
             color: $more-purple;
             font-weight: 500;
-            font-size: calc(3px + 1vw);
+            font-size: calc(4px + 1vw);
         }
+    }
+
+    img {
+        --img-size: 5vw;
+
+        position: absolute;
+        bottom: 0;
+        left: calc(95vw - var(--img-size));
+
+        width: var(--img-size);
+        height: auto;
     }
 
     #copy {
         position: absolute;
         bottom: 0;
-        left: 5px;
+        left: 2vw;
 
         color: $dark-purple;
 
         font-size: var(--copy);
         text-align: center;
+        font-weight: 600;
     }
 }

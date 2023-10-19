@@ -6,7 +6,7 @@ Before setting up the git, create a .venv environement for your program:
 
 To use our program, simply copy and paste into your terminal:
 
-	git clone https://github.com/cobaltmix/aviquo.git
+	git clone https://github.com/ProjectAviquo/aviquo.git
 
 Next, you need to install all the dependencies:
 
@@ -38,30 +38,4 @@ Now that your superuser is set up, you can navigate to:
 
 Here, you will type in your super user name and password.
 
-To access the front-end portion of the app, navigate to the frontend folder with:
-
-	 cd ..
-	 cd frontend
- 
-To setup and run development server:
-
-	 npm install
-	 npm start
- 
-Navigate to localhost:3000. This is where changes to the database must be reflected
-
-A guide to the backend APIs:
-
-/api/users is the endpoint for users
-
-/api/ECS is the endpoint for extracurriculars
-
-/api/AWS is the endpoint for awards
-
-/api/SC is the endpoint for scholarships
-
-/api/Waitlist is the endpoint for the waitlist
-
-all CRUD functions have been set-up, along with middle-ware dependencies, so backend APIs can be accesed seemlessly
-
-You are all done! Now you can add values to your databases, and create the front-end using api endpoints!
+You are all done! Now you can add values to your databases.
