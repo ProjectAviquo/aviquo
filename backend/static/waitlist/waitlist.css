@@ -1,0 +1,502 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+:root {
+    --bg-1: #160136;
+    --bg-2: #59374e;
+    --bg-3: #98646c;
+    --bg-4: #784464;
+    --bg-5: #885c5c;
+    --bg-6: #D059A0;
+
+    --pink-1: #fccfe3;
+    --pink-2: #ba99a6;
+    --pink-3: #f0bcc4;
+
+    --purple-1: #684280;
+    --purple-2: #471360;
+    --purple-3: #381c44;
+    --purple-4: #683464;
+
+    --head-height: 110vh;
+    --head-top: 5em;
+
+    --form-width: 40em;
+    --form-gap: 10%;
+    --form-height: 2.7em;
+
+    --back-height: 11em;
+    --back-cols: 4;
+    --fig-pad: 0 2%;
+
+    --miss-height: 50em;
+    --present-height: 45em;
+    --pres-col-gap: 20%;
+    --box-height: 22em;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+
+    font-family: "Poppins", sans-serif;
+    font-size: 1.9vw;
+    overflow-x: hidden;
+}
+
+@media (max-width: 800px) {
+    body {
+        font-size: 18px;
+    }
+
+    :root {
+        --form-width: 500px;
+        --form-gap: 50px;
+        --form-height: 2.5em;
+    }
+}
+@media (max-width: 600px) {
+    body {
+        font-size: 14px;
+    }
+
+    :root {
+        --form-width: 90%;
+        --form-gap: 5%;
+        --head-top: 7em;
+        --miss-height: 50em;
+        --present-height: 45em;
+    }
+}
+@media (max-width: 500px) {
+    body {
+        font-size: 13px;
+    }
+
+    :root {
+        --form-width: 93%;
+        --form-gap: 4%;
+        --head-top: 8em;
+        --back-height: 25em;
+        --back-cols: 2;
+        --fig-pad: calc(var(--back-height) / 2 * 0.1) 10%;
+        --present-height: 50em;
+        --box-height: 26em;
+    }
+}
+@media (max-width: 400px) {
+    body {
+        font-size: 11px;
+    }
+
+    :root {
+        --form-height: 3.3em;
+        --form-width: 95%;
+        --form-gap: 3%;
+        --head-top: 15em;
+    }
+}
+@media (max-width: 300px) {
+    body {
+        font-size: 9px;
+    }
+}
+
+header {
+    position: relative;
+    width: 100vw;
+    height: var(--head-height);
+    padding-top: var(--head-top);
+    margin: 0;
+
+    background: linear-gradient(var(--bg-1) 80%, var(--bg-2));
+}
+
+#head-inner {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-rows: 7em 2em var(--form-height);
+    row-gap: 0.5em;
+
+    width: 100%;
+    height: 50%;
+}
+
+h1,
+h2 {
+    width: fit-content;
+    font-weight: 700;
+    text-align: center;
+}
+
+h1 {
+    color: var(--pink-1);
+    font-size: 5em;
+}
+
+h2 {
+    color: white;
+    font-size: 1.7em;
+}
+
+form {
+    display: flex;
+    justify-content: space-around;
+
+    width: var(--form-width);
+    height: 100%;
+    margin-top: 2em;
+    font-size: 0.9em;
+}
+
+form input {
+    border: none;
+    border-radius: 0.8em;
+    height: 100%;
+    font-weight: 600;
+}
+
+#wl-email {
+    width: 50%;
+    padding-left: 0.8em;
+
+    background-color: var(--pink-2);
+    color: var(--purple-1);
+}
+
+#wl-email::placeholder {
+    color: var(--purple-1);
+}
+
+#wl-join {
+    width: calc(40% - var(--form-gap));
+    background-color: var(--purple-1);
+    color: #EEEEEE;
+    text-shadow: 0 2px #CCC;
+}
+
+.arrow {
+    position: absolute;
+
+    bottom: 15%;
+    width: 100vw;
+
+    display: flex;
+    justify-content: center;
+    font-size: 0;
+}
+
+.arrow > div {
+    display: inline-block;
+    position: relative;
+    width: 20px;
+    height: 4px;
+    border-radius: 2px;
+
+    margin: 0;
+    background-color: #DDD
+}
+
+.left-arrow {
+    position: relative;
+    left: 1.5px;
+    transform-origin: right center;
+    transform: rotate(50deg);
+}
+
+.right-arrow {
+    position: relative;
+    right: 1.5px;
+    transform-origin: left center;
+    transform: rotate(-50deg);
+}
+
+#backers {
+    height: var(--back-height);
+    margin: 0;
+    padding: 1em 0;
+
+    background: linear-gradient(var(--bg-2) 90%, var(--bg-3));
+}
+
+#backers-bg {
+    position: relative;
+    display: flex;
+
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    row-gap: 1em;
+
+    width: 100%;
+    height: 100%;
+    padding: 1em 0;
+    background-color: var(--pink-3);
+    box-shadow: 0 5px 7px 2px var(--purple-3);
+}
+
+#backers h3 {
+    position: absolute;
+    margin: 0;
+    top: -1.25em;
+    left: 0;
+
+    padding: 0 1em;
+    background-color: var(--pink-3);
+    border-radius: 0 1em 0 0;
+
+    color: var(--purple-1);
+    font-size: calc(11px + 0.5em);
+    line-height: 2.5em;
+    vertical-align: middle;
+}
+
+#backers figure {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    width: calc(100% / var(--back-cols));
+    height: calc(100% / (4 / var(--back-cols)));
+    margin: 0;
+    padding: var(--fig-pad);
+}
+
+#backers .img-wrap {
+    width: 90%;
+    height: calc(100% - 1.6em);
+    margin: 0 auto;
+}
+
+#backers img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#backers .mit-wrap {
+    width: 75%;
+}
+
+#backers figcaption {
+    display: block;
+    width: 100%;
+    height: 1.2em;
+    font-size: 1.2em;
+    font-family: "Young Serif", serif;
+    text-align: center;
+}
+
+#mission {
+    position: relative;
+
+    height: var(--miss-height);
+    width: 100%;
+    background: linear-gradient(var(--bg-3), var(--bg-4));
+}
+
+#miss-bg {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(35% 35%, #FFEA, transparent),
+        radial-gradient(60% 45%, #ffc4c8, transparent);
+    filter: blur(40px);
+}
+
+#mission p {
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+    width: 100%;
+    margin: 0;
+
+    backdrop-filter: blur(10px);
+    color: var(--purple-2);
+    font-size: 1.7em;
+    font-weight: 500;
+    line-height: 1.7em;
+}
+
+#mission p > span {
+    display: block;
+}
+
+#mission .big-chungus {
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+#mission .smol-no-t-thats-average {
+    font-size: 0.7em;
+    font-weight: 400;
+}
+
+#present {
+    display: flex;
+    flex-direction: column;
+
+    width: 100vw;
+    height: var(--present-height);
+    padding: 1em 1.5em;
+    background: linear-gradient(var(--bg-4), var(--purple-4) 20%, var(--purple-4) 80%);
+
+    align-items: center;
+    justify-content: center;
+}
+
+#present h4 {
+    grid-area: intro;
+    margin: 0;
+
+    color: #EEE;
+    font-size: 2em;
+}
+
+#present h2 {
+    grid-area: aviquo;
+    margin: 0;
+
+    color: var(--pink-1);
+    font-size: 5em;
+}
+
+.pres-box {
+    display: grid;
+    height: var(--box-height);
+    width: 100%;
+    row-gap: 1em;
+
+    padding: 2.5em 1.5em;
+    margin: 1.5em 0;
+    border-radius: 2em;
+
+    background-color: #703774;
+    box-shadow: 0 0 5px 3px #FBB;
+}
+
+.pres-box p {
+    color: white;
+    text-align: justify;
+    font-size: 0.9em;
+    font-weight: 500;
+    line-height: 1.6em;
+}
+
+.pres-box button {
+    width: 90%;
+    height: 2.5em;
+
+    margin: 0 auto;
+    border: none;
+    border-radius: 0.8em;
+
+    background-color: #60246c;
+    color: white;
+    font-weight: 700;
+    box-shadow: 0 0 4px 1px #FFB5B9;
+    font-size: 1em;
+}
+
+.pres-box h5 {
+    color: #EEE;
+    font-size: 2em;
+    text-align: center;
+    margin: 0;
+}
+
+#boxes {
+    display: grid;
+    width: 100vw;
+    grid-template-areas:
+        'box2 box1 box3';
+    grid-template-columns: calc(70% - var(--pres-col-gap)/4) calc(80% - var(--pres-col-gap)/2) calc(70% - var(--pres-col-gap)/4);
+    row-gap: 2em;
+    column-gap: var(--pres-col-gap);
+
+    overflow-x: scroll;
+}
+
+#wip-h {
+    grid-area: wiph;
+    margin: 0;
+    color: var(--pink-1);
+    font-size: 1.2em;
+}
+
+#wip-p {
+    grid-area: wipp;
+    margin: 0;
+    color: #EEE;
+    font-size: 1.3em;
+    text-align: center;
+}
+
+#join-discord {
+    height: 3.5em;
+    font-size: 2.5em;
+}
+
+#join-bg {
+    display: grid;
+
+    background-color: #FCC;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 3px 4px 1px #534;
+}
+
+#join-discord h3 {
+    align-self: center;
+    justify-self: center;
+
+    width: fit-content;
+    margin: 0;
+    color: var(--purple-1);
+}
+
+#discord {
+    height: 14em;
+}
+
+#discord-bg {
+    display: grid;
+    padding: 0.5em 2em;
+    grid-template-columns: 1fr 3fr;
+    column-gap: 10%;
+    align-items: center;
+    justify-items: center;
+
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(var(--bg-5), var(--bg-6) 200%);
+}
+
+#icon-wrap {
+    width: 10em;
+    height: 10em;
+    box-shadow: -10px 10px 6px #534;
+    border-radius: 20%;
+}
+
+#discord img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#discord p {
+    color: white;
+    font-weight: 600;
+    font-size: 1.3em;
+}

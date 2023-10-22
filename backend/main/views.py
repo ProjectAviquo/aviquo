@@ -39,7 +39,7 @@ def waitlist(request):
             return redirect("waitlist")
     else:
         form = AddWaitlistForm()
-    return render(request, "waitlist/landing_page.html", {"form":form})
+    return render(request, "waitlist/waitlist.html", {"form":form})
 def clogout(request):
     if request.user.is_authenticated:
         logout(request)
