@@ -10,8 +10,9 @@ $("document").ready(function () {
     tl.from("header h1", {
         delay: 0.4,
         opacity: 0,
-        scale: 0.9,
-        y: -20
+        scale: 0.95,
+        y: -20,
+        duration: 0.4
     });
 
     tl.from("header h2", {

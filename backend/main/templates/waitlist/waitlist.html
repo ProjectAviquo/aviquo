@@ -18,16 +18,17 @@
     <div>
         <header style="background: linear-gradient(#172554 70%, #603c54);" class="h-screen">
             <div id="head-inner" class="flex flex-col">
-                <h1 class="text-red-100 text-6xl font-bold text-center w-full mt-40 sm:text-7xl md:text-8xl">aviquo.</h1>
-                <h2 class="w-full text-center text-slate-100 sm:text-2xl font-bold sm:mt-8 mt-3 text-xl md:text-3xl" >your high school companion.</h2>
-                <form action="#" method="post" class="w-4/5 max-w-2xl mx-auto flex justify-between sm:mt-8 mt-3 sm:h-10 md:h-12 h-8 md:gap-x-12 gap-x-6">
+                <h1 class="w-full mt-40 md:mt-[30vh] text-6xl font-bold text-center text-avq-pink-500 sm:text-7xl md:text-8xl">aviquo.</h1>
+                <h2 class="w-full mt-3 text-xl font-bold text-center text-purple-100 sm:text-2xl sm:mt-6 md:text-3xl" >your high school companion.</h2>
+                <form action="#" method="post" class="flex justify-between w-4/5 h-8 max-w-2xl mx-auto mt-4 sm:mt-8 sm:h-10 md:h-12 md:gap-x-12 gap-x-6">
+                    {% csrf_token %}
                     <input type="email" name="email" id="wl-email" placeholder="Email" style="width: unset; min-width: 0;"
-                        class="sm:rounded-2xl rounded-xl pl-4 grow shrink bg-rose-100 font-medium placeholder:text-purple-800 placeholder:drop-shadow-lg text-purple-800 sm:text-sm md:text-lg text-xs cursor-text shadow-[-3px_3px_3px_1px_#2e1065] hover:shadow-violet-900 transition duration-300 ease-out">
+                        class="sm:rounded-2xl rounded-xl pl-5 grow shrink bg-rose-200 font-medium placeholder:text-avq-purple-500 placeholder:drop-shadow-lg text-avq-purple-500 sm:text-sm md:text-lg text-xs cursor-text shadow-[-3px_3px_3px_1px_#2e1065] hover:shadow-violet-900 transition duration-300 ease-out">
                     <input type="submit" id="wl-join" value="Join Waitlist"
-                        class="sm:rounded-2xl rounded-xl w-3/12 min-w-min px-4 bg-fuchsia-800 rounded-2xl text-white font-semibold sm:text-sm md:text-lg text-xs cursor-pointer shadow-[-3px_3px_3px_1px_#2e1065] hover:shadow-violet-900 transition duration-300 ease-out">
+                        class="sm:rounded-2xl rounded-xl w-3/12 min-w-min px-4 bg-avq-purple-500 rounded-2xl text-slate-200 font-semibold sm:text-sm md:text-lg text-xs cursor-pointer shadow-[-3px_3px_3px_1px_#2e1065] hover:shadow-violet-900 transition duration-300 ease-out">
                 </form>
             </div>
-            <div class="arrow absolute bottom-20 left-0 right-0 mx-auto w-fit">
+            <div class="absolute left-0 right-0 mx-auto arrow bottom-20 w-fit">
                 <img src="https://i.ibb.co/4MMKD6f/down-arrow-56.png" alt="V" width=30>
             </div>
         </header>
