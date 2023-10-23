@@ -8,13 +8,13 @@ from .views import ForumView, OpportunityView, SignUp, home, profile, clogout, w
 urlpatterns = [
     path("", home, name="home"),
     path("Waitlist/", waitlist, name="waitlist"),
-    # path('logout/', clogout, name='logout'),
-    # path("signup/", SignUp.as_view(), name="signup"),
-    # path("opportunity/", OpportunityView, name="opportunity"),
-    # path("forum/", ForumView, name="forum"),
-    # path("profile/", profile, name="profile"),
-    # path("password_reset/", CustomPasswordResetView.as_view(),
-    #          name="password_reset"),
+    path('logout/', clogout, name='logout'),
+    path("signup/", SignUp.as_view(), name="signup"),
+    path("opportunity/", OpportunityView, name="opportunity"),
+    path("forum/", ForumView, name="forum"),
+    path("profile/", profile, name="profile"),
+    path("password_reset/", CustomPasswordResetView.as_view(),
+             name="password_reset"),
 ]
 
 
