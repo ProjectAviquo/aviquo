@@ -42,7 +42,7 @@
             <!-- Sidebar -->
             <div class="sidebar" id="sidebar">
                 <ul>
-                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                    <li><a href="{% url 'profile' user.username %}">Profile</a></li>
                     <li><a href="{% url 'opportunity' %}">Opportunities</a></li>
                     <li><a href="{% url 'forum' %}">Forum</a></li>
                     <li><a href="{% url 'logout' %}">Logout</a></li>

@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import logout
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render,  get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from rest_framework import generics
@@ -26,9 +26,8 @@ class AddForumForm(forms.ModelForm):
         fields = ["topic", "description"]
 
 def home(request):
-    return redirect("waitlist")
     if request.user.is_authenticated:
-       return redirect("profile")
+       return redirect("profile", username=request.user.username)
     return render(request, "home.html", {})
 
 def waitlist(request):
@@ -46,20 +45,22 @@ def clogout(request):
     return redirect("home")
 
 @login_required
-def profile(request):
-    user = request.user
-
-    if request.method == "POST":
-        form = EditProfileForm(request.POST, instance=user)
-        if form.is_valid():
-            form.save()
-            return redirect("profile")
-
+def profile(request, username):
+    user = get_object_or_404(User, username=username)
+    form = EditProfileForm(instance=user)  # Display the profile form to everyone
+    if request.user.username == username:
+        if request.method == "POST":
+            form = EditProfileForm(request.POST, instance=user)
+            if form.is_valid():
+                form.save()
+            return redirect("profile", username=user.username)
+        return render(request, "users/profile.html", {"user": user, "form": form})
     else:
-        form = EditProfileForm(instance=user)
+        return render(request, "users/profile.html", {"user": user})
 
-    return render(request, "users/profile.html", {"user": user, "form": form})
-
+@login_required
+def profilee(request):
+    return redirect("profile", request.user.username)
 
 @login_required
 def OpportunityView(request):

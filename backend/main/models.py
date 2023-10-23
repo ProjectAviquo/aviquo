@@ -3,17 +3,7 @@ from django.core.exceptions import ValidationError
 from django.db import models
 
 
-class User(AbstractUser):
-    # other usable fields from AbstractUser:
-    #  username, first_name, last_name, email, is_staff, is_active, date_joined, last_login
-    bio = models.TextField(verbose_name="Bio", max_length=4000, blank=True, null=True)
-    date_registered = models.DateTimeField(auto_now_add=True, null=True)
 
-    def __str__(self):
-        return str(self.username)
-
-    def get_full_name(self) -> str:
-        return super().get_full_name()
 
 
 class Tag(models.Model):
@@ -89,3 +79,19 @@ class Waitlist(models.Model):
 
     class Meta:
         ordering = ["-date_created"]
+
+class User(AbstractUser):
+    # other usable fields from AbstractUser:
+    #  username, first_name, last_name, email, is_staff, is_active, date_joined, last_login
+    bio = models.TextField(verbose_name="Bio", max_length=4000, blank=True, null=True)
+    date_registered = models.DateTimeField(auto_now_add=True, null=True)
+
+    following =  models.ManyToManyField('self', blank=True, symmetrical=False, related_name="following_set")
+    followers =  models.ManyToManyField('self', blank=True, symmetrical=False, related_name="followers_set")
+
+    followed_opps = models.ManyToManyField(Opportunity, blank=True)
+    def __str__(self):
+        return str(self.username)
+
+    def get_full_name(self) -> str:
+        return super().get_full_name()
