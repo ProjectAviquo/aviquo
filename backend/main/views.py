@@ -78,14 +78,11 @@ def ForumView(request):
         form = AddForumForm(request.POST)
         if form.is_valid():
            # Create a new Forum instance but don't save it yet
-            new_forum = form.save(commit=False)
+            new_forum = form.save()
 
-            # Set the username field of the forum to the user's username
-            new_forum.username = user.username
-
-            # Save the forum object with the updated username
+            new_forum.user = user
+            print(new_forum.user.username)
             new_forum.save()
-
             return redirect("forum")
 
     else:

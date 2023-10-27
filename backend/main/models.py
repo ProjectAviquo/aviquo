@@ -35,19 +35,7 @@ class Category(models.Model):
         verbose_name_plural = "Categories"
 
 
-# parent model
-class Forum(models.Model):
-    username = models.CharField(max_length=200, default="anonymous")
-    topic = models.CharField(max_length=300)
-    description = models.CharField(max_length=1000, blank=True)
-    date_created = models.DateTimeField(auto_now_add=True, null=True)
-    parent_post = models.ForeignKey("self", null=True, blank=True, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return str(self.id)
-
-    class Meta:
-        ordering = ["date_created"]
 
 
 class Opportunity(models.Model):
@@ -95,3 +83,17 @@ class User(AbstractUser):
 
     def get_full_name(self) -> str:
         return super().get_full_name()
+    
+
+class Forum(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    topic = models.CharField(max_length=300)
+    description = models.CharField(max_length=1000, blank=True)
+    date_created = models.DateTimeField(auto_now_add=True, null=True)
+    parent_post = models.ForeignKey("self", null=True, blank=True, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.id)
+
+    class Meta:
+        ordering = ["date_created"]
