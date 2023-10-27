@@ -59,7 +59,7 @@ class Opportunity(models.Model):
     tags = models.ManyToManyField(Tag, blank=True)
 
     def __str__(self):
-        return self.name
+        return str(self.id)
 
     class Meta:
         ordering = ["name"]
@@ -91,7 +91,7 @@ class User(AbstractUser):
 
     followed_opps = models.ManyToManyField(Opportunity, blank=True)
     def __str__(self):
-        return str(self.username)
+        return str(self.id)
 
     def get_full_name(self) -> str:
         return super().get_full_name()
