@@ -10,6 +10,7 @@ urlpatterns = [
     path("waitlist/", waitlist, name="waitlist"),
     path('logout/', clogout, name='logout'),
     path("signup/", SignUp.as_view(), name="signup"),
+    path("login/", Login.as_view(), name="login"),
     path("opportunity/", OpportunityView, name="opportunity"),
     path("forum/", ForumView, name="forum"),
     path('profile/<str:username>/', profile, name='profile'),
