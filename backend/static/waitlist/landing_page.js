@@ -76,3 +76,47 @@ for (let i = 0; i < quotelines.length; i++) {
 
 fade_scroll("#introducing h5");
 fade_scroll("#introducing h2");
+
+const productBoxes = document.querySelectorAll('.product-box');
+const prevButton = document.getElementById('prev-btn');
+const nextButton = document.getElementById('next-btn');
+let currentBox = 1; // Initial box at the center
+
+function updateProductBoxStyles() {
+    productBoxes.forEach((box, index) => {
+        const distance = Math.abs(currentBox - index);
+        const scale = 1 - distance * 0.1;
+        const background = index === currentBox ? '#ffcfcf' : '#ccadbe';
+        const zIndex = index === currentBox ? 1 : 0;
+
+        box.style.transform = `scale(${scale})`;
+        box.style.background = background;
+        box.style.zIndex = zIndex;
+    });
+}
+
+function navigate(direction) {
+    if (direction === 'prev' && currentBox > 0) {
+        currentBox--;
+    } else if (direction === 'next' && currentBox < productBoxes.length - 1) {
+        currentBox++;
+    }
+
+    updateProductBoxStyles();
+}
+
+prevButton.addEventListener('click', () => navigate('prev'));
+nextButton.addEventListener('click', () => navigate('next'));
+
+document.addEventListener("keydown", function(event) {
+    if (event.key === "ArrowLeft") {
+        // Handle left arrow key press (previous item)
+        navigate("prev");
+    } else if (event.key === "ArrowRight") {
+        // Handle right arrow key press (next item)
+        navigate("next");
+    }
+});
+
+// Initial update
+updateProductBoxStyles();

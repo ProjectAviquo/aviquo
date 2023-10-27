@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.views import LoginView
 from django.contrib.auth import logout
 from django.shortcuts import redirect, render,  get_object_or_404
 from django.urls import reverse_lazy
@@ -110,13 +111,15 @@ class CustomAuthForm(UserCreationForm):
 class SignUp(CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy("login")
-    template_name = "registration/signup.html"
+    template_name = "accounts/signup.html"
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        context['pridemonthmode'] = False;
+        context['pridemonthmode'] = False
         return context
 
+class Login(LoginView):
+    template_name="accounts/login.html"
 # class ForumView(generics.CreateAPIView):
 #     queryset = Forum.objects.all()
 #     serializer_class = ForumSerializer

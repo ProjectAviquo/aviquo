@@ -7,13 +7,13 @@ from .views import ForumView, OpportunityView, SignUp, home, profile, clogout, w
 
 urlpatterns = [
     path("", home, name="home"),
-    path("Waitlist/", waitlist, name="waitlist"),
+    path("waitlist/", waitlist, name="waitlist"),
     path('logout/', clogout, name='logout'),
     path("signup/", SignUp.as_view(), name="signup"),
     path("opportunity/", OpportunityView, name="opportunity"),
     path("forum/", ForumView, name="forum"),
     path('profile/<str:username>/', profile, name='profile'),
-    path('profile', profilee, name='profilee'),
+    path('profile/', profilee, name='profilee'),
     path("password_reset/", CustomPasswordResetView.as_view(),
              name="password_reset"),
 ]
