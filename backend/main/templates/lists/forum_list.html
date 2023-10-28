@@ -95,6 +95,12 @@
                         <h2>{{ forum.topic }}</h2>
                         <p>{{ forum.description }}</p>
                         <button  class="btn btn-pink btn-block reply-button", id="reply-button">Reply</button>
+                        {%if forum.user == user%}
+                        <form method="post" action="{% url 'delete_forum' forum.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                        {%endif%}
                     </td>
                 </tr>
                 
