@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.views import LoginView
 from django.contrib.auth import logout
 from django.shortcuts import redirect, render,  get_object_or_404
 from django.urls import reverse_lazy
@@ -8,7 +9,7 @@ from django.views.generic.edit import CreateView
 from rest_framework import generics
 from .models import Forum, Opportunity, User, Waitlist
 from .serializers import ForumSerializer, WaitlistSerializer
-
+from django.http import JsonResponse
 
 class EditProfileForm(forms.ModelForm):
     class Meta:
@@ -77,14 +78,11 @@ def ForumView(request):
         form = AddForumForm(request.POST)
         if form.is_valid():
            # Create a new Forum instance but don't save it yet
-            new_forum = form.save(commit=False)
+            new_forum = form.save()
 
-            # Set the username field of the forum to the user's username
-            new_forum.username = user.username
-
-            # Save the forum object with the updated username
+            new_forum.user = user
+            print(new_forum.user.username)
             new_forum.save()
-
             return redirect("forum")
 
     else:
@@ -110,13 +108,15 @@ class CustomAuthForm(UserCreationForm):
 class SignUp(CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy("login")
-    template_name = "registration/signup.html"
+    template_name = "accounts/signup.html"
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        context['pridemonthmode'] = False;
+        context['pridemonthmode'] = False
         return context
 
+class Login(LoginView):
+    template_name="accounts/login.html"
 # class ForumView(generics.CreateAPIView):
 #     queryset = Forum.objects.all()
 #     serializer_class = ForumSerializer
@@ -125,3 +125,35 @@ class SignUp(CreateView):
 class WaitlistView(generics.CreateAPIView):
     queryset = Waitlist.objects.all
     serializer_class = WaitlistSerializer
+
+def delete_forum(request, forum_id):
+    try:
+        forum = Forum.objects.get(pk=forum_id)
+        # Check if the user has permission to delete the forum (e.g., is the author)
+        if request.user == forum.user:
+            forum.delete()
+    except Forum.DoesNotExist:
+        pass
+
+    # Redirect to the forum list page or any other page you prefer
+    return redirect('forum') 
+
+def follow_opportunity(request):
+    if request.method == "POST":
+        opportunity_id = request.POST.get("opportunity_id")
+        action = request.POST.get("action")
+        user = request.user
+
+        # Retrieve the opportunity instance
+        opportunity = Opportunity.objects.get(id=opportunity_id)
+
+        if action == "follow":
+            user.followed_opps.add(opportunity)
+            response = "followed"
+        else:
+            user.followed_opps.remove(opportunity)
+            response = "unfollowed"
+
+        return JsonResponse(response, safe=False)
+
+    return JsonResponse({}, status=400)

@@ -84,10 +84,51 @@
                         {% endfor %}
                     </ul>
                 </td>
+                <td>    
+                    {% if opportunity in user.followed_opps.all %}
+                    <button class="follow-button" data-opportunity-id="{{ opportunity.id }}">
+                        Unfollow
+                    </button>
+                    {% else %}
+                    <button class="follow-button" data-opportunity-id="{{ opportunity.id }}">
+                        Follow
+                    </button>
+                    {% endif %}
+                </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+    <!-- In your HTML template, inside a <script> tag or in an external JavaScript file -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".follow-button").click(function () {
+                const button = $(this);
+                const opportunityId = button.data("opportunity-id");
+                const action = button.text().toLowerCase(); // Follow or Unfollow
+
+                // Send an AJAX request to your Django view
+                $.ajax({
+                    type: "POST",
+                    url: "/follow-opportunity/",  // Replace with the actual URL
+                    data: {
+                        opportunity_id: opportunityId,
+                        action: action,
+                        csrfmiddlewaretoken: '{{ csrf_token }}',  // Include the CSRF token
+                    },
+                    success: function (response) {
+                        if (response === "followed") {
+                            button.text("Unfollow");
+                        } else {
+                            button.text("Follow");
+                        }
+                    },
+                });
+            });
+        });
+    </script>
+
     {%endblock%}
     
 </body>

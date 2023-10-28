@@ -15,14 +15,6 @@
     {% block content %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        /* .sidebar-container {
-                    display: none;
-                } */
-    
-        /* Add styles for the sidebar */
-    
-        /* Adjust content position when the sidebar is open */
-  
         body {
             background: linear-gradient(to right, #FF99CC, #E5D1FF, #FFFFFF);
             height: 100vh;
@@ -51,39 +43,95 @@
             background-color: #FF66B2;
             border-color: #FF66B2;
         }
+    
+        .followed-opps {
+            margin-top: 20px;
+        }
     </style>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="profile-container">
-                    <h1>User Profile</h1>
-                    <ul>
-                        <li class="profile-list-item"><strong>Username:</strong> {{ user.username }}</li>
-                        <li class="profile-list-item"><strong>Email:</strong> {{ user.email }}</li>
-                        <li class="profile-list-item"><strong>First Name:</strong> {{ user.first_name }}</li>
-                        <li class="profile-list-item"><strong>Last Name:</strong> {{ user.last_name }}</li>
-                    </ul>
-                    <h2>Edit Profile</h2>
-                    <form method="post">
-                        {% csrf_token %}
-                        {{ form.as_p }}
-                        <button type="submit" class="btn btn-pink btn-block">Save Changes</button>
-                    </form>
-                
-                </div>
-            </div>
-        </div>
+    <div class="profile-container">
+        <h1>User Profile</h1>
+        <ul>
+            <li class="profile-list-item"><strong>Username:</strong> {{ user.username }}</li>
+            <li class="profile-list-item"><strong>Email:</strong> {{ user.email }}</li>
+            <li class="profile-list-item"><strong>First Name:</strong> {{ user.first_name }}</li>
+            <li class="profile-list-item"><strong>Last Name:</strong> {{ user.last_name }}</li>
+        </ul>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-pink btn-block">Save Changes</button>
+        </form>
+        <h2>Opportunities you follow</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>URL</th>
+                    <th>Tags</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for opportunity in user.followed_opps.all %}
+                <tr>
+                    <td>{{ opportunity.id }}</td>
+                    <td>{{ opportunity.name }}</td>
+                    <td>{{ opportunity.description }}</td>
+                    <td><a href="{{ opportunity.URL }}" target="_blank">{{ opportunity.URL }}</a></td>
+                    <td>
+                        <ul>
+                            {% for tag in opportunity.tags.all %}
+                            <li>{{ tag.name }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                    <td>
+                        {% if opportunity in user.followed_opps.all %}
+                        <button class="follow-button" data-opportunity-id="{{ opportunity.id }}">
+                            Unfollow
+                        </button>
+                        {% else %}
+                        <button class="follow-button" data-opportunity-id="{{ opportunity.id }}">
+                            Follow
+                        </button>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
-    {% endblock content %}
-    
-    
-   
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".follow-button").click(function () {
+                const button = $(this);
+                const opportunityId = button.data("opportunity-id");
+                const action = button.text().toLowerCase(); // Follow or Unfollow
 
-    <!-- Bootstrap JS and jQuery scripts -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+                // Send an AJAX request to your Django view
+                $.ajax({
+                    type: "POST",
+                    url: "/follow-opportunity/",  // Replace with the actual URL
+                    data: {
+                        opportunity_id: opportunityId,
+                        action: action,
+                        csrfmiddlewaretoken: '{{ csrf_token }}',  // Include the CSRF token
+                    },
+                    success: function (response) {
+                        if (response === "followed") {
+                            button.text("Unfollow");
+                        } else {
+                            button.text("Follow");
+                        }
+                    },
+                });
+            });
+        });
+    </script>
+    {% endblock %}
 </body>
 
 </html>
