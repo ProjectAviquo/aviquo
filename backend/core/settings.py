@@ -39,6 +39,7 @@ INSTALLED_APPS = [
 ]
 
 LOGIN_REDIRECT_URL = "/profile"
+LOGIN_URL = '/login/'  # Use the URL you prefer
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

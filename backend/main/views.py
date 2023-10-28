@@ -9,7 +9,7 @@ from django.views.generic.edit import CreateView
 from rest_framework import generics
 from .models import Forum, Opportunity, User, Waitlist
 from .serializers import ForumSerializer, WaitlistSerializer
-
+from django.http import JsonResponse
 
 class EditProfileForm(forms.ModelForm):
     class Meta:
@@ -125,3 +125,35 @@ class Login(LoginView):
 class WaitlistView(generics.CreateAPIView):
     queryset = Waitlist.objects.all
     serializer_class = WaitlistSerializer
+
+def delete_forum(request, forum_id):
+    try:
+        forum = Forum.objects.get(pk=forum_id)
+        # Check if the user has permission to delete the forum (e.g., is the author)
+        if request.user == forum.user:
+            forum.delete()
+    except Forum.DoesNotExist:
+        pass
+
+    # Redirect to the forum list page or any other page you prefer
+    return redirect('forum') 
+
+def follow_opportunity(request):
+    if request.method == "POST":
+        opportunity_id = request.POST.get("opportunity_id")
+        action = request.POST.get("action")
+        user = request.user
+
+        # Retrieve the opportunity instance
+        opportunity = Opportunity.objects.get(id=opportunity_id)
+
+        if action == "follow":
+            user.followed_opps.add(opportunity)
+            response = "followed"
+        else:
+            user.followed_opps.remove(opportunity)
+            response = "unfollowed"
+
+        return JsonResponse(response, safe=False)
+
+    return JsonResponse({}, status=400)
