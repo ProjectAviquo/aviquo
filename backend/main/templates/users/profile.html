@@ -102,6 +102,29 @@
                 {% endfor %}
             </tbody>
         </table>
+        <h2>Forums u posted</h2>
+        <table>
+            <tbody>
+                {% for forum in user.created_forums.all %}
+                <tr>
+                    <td><strong>Username:</strong> {{ forum.user.username }}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <h2>{{ forum.topic }}</h2>
+                        <p>{{ forum.description }}</p>
+                        {%if forum.user == user%}
+                        <form method="post" action="{% url 'delete_forum' forum.id%}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                        {%endif%}
+                    </td>
+                </tr>
+        
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
