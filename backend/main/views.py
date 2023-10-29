@@ -42,9 +42,9 @@ def profile(request, username):
             if form.is_valid():
                 form.save()
             return redirect("profile", username=user.username)
-        return render(request, "users/profile.html", {"user": user, "form": form})
+        return render(request, "users/profile.html", {"user": user, "form": form, "ouser":request.user})
     else:
-        return render(request, "users/profile.html", {"user": user})
+        return render(request, "users/profile.html", {"user": user, "ouser":request.user})
 
 @login_required
 def profilee(request):
@@ -92,7 +92,7 @@ class SignUp(CreateView):
 class Login(LoginView):
     template_name="accounts/login.html"
 
-def delete_forum(request, forum_id,):
+def delete_forum(request, forum_id):
     try:
         forum = Forum.objects.get(pk=forum_id)
         # Check if the user is the author
@@ -104,6 +104,29 @@ def delete_forum(request, forum_id,):
 
     # Redirect to the page that the request originated from
     return redirect(request.META.get('HTTP_REFERER', '/')) 
+
+def follow_user(request):
+    if request.method == "POST":
+        user_id = request.POST.get("user_id")
+        action = request.POST.get("action")
+        user = request.user
+
+        # Retrieve the opportunity instance
+        user_to_follow = User.objects.get(id=user_id)
+
+        if action == "follow":
+            user.following.add(user_to_follow)
+            user_to_follow.followers.add(user)
+            response = "followed"
+        else:
+            user.following.remove(user_to_follow)
+            user_to_follow.followers.remove(user)
+            response = "unfollowed"
+
+        return JsonResponse(response, safe=False)
+
+    return JsonResponse({}, status=400)
+
 
 def follow_opportunity(request):
     if request.method == "POST":
