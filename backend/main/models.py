@@ -78,6 +78,7 @@ class User(AbstractUser):
     followers =  models.ManyToManyField('self', blank=True, symmetrical=False, related_name="followers_set")
 
     followed_opps = models.ManyToManyField(Opportunity, blank=True)
+    created_forums = models.ManyToManyField('Forum', related_name='creator', blank=True)
     def __str__(self):
         return str(self.id)
 

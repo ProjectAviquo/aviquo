@@ -10,21 +10,8 @@ from rest_framework import generics
 from .models import Forum, Opportunity, User, Waitlist
 from .serializers import ForumSerializer, WaitlistSerializer
 from django.http import JsonResponse
+from .forms import EditProfileForm, AddWaitlistForm, AddForumForm, CustomAuthForm, CustomUserCreationForm
 
-class EditProfileForm(forms.ModelForm):
-    class Meta:
-        model = User
-        fields = ["username", "email", "first_name", "last_name"]
-
-class AddWaitlistForm(forms.ModelForm):
-    class Meta:
-        model = Waitlist
-        fields = ["email"]
-
-class AddForumForm(forms.ModelForm):
-    class Meta:
-        model = Forum
-        fields = ["topic", "description"]
 
 def home(request):
     if request.user.is_authenticated:
@@ -81,6 +68,7 @@ def ForumView(request):
             new_forum = form.save()
 
             new_forum.user = user
+            request.user.created_forums.add(new_forum)
             print(new_forum.user.username)
             new_forum.save()
             return redirect("forum")
@@ -89,21 +77,7 @@ def ForumView(request):
         form = AddForumForm()
     return render(request, "lists/forum_list.html", {"forums": forums, "form":form})
 
-class CustomUserCreationForm(UserCreationForm):
-    email = forms.EmailField(required=True)  # Make the email field required
-    class Meta:
-        model = User
-        fields = UserCreationForm.Meta.fields + ("email",)
 
-class CustomAuthForm(UserCreationForm):
-    def __init__(self, *args, **kwargs):
-        super(CustomAuthForm, self).__init__(*args, **kwargs)
-        self.fields.pop('password1')
-        self.fields.pop('password2')
-
-    class Meta:
-        model = User
-        fields = ["username", "password"]
 
 class SignUp(CreateView):
     form_class = CustomUserCreationForm
@@ -117,26 +91,19 @@ class SignUp(CreateView):
 
 class Login(LoginView):
     template_name="accounts/login.html"
-# class ForumView(generics.CreateAPIView):
-#     queryset = Forum.objects.all()
-#     serializer_class = ForumSerializer
 
-
-class WaitlistView(generics.CreateAPIView):
-    queryset = Waitlist.objects.all
-    serializer_class = WaitlistSerializer
-
-def delete_forum(request, forum_id):
+def delete_forum(request, forum_id,):
     try:
         forum = Forum.objects.get(pk=forum_id)
-        # Check if the user has permission to delete the forum (e.g., is the author)
+        # Check if the user is the author
         if request.user == forum.user:
             forum.delete()
+
     except Forum.DoesNotExist:
         pass
 
-    # Redirect to the forum list page or any other page you prefer
-    return redirect('forum') 
+    # Redirect to the page that the request originated from
+    return redirect(request.META.get('HTTP_REFERER', '/')) 
 
 def follow_opportunity(request):
     if request.method == "POST":
