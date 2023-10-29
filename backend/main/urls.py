@@ -18,3 +18,4 @@ urlpatterns = [
     path('delete_forum/<int:forum_id>/', delete_forum, name='delete_forum'),
     path("password_reset/", CustomPasswordResetView.as_view(),
              name="password_reset"),
+]
