@@ -1,4 +1,3 @@
-{%load static%}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,49 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
-    <!-- Bootstrap CSS link -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{% static 'accounts/accounts.css' %}">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Young+Serif&family=Roboto+Slab:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link rel="stylesheet" href="/static/accounts/accounts.css">
 
+    {% include 'imports/fonts.html' %}
     {% include 'imports/jquery.html' %}
     {% include 'imports/gsap.html' %}
-
-    {% block validation_javascript %}{% endblock %}
+    {% include 'imports/components.html' %}
 </head>
 
-<body id="body">
-    <main id="App" style="position: relative">
-        <h2>{% block h2 %}{% endblock %}</h2>
-        <form method="post">
-            {% csrf_token %}
-            {% for input in form %}
-            {{ input.label_tag }}
-            {{ input }}
-            {% endfor %}
-            {% block buttons %}{% endblock %}
-        </form>
+<body>
+    <header>
+        <div id="logo-wrap"><img src="/static/logo.png" id="logo"></div>
+    </header>
+    <main>
+        <div id="form-bg">
+            <h1>{% block header %}{% endblock %}</h1>
+            <form action="{% block action %}{% endblock %}" method="post">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username">
+                {% block inputs %}{% endblock %}
+                <input type="submit" value="{% block button %}{% endblock %}">
+            </form>
+            {% block link %}{% endblock %}
+        </div>
     </main>
-
-    {% if pridemonthmode %}
-    <audio id="audio"
-        src="https://archive.org/download/DELTARUNE_Chapter_2_OST/Chapter%202%20OST%20FLAC/27%20KEYGEN.mp3" preload
-        loop></audio>
-    <button id="keygen" onclick="keygen()"
-        style="position: absolute; width: 100vw; height: 100vh; top: 0; left: 0; border : 0;">
-        Open page
-    </button>
-    <script>
-        function keygen() {
-            $("#keygen").remove();
-            document.getElementById("audio").play();
-        }
-    </script>
-    <link rel="stylesheet" href="/static/registration/pridemonthmode.css">
-    {% endif %}
-    <script src="{% static 'accounts/accounts.js' %}"></script>
+    <script src="/static/accounts/accounts.js"></script>
 </body>
 
 </html>

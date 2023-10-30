@@ -1,162 +1,122 @@
-@keyframes background-thing {
-    0% {
-        background-position-x: -150%;
-    }
-
-    100% {
-        background-position-x: 150%;
-    }
-}
-
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-    font-family: inherit;
-}
-
-body {
-    display: flex;
-
-    height: 100vh;
-    width: 100vw;
+html, body {
     margin: 0;
+    padding: 0;
 
-    background: repeating-linear-gradient(90deg, #fdb9db, #E5D1FF, rgb(219, 202, 214), #fdb9db 25%);
-    background-size: 600% 100%;
-    animation-name: background-thing;
-    animation-duration: 100s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-
-    align-items: center;
-    justify-content: center;
-
-    font-family: "Poppins", sans-serif;
+    background-color: var(--pink-950);
+    font-family: "Inter", sans-serif;
 }
 
-main {
+@media (max-width: 500px) {
+    html, body {
+        font-size: 14px;
+    }
+}
+
+header {
     display: flex;
-
-    flex-direction: column;
     align-items: center;
 
-    width: calc(350px + 10vw);
-    max-width: 90vw;
-
-    padding: 30px 15px;
-
-    border-radius: 40px;
-    box-shadow: 0 2px 3px 2px #BBB;
-
-    background-color: #f3f3f3;
-
-    font-size: 16px;
+    width: 100%;
+    height: 6em;
 }
 
-h2 {
+#logo-wrap {
+    height: 40%;
+    margin-left: 3%;
+}
+
+#logo {
+    height: 100%;
+
+    object-fit: contain;
+}
+
+#form-bg {
+    width: 90%;
+    max-width: 22em;
+
+    margin: auto;
+    padding: 2em;
+
+    background-color: white;
+    box-shadow: -7px 7px 2px #8888;
+    border-radius: 25px;
+}
+
+@media (min-width: 600px) {
+    #form-bg {
+        marg-top: calc(25vh-8em);
+    }
+}
+
+h1, label, a {
+    color: var(--purple-350);
+}
+
+h1 {
+    margin: 0;
+    font-weight: 600;
     font-size: 2em;
 }
 
 form {
-    display: grid;
-    align-items: center;
-    justify-items: center;
-
-    grid-template-columns: 1fr 1fr;
-    row-gap: 10px;
-
-    margin-top: 20px;
+    margin-top: 1em;
 }
 
 label {
-    width: 90%;
-    margin: 0;
-    font-size: 1em;
+    display: block;
+
+    font-size: 1.1em;
+    font-weight: 500;
+
+    margin-top: 1.5em;
 }
 
-.input-span {
-    width: 45%;
-}
+input[type="text"], input[type="password"] {
+    display: block;
 
-input:not([type="submit"]) {
-    width: 90%;
-    height: 1.8em;
-    align-self: center;
-    flex-basis: 50%;
-    flex-grow: 0;
+    width: 100%;
+    height: 2.3em;
 
-    margin: 0;
-
-    border: 1px solid #CCC;
-    border-radius: 3px;
-
-    background-color: #FFF;
-    color: black;
-}
-
-input[type="submit"], a {
-    --button-pad: 0.5em;
-
-    display: inline-block;
-
-    width: fit-content;
-    height: calc(1em + var(--button-pad)*2);
-
-    margin-top: 10px;
-    padding: var(--button-pad) calc(var(--button-pad)*3);
+    margin: 0.2em 0;
+    padding: 0 1em;
 
     border: none;
-    border-radius: 10px;
+    border-radius: 0.6em;
 
-    background-color: #FFF;
-    color: black;
+    background-color: #F0F0F0;
+}
 
-    font-size: 1em;
+input[type="submit"] {
+    width: 100%;
+    padding: 0.6em;
+
+    margin-top: 2em;
+    border: none;
+    border-radius: 0.6em;
+
+    background-color: var(--purple-400);
+    color: white;
+
+    font-weight: 600;
+
+    box-shadow: -4px 4px 3px #AAAA;
+}
+
+.forgot {
+    display: block;
+    font-size: 0.7em;
+}
+
+#need {
+    display: block;
+
+    margin: auto;
+    margin-top: 2.5em;
+    margin-bottom: 0.5em;
+
     text-align: center;
-    line-height: 1em;
-}
 
-a {
-    text-decoration: underline;
-}
-
-input, a, div#combined * {
-    background-color: #FFF;
-    box-shadow: 0 2px 2px 1px #BBB;
-    transition: box-shadow 0.2s;
-}
-
-input:hover, a:hover, div#combined *:hover {
-    box-shadow: 0 3px 2px 1px #AAA;
-}
-
-h2, input, a, span {
-    color: rgb(99, 68, 89);
-}
-
-@media (max-width: 600px) {
-    main {
-        font-size: 14px;
-    }
-
-    div#combined {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    div#combined * {
-        width: 80%;
-        margin: 5px 0;
-    }
-}
-
-@media (min-width: 1800px) {
-    main {
-        font-size: 20px;
-    }
-}
-
-main, h2, form > *{
-    opacity: 0;
+    font-size: 0.9em;
+    font-weight: 600;
 }

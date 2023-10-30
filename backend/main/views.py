@@ -45,6 +45,9 @@ def clogout(request):
         logout(request)
     return redirect("home")
 
+def navbar(request):
+    return render(request, "components/navbar.html")
+
 @login_required
 def profile(request, username):
     user = get_object_or_404(User, username=username)
@@ -68,7 +71,6 @@ def OpportunityView(request):
     opportunities = Opportunity.objects.all()
 
     return render(request, "lists/opportunity_list.html", {"opportunities": opportunities})
-
 
 @login_required
 def ForumView(request):
@@ -110,17 +112,12 @@ class SignUp(CreateView):
     success_url = reverse_lazy("login")
     template_name = "accounts/signup.html"
 
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
-        context['pridemonthmode'] = False
-        return context
-
 class Login(LoginView):
     template_name="accounts/login.html"
+
 # class ForumView(generics.CreateAPIView):
 #     queryset = Forum.objects.all()
 #     serializer_class = ForumSerializer
-
 
 class WaitlistView(generics.CreateAPIView):
     queryset = Waitlist.objects.all
@@ -136,7 +133,7 @@ def delete_forum(request, forum_id):
         pass
 
     # Redirect to the forum list page or any other page you prefer
-    return redirect('forum') 
+    return redirect('forum')
 
 def follow_opportunity(request):
     if request.method == "POST":

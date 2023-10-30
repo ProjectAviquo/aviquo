@@ -1,0 +1,11 @@
+:root {
+    --pink-950: #FFF6F7;
+
+    --purple-350: #6A3D64;
+    --purple-400: #6C4889;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-size: inherit;
+}

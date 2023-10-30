@@ -1,12 +1,12 @@
 {% extends "accounts/account_template.html" %}
 
-{% block validation_javascript %}{% endblock %}
-
-{% block title %}Sign In{% endblock %}
-{% block h2 %}Sign In{% endblock %}
-
-{% block buttons %}
-<a href="{% url 'password_reset' %}">Lost password?</a>
-<input type="submit" value="Sign In"/>
-
-{% endblock %}
+{% block title %}Login{% endblock %}
+{% block header %}LOGIN{% endblock %}
+{% block action %}/login{% endblock %}
+{% block button %}LOGIN{% endblock %}
+{% block link %}<a href="/singup" id="need">Need to create an account?</a>{% endblock %}
+{% block inputs %}
+<label for="password">Password</label>
+<input type="password" name="password" id="password">
+<a href="/reset_password" class="forgot">Forgot password?</a>
+{% endblock%}
