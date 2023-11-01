@@ -7,7 +7,7 @@
 {% block link %}<a href="/login" id="need">Already have an account?</a>{% endblock %}
 {% block inputs %}
 <label for="password">Password</label>
-<input type="password" name="password" id="password">
+<input type="password" name="password1" autocomplete="new-password" required id="password">
 <label for="password2">Confirm Password</label>
-<input type="password" name="password2" id="password2">
+<input type="password" name="password2" autocomplete="new-password" required id="password2">
 {% endblock%}
