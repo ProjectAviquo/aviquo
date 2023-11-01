@@ -21,8 +21,10 @@
         <div id="form-bg">
             <h1>{% block header %}{% endblock %}</h1>
             <form action="{% block action %}{% endblock %}" method="post">
+                {% csrf_token %}
                 <label for="username">Username</label>
-                <input type="text" name="username" id="username">
+                <input type="text" name="username" autofocus autocapitalize="none" autocomplete="username"
+                    maxlength="150" required id="id_username">
                 {% block inputs %}{% endblock %}
                 <input type="submit" value="{% block button %}{% endblock %}">
             </form>
