@@ -50,6 +50,17 @@
     </style>
     <div class="profile-container">
         <h1>User Profile</h1>
+        {%if ouser.username != user.username %}
+            {% if user in ouser.following.all %}
+            <button class="follow-user-button" data-user-id="{{ user.id }}">
+                Unfollow
+            </button>
+            {% else %}
+            <button class="follow-user-button" data-user-id="{{ user.id }}">
+                Follow
+            </button>
+            {% endif %}
+        {%endif%}
         <ul>
             <li class="profile-list-item"><strong>Username:</strong> {{ user.username }}</li>
             <li class="profile-list-item"><strong>Email:</strong> {{ user.email }}</li>
@@ -102,6 +113,63 @@
                 {% endfor %}
             </tbody>
         </table>
+        <h2>Forums u posted</h2>
+        <table>
+            <tbody>
+                {% for forum in user.created_forums.all %}
+                <tr>
+                    <td><strong>Username:</strong> {{ forum.user.username }}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <h2>{{ forum.topic }}</h2>
+                        <p>{{ forum.description }}</p>
+                        {%if forum.user == user%}
+                        <form method="post" action="{% url 'delete_forum' forum.id%}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                        {%endif%}
+                    </td>
+                </tr>
+        
+                {% endfor %}
+            </tbody>
+        </table>
+        <h2>Followers</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for uuser in user.followers.all %}
+                <tr>
+                    <td>{{ uuser.id }}</td>
+                    <td>{{ uuser.username }}</td>
+                    
+                {% endfor %}
+            </tbody>
+        </table>
+        <h2>Following</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for uuser in user.following.all %}
+                <tr>
+                    <td>{{ uuser.id }}</td>
+                    <td>{{ uuser.username }}</td>
+        
+                    {% endfor %}
+            </tbody>
+        </table>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
@@ -117,6 +185,29 @@
                     url: "/follow-opportunity/",  // Replace with the actual URL
                     data: {
                         opportunity_id: opportunityId,
+                        action: action,
+                        csrfmiddlewaretoken: '{{ csrf_token }}',  // Include the CSRF token
+                    },
+                    success: function (response) {
+                        if (response === "followed") {
+                            button.text("Unfollow");
+                        } else {
+                            button.text("Follow");
+                        }
+                    },
+                });
+            });
+            $(".follow-user-button").click(function () {
+                const button = $(this);
+                const userId = button.data("user-id");
+                const action = button.text().toLowerCase(); // Follow or Unfollow
+                console.log(userId)
+                // Send an AJAX request to your Django view
+                $.ajax({
+                    type: "POST",
+                    url: "/follow-user/",  // Replace with the actual URL
+                    data: {
+                        user_id: userId,
                         action: action,
                         csrfmiddlewaretoken: '{{ csrf_token }}',  // Include the CSRF token
                     },
