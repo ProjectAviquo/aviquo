@@ -1,1 +1,24 @@
 <link rel="stylesheet" href="/static/components.css">
+<script>
+    $(document).ready(() => {
+        gsap.fromTo(".lifted-box",
+            {
+                x: -7,
+                y: 7,
+                boxShadow: "0 0 10px 0 #8880",
+                opacity: 0,
+                blur: 2
+            },
+            {
+                x: 0,
+                y: 0,
+                opacity: 1,
+                ease: "power2.out",
+                duration: 1,
+                delay: 0.4,
+                blur: 0,
+                boxShadow: "-7px 7px 2px 0 #8888"
+            }
+        );
+    });
+</script>

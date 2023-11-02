@@ -37,3 +37,12 @@
     border-width: 0 0 4em 3.65em;
     border-color: transparent transparent transparent white;
 }
+
+.lifted-box {
+    margin: auto;
+    padding: 2em;
+
+    background-color: white;
+    box-shadow: -7px 7px 2px 0 #8888;
+    border-radius: 25px;
+}

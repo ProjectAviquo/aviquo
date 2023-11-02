@@ -1,37 +1,26 @@
+{% extends "components/box_page.html" %}
 <!DOCTYPE html>
 <html lang="en">
+{% block title %}{% block the_title %}{% endblock %}{% endblock %}</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="/static/accounts/accounts.css">
+{% block head %}
+<link rel="stylesheet" href="/static/accounts/accounts.css">
+{% endblock %}
 
-    {% include 'imports/fonts.html' %}
-    {% include 'imports/jquery.html' %}
-    {% include 'imports/gsap.html' %}
-    {% include 'imports/components.html' %}
-</head>
 
-<body>
-    <header>
-        <div id="logo-wrap"><img src="/static/logo.png" id="logo"></div>
-    </header>
-    <main>
-        <div id="form-bg">
-            <h1>{% block header %}{% endblock %}</h1>
-            <form action="{% block action %}{% endblock %}" method="post">
-                {% csrf_token %}
-                <label for="username">Username</label>
-                <input type="text" name="username" autofocus autocapitalize="none" autocomplete="username"
-                    maxlength="150" required id="id_username">
-                {% block inputs %}{% endblock %}
-                <input type="submit" value="{% block button %}{% endblock %}">
-            </form>
-            {% block link %}{% endblock %}
-        </div>
-    </main>
-    <script src="/static/accounts/accounts.js"></script>
-</body>
+{% block content %}
+<h1>{% block header %}{% endblock %}</h1>
+<form action="{% block action %}{% endblock %}" method="post">
+    {% csrf_token %}
+    <label for="username">Username</label>
+    <input type="text" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required
+        id="id_username">
+    {% block inputs %}{% endblock %}
+    <input type="submit" value="{% block button %}{% endblock %}">
+</form>
+{% block link %}{% endblock %}
+{% endblock %}
 
-</html>
+{% block after_content %}
+<script src="/static/accounts/accounts.js"></script>
+{% endblock %}

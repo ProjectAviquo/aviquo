@@ -31,21 +31,14 @@ header {
     object-fit: contain;
 }
 
-#form-bg {
+.lifted-box {
     width: 90%;
     max-width: 22em;
-
-    margin: auto;
-    padding: 2em;
-
-    background-color: white;
-    box-shadow: -7px 7px 2px #8888;
-    border-radius: 25px;
 }
 
 @media (min-width: 600px) {
     #form-bg {
-        marg-top: calc(25vh-8em);
+        margin-top: calc(25vh-8em);
     }
 }
 
@@ -70,6 +63,10 @@ label {
     font-weight: 500;
 
     margin-top: 1.5em;
+}
+
+input {
+    transition: transform 0.1s;
 }
 
 input[type="text"], input[type="password"] {
@@ -101,6 +98,12 @@ input[type="submit"] {
     font-weight: 600;
 
     box-shadow: -4px 4px 3px #AAAA;
+
+    cursor: pointer;
+}
+
+input:hover {
+    transform: scale(1.05);
 }
 
 .forgot {
