@@ -1,11 +1,13 @@
 {% extends "accounts/account_template.html" %}
 
-{% block validation_javascript %}{% endblock %}
-
-{% block title %}Sign Up{% endblock %}
-{% block h2 %}Registration{% endblock %}
-
-{% block buttons %}
-<a href="{% url 'login' %}">Back to Login</a>
-<input type="submit" value="Sign Up" />
-{% endblock %}
+{% block the_title %}Sign Up{% endblock %}
+{% block header %}SIGN UP{% endblock %}
+{% block action %}/signup/{% endblock %}
+{% block buttons %}<input type="submit" value="Sign Up" />{% endblock %}
+{% block link %}<a href="/login/" id="need">Already have an account?</a>{% endblock %}
+{% block inputs %}
+<label for="password">Password</label>
+<input type="password" name="password1" autocomplete="new-password" required id="password">
+<label for="password2">Confirm Password</label>
+<input type="password" name="password2" autocomplete="new-password" required id="password2">
+{% endblock%}

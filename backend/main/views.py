@@ -26,11 +26,14 @@ def waitlist(request):
             return redirect("waitlist")
     else:
         form = AddWaitlistForm()
-    return render(request, "waitlist/landing_page.html", {"form":form})
+    return render(request, "waitlist/waitlist.html", {"form":form})
 def clogout(request):
     if request.user.is_authenticated:
         logout(request)
     return redirect("home")
+
+def navbar(request):
+    return render(request, "components/navbar.html")
 
 @login_required
 def profile(request, username):
@@ -55,7 +58,6 @@ def OpportunityView(request):
     opportunities = Opportunity.objects.all()
 
     return render(request, "lists/opportunity_list.html", {"opportunities": opportunities})
-
 
 @login_required
 def ForumView(request):
@@ -84,13 +86,9 @@ class SignUp(CreateView):
     success_url = reverse_lazy("login")
     template_name = "accounts/signup.html"
 
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
-        context['pridemonthmode'] = False
-        return context
-
 class Login(LoginView):
     template_name="accounts/login.html"
+
 
 def delete_forum(request, forum_id):
     try:
@@ -103,7 +101,7 @@ def delete_forum(request, forum_id):
         pass
 
     # Redirect to the page that the request originated from
-    return redirect(request.META.get('HTTP_REFERER', '/')) 
+    return redirect(request.META.get('HTTP_REFERER', '/'))
 
 def follow_user(request):
     if request.method == "POST":
@@ -126,7 +124,6 @@ def follow_user(request):
         return JsonResponse(response, safe=False)
 
     return JsonResponse({}, status=400)
-
 
 def follow_opportunity(request):
     if request.method == "POST":

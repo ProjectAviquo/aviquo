@@ -1,0 +1,48 @@
+:root {
+    --pink-950: #FFF6F7;
+
+    --purple-350: #6A3D64;
+    --purple-400: #6C4889;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-size: inherit;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: flex-start;
+
+    width: fit-content;
+}
+
+.navbar div {
+    width: 3.6em;
+    padding: 1em 0.8em;
+    background-color: white;
+}
+
+.navbar img {
+    width: 2em;
+    height: auto;
+}
+
+.navbar::after {
+    content: "";
+
+    border: 0 solid white;
+    border-width: 0 0 4em 3.65em;
+    border-color: transparent transparent transparent white;
+}
+
+.lifted-box {
+    margin: auto;
+    padding: 2em;
+
+    background-color: white;
+    box-shadow: -7px 7px 2px 0 #8888;
+    border-radius: 25px;
+}
