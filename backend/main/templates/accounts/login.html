@@ -3,8 +3,8 @@
 {% block the_title %}Login{% endblock %}
 {% block header %}LOGIN{% endblock %}
 {% block action %}/login/{% endblock %}
-{% block button %}LOGIN{% endblock %}
-{% block link %}<a href="/singup/" id="need">Need to create an account?</a>{% endblock %}
+{% block buttons %}<input type="submit" value="Login" />{% endblock %}
+{% block link %}<a href="/signup/" id="need">Need to create an account?</a>{% endblock %}
 {% block inputs %}
 <label for="password">Password</label>
 <input type="password" name="password" autocomplete="current-password" required id="password">

@@ -69,7 +69,7 @@ input {
     transition: transform 0.1s;
 }
 
-input[type="text"], input[type="password"] {
+input[type="text"], input[type="password"], input[type="email"] {
     display: block;
 
     width: 100%;
