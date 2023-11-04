@@ -1,0 +1,82 @@
+:root {
+    --padding-primary: 4vh 12vw;
+    --border-radius-primary: 8px;
+    --box-shadow-primary: rgba(0,0,0, 0.05) 0 3px 10px, rgba(0,0,0, 0.02) 0 0 0 1px;
+}
+
+* {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
+
+body {
+    background-color: #FFF6F7;
+}
+
+main {
+    padding: 6vh 12vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6vh;
+
+}
+.main-profile-section {
+    margin: auto;
+    width: 50%;
+    background-color: #fff;
+    padding: 8vh 4vw;
+    border-radius: var(--border-radius-primary);
+    box-shadow: var(--box-shadow-primary);
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.main-profile-section-avatar-upload {
+    width: 50%;
+}
+
+input {
+    background-color: #F6EDFF ;
+    border-radius: 8px;
+    border: none;
+    padding: 4px 2px;
+    outline: none;
+}
+
+h1 {
+    font-size: 36px;
+    margin-top: 0;
+    text-align: left;
+}
+
+p {
+
+}
+
+fieldset {
+    display: flex;
+    flex-direction: row;
+    outline: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    gap: 10px;
+}
+
+button {
+    border-radius: var(--border-radius-primary);
+    border: none;
+    padding: 5px 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    background-color: rgb(241, 229, 239);
+    color: rgb(86, 19, 86);
+    background-color: rgb(86, 19, 86);
+    color: rgb(241, 229, 239);
+}
+
+@media screen and (max-width: 960px) {
+
+}
