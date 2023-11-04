@@ -1,6 +1,8 @@
 :root {
     --pink-950: #FFF6F7;
+    --pink-900: #F6EDFF;
 
+    --purple-200: #311041;
     --purple-350: #6A3D64;
     --purple-400: #6C4889;
 }
@@ -11,17 +13,22 @@
 }
 
 .navbar {
+    position: fixed;
+    left: 0;
+    top: 0;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-self: flex-start;
 
     width: fit-content;
+    z-index: 100;
 }
 
 .navbar div {
     width: 3.6em;
-    padding: 1em 0.8em;
+    padding: 0.5em 0.8em;
     background-color: white;
 }
 
@@ -45,4 +52,13 @@
     background-color: white;
     box-shadow: -7px 7px 2px 0 #8888;
     border-radius: 25px;
+}
+
+.header-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 1.5em;
+    background-color: var(--purple-350);
 }

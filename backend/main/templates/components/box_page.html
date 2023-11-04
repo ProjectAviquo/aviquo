@@ -6,23 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
 
-    {% block head %}
-    <link rel="stylesheet" href="/static/accounts/accounts.css">
-    {% endblock %}
+    {% block head %}{% endblock %}
 
     {% include 'imports/fonts.html' %}
     {% include 'imports/jquery.html' %}
     {% include 'imports/gsap.html' %}
     {% include 'imports/components.html' %}
+    {% include 'imports/box.html' %}
 
     {% block imports %}
     {% endblock %}
 </head>
 
 <body>
+    {% block navbar %}
+    {% endblock %}
+    {% block header %}
     <header>
         <div id="logo-wrap"><a href="/"><img src="/static/logo.png" alt="Main Page" id="logo"></a></div>
     </header>
+    {% endblock header %}
     <main>
         <div class="lifted-box">
             {% block content %}
@@ -30,7 +33,8 @@
             {% endblock %}
         </div>
     </main>
+    {% block after_content %}
+    {% endblock after_content %}
 </body>
-{% block after_content %}
-{% endblock after_content %}
+
 </html>

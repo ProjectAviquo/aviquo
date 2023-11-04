@@ -1,33 +1,28 @@
-{% extends 'base.html' %}
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>User Profile</title>
-        <link rel="stylesheet" type="text/css" href="profile.css"/>
-        <link rel="preconnect" href="https://fonts.googleapis.com"/>
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet"/>
-        <link rel="stylesheet" href="/static/users/profile.css">
-    </head>
-    <body>
-        <main>
-        <div class="main-profile-section">
-            <div class="main-profile-section-avatar-upload">
-                <h3>Edit Profile</h3>
-                <button>Upload Avatar</button>
-            </div>
-            <form method="post">
-                {% csrf_token %} {{ form.as_p }}
-                <label>Grade Level</label>
-                <select>
-                    <option>9th Grade</option>
-                    <option>10th Grade</option>
-                    <option>11th Grade</option>
-                    <option>12th Grade</option>
-                <button type="submit">Save Changes</button>
-            </form>
-        </div>
-        <button onclick="window.location.href = '/'">Back to Home</button>
-        </main>
-    </body>
-</html>
+{% extends 'components/box_plus.html' %}
+{% block title %}User Profile{% endblock title %}
+{% block head %}
+<link rel="stylesheet" href="/static/users/profile.css" />
+{% endblock head %}
+
+{% block content %}
+<div id="content">
+    <div id="left-side">
+        <h3>Edit Profile</h3>
+        <img src="https://fastly.picsum.photos/id/643/200/200.jpg?hmac=ouS38xYuy8iE3e24i3dNN11vJoBa6kKr3HzduEJ5Msk" id="profile-pic">
+        <button>Upload Avatar</button>
+    </div>
+    <div id="middle-sep"></div>
+    <form method="post" id="right-side">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <label>Grade Level</label>
+        <select>
+            <option>9th Grade</option>
+            <option>10th Grade</option>
+            <option>11th Grade</option>
+            <option>12th Grade</option>
+            <button type="submit">Save Changes</button>
+        </select>
+    </form>
+</div>
+{% endblock content %}
