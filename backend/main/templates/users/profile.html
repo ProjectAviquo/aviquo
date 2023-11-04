@@ -2,18 +2,129 @@
 <html>
     <head>
         <title>User Profile</title>
+        <link rel="stylesheet" type="text/css" href="profile.css"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet"/>
+        <style>
+            :root {
+                --padding-primary: 4vh 12vw;
+                --border-radius-primary: 8px;
+                --box-shadow-primary: rgba(0,0,0, 0.05) 0 3px 10px, rgba(0,0,0, 0.02) 0 0 0 1px;
+            }
+
+            * {
+                font-family: 'Inter', sans-serif;
+                font-weight: 400;
+            }
+
+            body {
+                background-color: #FFF6F7;
+            }
+
+            main {
+                margin: 4vh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 6vh;
+                
+            }
+            section {
+                background-color: #fff;
+                padding: 8vh 4vw;
+                border-radius: var(--border-radius-primary);
+                width: 800px;
+                box-shadow: var(--box-shadow-primary);
+                display: flex;
+                flex-direction: row;
+                gap: 30px;
+            }
+
+            section div {
+
+            }
+
+            input {
+                background-color: #F6EDFF ;
+                border-radius: 8px;
+                border: none;
+                padding: 4px 2px;
+                outline: none;
+            }
+
+            h1 {
+                font-size: 36px;
+                margin-top: 0;
+                text-align: left;
+            }
+
+            p {
+                
+            }
+
+            fieldset {
+                display: flex;
+                flex-direction: row;
+                outline: none;
+                margin: 0;
+                padding: 0;
+                border: 0;
+                gap: 10px;
+            }
+
+            button {
+                border-radius: var(--border-radius-primary);
+                border: none;
+                padding: 5px 20px;
+                margin-bottom: 10px;
+                cursor: pointer;
+                background-color: rgb(241, 229, 239);
+                color: rgb(86, 19, 86);
+                background-color: rgb(86, 19, 86);
+                color: rgb(241, 229, 239);
+            }
+
+            @media screen and (max-width: 960px) {
+                
+            }
+
+        </style>
     </head>
     <body>
-        <h1>User Profile</h1>
-        <p><strong>Username:</strong> {{ user.username }}</p>
-        <p><strong>Email:</strong> {{ user.email }}</p>
-        <p><strong>First Name:</strong> {{ user.first_name }}</p>
-        <p><strong>Last Name:</strong> {{ user.last_name }}</p>
-        <h2>Edit Profile</h2>
-        <form method="post">
-            {% csrf_token %} {{ form.as_p }}
-            <button type="submit">Save Changes</button>
-        </form>
+        <main>
+        
+        <section>
+            <div>
+                <h3>Edit Profile</h3>
+                <button>Upload Avatar</button>
+                
+            </div>
+            
+            <form method="post">
+                <fieldset>
+                    <label>First name</label>
+                    <input/>
+    
+                    <label>Last name</label>
+                    <input/>
+                </fieldset>
+                
+                <label>Username</label>
+                <label>Password</label>
+
+                <select>
+                    <option>9th Grade</option>
+                    <option>10th Grade</option>
+                    <option>11th Grade</option>
+                    <option>12th Grade</option>
+                </select>
+
+                {% csrf_token %} {{ form.as_p }}
+                <button type="submit">Save Changes</button>
+            </form>
+        </section>
         <button onclick="window.location.href = '/'">Back to Home</button>
+        </main>
     </body>
 </html>
