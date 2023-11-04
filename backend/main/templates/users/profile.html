@@ -23,26 +23,27 @@
             }
 
             main {
-                margin: 4vh;
+                padding: 6vh 12vw;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 gap: 6vh;
                 
             }
-            section {
+            .main-profile-section {
+                margin: auto;
+                width: 50%;
                 background-color: #fff;
                 padding: 8vh 4vw;
                 border-radius: var(--border-radius-primary);
-                width: 800px;
                 box-shadow: var(--box-shadow-primary);
                 display: flex;
                 flex-direction: row;
                 gap: 30px;
             }
 
-            section div {
-
+            .main-profile-section-avatar-upload {
+                width: 50%;
             }
 
             input {
@@ -94,36 +95,28 @@
     <body>
         <main>
         
-        <section>
-            <div>
+        <div class="main-profile-section">
+            <div class="main-profile-section-avatar-upload">
                 <h3>Edit Profile</h3>
                 <button>Upload Avatar</button>
-                
             </div>
             
             <form method="post">
-                <fieldset>
-                    <label>First name</label>
-                    <input/>
-    
-                    <label>Last name</label>
-                    <input/>
-                </fieldset>
                 
-                <label>Username</label>
-                <label>Password</label>
+                
 
+                {% csrf_token %} {{ form.as_p }}
+
+                <label>Grade Level</label>
                 <select>
                     <option>9th Grade</option>
                     <option>10th Grade</option>
                     <option>11th Grade</option>
                     <option>12th Grade</option>
                 </select>
-
-                {% csrf_token %} {{ form.as_p }}
                 <button type="submit">Save Changes</button>
             </form>
-        </section>
+        </div>
         <button onclick="window.location.href = '/'">Back to Home</button>
         </main>
     </body>
