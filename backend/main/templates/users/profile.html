@@ -1,228 +1,124 @@
 {% extends 'base.html' %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
+    <head>
+        <title>User Profile</title>
+        <link rel="stylesheet" type="text/css" href="profile.css"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet"/>
+        <style>
+            :root {
+                --padding-primary: 4vh 12vw;
+                --border-radius-primary: 8px;
+                --box-shadow-primary: rgba(0,0,0, 0.05) 0 3px 10px, rgba(0,0,0, 0.02) 0 0 0 1px;
+            }
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            * {
+                font-family: 'Inter', sans-serif;
+                font-weight: 400;
+            }
 
-    {% block title %}
-    <title>User Profile</title>
-    {% endblock %}
-</head>
+            body {
+                background-color: #FFF6F7;
+            }
 
-<body>
-    {% block content %}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body {
-            background: linear-gradient(to right, #FF99CC, #E5D1FF, #FFFFFF);
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-    
-        .profile-container {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            max-width: 400px;
-            text-align: left;
-            color: #8A2BE2;
-        }
-    
-        .profile-list-item {
-            margin-bottom: 10px;
-        }
-    
-        .btn-pink {
-            background-color: #FF66B2;
-            border-color: #FF66B2;
-        }
-    
-        .followed-opps {
-            margin-top: 20px;
-        }
-    </style>
-    <div class="profile-container">
-        <h1>User Profile</h1>
-        {%if ouser.username != user.username %}
-            {% if user in ouser.following.all %}
-            <button class="follow-user-button" data-user-id="{{ user.id }}">
-                Unfollow
-            </button>
-            {% else %}
-            <button class="follow-user-button" data-user-id="{{ user.id }}">
-                Follow
-            </button>
-            {% endif %}
-        {%endif%}
-        <ul>
-            <li class="profile-list-item"><strong>Username:</strong> {{ user.username }}</li>
-            <li class="profile-list-item"><strong>Email:</strong> {{ user.email }}</li>
-            <li class="profile-list-item"><strong>First Name:</strong> {{ user.first_name }}</li>
-            <li class="profile-list-item"><strong>Last Name:</strong> {{ user.last_name }}</li>
-        </ul>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-pink btn-block">Save Changes</button>
-        </form>
-        <h2>Opportunities you follow</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>URL</th>
-                    <th>Tags</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for opportunity in user.followed_opps.all %}
-                <tr>
-                    <td>{{ opportunity.id }}</td>
-                    <td>{{ opportunity.name }}</td>
-                    <td>{{ opportunity.description }}</td>
-                    <td><a href="{{ opportunity.URL }}" target="_blank">{{ opportunity.URL }}</a></td>
-                    <td>
-                        <ul>
-                            {% for tag in opportunity.tags.all %}
-                            <li>{{ tag.name }}</li>
-                            {% endfor %}
-                        </ul>
-                    </td>
-                    <td>
-                        {% if opportunity in user.followed_opps.all %}
-                        <button class="follow-button" data-opportunity-id="{{ opportunity.id }}">
-                            Unfollow
-                        </button>
-                        {% else %}
-                        <button class="follow-button" data-opportunity-id="{{ opportunity.id }}">
-                            Follow
-                        </button>
-                        {% endif %}
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <h2>Forums u posted</h2>
-        <table>
-            <tbody>
-                {% for forum in user.created_forums.all %}
-                <tr>
-                    <td><strong>Username:</strong> {{ forum.user.username }}</td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <h2>{{ forum.topic }}</h2>
-                        <p>{{ forum.description }}</p>
-                        {%if forum.user == user%}
-                        <form method="post" action="{% url 'delete_forum' forum.id%}">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
-                        {%endif%}
-                    </td>
-                </tr>
-        
-                {% endfor %}
-            </tbody>
-        </table>
-        <h2>Followers</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Username</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for uuser in user.followers.all %}
-                <tr>
-                    <td>{{ uuser.id }}</td>
-                    <td>{{ uuser.username }}</td>
-                    
-                {% endfor %}
-            </tbody>
-        </table>
-        <h2>Following</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Username</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for uuser in user.following.all %}
-                <tr>
-                    <td>{{ uuser.id }}</td>
-                    <td>{{ uuser.username }}</td>
-        
-                    {% endfor %}
-            </tbody>
-        </table>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $(".follow-button").click(function () {
-                const button = $(this);
-                const opportunityId = button.data("opportunity-id");
-                const action = button.text().toLowerCase(); // Follow or Unfollow
+            main {
+                padding: 6vh 12vw;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 6vh;
 
-                // Send an AJAX request to your Django view
-                $.ajax({
-                    type: "POST",
-                    url: "/follow-opportunity/",  // Replace with the actual URL
-                    data: {
-                        opportunity_id: opportunityId,
-                        action: action,
-                        csrfmiddlewaretoken: '{{ csrf_token }}',  // Include the CSRF token
-                    },
-                    success: function (response) {
-                        if (response === "followed") {
-                            button.text("Unfollow");
-                        } else {
-                            button.text("Follow");
-                        }
-                    },
-                });
-            });
-            $(".follow-user-button").click(function () {
-                const button = $(this);
-                const userId = button.data("user-id");
-                const action = button.text().toLowerCase(); // Follow or Unfollow
-                console.log(userId)
-                // Send an AJAX request to your Django view
-                $.ajax({
-                    type: "POST",
-                    url: "/follow-user/",  // Replace with the actual URL
-                    data: {
-                        user_id: userId,
-                        action: action,
-                        csrfmiddlewaretoken: '{{ csrf_token }}',  // Include the CSRF token
-                    },
-                    success: function (response) {
-                        if (response === "followed") {
-                            button.text("Unfollow");
-                        } else {
-                            button.text("Follow");
-                        }
-                    },
-                });
-            });
-        });
-    </script>
-    {% endblock %}
-</body>
+            }
+            .main-profile-section {
+                margin: auto;
+                width: 50%;
+                background-color: #fff;
+                padding: 8vh 4vw;
+                border-radius: var(--border-radius-primary);
+                box-shadow: var(--box-shadow-primary);
+                display: flex;
+                flex-direction: row;
+                gap: 30px;
+            }
 
+            .main-profile-section-avatar-upload {
+                width: 50%;
+            }
+
+            input {
+                background-color: #F6EDFF ;
+                border-radius: 8px;
+                border: none;
+                padding: 4px 2px;
+                outline: none;
+            }
+
+            h1 {
+                font-size: 36px;
+                margin-top: 0;
+                text-align: left;
+            }
+
+            p {
+
+            }
+
+            fieldset {
+                display: flex;
+                flex-direction: row;
+                outline: none;
+                margin: 0;
+                padding: 0;
+                border: 0;
+                gap: 10px;
+            }
+
+            button {
+                border-radius: var(--border-radius-primary);
+                border: none;
+                padding: 5px 20px;
+                margin-bottom: 10px;
+                cursor: pointer;
+                background-color: rgb(241, 229, 239);
+                color: rgb(86, 19, 86);
+                background-color: rgb(86, 19, 86);
+                color: rgb(241, 229, 239);
+            }
+
+            @media screen and (max-width: 960px) {
+
+            }
+
+        </style>
+    </head>
+    <body>
+        <main>
+
+        <div class="main-profile-section">
+            <div class="main-profile-section-avatar-upload">
+                <h3>Edit Profile</h3>
+                <button>Upload Avatar</button>
+            </div>
+
+            <form method="post">
+
+
+
+                {% csrf_token %} {{ form.as_p }}
+
+                <label>Grade Level</label>
+                <select>
+                    <option>9th Grade</option>
+                    <option>10th Grade</option>
+                    <option>11th Grade</option>
+                    <option>12th Grade</option>
+                </select>
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+        <button onclick="window.location.href = '/'">Back to Home</button>
+        </main>
+    </body>
 </html>
