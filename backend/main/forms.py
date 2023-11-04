@@ -25,6 +25,16 @@ class AddForumForm(forms.ModelForm):
         model = Forum
         fields = ["topic", "description"]
 class CustomUserCreationForm(UserCreationForm):
+    def __init__(self, *args, **kwargs):
+        super(CustomUserCreationForm, self).__init__(*args, **kwargs)
+        self.fields['password1'].widget.attrs['oninput'] = 'check'
+        self.fields['password2'].widget.attrs['oninput'] = 'check'
+        self.fields['username'].widget.attrs['minlength'] = '3'
+        self.fields['username'].widget.attrs['maxlength'] = '24'
+        self.fields['password1'].widget.attrs['minlength'] = '8'
+        self.fields['password1'].widget.attrs['maxlength'] = '32'
+        self.fields['password1'].widget.attrs['pattern'] = '^(?=.*\d)(?=.*[A-Z])(?=.*[a-z]).+$'
+
     email = forms.EmailField(required=True)  # Make the email field required
     class Meta:
         model = User

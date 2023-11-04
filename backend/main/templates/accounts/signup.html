@@ -16,7 +16,6 @@
         }
     }
 
-    document.getElementById("id_password1").oninput = check;
-    document.getElementById("id_password2").oninput = check;
+    $("<p id='requirements'>Password must include at least one number, uppercase, and lowercase letter</p>").insertAfter($("#id_password1"));
 </script>
 {% endblock %}
