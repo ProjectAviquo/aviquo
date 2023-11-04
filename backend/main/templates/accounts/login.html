@@ -3,10 +3,12 @@
 {% block the_title %}Login{% endblock %}
 {% block header %}LOGIN{% endblock %}
 {% block action %}/login/{% endblock %}
-{% block buttons %}<input type="submit" value="Login" />{% endblock %}
+{% block buttons %}<input type="submit" value="Login" id="submit"/>{% endblock %}
 {% block link %}<a href="/signup/" id="need">Need to create an account?</a>{% endblock %}
-{% block inputs %}
-<label for="password">Password</label>
-<input type="password" name="password" autocomplete="current-password" required id="password">
-<a href="/password_reset/" class="forgot">Forgot password?</a>
-{% endblock %}
+
+{% block after_js %}
+<script>
+    let forgot = $("<a href='/password_reset/' class='forgot'>Forgot password?</a>");
+    forgot.insertBefore($("#submit"));
+</script>
+{% endblock  %}

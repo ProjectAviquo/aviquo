@@ -79,8 +79,6 @@ def ForumView(request):
         form = AddForumForm()
     return render(request, "lists/forum_list.html", {"forums": forums, "form":form})
 
-
-
 class SignUp(CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy("login")
