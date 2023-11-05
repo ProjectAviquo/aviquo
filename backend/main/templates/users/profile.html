@@ -67,12 +67,11 @@
             <li class="profile-list-item"><strong>First Name:</strong> {{ user.first_name }}</li>
             <li class="profile-list-item"><strong>Last Name:</strong> {{ user.last_name }}</li>
         </ul>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-pink btn-block">Save Changes</button>
-        </form>
+        {%if ouser.username == user.username %}
+        <a href="{% url 'edit_profile'%}" target="_blank">Edit Profile</a>
+                {%endif%}
         <h2>Opportunities you follow</h2>
+
         <table>
             <thead>
                 <tr>
