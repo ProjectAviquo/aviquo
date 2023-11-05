@@ -9,7 +9,7 @@
 
 
 {% block content %}
-<h1>{% block header %}{% endblock %}</h1>
+<h1>{% block main_head %}{% endblock %}</h1>
 <form method="post">
     {% csrf_token %}
     {% for input in form %}
