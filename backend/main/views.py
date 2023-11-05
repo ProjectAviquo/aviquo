@@ -50,6 +50,18 @@ def profile(request, username):
         return render(request, "users/profile.html", {"user": user, "ouser":request.user})
 
 @login_required
+def edit_profile(request):
+    user = request.user
+    form = EditProfileForm(instance=user)  # Display the profile form to everyone
+    if request.method == "POST":
+            form = EditProfileForm(request.POST, instance=user)
+            if form.is_valid():
+                form.save()
+            return redirect("profile", username=user.username)
+    return render(request, "users/edit_profile.html", {"user": user, "form": form})
+        
+
+@login_required
 def profilee(request):
     return redirect("profile", request.user.username)
 
