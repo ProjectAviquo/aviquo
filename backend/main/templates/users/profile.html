@@ -6,6 +6,7 @@
 
 {% block content %}
 <div id="top-content">
+    <a href="{% url 'edit_profile' %}">Edit</a>
     <img src="https://picsum.photos/200" id="profile-pic">
     <p id="username">@{{ user.username }}</p>
     <p id="firstname">{% if user.first_name %}{{ user.first_name }}{% else %}{{ user.username }}{% endif %}</p>

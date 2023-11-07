@@ -17,7 +17,7 @@
         {{ form.as_p }}
   
         <div id="buttons">
-            <button onclick="window.location.reload()">Cancel</button>
+            <button type="button" onclick="window.location.href='{% url 'profile' user.username %}';">Cancel</button>
             <input type="submit" value="Save">
         </div>
     </div>
