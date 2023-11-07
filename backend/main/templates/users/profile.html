@@ -8,6 +8,7 @@
 <div id="top-content">
     {% if user.username == ouser.username %}
     <a href="{% url 'edit_profile' %}">Edit</a>
+    <a href="{% url 'logout' %}">Log Out</a>
     {%endif%}
     <img src="https://picsum.photos/200" id="profile-pic">
     <p id="username">@{{ user.username }}</p>
@@ -28,5 +29,120 @@
 {% block after_content %}
 <div class="lifted-box" id="posts">
     <h2>Posts</h2>
+    <table>
+        <tbody>
+            {% for forum in user.created_forums.all %}
+            <tr>
+                <td><strong>Username:</strong> {{ forum.user.username }}</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <h2>{{ forum.topic }}</h2>
+                    <p>{{ forum.description }}</p>
+                    {%if forum.user == user%}
+                    <form method="post" action="{% url 'delete_forum' forum.id%}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                    {%endif%}
+                </td>
+            </tr>
+    
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
+<div class="lifted-box" id="posts">
+    <h2>Opportunities</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>URL</th>
+                <th>Tags</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for opportunity in user.followed_opps.all %}
+            <tr>
+                <td>{{ opportunity.id }}</td>
+                <td>{{ opportunity.name }}</td>
+                <td>{{ opportunity.description }}</td>
+                <td><a href="{{ opportunity.URL }}" target="_blank">{{ opportunity.URL }}</a></td>
+                <td>
+                    <ul>
+                        {% for tag in opportunity.tags.all %}
+                        <li>{{ tag.name }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                <td>
+                    {% if opportunity in user.followed_opps.all %}
+                    <button class="follow-button" data-opportunity-id="{{ opportunity.id }}">
+                        Unfollow
+                    </button>
+                    {% else %}
+                    <button class="follow-button" data-opportunity-id="{{ opportunity.id }}">
+                        Follow
+                    </button>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<script>
+     $(document).ready(function () {
+            $(".follow-button").click(function () {
+                const button = $(this);
+                const opportunityId = button.data("opportunity-id");
+                const action = button.text().toLowerCase(); // Follow or Unfollow
+
+                // Send an AJAX request to your Django view
+                $.ajax({
+                    type: "POST",
+                    url: "/follow-opportunity/",  // Replace with the actual URL
+                    data: {
+                        opportunity_id: opportunityId,
+                        action: action,
+                        csrfmiddlewaretoken: '{{ csrf_token }}',  // Include the CSRF token
+                    },
+                    success: function (response) {
+                        if (response === "followed") {
+                            button.text("Unfollow");
+                        } else {
+                            button.text("Follow");
+                        }
+                    },
+                });
+            });
+            $(".follow-user-button").click(function () {
+                const button = $(this);
+                const userId = button.data("user-id");
+                const action = button.text().toLowerCase(); // Follow or Unfollow
+                console.log(userId)
+                // Send an AJAX request to your Django view
+                $.ajax({
+                    type: "POST",
+                    url: "/follow-user/",  // Replace with the actual URL
+                    data: {
+                        user_id: userId,
+                        action: action,
+                        csrfmiddlewaretoken: '{{ csrf_token }}',  // Include the CSRF token
+                    },
+                    success: function (response) {
+                        if (response === "followed") {
+                            button.text("Unfollow");
+                        } else {
+                            button.text("Follow");
+                        }
+                    },
+                });
+            });
+        });
+</script>
 {% endblock after_content %}
