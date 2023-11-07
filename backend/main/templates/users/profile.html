@@ -25,8 +25,8 @@
     <p id="username">@{{ user.username }}</p>
     <p id="firstname">{% if user.first_name %}{{ user.first_name }}{% else %}{{ user.username }}{% endif %}</p>
     <div id="follow">
-        <a href="#"><span class="fol-num">{{ user.followers.count }}</span> Followers</a>
-        <a href="#"><span class="fol-num">{{ user.following.count }}</span> Following</a>
+        <a href="{% url 'followers'  user.username%}"><span class="fol-num">{{ user.followers.count }}</span> Followers</a>
+        <a href="{% url 'following' user.username %}"><span class="fol-num">{{ user.following.count }}</span> Following</a>
     </div>
 </div>
 <div id="bio">

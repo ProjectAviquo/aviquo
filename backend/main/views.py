@@ -38,17 +38,19 @@ def navbar(request):
 @login_required
 def profile(request, username):
     user = get_object_or_404(User, username=username)
-    form = EditProfileForm(instance=user)  # Display the profile form to everyone
-    if request.user.username == username:
-        if request.method == "POST":
-            form = EditProfileForm(request.POST, instance=user)
-            if form.is_valid():
-                form.save()
-            return redirect("profile", username=user.username)
-        return render(request, "users/profile.html", {"user": user, "form": form, "ouser":request.user})
-    else:
-        return render(request, "users/profile.html", {"user": user, "ouser":request.user})
+    return render(request, "users/profile.html", {"user": user, "ouser":request.user})
+        
 
+@login_required
+def following(request, username):
+    user = get_object_or_404(User, username=username)
+    return render(request, "users/following.html", {"user": user, "ouser":request.user})
+    
+@login_required
+def followers(request, username):
+    user = get_object_or_404(User, username=username)
+    return render(request, "users/followers.html", {"user": user, "ouser":request.user})
+    
 @login_required
 def edit_profile(request):
     user = request.user
