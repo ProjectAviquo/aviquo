@@ -211,7 +211,7 @@ label[for="file"] {
 #buttons {
     display: flex;
     justify-content: space-between;
-
+    margin-top: 20px;
     grid-row: 6/7;
     grid-column: 1/3;
 
