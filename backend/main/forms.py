@@ -13,7 +13,7 @@ class TagFilterForm(forms.Form):
 class EditProfileForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ["first_name", "last_name", "username", "email"]
+        fields = ["first_name", "last_name", "username", "email", "bio"]
 
 class AddWaitlistForm(forms.ModelForm):
     class Meta:

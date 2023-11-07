@@ -15,10 +15,10 @@
     <div id="right-side">
         {% csrf_token %}
         {{ form.as_p }}
-        <p>
+        <!-- <p>
             <label for="bio"></label>
             <textarea name="bio" id="bio" cols="30" rows="10">{{ user.bio }}</textarea>
-        </p>
+        </p> -->
         <div id="buttons">
             <button onclick="window.location.reload()">Cancel</button>
             <input type="submit" value="Save">
@@ -37,6 +37,7 @@
         const [file] = imgInput.files;
         if (file) {
             image.src = URL.createObjectURL(file);
+            console.log(image.src)
             imgLabel.firstChild.nodeValue = "Uploaded!";
         }
     }
