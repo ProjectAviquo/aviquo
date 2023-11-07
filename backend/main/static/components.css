@@ -3,6 +3,7 @@
     --pink-900: #F6EDFF;
 
     --purple-200: #311041;
+    --purple-300: #471360;
     --purple-350: #6A3D64;
     --purple-400: #6C4889;
 }
@@ -61,4 +62,29 @@
     width: 100vw;
     height: 1.5em;
     background-color: var(--purple-350);
+}
+
+@media (max-width: 550px) {
+    .navbar {
+        flex-direction: row;
+        justify-content: center;
+        column-gap: 1em;
+
+        padding: 0.3em;
+        width: 100vw;
+        background-color: var(--pink-900)
+    }
+
+    .navbar img {
+        width: auto;
+        height: 2em;
+    }
+
+    .navbar div {
+        background-color: unset;
+    }
+
+    .navbar::after {
+        content: none;
+    }
 }

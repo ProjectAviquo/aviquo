@@ -5,24 +5,25 @@
 {% endblock head %}
 
 {% block content %}
-<div id="content">
-    <div id="left-side">
-        <h3>Edit Profile</h3>
-        <img src="https://picsum.photos/200" id="profile-pic">
-        <button>Upload Avatar</button>
+<div id="top-content">
+    <img src="https://picsum.photos/200" id="profile-pic">
+    <p id="username">@{{ user.username }}</p>
+    <p id="firstname">{% if user.first_name %}{{ user.first_name }}{% else %}{{ user.username }}{% endif %}</p>
+    <div id="follow">
+        <a href="#"><span class="fol-num">{{ user.followers.count }}</span> Followers</a>
+        <a href="#"><span class="fol-num">{{ user.following.count }}</span> Following</a>
     </div>
-    <div id="middle-sep"></div>
-    <form method="post" id="right-side">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <label>Grade Level</label>
-        <select>
-            <option>9th Grade</option>
-            <option>10th Grade</option>
-            <option>11th Grade</option>
-            <option>12th Grade</option>
-            <button type="submit">Save Changes</button>
-        </select>
-    </form>
+</div>
+<div id="bio">
+    <p>Bio:</p>
+    <div id="bio-text">
+        {{ user.bio }}
+    </div>
 </div>
 {% endblock content %}
+
+{% block after_content %}
+<div class="lifted-box" id="posts">
+    <h2>Posts</h2>
+</div>
+{% endblock after_content %}
