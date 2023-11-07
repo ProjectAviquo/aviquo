@@ -1,13 +1,21 @@
 {% extends "accounts/account_template.html" %}
 
 {% block the_title %}Sign Up{% endblock %}
-{% block header %}SIGN UP{% endblock %}
+{% block main_head %}SIGN UP{% endblock %}
 {% block action %}/signup/{% endblock %}
 {% block buttons %}<input type="submit" value="Sign Up" />{% endblock %}
 {% block link %}<a href="/login/" id="need">Already have an account?</a>{% endblock %}
-{% block inputs %}
-<label for="password">Password</label>
-<input type="password" name="password1" autocomplete="new-password" required id="password">
-<label for="password2">Confirm Password</label>
-<input type="password" name="password2" autocomplete="new-password" required id="password2">
-{% endblock%}
+{% block after_js %}
+<script>
+    function check() {
+        var input = document.getElementById('id_password2');
+        if (input.value != document.getElementById('id_password1').value) {
+            input.setCustomValidity('Passwords Must be Matching');
+        } else {
+            input.setCustomValidity('');
+        }
+    }
+
+    $("<p id='requirements'>Password must include at least one number, uppercase, and lowercase letter</p>").insertAfter($("#id_password1"));
+</script>
+{% endblock %}

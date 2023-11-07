@@ -123,3 +123,13 @@ input:hover {
     font-size: 0.9em;
     font-weight: 600;
 }
+
+#requirements {
+    font-size: 0.7em;
+    margin: 0;
+    color: var(--purple-350);
+}
+
+label[for='id_password2'] {
+    margin-top: 0.5em;
+}

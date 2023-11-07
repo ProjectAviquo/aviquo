@@ -1,0 +1,42 @@
+{% extends 'components/box_plus.html' %}
+{% block title %}User Profile{% endblock title %}
+{% block head %}
+<link rel="stylesheet" href="/static/users/profile_edit.css" />
+{% endblock head %}
+
+{% block content %}
+<form method="post" id="content">
+    <div id="left-side">
+        <h3>Edit Profile</h3>
+        <img src="https://picsum.photos/200" id="profile-pic">
+        <label for="file">Upload Avatar<input accept="image/*" type="file" id="file" name="pic"></label>
+    </div>
+    <div id="middle-sep"></div>
+    <div id="right-side">
+        {% csrf_token %}
+        {{ form.as_p }}
+  
+        <div id="buttons">
+            <button onclick="window.location.reload()">Cancel</button>
+            <input type="submit" value="Save">
+        </div>
+    </div>
+</form>
+{% endblock content %}
+
+{% block after_content %}
+<script>
+    let imgLabel = $("label[for='file']").get(0);
+    let imgInput = $("#file").get(0);
+    let image = $("#profile-pic").get(0);
+
+    imgInput.onchange = evt => {
+        const [file] = imgInput.files;
+        if (file) {
+            image.src = URL.createObjectURL(file);
+            console.log(image.src)
+            imgLabel.firstChild.nodeValue = "Uploaded!";
+        }
+    }
+</script>
+{% endblock after_content %}

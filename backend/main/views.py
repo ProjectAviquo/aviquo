@@ -56,10 +56,14 @@ def edit_profile(request):
     if request.method == "POST":
             form = EditProfileForm(request.POST, instance=user)
             if form.is_valid():
+                bio = request.POST.get('bio')
+                form.instance.bio = bio
+                print(form.instance.bio)
                 form.save()
+                
             return redirect("profile", username=user.username)
-    return render(request, "users/edit_profile.html", {"user": user, "form": form})
-        
+    return render(request, "users/profile_edit.html", {"user": user, "form": form})
+
 
 @login_required
 def profilee(request):
@@ -90,8 +94,6 @@ def ForumView(request):
     else:
         form = AddForumForm()
     return render(request, "lists/forum_list.html", {"forums": forums, "form":form})
-
-
 
 class SignUp(CreateView):
     form_class = CustomUserCreationForm

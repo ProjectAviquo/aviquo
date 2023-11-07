@@ -1,227 +1,29 @@
-{% extends 'base.html' %}
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'components/box_plus.html' %}
+{% block title %}User Profile{% endblock title %}
+{% block head %}
+<link rel="stylesheet" href="/static/users/profile.css" />
+{% endblock head %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    {% block title %}
-    <title>User Profile</title>
-    {% endblock %}
-</head>
-
-<body>
-    {% block content %}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body {
-            background: linear-gradient(to right, #FF99CC, #E5D1FF, #FFFFFF);
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-    
-        .profile-container {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            max-width: 400px;
-            text-align: left;
-            color: #8A2BE2;
-        }
-    
-        .profile-list-item {
-            margin-bottom: 10px;
-        }
-    
-        .btn-pink {
-            background-color: #FF66B2;
-            border-color: #FF66B2;
-        }
-    
-        .followed-opps {
-            margin-top: 20px;
-        }
-    </style>
-    <div class="profile-container">
-        <h1>User Profile</h1>
-        {%if ouser.username != user.username %}
-            {% if user in ouser.following.all %}
-            <button class="follow-user-button" data-user-id="{{ user.id }}">
-                Unfollow
-            </button>
-            {% else %}
-            <button class="follow-user-button" data-user-id="{{ user.id }}">
-                Follow
-            </button>
-            {% endif %}
-        {%endif%}
-        <ul>
-            <li class="profile-list-item"><strong>Username:</strong> {{ user.username }}</li>
-            <li class="profile-list-item"><strong>Email:</strong> {{ user.email }}</li>
-            <li class="profile-list-item"><strong>First Name:</strong> {{ user.first_name }}</li>
-            <li class="profile-list-item"><strong>Last Name:</strong> {{ user.last_name }}</li>
-        </ul>
-        {%if ouser.username == user.username %}
-        <a href="{% url 'edit_profile'%}" target="_blank">Edit Profile</a>
-                {%endif%}
-        <h2>Opportunities you follow</h2>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>URL</th>
-                    <th>Tags</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for opportunity in user.followed_opps.all %}
-                <tr>
-                    <td>{{ opportunity.id }}</td>
-                    <td>{{ opportunity.name }}</td>
-                    <td>{{ opportunity.description }}</td>
-                    <td><a href="{{ opportunity.URL }}" target="_blank">{{ opportunity.URL }}</a></td>
-                    <td>
-                        <ul>
-                            {% for tag in opportunity.tags.all %}
-                            <li>{{ tag.name }}</li>
-                            {% endfor %}
-                        </ul>
-                    </td>
-                    <td>
-                        {% if opportunity in user.followed_opps.all %}
-                        <button class="follow-button" data-opportunity-id="{{ opportunity.id }}">
-                            Unfollow
-                        </button>
-                        {% else %}
-                        <button class="follow-button" data-opportunity-id="{{ opportunity.id }}">
-                            Follow
-                        </button>
-                        {% endif %}
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <h2>Forums u posted</h2>
-        <table>
-            <tbody>
-                {% for forum in user.created_forums.all %}
-                <tr>
-                    <td><strong>Username:</strong> {{ forum.user.username }}</td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <h2>{{ forum.topic }}</h2>
-                        <p>{{ forum.description }}</p>
-                        {%if forum.user == user%}
-                        <form method="post" action="{% url 'delete_forum' forum.id%}">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
-                        {%endif%}
-                    </td>
-                </tr>
-        
-                {% endfor %}
-            </tbody>
-        </table>
-        <h2>Followers</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Username</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for uuser in user.followers.all %}
-                <tr>
-                    <td>{{ uuser.id }}</td>
-                    <td>{{ uuser.username }}</td>
-                    
-                {% endfor %}
-            </tbody>
-        </table>
-        <h2>Following</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Username</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for uuser in user.following.all %}
-                <tr>
-                    <td>{{ uuser.id }}</td>
-                    <td>{{ uuser.username }}</td>
-        
-                    {% endfor %}
-            </tbody>
-        </table>
+{% block content %}
+<div id="top-content">
+    <img src="https://picsum.photos/200" id="profile-pic">
+    <p id="username">@{{ user.username }}</p>
+    <p id="firstname">{% if user.first_name %}{{ user.first_name }}{% else %}{{ user.username }}{% endif %}</p>
+    <div id="follow">
+        <a href="#"><span class="fol-num">{{ user.followers.count }}</span> Followers</a>
+        <a href="#"><span class="fol-num">{{ user.following.count }}</span> Following</a>
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $(".follow-button").click(function () {
-                const button = $(this);
-                const opportunityId = button.data("opportunity-id");
-                const action = button.text().toLowerCase(); // Follow or Unfollow
+</div>
+<div id="bio">
+    <p>Bio:</p>
+    <div id="bio-text">
+        {{ user.bio }}
+    </div>
+</div>
+{% endblock content %}
 
-                // Send an AJAX request to your Django view
-                $.ajax({
-                    type: "POST",
-                    url: "/follow-opportunity/",  // Replace with the actual URL
-                    data: {
-                        opportunity_id: opportunityId,
-                        action: action,
-                        csrfmiddlewaretoken: '{{ csrf_token }}',  // Include the CSRF token
-                    },
-                    success: function (response) {
-                        if (response === "followed") {
-                            button.text("Unfollow");
-                        } else {
-                            button.text("Follow");
-                        }
-                    },
-                });
-            });
-            $(".follow-user-button").click(function () {
-                const button = $(this);
-                const userId = button.data("user-id");
-                const action = button.text().toLowerCase(); // Follow or Unfollow
-                console.log(userId)
-                // Send an AJAX request to your Django view
-                $.ajax({
-                    type: "POST",
-                    url: "/follow-user/",  // Replace with the actual URL
-                    data: {
-                        user_id: userId,
-                        action: action,
-                        csrfmiddlewaretoken: '{{ csrf_token }}',  // Include the CSRF token
-                    },
-                    success: function (response) {
-                        if (response === "followed") {
-                            button.text("Unfollow");
-                        } else {
-                            button.text("Follow");
-                        }
-                    },
-                });
-            });
-        });
-    </script>
-    {% endblock %}
-</body>
-
-</html>
+{% block after_content %}
+<div class="lifted-box" id="posts">
+    <h2>Posts</h2>
+</div>
+{% endblock after_content %}
