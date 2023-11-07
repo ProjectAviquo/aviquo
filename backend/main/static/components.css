@@ -72,7 +72,9 @@
 
         padding: 0.3em;
         width: 100vw;
-        background-color: var(--pink-900)
+        background-color: var(--pink-900);
+
+        box-shadow: 0 5px 4px var(--purple-350)
     }
 
     .navbar img {
@@ -86,5 +88,11 @@
 
     .navbar::after {
         content: none;
+    }
+}
+
+@media (max-width: 400px) {
+    .navbar {
+        column-gap: 0;
     }
 }
