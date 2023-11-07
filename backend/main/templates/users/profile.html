@@ -10,6 +10,17 @@
     <a href="{% url 'edit_profile' %}">Edit</a>
     <a href="{% url 'logout' %}">Log Out</a>
     {%endif%}
+    {%if ouser.username != user.username %}
+    {% if user in ouser.following.all %}
+    <button class="follow-user-button" data-user-id="{{ user.id }}">
+        Unfollow
+    </button>
+    {% else %}
+    <button class="follow-user-button" data-user-id="{{ user.id }}">
+        Follow
+    </button>
+    {% endif %}
+    {%endif%}
     <img src="https://picsum.photos/200" id="profile-pic">
     <p id="username">@{{ user.username }}</p>
     <p id="firstname">{% if user.first_name %}{{ user.first_name }}{% else %}{{ user.username }}{% endif %}</p>
