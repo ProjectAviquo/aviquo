@@ -15,7 +15,7 @@
     <div id="right-side">
         {% csrf_token %}
         {{ form.as_p }}
-  
+        <!---This is not an error, it works in runtime-->
         <div id="buttons">
             <button type="button" onclick="window.location.href='{% url 'profile' user.username %}';">Cancel</button>
             <input type="submit" value="Save">
