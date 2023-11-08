@@ -59,7 +59,8 @@ def edit_profile(request):
             form = EditProfileForm(request.POST, instance=user)
             if form.is_valid():
                 bio = request.POST.get('bio')
-                form.instance.bio = bio
+                print(bio)
+                # form.instance.bio = bio
                 print(form.instance.bio)
                 form.save()
                 return redirect("profile", username=user.username)
