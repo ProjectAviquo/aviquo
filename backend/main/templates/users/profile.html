@@ -21,7 +21,11 @@
     </button>
     {% endif %}
     {%endif%}
+    {%if user.profile_image%}
+    <img src="{{ user.profile_image.url }}" id="profile-pic">
+    {%else%}
     <img src="https://picsum.photos/200" id="profile-pic">
+    {%endif%}
     <p id="username">@{{ user.username }}</p>
     <p id="firstname">{% if user.first_name %}{{ user.first_name }}{% else %}{{ user.username }}{% endif %}</p>
     <div id="follow">

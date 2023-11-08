@@ -71,6 +71,7 @@ class Waitlist(models.Model):
 class User(AbstractUser):
     # other usable fields from AbstractUser:
     #  username, first_name, last_name, email, is_staff, is_active, date_joined, last_login
+    profile_image = models.ImageField(null=True, blank=True, upload_to="images/")
     bio = models.TextField(verbose_name="Bio", max_length=4000, blank=True, null=True)
     date_registered = models.DateTimeField(auto_now_add=True, null=True)
 

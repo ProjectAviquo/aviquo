@@ -11,7 +11,9 @@ from .models import Forum, Opportunity, User, Waitlist
 from .serializers import ForumSerializer, WaitlistSerializer
 from django.http import JsonResponse
 from .forms import EditProfileForm, AddWaitlistForm, AddForumForm, CustomAuthForm, CustomUserCreationForm
-
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
+import os
 
 def home(request):
     if request.user.is_authenticated:
@@ -55,14 +57,15 @@ def followers(request, username):
 def edit_profile(request):
     user = request.user
     form = EditProfileForm(instance=user)  # Display the profile form to everyone
+    old = user.profile_image.url
     if request.method == "POST":
-            form = EditProfileForm(request.POST, instance=user)
+            form = EditProfileForm(request.POST, request.FILES, instance=user)
             if form.is_valid():
-                bio = request.POST.get('bio')
-                print(bio)
+                
                 # form.instance.bio = bio
-                print(form.instance.bio)
+                # form.instance.profile_image = pic
                 form.save()
+
                 return redirect("profile", username=user.username)
     return render(request, "users/profile_edit.html", {"user": user, "form": form})
 

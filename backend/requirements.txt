@@ -9,3 +9,4 @@ pytz==2023.3.post1
 sqlparse==0.4.4
 typing_extensions==4.8.0
 django-crispy-forms==2.0
+Pillow==10.1.0
