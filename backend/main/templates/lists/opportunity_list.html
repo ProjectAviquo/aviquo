@@ -1,65 +1,16 @@
-{% extends 'base.html' %}
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'components/box_plus.html' %}
+{% block title %}Forum{% endblock title %}
+{% block head %}
+<link rel="stylesheet" href="/static/lists/opportunities.css" />
+{% endblock head %}
 
-<head>
-    <meta charset="UTF-8">
-    {% block title %}
-        <title>Opportunities</title>
-    {% endblock %}
+{%block the_lifted%}
 
-</head>
+{%endblock%}
 
-<body>
-    {%block content%}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    
-    <style>
-    body {
-            background-color: #E5D1FF;
-            height: 70vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-    
-        h1 {
-            color: #8A2BE2;
-        }
-
-        table {
-            margin: 20px auto;
-            border-collapse: collapse;
-            width: 70%;
-        }
-  
-        th,
-        td {
-            padding: 10px;
-            border: 1px solid #8A2BE2;
-        }
-    
-        th {
-            background-color: #FF66B2;
-            color: white;
-        }
-    
-        td a {
-            text-decoration: none;
-            color: #8A2BE2;
-        }
-        /* ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        li {
-            margin: 5px 0;
-            color: #8A2BE2;
-        } */
-    </style>
+{% block after_content %}
+<div class="lifted-box" id="posts">
+    <h2>Opportunities</h2>
     <table>
         <thead>
             <tr>
@@ -68,6 +19,7 @@
                 <th>Description</th>
                 <th>URL</th>
                 <th>Tags</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -84,7 +36,7 @@
                         {% endfor %}
                     </ul>
                 </td>
-                <td>    
+                <td>
                     {% if opportunity in user.followed_opps.all %}
                     <button class="follow-button" data-opportunity-id="{{ opportunity.id }}">
                         Unfollow
@@ -99,38 +51,30 @@
             {% endfor %}
         </tbody>
     </table>
-    <!-- In your HTML template, inside a <script> tag or in an external JavaScript file -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $(".follow-button").click(function () {
-                const button = $(this);
-                const opportunityId = button.data("opportunity-id");
-                const action = button.text().toLowerCase(); // Follow or Unfollow
+</div>
+<script>
+   $(".follow-button").click(function () {
+        const button = $(this);
+        const opportunityId = button.data("opportunity-id");
+        const action = button.text().toLowerCase(); // Follow or Unfollow
 
-                // Send an AJAX request to your Django view
-                $.ajax({
-                    type: "POST",
-                    url: "/follow-opportunity/",  // Replace with the actual URL
-                    data: {
-                        opportunity_id: opportunityId,
-                        action: action,
-                        csrfmiddlewaretoken: '{{ csrf_token }}',  // Include the CSRF token
-                    },
-                    success: function (response) {
-                        if (response === "followed") {
-                            button.text("Unfollow");
-                        } else {
-                            button.text("Follow");
-                        }
-                    },
-                });
-            });
+        // Send an AJAX request to your Django view
+        $.ajax({
+            type: "POST",
+            url: "/follow-opportunity/",  // Replace with the actual URL
+            data: {
+                opportunity_id: opportunityId,
+                action: action,
+                csrfmiddlewaretoken: '{{ csrf_token }}',  // Include the CSRF token
+            },
+            success: function (response) {
+                if (response === "followed") {
+                    button.text("Unfollow");
+                } else {
+                    button.text("Follow");
+                }
+            },
         });
-    </script>
-
-    {%endblock%}
-    
-</body>
-
-</html>
+    });
+</script>
+{% endblock after_content %}

@@ -19,9 +19,7 @@
 }
 
 @media (max-width: 600px) {
-    #profile-pic {
-        width: 125px;
-    }
+
 
     #follow {
         flex-direction: column;
@@ -29,10 +27,7 @@
         margin-top: 1em;
     }
 
-    #bio {
-        max-width: unset;
-        width: 100%;
-    }
+
 
     .lifted-box {
         margin-top: 6em !important;
