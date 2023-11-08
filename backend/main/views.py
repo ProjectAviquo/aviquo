@@ -118,6 +118,19 @@ def delete_forum(request, forum_id):
     # Redirect to the page that the request originated from
     return redirect(request.META.get('HTTP_REFERER', '/'))
 
+def unfollow_user(request, user_id):
+    try:
+        user = User.objects.get(pk=user_id)
+        # Check if the user is the author
+        request.user.followers.remove(user)
+        user.following.remove(request.user)
+
+    except Forum.DoesNotExist:
+        pass
+
+    # Redirect to the page that the request originated from
+    return redirect(request.META.get('HTTP_REFERER', '/'))
+
 def follow_user(request):
     if request.method == "POST":
         user_id = request.POST.get("user_id")
@@ -132,6 +145,8 @@ def follow_user(request):
             user_to_follow.followers.add(user)
             response = "followed"
         else:
+            print(user_to_follow.username)
+            print(user.username)
             user.following.remove(user_to_follow)
             user_to_follow.followers.remove(user)
             response = "unfollowed"

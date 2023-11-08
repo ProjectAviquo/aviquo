@@ -1,0 +1,68 @@
+{% extends 'components/box_plus.html' %}
+{% block title %}Followers{% endblock title %}
+{% block head %}
+<link rel="stylesheet" href="/static/users/followers.css" />
+{% endblock head %}
+
+{%block the_lifted%}
+
+{%endblock%}
+
+{% block after_content %}
+<div class="lifted-box" id="posts">
+    <h2>Users</h2>
+    <table>
+        <tbody>
+            {% for fuser in user.following.all %}
+            <tr>
+                <td><strong>Username:</strong> {{ fuser.username }}</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    {% if user.username == ouser.username %}
+                        {% if fuser in user.following.all %}
+                        <button class="follow-user-button" data-user-id="{{ fuser.id }}">
+                            Unfollow
+                        </button>
+                        {% else %}
+                        <button class="follow-user-button" data-user-id="{{ fuser.id }}">
+                            Follow
+                        </button>
+                        {% endif %}
+                    {%endif%}
+                   
+                </td>
+            </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<script>
+    $(document).ready(function () {
+        $(".follow-user-button").click(function () {
+            const button = $(this);
+            const userId = button.data("user-id");
+            const action = button.text().toLowerCase(); // Follow or Unfollow
+            console.log(userId)
+            // Send an AJAX request to your Django view
+            $.ajax({
+                type: "POST",
+                url: "/follow-user/",  // Replace with the actual URL
+                data: {
+                    user_id: userId,
+                    action: action,
+                    csrfmiddlewaretoken: '{{ csrf_token }}',  // Include the CSRF token
+                },
+                success: function (response) {
+                    if (response === "followed") {
+                        button.text("Unfollow");
+                    } else {
+                        button.text("Follow");
+                    }
+                },
+            });
+        });
+    });
+</script>
+{% endblock after_content %}

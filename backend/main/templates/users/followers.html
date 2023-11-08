@@ -1,0 +1,37 @@
+{% extends 'components/box_plus.html' %}
+{% block title %}Followers{% endblock title %}
+{% block head %}
+<link rel="stylesheet" href="/static/users/followers.css" />
+{% endblock head %}
+
+{%block the_lifted%}
+
+{%endblock%}
+
+{% block after_content %}
+<div class="lifted-box" id="posts">
+    <h2>Users</h2>
+    <table>
+        <tbody>
+            {% for fuser in user.followers.all %}
+            <tr>
+                <td><strong>Username:</strong> {{ fuser.username }}</td>
+            </tr>
+            <tr>
+                {% if user.username == ouser.username %}
+                <td colspan="2">
+                    {% if fuser in user.followers.all %}
+                    <form method="post" action="{% url 'unfollow_user' fuser.id%}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                    {% endif %}
+                </td>
+                {%endif%}
+            </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock after_content %}

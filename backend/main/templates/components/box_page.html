@@ -26,6 +26,7 @@
         <div id="logo-wrap"><a href="/"><img src="/static/logo.png" alt="Main Page" id="logo"></a></div>
     </header>
     {% endblock header %}
+    {%block the_lifted%}
     <main>
         <div class="lifted-box">
             {% block content %}
@@ -36,6 +37,7 @@
 
         {% endblock %}
     </main>
+    {%endblock%}
     {% block after_content %}
     {% endblock after_content %}
 </body>
