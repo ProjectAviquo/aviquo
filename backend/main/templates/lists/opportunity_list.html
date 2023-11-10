@@ -11,20 +11,22 @@
 {% block after_content %}
 <div class="lifted-box" id="posts">
     <h2>Opportunities</h2>
+
+    <!-- Tags filter -->
+    <div>
+        <label for="tagFilter">Filter by Tag:</label>
+        <select id="tagFilter" >
+            <option value="">All Tags</option>
+            {% for tag in all_tags %}
+            <option value="{{ tag.id }}">{{ tag.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
     <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>URL</th>
-                <th>Tags</th>
-                <th>Action</th>
-            </tr>
-        </thead>
         <tbody>
             {% for opportunity in opportunities %}
-            <tr>
+            <tr data-tags="{% for tag in opportunity.tags.all %}{{ tag.id }} {% endfor %}">
                 <td>{{ opportunity.id }}</td>
                 <td>{{ opportunity.name }}</td>
                 <td>{{ opportunity.description }}</td>
@@ -52,29 +54,43 @@
         </tbody>
     </table>
 </div>
-<script>
-   $(".follow-button").click(function () {
-        const button = $(this);
-        const opportunityId = button.data("opportunity-id");
-        const action = button.text().toLowerCase(); // Follow or Unfollow
 
-        // Send an AJAX request to your Django view
-        $.ajax({
-            type: "POST",
-            url: "/follow-opportunity/",  // Replace with the actual URL
-            data: {
-                opportunity_id: opportunityId,
-                action: action,
-                csrfmiddlewaretoken: '{{ csrf_token }}',  // Include the CSRF token
-            },
-            success: function (response) {
-                if (response === "followed") {
-                    button.text("Unfollow");
-                } else {
-                    button.text("Follow");
-                }
-            },
+<script>
+    $(".follow-button").click(function () {
+            const button = $(this);
+            const opportunityId = button.data("opportunity-id");
+            const action = button.text().toLowerCase(); // Follow or Unfollow
+
+            // Send an AJAX request to your Django view
+            $.ajax({
+                type: "POST",
+                url: "/follow-opportunity/",  // Replace with the actual URL
+                data: {
+                    opportunity_id: opportunityId,
+                    action: action,
+                    csrfmiddlewaretoken: '{{ csrf_token }}',  // Include the CSRF token
+                },
+                success: function (response) {
+                    if (response === "followed") {
+                        button.text("Unfollow");
+                    } else {
+                        button.text("Follow");
+                    }
+                },
+            });
         });
+
+    // Tag filter logic
+    $("#tagFilter").change(function () {
+        const selectedTagId = $(this).val();
+        if (selectedTagId) {
+            // Hide rows that don't have the selected tag
+            $(`tr[data-tags*="${selectedTagId}"]`).show();
+            $(`tr:not([data-tags*="${selectedTagId}"])`).hide();
+        } else {
+            // Show all rows when no tag is selected
+            $("tr").show();
+        }
     });
 </script>
 {% endblock after_content %}

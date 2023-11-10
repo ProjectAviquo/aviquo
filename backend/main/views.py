@@ -7,7 +7,7 @@ from django.shortcuts import redirect, render,  get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from rest_framework import generics
-from .models import Forum, Opportunity, User, Waitlist
+from .models import Forum, Opportunity, User, Waitlist, Tag
 from .serializers import ForumSerializer, WaitlistSerializer
 from django.http import JsonResponse
 from .forms import EditProfileForm, AddWaitlistForm, AddForumForm, CustomAuthForm, CustomUserCreationForm
@@ -76,8 +76,8 @@ def profilee(request):
 @login_required
 def OpportunityView(request):
     opportunities = Opportunity.objects.all()
-
-    return render(request, "lists/opportunity_list.html", {"opportunities": opportunities})
+    tags = Tag.objects.all()
+    return render(request, "lists/opportunity_list.html", {"opportunities": opportunities, "all_tags": tags})
 
 @login_required
 def ForumView(request):
