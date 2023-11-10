@@ -43,6 +43,7 @@ class Opportunity(models.Model):
     description = models.TextField(
         max_length=4000, verbose_name="Description", help_text="Detailed description of the opportunity"
     )
+    profile_image = models.ImageField(null=True, blank=True, upload_to="opp_images/")
     URL = models.URLField(max_length=200, blank=True)
     tags = models.ManyToManyField(Tag, blank=True)
 
@@ -71,7 +72,7 @@ class Waitlist(models.Model):
 class User(AbstractUser):
     # other usable fields from AbstractUser:
     #  username, first_name, last_name, email, is_staff, is_active, date_joined, last_login
-    profile_image = models.ImageField(null=True, blank=True, upload_to="images/")
+    profile_image = models.ImageField(null=True, blank=True, upload_to="user_images/")
     bio = models.TextField(verbose_name="Bio", max_length=4000, blank=True, null=True)
     date_registered = models.DateTimeField(auto_now_add=True, null=True)
 
