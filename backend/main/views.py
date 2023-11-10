@@ -57,7 +57,6 @@ def followers(request, username):
 def edit_profile(request):
     user = request.user
     form = EditProfileForm(instance=user)  # Display the profile form to everyone
-    old = user.profile_image.url
     if request.method == "POST":
             form = EditProfileForm(request.POST, request.FILES, instance=user)
             if form.is_valid():
