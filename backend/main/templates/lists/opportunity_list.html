@@ -15,7 +15,7 @@
     <!-- Tags filter -->
     <div>
         <label for="tagFilter">Filter by Tag:</label>
-        <select id="tagFilter" >
+        <select id="tagFilter" multiple>
             <option value="">All Tags</option>
             {% for tag in all_tags %}
             <option value="{{ tag.id }}">{{ tag.name }}</option>
@@ -83,14 +83,37 @@
     // Tag filter logic
     $("#tagFilter").change(function () {
         const selectedTagId = $(this).val();
-        if (selectedTagId) {
-            // Hide rows that don't have the selected tag
-            $(`tr[data-tags*="${selectedTagId}"]`).show();
-            $(`tr:not([data-tags*="${selectedTagId}"])`).hide();
-        } else {
-            // Show all rows when no tag is selected
-            $("tr").show();
-        }
+        console.log(selectedTagId)
+        // Convert selectedTagId to an array
+        // Loop through each row (opportunity)
+        $('tr').each(function () {
+            const row = $(this);
+            const rowTagIds = row.attr('data-tags')
+            console.log(rowTagIds)
+            // Check if the opportunity has all selected tags
+            console.log(rowTagIds.includes('1'))
+            console.log(rowTagIds.includes(1))
+            // (rowTagIds.includes(String.fromCharCode(tagId)))
+            const hasAllTags = selectedTagId.every(
+                tagId =>  rowTagIds.includes(tagId)
+            );
+
+            // Show or hide the row based on the condition
+            if (hasAllTags) {
+                row.show();
+            } else {
+                row.hide();
+            }
+        });
+
+        // if (selectedTagId) {
+        //     // Hide rows that don't have the selected tag
+        //     $(`tr[data-tags*="${selectedTagId}"]`).show();
+        //     $(`tr:not([data-tags*="${selectedTagId}"])`).hide();
+        // } else {
+        //     // Show all rows when no tag is selected
+        //     $("tr").show();
+        // }
     });
 </script>
 {% endblock after_content %}
