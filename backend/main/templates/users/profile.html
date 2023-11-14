@@ -54,7 +54,7 @@
                 <td colspan="2">
                     <h2>{{ forum.topic }}</h2>
                     <p>{{ forum.description }}</p>
-                    {%if forum.user == user%}
+                    {%if forum.user == ouser%}
                     <form method="post" action="{% url 'delete_forum' forum.id%}">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-danger">Delete</button>
@@ -95,6 +95,7 @@
                     </ul>
                 </td>
                 <td>
+                    {%if user == ouser%}
                     {% if opportunity in user.followed_opps.all %}
                     <button class="follow-button" data-opportunity-id="{{ opportunity.id }}">
                         Unfollow
@@ -103,6 +104,7 @@
                     <button class="follow-button" data-opportunity-id="{{ opportunity.id }}">
                         Follow
                     </button>
+                    {% endif %}
                     {% endif %}
                 </td>
             </tr>
