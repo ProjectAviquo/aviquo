@@ -1,3 +1,5 @@
+"""Admin API View
+Unregisters the API key group"""
 from django.contrib import admin
 from rest_framework_api_key.admin import APIKey
 

@@ -1,3 +1,4 @@
+"""Email send"""
 import smtplib
 import ssl
 from email.mime.multipart import MIMEMultipart
@@ -9,13 +10,16 @@ from django.template.loader import render_to_string
 
 
 class Email:
+    """Email class"""
     def __init__(self, receiver):
+        """Make email"""
         self.ctx = ssl.create_default_context()
         self.password = "PASS HERE"  # Your app password goes here
         self.sender = "pythondiscordbot88@gmail.com"  # Your e-mail address
         self.receiver = receiver  # Recipient's address
 
     def createHeaders(self, subject):
+        """Create email headers: Subject, from, to"""
         self.message = MIMEMultipart("alternative")
         self.message["Subject"] = subject
         self.message["From"] = "Aviquo"
@@ -23,9 +27,11 @@ class Email:
 
     # order is server invite link, dashboard link (wrapped of course)
     def createBody(self, html):
+        """HTML body"""
         self.html = html
 
     def sendMessage(self):
+        """Nyomm"""
         self.message.attach(MIMEText(self.html, "html"))
 
         # Connect with server and send the message
@@ -36,7 +42,9 @@ class Email:
 
 
 class EmailPasswordResetForm(PasswordResetForm):
+    """Reset pass form"""
     def send_mail(_, subject_template_name, email_template_name, context, from_email, to_email, *args, **kwargs):
+        """Nyomm"""
         e = Email(to_email)
         e.createHeaders("Password Reset Link")
         e.createBody(render_to_string(email_template_name, context))
@@ -44,5 +52,6 @@ class EmailPasswordResetForm(PasswordResetForm):
 
 
 class CustomPasswordResetView(PasswordResetView):
+    """Reset view email"""
     email_template_name = "accounts/custom_reset_email.html"
     form_class = EmailPasswordResetForm

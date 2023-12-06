@@ -1,4 +1,4 @@
-# chat/consumers.py
+"""Chat consumers"""
 import json
 import time
 
@@ -9,7 +9,9 @@ from .models import Message
 
 
 class TextRoomConsumer(WebsocketConsumer):
+    """Chat consumer"""
     def connect(self):
+        """Connect to a room"""
         self.room_name = self.scope["url_route"]["kwargs"]["room_name"]
         self.room_group_name = "chat_%s" % self.room_name
 
@@ -23,9 +25,11 @@ class TextRoomConsumer(WebsocketConsumer):
             self.receive(message.to_json_dict(), inbuilt=True)
 
     def disconnect(self, close_code):
+        """Disconnect from a room"""
         async_to_sync(self.channel_layer.group_discard)(self.room_group_name, self.channel_name)
 
     def receive(self, text_data, inbuilt=False):
+        """Recieve data"""
         text_data_json = json.loads(text_data)
         text = text_data_json["text"]
         sender = text_data_json["sender"]
@@ -42,6 +46,7 @@ class TextRoomConsumer(WebsocketConsumer):
             self.return_user_message()
 
     def chat_message(self, event):
+        """Message consumer"""
         text = event["message"]
         sender = event["sender"]
 
@@ -49,6 +54,7 @@ class TextRoomConsumer(WebsocketConsumer):
 
     # simulate instant response (we can create an AI webhook or allow for human response)
     def return_user_message(self):
+        """Return message"""
         message_dict = {"text": "We have received your query, and will get back to you.", "sender": "Aviquo Official"}
 
         self.receive(json.dumps(message_dict))
