@@ -28,7 +28,7 @@ jobs:
       run: |
         cd doc
 
-        if mkdocs build | grep "WARNING"; then
+        if mkdocs build 2>&1 | grep "WARNING"; then
           echo "Build contains WARNINGs"
           exit 1
         else
