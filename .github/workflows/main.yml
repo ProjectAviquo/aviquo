@@ -29,7 +29,7 @@ jobs:
         output=$(mkdocs build 2>&1)
 
         if echo "$output" | grep -q "WARNING"; then
-          echo "Build contains WARNINGs
+          echo "Build contains WARNINGs"
           exit 1
         else
           echo "Build completed successfully."
