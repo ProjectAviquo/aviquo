@@ -26,15 +26,11 @@ jobs:
 
     - name: Build documentation
       run: |
-        if mkdocs build 2>&1 | grep -q "WARNING"; then
+        cd doc
+
+        if mkdocs build | grep "WARNING"; then
           echo "Build contains WARNINGs"
-          exit 69
-        else
-          echo "Build completed successfully."
-        fi
-        if mkdocs build 2>&1 | grep -q "WARNING"; then
-          echo "Build contains WARNINGs"
-          exit 69
+          exit 1
         else
           echo "Build completed successfully."
         fi
