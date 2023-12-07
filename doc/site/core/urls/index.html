@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../asgi/">
+        <link rel="prev" href="../settings/">
       
       
-        <link rel="next" href="../urls/">
+        <link rel="next" href="../wsgi/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>settings.py - AVQ Backend</title>
+        <title>urls.py - AVQ Backend</title>
       
     
     
@@ -77,7 +77,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#settingspy" class="md-skip">
+        <a href="#urlspy" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              settings.py
+              urls.py
             
           </span>
         </div>
@@ -408,6 +408,27 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../settings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    settings.py
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -424,7 +445,7 @@
           
   
   <span class="md-ellipsis">
-    settings.py
+    urls.py
   </span>
   
 
@@ -435,7 +456,7 @@
         
   
   <span class="md-ellipsis">
-    settings.py
+    urls.py
   </span>
   
 
@@ -467,234 +488,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#base_dir" class="md-nav__link">
+  <a href="#urlpatterns" class="md-nav__link">
     <span class="md-ellipsis">
-      BASE_DIR
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#secret_key" class="md-nav__link">
-    <span class="md-ellipsis">
-      SECRET_KEY
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#debug" class="md-nav__link">
-    <span class="md-ellipsis">
-      DEBUG
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#installed_apps" class="md-nav__link">
-    <span class="md-ellipsis">
-      INSTALLED_APPS
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#login_redirect_url" class="md-nav__link">
-    <span class="md-ellipsis">
-      LOGIN_REDIRECT_URL
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#login_url" class="md-nav__link">
-    <span class="md-ellipsis">
-      LOGIN_URL
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#middleware" class="md-nav__link">
-    <span class="md-ellipsis">
-      MIDDLEWARE
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#root_urlconf" class="md-nav__link">
-    <span class="md-ellipsis">
-      ROOT_URLCONF
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#templates" class="md-nav__link">
-    <span class="md-ellipsis">
-      TEMPLATES
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#asgi_application" class="md-nav__link">
-    <span class="md-ellipsis">
-      ASGI_APPLICATION
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#auth_user_model" class="md-nav__link">
-    <span class="md-ellipsis">
-      AUTH_USER_MODEL
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#databases" class="md-nav__link">
-    <span class="md-ellipsis">
-      DATABASES
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#auth_password_validators" class="md-nav__link">
-    <span class="md-ellipsis">
-      AUTH_PASSWORD_VALIDATORS
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rest_framework" class="md-nav__link">
-    <span class="md-ellipsis">
-      REST_FRAMEWORK
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#language_code" class="md-nav__link">
-    <span class="md-ellipsis">
-      LANGUAGE_CODE
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#time_zone" class="md-nav__link">
-    <span class="md-ellipsis">
-      TIME_ZONE
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#use_i18n" class="md-nav__link">
-    <span class="md-ellipsis">
-      USE_I18N
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#use_tz" class="md-nav__link">
-    <span class="md-ellipsis">
-      USE_TZ
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#static_url" class="md-nav__link">
-    <span class="md-ellipsis">
-      STATIC_URL
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#static_root" class="md-nav__link">
-    <span class="md-ellipsis">
-      STATIC_ROOT
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#media_url" class="md-nav__link">
-    <span class="md-ellipsis">
-      MEDIA_URL
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#media_root" class="md-nav__link">
-    <span class="md-ellipsis">
-      MEDIA_ROOT
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#default_auto_field" class="md-nav__link">
-    <span class="md-ellipsis">
-      DEFAULT_AUTO_FIELD
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cors_origin_whitelist" class="md-nav__link">
-    <span class="md-ellipsis">
-      CORS_ORIGIN_WHITELIST
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#api_key_custom_header" class="md-nav__link">
-    <span class="md-ellipsis">
-      API_KEY_CUSTOM_HEADER
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#channel_layers" class="md-nav__link">
-    <span class="md-ellipsis">
-      CHANNEL_LAYERS
+      urlpatterns
     </span>
   </a>
   
@@ -709,27 +505,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../urls/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    urls.py
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -778,91 +553,16 @@
                   
 
 
-<h1 id="settingspy">settings.py</h1>
-<p>Settings for the entire project</p>
+<h1 id="urlspy">urls.py</h1>
 <h2 id="variables">Variables</h2>
-<h3 id="base_dir">BASE_DIR</h3>
-<p>Base source code dir</p>
-<h3 id="secret_key">SECRET_KEY</h3>
-<p>Secret key for cryptography and stuff</p>
-<h3 id="debug">DEBUG</h3>
-<p>Whether server is in debug mode. Django adds more stuff for error messages, etc.</p>
-<h3 id="installed_apps">INSTALLED_APPS</h3>
-<p>Apps that are installed</p>
+<h3 id="urlpatterns">urlpatterns</h3>
 <ul>
-<li>Django libraries</li>
-<li><a href="../main/apps.md#mainconfig">main.apps.MainConfig</a></li>
-<li><a href="../api/apps.md#apiconfig">api.apps.ApiConfig</a></li>
-<li><a href="../chat/apps.md#chatconfig">chat.apps.ChatConfig</a></li>
-<li>REST framework</li>
-<li>REST API key</li>
-<li>Cors headers</li>
+<li><code>admin/</code> - Django admin pages</li>
+<li><a href="../main/urls.md">main.urls</a></li>
+<li><code>api/</code> - <a href="../api/urls.md">api.urls</a></li>
+<li>Media files at <a href="../settings/#media_url">core.settings.MEDIA_URL</a> served from <a href="../settings/#media_root">core.settings.MEDIA_ROOT</a></li>
+<li>If debug: add dev static files</li>
 </ul>
-<h3 id="login_redirect_url">LOGIN_REDIRECT_URL</h3>
-<p>Where you are redirected after login, to profile page</p>
-<h3 id="login_url">LOGIN_URL</h3>
-<p>Login url</p>
-<h3 id="middleware">MIDDLEWARE</h3>
-<ul>
-<li>Django security</li>
-<li>Django sessions</li>
-<li>Django messages</li>
-<li>Cors headers</li>
-</ul>
-<h3 id="root_urlconf">ROOT_URLCONF</h3>
-<p>Main urls, set to <a href="../urls/">core.urls</a></p>
-<h3 id="templates">TEMPLATES</h3>
-<p>Template settings</p>
-<ul>
-<li>Use Django template system</li>
-<li>Look inside app folders</li>
-<li>Preprocessors</li>
-</ul>
-<h3 id="asgi_application">ASGI_APPLICATION</h3>
-<p>The ASGI for the project. Set <a href="../asgi/#application">core.asgi.application</a></p>
-<h3 id="auth_user_model">AUTH_USER_MODEL</h3>
-<p>The user model to use for authentication. Set to <a href="../main/models.md#user">main.User</a></p>
-<h3 id="databases">DATABASES</h3>
-<p>Sqlite3 as database. Database file: backend/db.sqlite3</p>
-<h3 id="auth_password_validators">AUTH_PASSWORD_VALIDATORS</h3>
-<ul>
-<li>Minimum length</li>
-<li>Numeric character</li>
-</ul>
-<h3 id="rest_framework">REST_FRAMEWORK</h3>
-<p>Settings for the REST API.</p>
-<p>Permissions:
-* Has API Key</p>
-<h3 id="language_code">LANGUAGE_CODE</h3>
-<p>English</p>
-<h3 id="time_zone">TIME_ZONE</h3>
-<p>New York (EST)</p>
-<h3 id="use_i18n">USE_I18N</h3>
-<p>Internationalization - True</p>
-<h3 id="use_tz">USE_TZ</h3>
-<p>Use timezone - True</p>
-<h3 id="static_url">STATIC_URL</h3>
-<p>Where the static <em>url</em> should start</p>
-<h3 id="static_root">STATIC_ROOT</h3>
-<p>Where the static <em>files</em> are located <strong>in production</strong></p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This only affects production. For development (when <code>DEBUG=True</code>) each /&lt;appname&gt;/static folders are used.</p>
-<p>Run <code>python3 manage.py collectstatic</code> to collect all of the static files into the /backend/static folder.</p>
-<p>Read the the <a href="https://docs.djangoproject.com/en/4.2/howto/static-files/">official documentation</a> for more info on static files.</p>
-</div>
-<h3 id="media_url">MEDIA_URL</h3>
-<p>The url for user media (like profile pictures)</p>
-<h3 id="media_root">MEDIA_ROOT</h3>
-<p>The file path for the media folder</p>
-<h3 id="default_auto_field">DEFAULT_AUTO_FIELD</h3>
-<p>Default primary key field type to use for models that don’t have a field with primary_key=True. Set to <code>BigAutoField</code></p>
-<h3 id="cors_origin_whitelist">CORS_ORIGIN_WHITELIST</h3>
-<p>Which domains the server can be hosted</p>
-<h3 id="api_key_custom_header">API_KEY_CUSTOM_HEADER</h3>
-<p>REST API key header</p>
-<h3 id="channel_layers">CHANNEL_LAYERS</h3>
-<p>TODO: I don't know what this is please explain</p>
 
 
 
