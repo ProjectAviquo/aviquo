@@ -30,7 +30,7 @@ jobs:
 
         if mkdocs build 2>&1 | grep "WARNING"; then
           echo "Build contains WARNINGs"
-          exit 1
+          exit 69
         else
           echo "Build completed successfully."
         fi
