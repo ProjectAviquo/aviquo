@@ -1,19 +1,11 @@
-# Aviquo Backend
+# Overview
 
-## Main Folders
+## [/core/](./core/index.md)
 
-[/core/](/core)
+:   Core files of the project, load the rest of the code.
 
-:   First directory and configuration
+## [/main/](./main/index.md)
 
-[/main/](/main)
+## [/api/](./api/index.md)
 
-:   Most of the code
-
-[/api/](/api)
-
-:   API
-
-[/chat/](/chat)
-
-:   Chat
+## [/chat/](./chat/index.md)
