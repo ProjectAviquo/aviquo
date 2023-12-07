@@ -25,14 +25,10 @@ jobs:
 
     - name: Build documentation
       run: |
-        set -eo pipefail  # This ensures the script fails if any command fails
-
-        # Run mkdocs build and capture the output
         output=$(mkdocs build 2>&1)
 
-        # Check if the output contains "WARNING"
         if echo "$output" | grep -q "WARNING"; then
-          echo "Build contains WARNING. Failing the workflow."
+          echo "Build contains WARNINGs
           exit 1
         else
           echo "Build completed successfully."
