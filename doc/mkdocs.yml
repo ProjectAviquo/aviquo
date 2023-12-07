@@ -1,0 +1,24 @@
+site_name: AVQ Backend
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        primary: indigo
+        icon: material/toggle-switch-off-outline
+
+
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        primary: deep purple
+        icon: material/toggle-switch
+        accent: blue
+
+markdown_extensions:
+  - def_list
+
+extra_css:
+  - styles.css

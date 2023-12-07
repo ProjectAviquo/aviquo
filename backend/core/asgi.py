@@ -1,6 +1,4 @@
-"""
-ASGI config for the project.
-"""
+"""ASGI config for the project."""
 import os
 
 from channels.auth import AuthMiddlewareStack
