@@ -2,17 +2,17 @@ site_name: AVQ Backend
 
 theme:
   name: material
+  primary: purple
+
   palette:
   - media: "(prefers-color-scheme: light)"
     scheme: default
     toggle:
-      primary: deep purple
       icon: material/toggle-switch
 
   - media: "(prefers-color-scheme: dark)"
     scheme: slate
     toggle:
-      primary: deep purple
       icon: material/toggle-switch-off-outline
 
     accent: blue
