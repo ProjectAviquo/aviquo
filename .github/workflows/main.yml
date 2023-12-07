@@ -1,4 +1,4 @@
-name: Documentation
+name: Documentation Build Test
 
 on:
   push:
@@ -18,10 +18,22 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v3
       with:
-        python-version: 3.10
+        python-version: 3.8
 
     - name: Install mkdocs
-      run: pip install mkdocs-material
+      run: pip install mkdocs
 
     - name: Build documentation
-      run: mkdocs build
+      run: |
+        set -eo pipefail  # This ensures the script fails if any command fails
+
+        # Run mkdocs build and capture the output
+        output=$(mkdocs build 2>&1)
+
+        # Check if the output contains "WARNING"
+        if echo "$output" | grep -q "WARNING"; then
+          echo "Build contains WARNING. Failing the workflow."
+          exit 1
+        else
+          echo "Build completed successfully."
+        fi
