@@ -1,17 +1,21 @@
 # asgi.py
 
+## Overview
+
 ASGI config for the project
 
 * Set [core.settings](./core/settings.md) as settings module
 * Initialize asgi app
 * Websockets for chat
 
-## Variables
+## Module objects
 
-### websocket_urlpatterns
+### Variables
+
+#### websocket_urlpatterns
 
 :   `ws/<roomname>`
 
-### application
+#### application
 
 :   Router. Allow http and websocket

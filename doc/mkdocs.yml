@@ -2,20 +2,23 @@ site_name: AVQ Backend
 
 theme:
   name: material
-  primary: purple
+
+  logo: assets/logo.webp
 
   palette:
   - media: "(prefers-color-scheme: light)"
     scheme: default
+    primary: deep purple
+    accent: blue
     toggle:
       icon: material/toggle-switch
 
   - media: "(prefers-color-scheme: dark)"
     scheme: slate
+    primary: deep purple
+    accent: purple
     toggle:
       icon: material/toggle-switch-off-outline
-
-    accent: blue
 
   features:
   - navigation.path
@@ -38,3 +41,18 @@ markdown_extensions:
 
 extra_css:
 - styles.css
+
+nav:
+- Overview:
+  - index.md
+- core/:
+  - core/index.md
+  - core/__init__.py: core/__init__.md
+  - core/asgi.py: core/asgi.md
+  - core/settings.py: core/settings.md
+  - core/wsgi.py: core/wsgi.md
+  - core/urls.py: core/urls.md
+- main/:
+  - main/index.md
+  - main/__init__.py: main/__init__.md
+  - main/admin.py: main/admin.md

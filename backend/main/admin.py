@@ -8,7 +8,7 @@ from .models import Forum, Opportunity, Tag, User, Waitlist
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
     """Admin user model"""
-    pass
+    list_display = ("id", "username")
 
 
 @admin.register(Opportunity)

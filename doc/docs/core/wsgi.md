@@ -1,9 +1,13 @@
 # asgi.py
 
+## Overview
+
 * Set settings to [core.settings](./settings.md)
 
-## Variables
+## Module objects
 
-### application
+### Variables
 
-The WSGI application
+#### application
+
+:   The WSGI application

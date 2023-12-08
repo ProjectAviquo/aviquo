@@ -1,107 +1,116 @@
 # settings.py
 
+## Overview
+
 Settings for the entire project
 
-## Variables
+## Module Objects
 
-### BASE_DIR
+### Variables
 
-Base source code dir
+#### BASE_DIR
 
-### SECRET_KEY
+:   Base source code dir
 
-Secret key for cryptography and stuff
+#### SECRET_KEY
 
-### DEBUG
+:   Secret key for cryptography and stuff
 
-Whether server is in debug mode. Django adds more stuff for error messages, etc.
+#### DEBUG
 
-### INSTALLED_APPS
+:   Whether server is in debug mode. Django adds more stuff for error messages, etc.
 
-Apps that are installed
+#### INSTALLED_APPS
 
-* Django libraries
-* [main.apps.MainConfig](../main/apps.md#mainconfig)
-* [api.apps.ApiConfig](../api/apps.md#apiconfig)
-* [chat.apps.ChatConfig](../chat/apps.md#chatconfig)
-* REST framework
-* REST API key
-* Cors headers
+:   Apps that are installed
 
-### LOGIN_REDIRECT_URL
+    * Django libraries
+    * [main.apps.MainConfig](../main/apps.md#mainconfig)
+    * [api.apps.ApiConfig](../api/apps.md#apiconfig)
+    * [chat.apps.ChatConfig](../chat/apps.md#chatconfig)
+    * REST framework
+    * REST API key
+    * Cors headers
 
-Where you are redirected after login, to profile page
+#### LOGIN_REDIRECT_URL
 
-### LOGIN_URL
+:   Where you are redirected after login, to profile page
 
-Login url
+#### LOGIN_URL
 
-### MIDDLEWARE
+:   Login url
 
-* Django security
-* Django sessions
-* Django messages
-* Cors headers
+#### MIDDLEWARE
 
-### ROOT_URLCONF
+:   Middleware:
 
-Main urls, set to [core.urls](./urls.md)
+    * Django security
+    * Django sessions
+    * Django messages
+    * Cors headers
 
-### TEMPLATES
+#### ROOT_URLCONF
 
-Template settings
+:   Main urls, set to [core.urls](./urls.md)
 
-* Use Django template system
-* Look inside app folders
-* Preprocessors
+#### TEMPLATES
 
-### ASGI_APPLICATION
+:   Template settings
 
-The ASGI for the project. Set [core.asgi.application](./asgi.md#application)
+    * Use Django template system
+    * Look inside app folders
+    * Preprocessors
 
-### AUTH_USER_MODEL
+#### ASGI_APPLICATION
 
-The user model to use for authentication. Set to [main.User](../main/models.md#user)
+:   The ASGI for the project. Set [core.asgi.application](./asgi.md#application)
 
-### DATABASES
+#### AUTH_USER_MODEL
 
-Sqlite3 as database. Database file: backend/db.sqlite3
+:   The user model to use for authentication. Set to [main.User](../main/models.md#user)
 
-### AUTH_PASSWORD_VALIDATORS
+#### DATABASES
 
-* Minimum length
-* Numeric character
+:   Sqlite3 as database. Database file: backend/db.sqlite3
 
-### REST_FRAMEWORK
+#### AUTH_PASSWORD_VALIDATORS
 
-Settings for the REST API.
+:   Password requirements:
 
-Permissions:
+    * Minimum length
+    * Numeric character
+
+#### REST_FRAMEWORK
+
+:   Settings for the REST API.
+
+:   Permissions:
+
 * Has API Key
 
-### LANGUAGE_CODE
+#### LANGUAGE_CODE
 
-English
+:   English
 
-### TIME_ZONE
+#### TIME_ZONE
 
-New York (EST)
+:   New York (EST)
 
-### USE_I18N
+#### USE_I18N
 
-Internationalization - True
+:   Internationalization - True
 
-### USE_TZ
+#### USE_TZ
 
-Use timezone - True
+:   Use timezone - True
 
-### STATIC_URL
+#### STATIC_URL
 
-Where the static *url* should start
+:   Where the static *url* should start
 
-### STATIC_ROOT
+#### STATIC_ROOT
 
-Where the static *files* are located **in production**
+:   Where the static *files* are located **in production**
 
 !!! warning
 
@@ -111,26 +120,26 @@ Where the static *files* are located **in production**
 
     Read the the [official documentation](https://docs.djangoproject.com/en/4.2/howto/static-files/) for more info on static files.
 
-### MEDIA_URL
+#### MEDIA_URL
 
-The url for user media (like profile pictures)
+:   The url for user media (like profile pictures)
 
-### MEDIA_ROOT
+#### MEDIA_ROOT
 
-The file path for the media folder
+:   The file path for the media folder
 
-### DEFAULT_AUTO_FIELD
+#### DEFAULT_AUTO_FIELD
 
-Default primary key field type to use for models that don’t have a field with primary_key=True. Set to `BigAutoField`
+:   Default primary key field type to use for models that don’t have a field with primary_key=True. Set to `BigAutoField`
 
-### CORS_ORIGIN_WHITELIST
+#### CORS_ORIGIN_WHITELIST
 
-Which domains the server can be hosted
+:   Which domains the server can be hosted
 
-### API_KEY_CUSTOM_HEADER
+#### API_KEY_CUSTOM_HEADER
 
-REST API key header
+:   REST API key header
 
-### CHANNEL_LAYERS
+#### CHANNEL_LAYERS
 
-TODO: I don't know what this is please explain
+:   TODO: I don't know what this is please explain
