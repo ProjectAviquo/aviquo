@@ -6,21 +6,19 @@ Settings for the entire project
 
 ## Module Objects
 
-### Variables
-
-#### BASE_DIR
+### BASE_DIR
 
 :   Base source code dir
 
-#### SECRET_KEY
+### SECRET_KEY
 
 :   Secret key for cryptography and stuff
 
-#### DEBUG
+### DEBUG
 
 :   Whether server is in debug mode. Django adds more stuff for error messages, etc.
 
-#### INSTALLED_APPS
+### INSTALLED_APPS
 
 :   Apps that are installed
 
@@ -32,15 +30,15 @@ Settings for the entire project
     * REST API key
     * Cors headers
 
-#### LOGIN_REDIRECT_URL
+### LOGIN_REDIRECT_URL
 
 :   Where you are redirected after login, to profile page
 
-#### LOGIN_URL
+### LOGIN_URL
 
 :   Login url
 
-#### MIDDLEWARE
+### MIDDLEWARE
 
 :   Middleware:
 
@@ -49,11 +47,11 @@ Settings for the entire project
     * Django messages
     * Cors headers
 
-#### ROOT_URLCONF
+### ROOT_URLCONF
 
 :   Main urls, set to [core.urls](./urls.md)
 
-#### TEMPLATES
+### TEMPLATES
 
 :   Template settings
 
@@ -61,26 +59,26 @@ Settings for the entire project
     * Look inside app folders
     * Preprocessors
 
-#### ASGI_APPLICATION
+### ASGI_APPLICATION
 
 :   The ASGI for the project. Set [core.asgi.application](./asgi.md#application)
 
-#### AUTH_USER_MODEL
+### AUTH_USER_MODEL
 
 :   The user model to use for authentication. Set to [main.User](../main/models.md#user)
 
-#### DATABASES
+### DATABASES
 
 :   Sqlite3 as database. Database file: backend/db.sqlite3
 
-#### AUTH_PASSWORD_VALIDATORS
+### AUTH_PASSWORD_VALIDATORS
 
 :   Password requirements:
 
     * Minimum length
     * Numeric character
 
-#### REST_FRAMEWORK
+### REST_FRAMEWORK
 
 :   Settings for the REST API.
 
@@ -88,27 +86,27 @@ Settings for the entire project
 
 * Has API Key
 
-#### LANGUAGE_CODE
+### LANGUAGE_CODE
 
 :   English
 
-#### TIME_ZONE
+### TIME_ZONE
 
 :   New York (EST)
 
-#### USE_I18N
+### USE_I18N
 
 :   Internationalization - True
 
-#### USE_TZ
+### USE_TZ
 
 :   Use timezone - True
 
-#### STATIC_URL
+### STATIC_URL
 
 :   Where the static *url* should start
 
-#### STATIC_ROOT
+### STATIC_ROOT
 
 :   Where the static *files* are located **in production**
 
@@ -120,26 +118,26 @@ Settings for the entire project
 
     Read the the [official documentation](https://docs.djangoproject.com/en/4.2/howto/static-files/) for more info on static files.
 
-#### MEDIA_URL
+### MEDIA_URL
 
 :   The url for user media (like profile pictures)
 
-#### MEDIA_ROOT
+### MEDIA_ROOT
 
 :   The file path for the media folder
 
-#### DEFAULT_AUTO_FIELD
+### DEFAULT_AUTO_FIELD
 
 :   Default primary key field type to use for models that don’t have a field with primary_key=True. Set to `BigAutoField`
 
-#### CORS_ORIGIN_WHITELIST
+### CORS_ORIGIN_WHITELIST
 
 :   Which domains the server can be hosted
 
-#### API_KEY_CUSTOM_HEADER
+### API_KEY_CUSTOM_HEADER
 
 :   REST API key header
 
-#### CHANNEL_LAYERS
+### CHANNEL_LAYERS
 
 :   TODO: I don't know what this is please explain

@@ -4,11 +4,9 @@
 
 Urls of the server, mostly imports urls from other apps
 
-## Module objects
+## Module Objects
 
-### Variables
-
-#### urlpatterns
+### urlpatterns
 
 :   URLs used/imported:
 

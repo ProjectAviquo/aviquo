@@ -50,7 +50,7 @@ class CustomUserCreationForm(UserCreationForm):
     class Meta:
         """Fields + email"""
         model = User
-        fields = UserCreationForm.Meta.fields + ("email",)
+        fields = tuple(UserCreationForm.Meta.fields) + ("email",)
 
 class CustomAuthForm(UserCreationForm):
     """Login form"""

@@ -8,14 +8,12 @@ ASGI config for the project
 * Initialize asgi app
 * Websockets for chat
 
-## Module objects
+## Module Objects
 
-### Variables
-
-#### websocket_urlpatterns
+### websocket_urlpatterns
 
 :   `ws/<roomname>`
 
-#### application
+### application
 
 :   Router. Allow http and websocket

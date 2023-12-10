@@ -4,10 +4,8 @@
 
 * Set settings to [core.settings](./settings.md)
 
-## Module objects
+## Module Objects
 
-### Variables
-
-#### application
+### application
 
 :   The WSGI application

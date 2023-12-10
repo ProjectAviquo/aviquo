@@ -56,3 +56,6 @@ nav:
   - main/index.md
   - main/__init__.py: main/__init__.md
   - main/admin.py: main/admin.md
+  - main/apps.py: main/apps.md
+  - main/email_sender.py: main/email_sender.md
+  - main/forms.py: main/forms.md

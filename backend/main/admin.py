@@ -29,7 +29,7 @@ class OpportunityAdmin(admin.ModelAdmin):
 @admin.register(Forum)
 class ForumAdmin(admin.ModelAdmin):
     """Admin display for forum"""
-    pass
+    list_display = ("topic", "user")
 
 
 @admin.register(Tag)

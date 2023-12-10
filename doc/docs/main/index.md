@@ -8,14 +8,14 @@
 
 :   Main admin + admin view configurations
 
-## [\_\_init\_\_.py](./__init__.md)
+## [apps.py](./apps.md)
 
-:   File empty
+:   Configuration for the main/ app
 
-## [\_\_init\_\_.py](./__init__.md)
+## [email_sender.py](./email_sender.md)
 
-:   File empty
+:   Email creator and sender
 
-## [\_\_init\_\_.py](./__init__.md)
+## [forms.py](./forms.md)
 
-:   File empty
+:   Forms for the website

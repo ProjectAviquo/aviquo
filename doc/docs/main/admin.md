@@ -4,11 +4,9 @@
 
 View configuration for models in admin view
 
-## Module objects
+## Module Objects
 
-### Classes
-
-#### UserAdmin
+### UserAdmin
 
 :   Admin view for users
 
@@ -17,7 +15,7 @@ View configuration for models in admin view
     * ID
     * Username
 
-#### OpportunityAdmin
+### OpportunityAdmin
 
 :   Admin view for opportunities
 
@@ -25,7 +23,7 @@ View configuration for models in admin view
 
     * name
     * URL
-    * [all_tags](#all_tags)
+    * [`all_tags`](#all_tags)
 
 :   Search by:
 
@@ -37,6 +35,41 @@ View configuration for models in admin view
 
     * tags
 
-#### OpportunityAdmin.all_tags(self, obj)
+#### all_tags()
 
-:   Returns tags of the opportunity obj
+:   Returns tags of the opportunity `obj`
+
+### ForumAdmin
+
+:   Admin view for forum posts
+
+:   Columns:
+
+    * Topic
+    * User
+
+### TagAgmin
+
+:   Admin view for tags
+
+:   Columns:
+
+    * Name
+    * [`tag_count`](#tag_count)
+
+#### tag_count()
+
+:   How many opportunities with the tag `obj`
+
+### WaitlistAdmin
+
+:   Admin view for waitlisted emails
+
+:   Columns:
+
+    * Email
+    * Date
+
+:   Search by email
+
+:   Filter/sort by date
