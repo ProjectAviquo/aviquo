@@ -1,5 +1,7 @@
 # Aviquo
 
+v0.0.1
+
 ## Installation
 
 ### Clone the repo
