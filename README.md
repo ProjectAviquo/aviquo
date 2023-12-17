@@ -1,41 +1,46 @@
-# aviquo
+# Aviquo
 
-Before setting up the git, create a .venv environement for your program:
+## Installation
 
-	python -m venv
+### Clone the repo
 
-To use our program, simply copy and paste into your terminal:
+```sh
+git clone https://github.com/ProjectAviquo/aviquo.git
+cd aviquo
+```
 
-	git clone https://github.com/ProjectAviquo/aviquo.git
+### Before starting development, create a venv and install depenencies
 
-Next, you need to install all the dependencies:
+```sh
+python -m venv venv
+pip install -r requirements.txt
+```
 
-	cd aviquo
-	pip install -r requirements.txt
+### Prepare the database
 
-Now, we need to set up the database. Paste into your terminal:
-	
-	cd backend
-	python manage.py makemigrations
-	python manage.py migrate
+```sh
+cd aviquo
+python manage.py makemigrations
+python manage.py migrate
+```
 
-Now you can create a superuser, paste:
+## Starting the server
 
-	python manage.py createsuperuser
+### Create a superuser
 
-	Name: [YOUR NAME]
-	Email address: [YOUR EMAIL ADDRESS]
-	Password: [YOUR PASSWORD]
-	Retype Password: [YOUR PASSWORD]
+```sh
+python manage.py createsuperuser
+ (enter info it prompts for)
+```
 
-Now run:
+### Run the server
 
-	python manage.py runserver
+```sh
+python manage.py runserver
+```
 
-Now that your superuser is set up, you can navigate to:
+### Open the server
 
-	http://127.0.0.1:8000/admin
+Go to <https://localhost:8000/admin> and enter superuser info
 
-Here, you will type in your super user name and password.
-
-You are all done! Now you can add values to your databases.
+Congratulations! You did it!
