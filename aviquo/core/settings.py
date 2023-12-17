@@ -1,12 +1,14 @@
-"""Django settings for aviquo project.
+"""
+Django settings for aviquo project.
 """
 
 from pathlib import Path
+from typing import List
 
 SECRET_KEY = "django-insecure-i__v1^#ny7m4ew(q&(_bb&n6dhuwws&@21or@urw6h!xg)=dq&"
 
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS: List[str] = []
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -17,6 +19,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "base",
 ]
 
 MIDDLEWARE = [
@@ -29,7 +32,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "aviquo.urls"
+ROOT_URLCONF = "core.urls"
 
 TEMPLATES = [
     {
@@ -47,7 +50,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "aviquo.wsgi.application"
+WSGI_APPLICATION = "core.wsgi.application"
 
 DATABASES = {
     "default": {
@@ -70,6 +73,8 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
 ]
+
+AUTH_USER_MODEL = "base.User"
 
 LANGUAGE_CODE = "en-us"
 TIME_ZONE = "UTC"

@@ -141,3 +141,6 @@ package-lock.json
 # Env
 venv/
 env/
+
+# More
+.mypy.ini
