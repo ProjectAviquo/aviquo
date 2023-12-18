@@ -7,7 +7,7 @@
   * Other PEP 8 things
   * Typing, import typing if neccesary for stuff like lists for mypy to calm down
 * Use the Black formatter for python
-* Run black with "black ."
+* Run black with "black ." or install the pre-commit hook in utils
 
 ## Extentions for VS Code
 
