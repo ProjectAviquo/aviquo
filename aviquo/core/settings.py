@@ -2,6 +2,7 @@
 Django settings for aviquo project.
 """
 
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import List
 
@@ -77,10 +78,60 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTH_USER_MODEL = "base.User"
 
 LANGUAGE_CODE = "en-us"
-TIME_ZONE = "UTC"
+TZ = timezone(offset=timedelta())
+TIME_ZONE = str(TZ)
 USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+LOGFILE = BASE_DIR / Path("logs/" + ("dev" if DEBUG else "prod") + ".log").resolve()
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "simple": {
+            "format": "{levelname} {asctime} {module} {message}",
+            "style": "{",
+            "datefmt": "%y-%m-%d %H:%M:%S",
+        },
+    },
+    "handlers": {
+        "console": {"class": "logging.StreamHandler", "formatter": "simple"},
+        "file": {
+            "level": "DEBUG" if DEBUG else "INFO",
+            "class": "logging.FileHandler",
+            "filename": LOGFILE,
+            "formatter": "simple",
+        },
+    },
+    "root": {
+        "handlers": ["console", "file"],
+        "level": "DEBUG" if DEBUG else "WARNING",
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console", "file"],
+            "level": "WARNING",
+            "propagate": False,
+        },
+    },
+}
+
+
+def logging_startup():
+    """Add the time thingy to the log file"""
+    with open(LOGFILE, "a", encoding="UTF-8") as f:
+        f.write(
+            "".join(
+                [
+                    "=" * 25,
+                    f" LOGGING FOR SERVER START AT {datetime.now(tz=TZ).isoformat()} ",
+                    "=" * 25,
+                    "\n",
+                ]
+            )
+        )

@@ -13,11 +13,6 @@ class RegisterForm(UserCreationForm):
 
     email = forms.EmailField(max_length=128, help_text="Required")
 
-    def __init__(self, *args, **kwargs) -> None:
-        """Create the form"""
-
-        super(RegisterForm, self).__init__(self, *args, **kwargs)
-
     class Meta:
         """Meta class for the ModelForm"""
 

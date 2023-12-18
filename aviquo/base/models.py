@@ -25,9 +25,15 @@ class User(AbstractUser):
     * Bio
     """
 
+    # pylint: disable=unused-variable
+
     def __init__(self, *args, **kwargs) -> None:
         bio: models.Field = models.TextField(
             max_length=796
         )  # Dont ask why 796, trust me bro
+
+        email: models.Field = models.EmailField(
+            "email adress", max_length=128, unique=True
+        )
 
         super(AbstractUser, self).__init__(*args, **kwargs)
