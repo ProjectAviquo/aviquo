@@ -5,6 +5,7 @@
 * Follow PEP 8. That means:
   * Module, class, functions should be docstringed
   * Other PEP 8 things
+  * Typing, import typing if neccesary for stuff like lists for mypy to calm down
 * Use the Black formatter for python
 * Run black with "black ."
 

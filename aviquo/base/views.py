@@ -9,6 +9,7 @@ from .forms import RegisterForm
 
 # Authentication
 def signup(request: HttpRequest) -> HttpResponse:
+    """Sign up view"""
     match request.method:
         case "GET":
             form = RegisterForm
