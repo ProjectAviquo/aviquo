@@ -23,7 +23,7 @@ def signup(request: HttpRequest) -> Union[HttpResponse, HttpResponseBadRequest]:
     match request.method:
         case "GET":
             form = RegisterForm
-            return render(request, "")
+            return render(request, "auth/signup.html", {"form": form})
 
         case "POST":
             form_data = RegisterForm(request.POST)
