@@ -7,9 +7,9 @@ class UserFollowingFollowersTestCase(TestCase):
     def setUp(self):
         """Create users"""
 
-        self.user1 = User.objects.create(username='user1')
-        self.user2 = User.objects.create(username='user2')
-        self.user3 = User.objects.create(username='user3')
+        self.user1 = User.objects.create(username="user1")
+        self.user2 = User.objects.create(username="user2")
+        self.user3 = User.objects.create(username="user3")
 
         self.user1.following_set.add(self.user2, self.user3)
         self.user2.following_set.add(self.user1)

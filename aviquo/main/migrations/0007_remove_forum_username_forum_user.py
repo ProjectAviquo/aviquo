@@ -5,19 +5,18 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('main', '0006_user_followed_opps'),
+        ("main", "0006_user_followed_opps"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='forum',
-            name='username',
+            model_name="forum",
+            name="username",
         ),
         migrations.AddField(
-            model_name='forum',
-            name='user',
+            model_name="forum",
+            name="user",
             field=models.ManyToManyField(blank=True, to=settings.AUTH_USER_MODEL),
         ),
     ]

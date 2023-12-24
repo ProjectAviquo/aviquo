@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import logout
-from django.shortcuts import redirect, render,  get_object_or_404
+from django.shortcuts import redirect, render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from django.http import JsonResponse
@@ -13,7 +13,13 @@ from rest_framework import generics
 
 from .models import Forum, Opportunity, User, Waitlist, Tag
 from .serializers import ForumSerializer, WaitlistSerializer
-from .forms import EditProfileForm, AddWaitlistForm, AddForumForm, CustomAuthForm, CustomUserCreationForm
+from .forms import (
+    EditProfileForm,
+    AddWaitlistForm,
+    AddForumForm,
+    CustomAuthForm,
+    CustomUserCreationForm,
+)
 from core.settings import DEBUG
 
 import os
@@ -44,6 +50,7 @@ def clogout(request):
         logout(request)
     return redirect("home")
 
+
 @login_required
 def profile(request, username):
     """Get profile"""
@@ -55,14 +62,18 @@ def profile(request, username):
 def following(request, username):
     """Get follwing"""
     user = get_object_or_404(User, username=username)
-    return render(request, "users/following.html", {"user": user, "ouser": request.user})
+    return render(
+        request, "users/following.html", {"user": user, "ouser": request.user}
+    )
 
 
 @login_required
 def followers(request, username):
     """Get followers"""
     user = get_object_or_404(User, username=username)
-    return render(request, "users/followers.html", {"user": user, "ouser": request.user})
+    return render(
+        request, "users/followers.html", {"user": user, "ouser": request.user}
+    )
 
 
 @login_required
@@ -75,7 +86,6 @@ def edit_profile(request):
     if request.method == "POST":
         form = EditProfileForm(request.POST, request.FILES, instance=user)
         if form.is_valid():
-
             # form.instance.bio = bio
             # form.instance.profile_image = pic
             form.save()
@@ -95,7 +105,11 @@ def OpportunityView(request):
     """View OPPS"""
     opportunities = Opportunity.objects.all()
     tags = Tag.objects.all()
-    return render(request, "lists/opportunity_list.html", {"opportunities": opportunities, "all_tags": tags})
+    return render(
+        request,
+        "lists/opportunity_list.html",
+        {"opportunities": opportunities, "all_tags": tags},
+    )
 
 
 @login_required
@@ -106,7 +120,7 @@ def ForumView(request):
     if request.method == "POST":
         form = AddForumForm(request.POST)
         if form.is_valid():
-           # Create a new Forum instance but don't save it yet
+            # Create a new Forum instance but don't save it yet
             new_forum = form.save()
 
             new_forum.user = user
@@ -122,6 +136,7 @@ def ForumView(request):
 
 class SignUp(CreateView):
     """Signup view + form"""
+
     form_class = CustomUserCreationForm
     success_url = reverse_lazy("login")
     template_name = "accounts/signup.html"
@@ -129,6 +144,7 @@ class SignUp(CreateView):
 
 class Login(LoginView):
     """Login view + form"""
+
     template_name = "accounts/login.html"
 
 
@@ -144,7 +160,7 @@ def delete_forum(request, forum_id):
         pass
 
     # Redirect to the page that the request originated from
-    return redirect(request.META.get('HTTP_REFERER', '/'))
+    return redirect(request.META.get("HTTP_REFERER", "/"))
 
 
 def unfollow_user(request, user_id):
@@ -160,7 +176,7 @@ def unfollow_user(request, user_id):
         pass
 
     # Redirect to the page that the request originated from
-    return redirect(request.META.get('HTTP_REFERER', '/'))
+    return redirect(request.META.get("HTTP_REFERER", "/"))
 
 
 def follow_user(request):

@@ -4,26 +4,25 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('main', '0002_opportunity_url'),
+        ("main", "0002_opportunity_url"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='category',
-            options={'ordering': ['name'], 'verbose_name_plural': 'Categories'},
+            name="category",
+            options={"ordering": ["name"], "verbose_name_plural": "Categories"},
         ),
         migrations.AlterModelOptions(
-            name='forum',
-            options={'ordering': ['date_created']},
+            name="forum",
+            options={"ordering": ["date_created"]},
         ),
         migrations.AlterModelOptions(
-            name='opportunity',
-            options={'ordering': ['name'], 'verbose_name_plural': 'Opportunities'},
+            name="opportunity",
+            options={"ordering": ["name"], "verbose_name_plural": "Opportunities"},
         ),
         migrations.AlterModelOptions(
-            name='waitlist',
-            options={'ordering': ['-date_created']},
+            name="waitlist",
+            options={"ordering": ["-date_created"]},
         ),
     ]

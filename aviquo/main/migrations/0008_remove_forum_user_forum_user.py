@@ -6,19 +6,23 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('main', '0007_remove_forum_username_forum_user'),
+        ("main", "0007_remove_forum_username_forum_user"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='forum',
-            name='user',
+            model_name="forum",
+            name="user",
         ),
         migrations.AddField(
-            model_name='forum',
-            name='user',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),
+            model_name="forum",
+            name="user",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
     ]

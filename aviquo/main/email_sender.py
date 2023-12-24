@@ -11,6 +11,7 @@ from django.template.loader import render_to_string
 
 class Email:
     """Email class"""
+
     def __init__(self, receiver):
         """Make email"""
         self.ctx = ssl.create_default_context()
@@ -43,7 +44,17 @@ class Email:
 
 class EmailPasswordResetForm(PasswordResetForm):
     """Reset pass form"""
-    def send_mail(_, subject_template_name, email_template_name, context, from_email, to_email, *args, **kwargs):
+
+    def send_mail(
+        _,
+        subject_template_name,
+        email_template_name,
+        context,
+        from_email,
+        to_email,
+        *args,
+        **kwargs
+    ):
         """Nyomm"""
         e = Email(to_email)
         e.createHeaders("Password Reset Link")
@@ -53,5 +64,6 @@ class EmailPasswordResetForm(PasswordResetForm):
 
 class CustomPasswordResetView(PasswordResetView):
     """Reset view email"""
+
     email_template_name = "accounts/custom_reset_email.html"
     form_class = EmailPasswordResetForm

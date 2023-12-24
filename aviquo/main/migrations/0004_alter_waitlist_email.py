@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('main', '0003_alter_category_options_alter_forum_options_and_more'),
+        ("main", "0003_alter_category_options_alter_forum_options_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='waitlist',
-            name='email',
+            model_name="waitlist",
+            name="email",
             field=models.EmailField(max_length=320, unique=True),
         ),
     ]
