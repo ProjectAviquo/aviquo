@@ -1,62 +1,71 @@
-"""REST API Serializer"""
-from rest_framework import serializers
+"""
+REST API Serializer
+"""
+
 from main.models import Forum, Opportunity, Tag, User, Waitlist
+from rest_framework import serializers
 
 
 class BaseSerializer(serializers.ModelSerializer):
-    """Base serializer for the API.
-    Parent of other ones"""
+    """Base model serializer for the other serializers"""
+
     class Meta:
-        """Meta class for fields"""
+        """Meta class"""
+
         abstract = True
         fields = "__all__"
 
 
 class UserSerializer(BaseSerializer):
-    """Serializer for users.
-    User model"""
+    """User serializer"""
+
     class Meta(BaseSerializer.Meta):
         """Meta class for fields"""
+
         model = User
         # fields = ('id', 'username', 'email', 'password')
         # extra_kwargs = {'password': {'write_only': True}}
 
 
 class LoginSerializer(serializers.Serializer):
-    """Serializer for login
-    Username and password"""
+    """Login serializer"""
+
     username = serializers.CharField()
     password = serializers.CharField(write_only=True)
 
 
 class ForumSerializer(BaseSerializer):
-    """Forum serializer.
-    Forum model"""
+    """Forum serializer"""
+
     class Meta(BaseSerializer.Meta):
-        """Meta class for fields"""
+        """Meta class"""
+
         model = Forum
 
 
 class OpportunitySerializer(BaseSerializer):
-    """Opportunity serializer.
-    Opportunity Model"""
+    """Opportunity serializer"""
+
     class Meta(BaseSerializer.Meta):
-        """Meta class for fields"""
+        """Meta class"""
+
         model = Opportunity
 
 
 class TagSerializer(BaseSerializer):
-    """Tag serializer.
-    Tag model"""
+    """Tag serializer"""
+
     class Meta(BaseSerializer.Meta):
-        """Meta class for fields"""
+        """Meta class"""
+
         model = Tag
 
 
 class WaitlistSerializer(serializers.ModelSerializer):
-    """Waitlist serializer.
-    Waitlist model and all fields"""
+    """Waitlist serializer"""
+
     class Meta:
-        """Meta class for fields"""
+        """Meta class"""
+
         model = Waitlist
         fields = "__all__"

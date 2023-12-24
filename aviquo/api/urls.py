@@ -1,4 +1,7 @@
-"""API Url"""
+"""
+API Urls
+"""
+
 from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
@@ -18,6 +21,7 @@ router.register(r"Forum", ForumViewSet)
 router.register(r"Opportunity", OpportunityViewSet)
 router.register(r"Tag", TagViewSet)
 router.register(r"Waitlist", WaitlistViewSet)
+
 urlpatterns = [
     path("", include(router.urls)),
     path("gen_key/", gen_api_key, name="GAK"),

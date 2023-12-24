@@ -1,19 +1,14 @@
-"""
-URL configuration for aviquo project.
-"""
-
-from typing import Any, List
-
 from django.contrib import admin
+from django.urls import path, include
+from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from django.urls import include, path
+from django.conf.urls.static import static
 
-from .settings import DEBUG
-
-urlpatterns: List[Any] = [
+urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include("base.urls")),
-]
+    path("", include("main.urls")),
+    path("api/", include("api.urls")),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-if DEBUG:
+if settings.DEBUG:
     urlpatterns.extend(staticfiles_urlpatterns())

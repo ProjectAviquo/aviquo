@@ -1,6 +1,6 @@
 # Aviquo
 
-v0.0.1
+v0.7.0
 
 ## Installation
 
@@ -38,7 +38,7 @@ python manage.py createsuperuser
 ### Run the server
 
 ```sh
-python manage.py runserver
+./run.sh
 ```
 
 ### Open the server

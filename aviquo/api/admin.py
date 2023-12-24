@@ -1,5 +1,8 @@
-"""Admin API View
-Unregisters the API key group"""
+"""
+Admin view for API
+Unregisters APIKeys from the DB
+"""
+
 from django.contrib import admin
 from rest_framework_api_key.admin import APIKey
 

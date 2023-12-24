@@ -13,6 +13,7 @@
 
 * Python Intellisense - General thingy
 * Pylint - PEP 8
+  * "pylint.args": ["load-plugins=pylint_django"] <- add this to your settings.json for vs code
 * Black Formatting for Python - Formatter
 * AutoDocString -  For functions and classes
 * Pylance - more python

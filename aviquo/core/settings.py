@@ -1,18 +1,26 @@
 """
-Django settings for aviquo project.
+Django settings for the aviquo project.
 """
 
-from datetime import datetime, timedelta, timezone
+import os
 from pathlib import Path
-from typing import List
 
-SECRET_KEY = "django-insecure-i__v1^#ny7m4ew(q&(_bb&n6dhuwws&@21or@urw6h!xg)=dq&"
-
-DEBUG = True
-ALLOWED_HOSTS: List[str] = []
-
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# SECURITY: keep the secret key used in production secret!
+SECRET_KEY = os.environ.get(
+    "AVIQUO_SECRET_KEY",
+    "django-insecure-+%s$-n=0kotg$tt#e$wrk=um#68gxa8(0^joabpuml9xm*q@sp",
+)
+
+# SECURITY: don't run with debugging on in production!
+# DEBUG is False only when in the OS environment DEBUG='' or DEBUG is unset
+DEBUG = os.environ.get("AVIQUO_DEBUG", True)
+
+ALLOWED_HOSTS = ["*"]
+
+# Application definition
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -20,8 +28,18 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "base",
+    "main.apps.MainConfig",
+    "api.apps.ApiConfig",
+    "chat.apps.ChatConfig",
+    "rest_framework",
+    "corsheaders",
+    "rest_framework_api_key",
+    # "channels",
+    # custom apps below
 ]
+
+LOGIN_REDIRECT_URL = "/profile"
+LOGIN_URL = "/login/"  # Use the URL you prefer
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -31,6 +49,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
 ]
 
 ROOT_URLCONF = "core.urls"
@@ -51,8 +70,11 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "core.wsgi.application"
+ASGI_APPLICATION = "core.asgi.application"
+AUTH_USER_MODEL = "main.User"
 
+# Database
+# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -60,79 +82,43 @@ DATABASES = {
     }
 }
 
+# Password validation
+# https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
-    },
     {
         "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
     {
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
-    {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
-    },
 ]
 
-AUTH_USER_MODEL = "base.User"
-
-LANGUAGE_CODE = "en-us"
-TZ = timezone(offset=timedelta())
-TIME_ZONE = str(TZ)
-USE_I18N = True
-USE_TZ = True
-
-STATIC_URL = "static/"
-STATIC_ROOT = BASE_DIR / "static"
-
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-LOGFILE = BASE_DIR / Path("logs/" + ("dev" if DEBUG else "prod") + ".log").resolve()
-
-LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": False,
-    "formatters": {
-        "simple": {
-            "format": "{levelname} {asctime} {module} {message}",
-            "style": "{",
-            "datefmt": "%y-%m-%d %H:%M:%S",
-        },
-    },
-    "handlers": {
-        "console": {"class": "logging.StreamHandler", "formatter": "simple"},
-        "file": {
-            "level": "DEBUG" if DEBUG else "INFO",
-            "class": "logging.FileHandler",
-            "filename": LOGFILE,
-            "formatter": "simple",
-        },
-    },
-    "root": {
-        "handlers": ["console", "file"],
-        "level": "DEBUG" if DEBUG else "WARNING",
-    },
-    "loggers": {
-        "django": {
-            "handlers": ["console", "file"],
-            "level": "WARNING",
-            "propagate": False,
-        },
-    },
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework_api_key.permissions.HasAPIKey",
+    ]
 }
 
 
-def logging_startup():
-    """Add the time thingy to the log file"""
-    with open(LOGFILE, "a", encoding="UTF-8") as f:
-        f.write(
-            "".join(
-                [
-                    "=" * 25,
-                    f" LOGGING FOR SERVER START AT {datetime.now(tz=TZ).isoformat()} ",
-                    "=" * 25,
-                    "\n",
-                ]
-            )
-        )
+# Internationalization
+# https://docs.djangoproject.com/en/4.2/topics/i18n/
+LANGUAGE_CODE = "en-us"
+TIME_ZONE = "America/New_York"
+USE_I18N = True
+USE_TZ = True
+
+
+STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "static"
+
+MEDIA_URL = "media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+CORS_ORIGIN_WHITELIST = ["http://localhost:3000"]
+API_KEY_CUSTOM_HEADER = "HTTP_X_API_KEY"
+CHANNEL_LAYERS = {"default": {"BACKEND": "channels.layers.InMemoryChannelLayer"}}
