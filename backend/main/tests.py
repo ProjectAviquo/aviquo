@@ -28,5 +28,5 @@ class UserFollowingFollowersTestCase(TestCase):
         self.assertIn(self.user2, self.user1.followers_set.all())
         self.assertIn(self.user3, self.user1.followers_set.all())
 
-    
+
 

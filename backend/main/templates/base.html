@@ -1,54 +1,17 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <style>
-            body {
-                color: pink;
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Your Website{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+</head>
+<body>
+    {% block navbar %}
+    {% include 'components/navbar.html' %}
+    {% endblock navbar %}
 
-            }
-            .sidebar {
-            background-color: #FF99CC;
-            height: 100%;
-            width: 250px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            overflow-x: hidden;
-            transition: 0.3s;
-            padding-top: 20px;
-            z-index: 1;
-        }
-
-        .sidebar a {
-            padding: 15px 25px;
-            text-decoration: none;
-            font-size: 20px;
-            color: pink;
-            display: block;
-            transition: 0.3s;
-        }
-
-        .sidebar a:hover {
-            color: #FF66B2;
-        }
-        </style>
-        {% block title %}
-        {% endblock %}
-    </head>
-    <body>
-{% block content %}
-{% endblock %}
-        <div class="sidebar-container">
-            <!-- Sidebar -->
-            <div class="sidebar" id="sidebar">
-                <ul>
-                    <li><a href="{% url 'profile' user.username %}">Profile</a></li>
-                    <li><a href="{% url 'opportunity' %}">Opportunities</a></li>
-                    <li><a href="{% url 'forum' %}">Forum</a></li>
-                    <li><a href="{% url 'logout' %}">Logout</a></li>
-                </ul>
-            </div>
-        </div>
-  
-    </body>
+    {% block content %}
+    {% endblock content %}
+</body>
 </html>

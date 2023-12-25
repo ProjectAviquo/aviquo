@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Tag, User, Waitlist, Forum
+from .models import Tag, User, Waitlist
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 class TagFilterForm(forms.Form):
@@ -14,16 +14,12 @@ class EditProfileForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ["first_name", "last_name", "username", "email", "bio", "profile_image"]
-    
+
 class AddWaitlistForm(forms.ModelForm):
     class Meta:
         model = Waitlist
         fields = ["email"]
 
-class AddForumForm(forms.ModelForm):
-    class Meta:
-        model = Forum
-        fields = ["topic", "description"]
 class CustomUserCreationForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super(CustomUserCreationForm, self).__init__(*args, **kwargs)

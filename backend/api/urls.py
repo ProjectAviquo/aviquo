@@ -3,7 +3,6 @@ from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
 from .views import (
-    ForumViewSet,
     OpportunityViewSet,
     RegistrationAPIView,
     TagViewSet,
@@ -14,7 +13,6 @@ from .views import (
 
 router = DefaultRouter()
 router.register(r"users", UserViewSet)
-router.register(r"Forum", ForumViewSet)
 router.register(r"Opportunity", OpportunityViewSet)
 router.register(r"Tag", TagViewSet)
 router.register(r"Waitlist", WaitlistViewSet)

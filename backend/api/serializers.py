@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from main.models import Forum, Opportunity, Tag, User, Waitlist
+from main.models import Opportunity, Tag, User, Waitlist
 
 
 class BaseSerializer(serializers.ModelSerializer):
@@ -19,10 +19,6 @@ class LoginSerializer(serializers.Serializer):
     username = serializers.CharField()
     password = serializers.CharField(write_only=True)
 
-
-class ForumSerializer(BaseSerializer):
-    class Meta(BaseSerializer.Meta):
-        model = Forum
 
 
 class OpportunitySerializer(BaseSerializer):

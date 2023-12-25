@@ -1,119 +1,126 @@
-{% extends 'components/box_plus.html' %}
-{% block title %}Opportunities{% endblock title %}
-{% block head %}
-<link rel="stylesheet" href="/static/lists/opportunities.css" />
-{% endblock head %}
+{% extends 'base.html' %}
+{% block title %}Extracurricular Database{% endblock %}
 
-{%block the_lifted%}
+{% load static %}
 
-{%endblock%}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+<section class="section">
+  <div class="container">
+    <h1 class="title" style="color: #333;">Extracurricular Opportunities</h1>
 
-{% block after_content %}
-<div class="lifted-box" id="posts">
-    <h2>Opportunities</h2>
-
-    <!-- Tags filter -->
-    <div>
-        <label for="tagFilter">Filter by Tag:</label>
-        <select id="tagFilter" multiple>
-            <option value="">All Tags</option>
-            {% for tag in all_tags %}
-            <option value="{{ tag.id }}">{{ tag.name }}</option>
-            {% endfor %}
-        </select>
-    </div>
-
-    <table>
-        <tbody>
-            {% for opportunity in opportunities %}
-            <tr data-tags="{% for tag in opportunity.tags.all %}{{ tag.id }} {% endfor %}">
-                <td>{{ opportunity.id }}</td>
-                <td>{{ opportunity.name }}</td>
-                <td>{{ opportunity.description }}</td>
-                <td><a href="{{ opportunity.URL }}" target="_blank">{{ opportunity.URL }}</a></td>
-                <td>
-                    <ul>
-                        {% for tag in opportunity.tags.all %}
-                        <li>{{ tag.name }}</li>
+    <div class="container is-fluid">
+        <div class="columns">
+            <div class="column is-one-quarter">
+                <aside class="menu">
+                    <ul class="menu-list">
+                        {% for tag in all_tags %}
+                            <li>
+                                <a href="?{% if tag.name in active_tags %}remove{% else %}add{% endif %}_tag={{ tag.name }}" class="{% if tag.name in active_tags %}is-active{% endif %}">
+                                    {{ tag.name }}
+                                </a>
+                            </li>
                         {% endfor %}
                     </ul>
-                </td>
-                <td>
-                    {% if opportunity in user.followed_opps.all %}
-                    <button class="follow-button" data-opportunity-id="{{ opportunity.id }}">
-                        Unfollow
-                    </button>
-                    {% else %}
-                    <button class="follow-button" data-opportunity-id="{{ opportunity.id }}">
-                        Follow
-                    </button>
-                    {% endif %}
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
+                </aside>
+            </div>
+            <div class="column">
+                <!-- Search bar and filter button -->
+                <form method="get" action="{% url 'opportunity' %}">
+                    {{ form.as_p }}
+                    <button type="submit" class="button is-primary">Filter</button>
+                </form>
+        </div>
+    </div>
 
-<script>
-    $(".follow-button").click(function () {
-            const button = $(this);
-            const opportunityId = button.data("opportunity-id");
-            const action = button.text().toLowerCase(); // Follow or Unfollow
+    <!-- Include this script at the bottom of the `opportunity_list.html` file -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Attach click event to tag links
+        document.querySelectorAll('aside.menu a').forEach((tagLink) => {
+            tagLink.addEventListener('click', (e) => {
+                e.preventDefault(); // Prevent the default anchor link behavior
 
-            // Send an AJAX request to your Django view
-            $.ajax({
-                type: "POST",
-                url: "/follow-opportunity/",  // Replace with the actual URL
-                data: {
-                    opportunity_id: opportunityId,
-                    action: action,
-                    csrfmiddlewaretoken: '{{ csrf_token }}',  // Include the CSRF token
-                },
-                success: function (response) {
-                    if (response === "followed") {
-                        button.text("Unfollow");
-                    } else {
-                        button.text("Follow");
-                    }
-                },
+                // Parse the URL query parameters
+                let urlParams = new URLSearchParams(window.location.search);
+
+                // Check whether we're adding or removing a tag
+                const tagName = e.target.getAttribute('href').split('=').pop();
+                if (e.target.getAttribute('href').startsWith('?add_tag')) {
+                    urlParams.append('tags', tagName);
+                } else {
+                    let tags = urlParams.getAll('tags');
+                    tags = tags.filter((tag) => tag !== tagName);
+                    urlParams.delete('tags');
+                    tags.forEach((tag) => urlParams.append('tags', tag));
+                }
+
+                // Redirect to the updated URL with the new set of active tags
+                window.location.search = urlParams.toString();
             });
         });
-
-    // Tag filter logic
-    $("#tagFilter").change(function () {
-        const selectedTagId = $(this).val();
-        console.log(selectedTagId)
-        // Convert selectedTagId to an array
-        // Loop through each row (opportunity)
-        $('tr').each(function () {
-            const row = $(this);
-            const rowTagIds = row.attr('data-tags')
-            console.log(rowTagIds)
-            // Check if the opportunity has all selected tags
-            console.log(rowTagIds.includes('1'))
-            console.log(rowTagIds.includes(1))
-            // (rowTagIds.includes(String.fromCharCode(tagId)))
-            const hasAllTags = selectedTagId.every(
-                tagId =>  rowTagIds.includes(tagId)
-            );
-
-            // Show or hide the row based on the condition
-            if (hasAllTags) {
-                row.show();
-            } else {
-                row.hide();
-            }
-        });
-
-        // if (selectedTagId) {
-        //     // Hide rows that don't have the selected tag
-        //     $(`tr[data-tags*="${selectedTagId}"]`).show();
-        //     $(`tr:not([data-tags*="${selectedTagId}"])`).hide();
-        // } else {
-        //     // Show all rows when no tag is selected
-        //     $("tr").show();
-        // }
     });
-</script>
-{% endblock after_content %}
+    </script>
+
+    <!-- Opportunities list -->
+    <div class="columns is-multiline">
+    {% for opportunity in opportunities %}
+        <div class="column is-one-third">
+        <div class="card white-bg">
+            <div class="card-content">
+            <p class="title is-4">{{ opportunity.name }}</p>
+            <p class="subtitle is-6">{{ opportunity.description|truncatewords:20 }}</p>
+            </div>
+            <footer class="card-footer">
+            <a href="#" class="card-footer-item">Details</a>
+            <a href="#" class="card-footer-item">Apply</a>
+            <a href="?bookmark_opportunity={{ opportunity.id }}" class="card-footer-item {% if request.user in opportunity.bookmarked_users.all %}bookmarked{% endif %}">
+            {% if request.user in opportunity.bookmarked_users.all %}Remove Bookmark{% else %}Bookmark{% endif %}
+            </a>
+        </footer>
+      </div>
+    </div>
+    {% empty %}
+    <p>No opportunities to display.</p>
+    {% endfor %}
+  </div>
+</section>
+
+<a href="?show_bookmarked" class="button is-primary {% if 'show_bookmarked_toggle' in request.session %}is-active{% endif %}">
+    {% if 'show_bookmarked_toggle' in request.session %}Showing Bookmarked Extracurriculars{% else %}Showing All Extracurriculars{% endif %}
+</a>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Attach click event to tag links
+        document.querySelectorAll('aside.menu a').forEach((tagLink) => {
+            tagLink.addEventListener('click', (e) => {
+                e.preventDefault(); // Prevent the default anchor link behavior
+
+                // Parse the URL query parameters
+                let urlParams = new URLSearchParams(window.location.search);
+
+                // Check whether we're adding or removing a tag
+                const tagName = e.target.getAttribute('href').split('=').pop();
+                if (e.target.getAttribute('href').startsWith('?add_tag') && !urlParams.getAll('tags').includes(tagName)) {
+                    urlParams.append('tags', tagName);
+                } else {
+                    let tags = urlParams.getAll('tags');
+                    tags = tags.filter((tag) => tag !== tagName);
+                    urlParams.delete('tags');
+                    tags.forEach((tag) => urlParams.append('tags', tag));
+                }
+
+                // If 'show_bookmarked' was in the original parameters, make sure to include it in the updated parameters
+                if (window.location.search.includes('show_bookmarked')) {
+                    urlParams.append('show_bookmarked', '');
+                }
+
+                // Redirect to the updated URL with the new set of active tags
+                window.location.search = urlParams.toString();
+            });
+        });
+    });
+    </script>
+
+{% endblock %}

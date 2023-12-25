@@ -1,0 +1,43 @@
+.mint-green {
+    background-color: #98ff98;
+}
+
+/* White color */
+.white-bg {
+  background-color: white;
+}
+
+/* Border color for inputs on focus */
+.input:focus, .is-focused .input {
+  border-color: #98ff98;
+  box-shadow: 0 0 0 0.125em rgba(152, 255, 152, 0.25);
+}
+
+/* Button styling */
+.button.is-mint {
+  background-color: #98ff98;
+  color: white;
+}
+
+.is-active {
+  background-color: rgb(0, 0, 0);
+}
+
+.button.is-mint:hover {
+  background-color: #89e789;
+}
+
+/* Customizing Bulma card to match mint-green color theme */
+.card {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e8e8e8;
+  border-radius: 10px;
+}
+
+.card-header-title {
+  color: #333;
+}
+
+.card-footer-item {
+  color: #98ff98;
+}

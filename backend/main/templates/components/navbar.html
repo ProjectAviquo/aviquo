@@ -1,7 +1,22 @@
-<nav class="navbar">
-    <div><a href="{% url 'profilee' %}"><img src="/static/icons/home.png"></a></div>
-    <div><a href="{% url 'profilee'%}"><img src="/static/icons/profile.png"></a></div>
-    <div><a href="{%url 'opportunity'%}"><img src="/static/icons/search.png"></a></div>
-    <div><a href="{% url 'forum' %}"><img src="/static/icons/forum.png"></a></div>
-    <div><a href="#"><img src="/static/icons/settings.png"></a></div>
-</nav>
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="{% url 'home' %}">
+        Your Brand
+      </a>
+
+      <!-- ...mobile hamburger menu etc -->
+    </div>
+
+    <div class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="{% url 'home' %}">Home</a>
+        <a class="navbar-item" href="{% url 'opportunity' %}">Extracurricular Database</a>
+        <!-- ... other navbar items -->
+      </div>
+
+      <div class="navbar-end">
+        <a class="navbar-item" href="{% url 'login' %}">Login</a>
+        <a class="navbar-item" href="{% url 'signup' %}">Sign Up</a>
+      </div>
+    </div>
+  </nav>

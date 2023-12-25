@@ -1,12 +1,5 @@
 from rest_framework import serializers
-from .models import Forum, Opportunity, User, Waitlist
-
-
-class ForumSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Forum
-        fields = "__all__"
-
+from .models import Opportunity, User, Waitlist
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:

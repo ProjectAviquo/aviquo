@@ -6,11 +6,11 @@ from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 # from ..users.models import ExtracurricularReference
 # from ..users.serializers import ECSSerializer
-from main.models import Forum, Opportunity, Tag, User, Waitlist
+from main.models import Opportunity, Tag, User, Waitlist
 from rest_framework import generics, permissions, viewsets
 from rest_framework_api_key.models import APIKey
 
-from .serializers import ForumSerializer, OpportunitySerializer, TagSerializer, UserSerializer, WaitlistSerializer
+from .serializers import OpportunitySerializer, TagSerializer, UserSerializer, WaitlistSerializer
 
 
 class BaseViewSet(viewsets.ModelViewSet):
@@ -34,11 +34,6 @@ class RegistrationAPIView(generics.CreateAPIView):
     serializer_class = UserSerializer
     permission_classes = (permissions.AllowAny,)
 
-
-class ForumViewSet(BaseViewSet):
-    model = Forum
-    serializer_class = ForumSerializer
-    queryset = model.objects.all()
 
 
 class OpportunityViewSet(BaseViewSet):

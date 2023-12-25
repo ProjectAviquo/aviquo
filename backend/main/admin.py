@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group
 
-from .models import Forum, Opportunity, Tag, User, Waitlist
+from .models import Opportunity, Tag, User, Waitlist
 
 
 @admin.register(User)
@@ -20,11 +20,6 @@ class OpportunityAdmin(admin.ModelAdmin):
     @admin.display(description="Tags")
     def all_tags(self, obj):
         return obj.list_tags()
-
-
-@admin.register(Forum)
-class ForumAdmin(admin.ModelAdmin):
-    pass
 
 
 @admin.register(Tag)

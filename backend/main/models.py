@@ -1,45 +1,29 @@
+from django.db import models
+from core import settings
 from django.contrib.auth.models import AbstractUser
 from django.core.exceptions import ValidationError
-from django.db import models
-
-
-
-
+from django.contrib.auth.models import User
 
 class Tag(models.Model):
-    """Global list of tags/keywords applicable to opportunities.
-
-    Examples: scholarship, extracurricular activity, etc.
-    """
-
-    name = models.TextField(
-        unique=True, max_length=50, verbose_name="Tag", help_text="scholarship, extracurricular activity, etc."
+    """Global list of tags/keywords applicable to opportunities."""
+    name = models.CharField(
+        unique=True, max_length=50, verbose_name="Tag", help_text="Example: scholarship, extracurricular activity, etc."
     )
 
     def __str__(self):
         return self.name
 
     class Meta:
-        ordering = ["name"]
+        ordering = ['name']
 
     def clean(self):
         if not self.name.strip():
             raise ValidationError("Tag cannot be empty")
 
 
-class Category(models.Model):
-    name = models.CharField(max_length=255)
-
-    class Meta:
-        ordering = ["name"]
-        verbose_name_plural = "Categories"
-
-
-
-
-
 class Opportunity(models.Model):
-    name = models.TextField(max_length=200, verbose_name="Opportunity", help_text="Opportunity name/title")
+    """Opportunity that users can browse and filter by tags."""
+    name = models.CharField(max_length=200, verbose_name="Opportunity", help_text="Opportunity name/title")
     description = models.TextField(
         max_length=4000, verbose_name="Description", help_text="Detailed description of the opportunity"
     )
@@ -48,15 +32,26 @@ class Opportunity(models.Model):
     tags = models.ManyToManyField(Tag, blank=True)
 
     def __str__(self):
-        return str(self.id)
+        return self.name  # Change to return the name for a more descriptive representation
 
     class Meta:
-        ordering = ["name"]
+        ordering = ['name']
         verbose_name_plural = "Opportunities"
 
     def list_tags(self):
-        tags = self.tags.order_by("name")
-        return " " + ", ".join([tag.name for tag in tags]) if tags else ""
+        tags = self.tags.order_by('name')
+        return ", ".join([tag.name for tag in tags]) if tags else ""
+
+    bookmarks = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name='bookmarked_opportunities')
+    bookmarked_users = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name='bookmarked_opportunities_set')
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=255)
+
+    class Meta:
+        ordering = ["name"]
+        verbose_name_plural = "Categories"
 
 
 class Waitlist(models.Model):
@@ -80,23 +75,8 @@ class User(AbstractUser):
     followers =  models.ManyToManyField('self', blank=True, symmetrical=False, related_name="followers_set")
 
     followed_opps = models.ManyToManyField(Opportunity, blank=True)
-    created_forums = models.ManyToManyField('Forum', related_name='creator', blank=True)
     def __str__(self):
         return str(self.id)
 
     def get_full_name(self) -> str:
         return super().get_full_name()
-    
-
-class Forum(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
-    topic = models.CharField(max_length=300)
-    description = models.CharField(max_length=1000, blank=True)
-    date_created = models.DateTimeField(auto_now_add=True, null=True)
-    parent_post = models.ForeignKey("self", null=True, blank=True, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return str(self.id)
-
-    class Meta:
-        ordering = ["date_created"]

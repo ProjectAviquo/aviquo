@@ -1,21 +1,12 @@
-{% extends "accounts/account_template.html" %}
+{% extends 'base.html' %}
+{% block title %}Sign Up{% endblock %}
 
-{% block the_title %}Sign Up{% endblock %}
-{% block main_head %}SIGN UP{% endblock %}
-{% block action %}/signup/{% endblock %}
-{% block buttons %}<input type="submit" value="Sign Up" />{% endblock %}
-{% block link %}<a href="/login/" id="need">Already have an account?</a>{% endblock %}
-{% block after_js %}
-<script>
-    function check() {
-        var input = document.getElementById('id_password2');
-        if (input.value != document.getElementById('id_password1').value) {
-            input.setCustomValidity('Passwords Must be Matching');
-        } else {
-            input.setCustomValidity('');
-        }
-    }
-
-    $("<p id='requirements'>Password must include at least one number, uppercase, and lowercase letter</p>").insertAfter($("#id_password1"));
-</script>
+{% block content %}
+  <h2 class="title">Sign Up</h2>
+  <!-- Add Django signup form -->
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="button is-primary" type="submit">Sign Up</button>
+  </form>
 {% endblock %}
