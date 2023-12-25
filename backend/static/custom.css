@@ -1,30 +1,22 @@
-.mint-green {
-    background-color: #98ff98;
-}
-
-/* White color */
-.white-bg {
-  background-color: white;
-}
-
-/* Border color for inputs on focus */
 .input:focus, .is-focused .input {
   border-color: #98ff98;
   box-shadow: 0 0 0 0.125em rgba(152, 255, 152, 0.25);
 }
 
 /* Button styling */
-.button.is-mint {
+.button.is-primary {
   background-color: #98ff98;
   color: white;
 }
 
-.is-active {
-  background-color: rgb(0, 0, 0);
+/* Button hover color */
+.button.is-primary:hover {
+  background-color: #89e789;
 }
 
-.button.is-mint:hover {
-  background-color: #89e789;
+.is-active {
+  background-color: #98ff98;
+  color: white;
 }
 
 /* Customizing Bulma card to match mint-green color theme */
@@ -40,4 +32,48 @@
 
 .card-footer-item {
   color: #98ff98;
+}
+
+/* Title color */
+.title.is-mint {
+    color: #98ff98;
+}
+
+/* White color */
+.white-bg {
+  background-color: white;
+}
+
+/* Modal styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.4); /* Black with opacity */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }

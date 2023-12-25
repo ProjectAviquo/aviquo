@@ -28,7 +28,7 @@
                 <!-- Search bar and filter button -->
                 <form method="get" action="{% url 'opportunity' %}">
                     {{ form.as_p }}
-                    <button type="submit" class="button is-primary">Filter</button>
+                    <button type="submit" class="button is-primary">Clear</button>
                 </form>
         </div>
     </div>
@@ -66,18 +66,30 @@
     <div class="columns is-multiline">
     {% for opportunity in opportunities %}
         <div class="column is-one-third">
-        <div class="card white-bg">
-            <div class="card-content">
-            <p class="title is-4">{{ opportunity.name }}</p>
-            <p class="subtitle is-6">{{ opportunity.description|truncatewords:20 }}</p>
+            <div class="card-modal-container">
+                <div class="card white-bg" data-modal-target="#modal-opportunity-{{ opportunity.id }}">
+                <div class="card-content">
+                <p class="title is-4">{{ opportunity.name }}</p>
+                <p class="subtitle is-6">{{ opportunity.description|truncatewords:20 }}</p>
+                </div>
+                <footer class="card-footer">
+                <a href="#" class="card-footer-item">Details</a>
+                <a href="#" class="card-footer-item">Website</a>
+                <a href="?bookmark_opportunity={{ opportunity.id }}" class="card-footer-item {% if request.user in opportunity.bookmarked_users.all %}bookmarked{% endif %}">
+                {% if request.user in opportunity.bookmarked_users.all %}Remove Bookmark{% else %}Bookmark{% endif %}
+                </a>
+            </footer>
+            <div id="modal-opportunity-{{ opportunity.id }}" class="modal">
+                <div class="modal-content">
+                <span class="close">&times;</span>
+                <!-- Modal content: title, full description, url, and picture -->
+                <h2>{{ opportunity.name }}</h2>
+                <img src="{{ opportunity.profile_image.url }}" alt="Opportunity picture" />
+                <p>{{ opportunity.description }}</p>
+                <a href="{{ opportunity.URL }}">Visit Website</a>
+                </div>
             </div>
-            <footer class="card-footer">
-            <a href="#" class="card-footer-item">Details</a>
-            <a href="#" class="card-footer-item">Apply</a>
-            <a href="?bookmark_opportunity={{ opportunity.id }}" class="card-footer-item {% if request.user in opportunity.bookmarked_users.all %}bookmarked{% endif %}">
-            {% if request.user in opportunity.bookmarked_users.all %}Remove Bookmark{% else %}Bookmark{% endif %}
-            </a>
-        </footer>
+        </div>
       </div>
     </div>
     {% empty %}
@@ -122,5 +134,42 @@
         });
     });
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get all modals
+            const modals = document.querySelectorAll('.modal');
+            // Get all cards
+            const cards = document.querySelectorAll('.card');
+
+            // Function to open a modal
+            const openModal = (modal) => {
+            if (modal == null) return;
+            modal.style.display = 'block';
+            }
+
+            // Function to close a modal
+            const closeModal = (modal) => {
+            if (modal == null) return;
+            modal.style.display = 'none';
+            }
+
+            // Attach click event to each card to open the right modal
+            cards.forEach(card => {
+            card.addEventListener('click', () => {
+                const modalId = card.getAttribute('data-modal-target');
+                const modal = document.querySelector(modalId);
+                openModal(modal);
+            });
+            });
+
+            // Attach click event to each modal close button
+            modals.forEach(modal => {
+            modal.querySelector('.close').addEventListener('click', () => {
+                closeModal(modal);
+            });
+            });
+        });
+    </script>
+
 
 {% endblock %}

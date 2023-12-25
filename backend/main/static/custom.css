@@ -1,30 +1,22 @@
-.mint-green {
-    background-color: #98ff98;
-}
-
-/* White color */
-.white-bg {
-  background-color: white;
-}
-
-/* Border color for inputs on focus */
 .input:focus, .is-focused .input {
   border-color: #98ff98;
   box-shadow: 0 0 0 0.125em rgba(152, 255, 152, 0.25);
 }
 
 /* Button styling */
-.button.is-mint {
+.button.is-primary {
   background-color: #98ff98;
   color: white;
 }
 
-.is-active {
-  background-color: rgb(0, 0, 0);
+/* Button hover color */
+.button.is-primary:hover {
+  background-color: #89e789;
 }
 
-.button.is-mint:hover {
-  background-color: #89e789;
+.is-active {
+  background-color: #98ff98;
+  color: white;
 }
 
 /* Customizing Bulma card to match mint-green color theme */
@@ -40,4 +32,55 @@
 
 .card-footer-item {
   color: #98ff98;
+}
+
+/* Title color */
+.title.is-mint {
+    color: #98ff98;
+}
+
+/* White color */
+.white-bg {
+  background-color: white;
+}
+
+/* Modal styles */
+/* unchanged CSS... */
+
+
+.modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #aaa;
+  background-color: #fff;
+  max-width: 80%;
+  width: 800px;  /* Or however wide you want the modal to be */
+  padding: 1em;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  overflow: auto;  /* Add a scrollbar if the content is too tall */
+  max-height: 90vh;
+}
+
+.modal-background {
+  background: rgba(0, 0, 0, 0.5); /* slightly dark overlay */
+}
+
+modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  font-size: 2em;
+  color: #aaa;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }

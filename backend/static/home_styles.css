@@ -1,65 +1,45 @@
-.has-background-mint {
-    background-color: #98ff98; /* Light mint green background */
-}
+.input:focus, .is-focused .input {
+    border-color: #98ff98;
+    box-shadow: 0 0 0 0.125em rgba(152, 255, 152, 0.25);
+  }
 
-.has-text-mint {
-    color: #98ff98; /* Mint green text */
-}
+  /* Button styling */
+  .button.is-primary {
+    background-color: #98ff98;
+    color: white;
+  }
 
-/* Round edges */
-.rounded {
-    border-radius: 15px;
-}
-
-/* Shadow for images */
-.image-shadow {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Customize the navbar */
-.navbar {
-    border-bottom: 2px solid #98ff98; /* Mint green bottom border for navbar */
-}
-
-/* Custom styles for the hero section */
-.hero.is-mint {
-    background-color: #98ff98; /* Mint green background */
-    color: #fff; /* White text */
-}
-
-/* Adjust margins and padding for modern spacing */
-.section {
-    padding: 3rem 1.5rem;
-}
-
-/* Container for testimonials with modern layout */
-.testimonials-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 1rem;
-}
-.testimonial-box {
-    flex-basis: 30%;
-    padding: 1rem;
-    border: 1px solid #98ff98;
-    border-radius: 15px;
-    background-color: #fff;
-}
-
-/* Fallback for older browsers without grid support */
-.testimonials-container {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-align: center;
-    align-items: center;
-    -ms-flex-pack: distribute;
-    justify-content: space-around;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-}
-
-/* Darken the mint green on hover for interactive elements */
-a:hover, button:hover {
+  /* Button hover color */
+  .button.is-primary:hover {
     background-color: #89e789;
-}
+  }
+
+  .is-active {
+    background-color: #98ff98;
+    color: white;
+  }
+
+  /* Customizing Bulma card to match mint-green color theme */
+  .card {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e8e8e8;
+    border-radius: 10px;
+  }
+
+  .card-header-title {
+    color: #333;
+  }
+
+  .card-footer-item {
+    color: #98ff98;
+  }
+
+  /* Title color */
+  .title.is-mint {
+      color: #98ff98;
+  }
+
+  /* White color */
+  .white-bg {
+    background-color: white;
+  }
