@@ -6,80 +6,80 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'custom.css' %}">
 
-<section class="section">
-    <div class="container">
-        <h1 class="title" style="color: #333;">Extracurricular Opportunities</h1>
+    <section class="section">
+        <div class="container">
+            <h1 class="title" style="color: #333;">Extracurricular Opportunities</h1>
 
 
-        <!-- Fixed button container for clear and bookmark buttons -->
-        <div class="fixed-button-container">
-            <!-- Clear button -->
-            <div class="filter-clear-button clear-button">
-                <form method="get" action="{% url 'opportunity' %}">
-                    {{ form.as_p }}
-                    <button type="submit" class="button is-primary">Clear</button>
-                </form>
-            </div>
+            <!-- Fixed button container for clear and bookmark buttons -->
+            <div class="fixed-button-container">
+                <!-- Clear button -->
+                <div class="filter-clear-button clear-button">
+                    <form method="get" action="{% url 'opportunity' %}">
+                        {{ form.as_p }}
+                        <button type="submit" class="button is-primary">Clear</button>
+                    </form>
+                </div>
 
-            <!-- Tag filter list -->
-            <div class="menu-wrapper">
-                <aside class="menu">
-                    <ul class="menu-list">
-                        {% for tag in all_tags %}
+                <!-- Tag filter list -->
+                <div class="menu-wrapper">
+                    <aside class="menu">
+                        <ul class="menu-list">
+                            {% for tag in all_tags %}
                             <li>
                                 <a href="?{% if tag.name in active_tags %}remove{% else %}add{% endif %}_tag={{ tag.name }}" class="{% if tag.name in active_tags %}is-active{% endif %}">
                                     {{ tag.name }}
                                 </a>
                             </li>
-                        {% endfor %}
-                    </ul>
-                </aside>
+                            {% endfor %}
+                        </ul>
+                    </aside>
+                </div>
+
+                <!-- Book button -->
+                <a href="?show_bookmarked" id="bookbutton" class="button is-primary {% if request.session.show_bookmarked_toggle %}is-active{% endif %}">
+                    {% if request.session.show_bookmarked_toggle %}
+                    Showing Bookmarked Extracurriculars
+                    {% else %}
+                    Showing All Extracurriculars
+                    {% endif %}
+                </a>
             </div>
 
-            <!-- Book button -->
-            <a href="?show_bookmarked" id="bookbutton" class="button is-primary {% if request.session.show_bookmarked_toggle %}is-active{% endif %}">
-                {% if request.session.show_bookmarked_toggle %}
-                    Showing Bookmarked Extracurriculars
-                {% else %}
-                    Showing All Extracurriculars
-                {% endif %}
-            </a>
-        </div>
 
 
-
-    <!-- Include this script at the bottom of the `opportunity_list.html` file -->
-    <script>
+            <!-- Include this script at the bottom of the `opportunity_list.html` file -->
+            <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // Attach click event to tag links
-        document.querySelectorAll('aside.menu a').forEach((tagLink) => {
-            tagLink.addEventListener('click', (e) => {
-                e.preventDefault(); // Prevent the default anchor link behavior
+                    // Attach click event to tag links
+                    document.querySelectorAll('aside.menu a').forEach((tagLink) => {
+                        tagLink.addEventListener('click', (e) => {
+                            e.preventDefault(); // Prevent the default anchor link behavior
 
-                // Parse the URL query parameters
-                let urlParams = new URLSearchParams(window.location.search);
+                            // Parse the URL query parameters
+                            let urlParams = new URLSearchParams(window.location.search);
 
-                // Check whether we're adding or removing a tag
-                const tagName = e.target.getAttribute('href').split('=').pop();
-                if (e.target.getAttribute('href').startsWith('?add_tag')) {
-                    urlParams.append('tags', tagName);
-                } else {
-                    let tags = urlParams.getAll('tags');
-                    tags = tags.filter((tag) => tag !== tagName);
-                    urlParams.delete('tags');
-                    tags.forEach((tag) => urlParams.append('tags', tag));
-                }
+                            // Check whether we're adding or removing a tag
+                            const tagName = e.target.getAttribute('href').split('=').pop();
+                            if (e.target.getAttribute('href').startsWith('?add_tag')) {
+                                urlParams.append('tags', tagName);
+                            } else {
+                                let tags = urlParams.getAll('tags');
+                                tags = tags.filter((tag) => tag !== tagName);
+                                urlParams.delete('tags');
+                                tags.forEach((tag) => urlParams.append('tags', tag));
+                            }
 
-                // Redirect to the updated URL with the new set of active tags
-                window.location.search = urlParams.toString();
-            });
-        });
+                            // Redirect to the updated URL with the new set of active tags
+                            window.location.search = urlParams.toString();
+                        });
+                    });
     });
-    </script>
+            </script>
 
-                <!-- Opportunities list -->
-        <div class="columns is-multiline">
-            {% for opportunity in opportunities %}
+            <!-- Opportunities list -->
+            <div class="columns is-multiline">
+                {% for opportunity in opportunities %}
                 <div class="opportunity-column column">
                     <div class="card-modal-container">
                         <div class="card white-bg" data-modal-target="#modal-opportunity-{{ opportunity.id }}">
@@ -88,7 +88,7 @@
                                 <!-- Content container (title and description) -->
                                 <div class="card-text-content">
                                     <p class="title is-4">{{ opportunity.name }}</p>
-                                    <p class="subtitle is-6">{{ opportunity.description|truncatewords:50 }}</p>
+                                    <p class="subtitle is-6">{{ opportunity.description | truncatewords:50 }}</p>
                                 </div>
                                 <!-- Image container -->
                                 <div class="card-image-container">
@@ -111,51 +111,51 @@
                             <div class="modal-content">
                                 <span class="close">&times;</span>
                                 <div>
-                                  <h2>{{ opportunity.name }}</h2>
-                                  <p>{{ opportunity.description }}</p>
-                                  <a href="{{ opportunity.URL }}">Visit Website</a>
+                                    <h2>{{ opportunity.name }}</h2>
+                                    <p>{{ opportunity.description }}</p>
+                                    <a href="{{ opportunity.URL }}">Visit Website</a>
                                 </div>
                                 <div class="modal-img-container">
-                                  <img src="{{ opportunity.profile_image.url }}" alt="Opportunity picture" style="height: auto;" />
+                                    <img src="{{ opportunity.profile_image.url }}" alt="Opportunity picture" style="height: auto;" />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            {% empty %}
+                {% empty %}
                 <p>No opportunities to display.</p>
-            {% endfor %}
-        </div>
+                {% endfor %}
+            </div>
 
 
 
 
-</section>
+    </section>
 
 
-<script>
+    <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // Function to show the modal
-        function showModal(modal) {
-            modal.classList.add('active');
-            modal.querySelector('.modal-content').classList.add('visible');
-        }
+            // Function to show the modal
+            function showModal(modal) {
+                modal.classList.add('active');
+                modal.querySelector('.modal-content').classList.add('visible');
+            }
 
         // Function to hide the modal
         function hideModal(modal) {
             modal.classList.remove('active');
-            modal.querySelector('.modal-content').classList.remove('visible');
+        modal.querySelector('.modal-content').classList.remove('visible');
         }
 
         // Attach click events to each card to open the corresponding modal
         const cards = document.querySelectorAll('.card');
         cards.forEach(card => {
             const modalId = card.dataset.modalTarget;
-            const modal = document.querySelector(modalId);
+        const modal = document.querySelector(modalId);
 
             card.addEventListener('click', (event) => {
-                event.stopPropagation(); // Prevents the event from bubbling up to the parent elements
-                showModal(modal);
+            event.stopPropagation(); // Prevents the event from bubbling up to the parent elements
+        showModal(modal);
             });
         });
 
@@ -170,16 +170,16 @@
                 }
             });
 
-            // Prevent click events on the modal content from closing the modal
-            const modalContent = modal.querySelector('.modal-content');
+        // Prevent click events on the modal content from closing the modal
+        const modalContent = modal.querySelector('.modal-content');
             modalContent && modalContent.addEventListener('click', (event) => {
-                event.stopPropagation();
+            event.stopPropagation();
             });
 
-            // Close modal when clicking on the "X" close button
-            const closeButton = modal.querySelector('.close');
+        // Close modal when clicking on the "X" close button
+        const closeButton = modal.querySelector('.close');
             closeButton && closeButton.addEventListener('click', () => {
-                hideModal(modal);
+            hideModal(modal);
             });
         });
 
@@ -242,88 +242,88 @@
             // Function to scale down and hide the modal
             function hideModal(modal) {
                 const modalContent = modal.querySelector('.modal-content');
-                if (modalContent) {
-                    // Start the reverse transition
-                    modalContent.style.transform = scale(0.5);
-                    modalContent.style.opacity = '0';
+        if (modalContent) {
+            // Start the reverse transition
+            modalContent.style.transform = scale(0.5);
+        modalContent.style.opacity = '0';
                     // Wait for the transition to finish before hiding the modal itself
                     setTimeout(() => {
-                        modal.classList.remove('active');
-                        modalContent.style.transform = '';
-                        modalContent.style.opacity = '';
+            modal.classList.remove('active');
+        modalContent.style.transform = '';
+        modalContent.style.opacity = '';
                     }); // Delay should match the duration of the CSS transition
                 }
             }
 
-            // Attach click events to card details button to open modal
-            const detailsButtons = document.querySelectorAll('.card-footer-item');
+        // Attach click events to card details button to open modal
+        const detailsButtons = document.querySelectorAll('.card-footer-item');
             detailsButtons.forEach(btn => {
-                btn.addEventListener('click', function(event) {
-                    event.preventDefault();
-                    event.stopPropagation(); // Stop propagation to avoid closing the modal immediately
-                    const modalId = this.closest('.card').dataset.modalTarget;
-                    const modal = document.getElementById(modalId.replace('#', ''));
+            btn.addEventListener('click', function (event) {
+                event.preventDefault();
+                event.stopPropagation(); // Stop propagation to avoid closing the modal immediately
+                const modalId = this.closest('.card').dataset.modalTarget;
+                const modal = document.getElementById(modalId.replace('#', ''));
 
-                });
+            });
             });
 
 
             // Function to handle bookmarking an opportunity
             const handleBookmarkClick = (button) => {
                 const opportunityId = button.dataset.opportunityId;
-                const currentUrl = new URL(window.location.href);
-                const searchParams = currentUrl.searchParams;
+        const currentUrl = new URL(window.location.href);
+        const searchParams = currentUrl.searchParams;
 
-                // Set or toggle the bookmark parameter
-                searchParams.set('bookmark_opportunity', opportunityId);
+        // Set or toggle the bookmark parameter
+        searchParams.set('bookmark_opportunity', opportunityId);
 
-                // Update the search parameters in the URL
-                currentUrl.search = searchParams.toString();
+        // Update the search parameters in the URL
+        currentUrl.search = searchParams.toString();
 
-                // Redirect to the new URL with the bookmark parameter
-                window.location.href = currentUrl.href;
+        // Redirect to the new URL with the bookmark parameter
+        window.location.href = currentUrl.href;
             };
 
-            // Attach click event to all bookmark buttons
-            const bookmarkButtons = document.querySelectorAll('.bookmark-button');
+        // Attach click event to all bookmark buttons
+        const bookmarkButtons = document.querySelectorAll('.bookmark-button');
             bookmarkButtons.forEach(button => {
-                button.addEventListener('click', (event) => {
-                    // Prevent the default click behavior and stop event propagation
-                    event.preventDefault();
-                    event.stopPropagation();
+            button.addEventListener('click', (event) => {
+                // Prevent the default click behavior and stop event propagation
+                event.preventDefault();
+                event.stopPropagation();
 
-                    // Call the bookmark handling function
-                    handleBookmarkClick(button);
-                });
+                // Call the bookmark handling function
+                handleBookmarkClick(button);
+            });
             });
 
-            // Attach click events to close the modal
-            const closeButtons = document.querySelectorAll('.modal .close');
+        // Attach click events to close the modal
+        const closeButtons = document.querySelectorAll('.modal .close');
             closeButtons.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const modal = this.closest('.modal');
-                    if (modal) {
-                        hideModal(modal);
-                    }
-                });
+            btn.addEventListener('click', function () {
+                const modal = this.closest('.modal');
+                if (modal) {
+                    hideModal(modal);
+                }
+            });
             });
 
-            // Listen for clicks outside of the modal content to close the modal
-            const modals = document.querySelectorAll('.modal');
+        // Listen for clicks outside of the modal content to close the modal
+        const modals = document.querySelectorAll('.modal');
             modals.forEach(modal => {
-                modal.addEventListener('click', function(event) {
-                    if (event.target === this) {
-                        hideModal(this);
-                    }
-                });
+            modal.addEventListener('click', function (event) {
+                if (event.target === this) {
+                    hideModal(this);
+                }
+            });
             });
 
-            // Prevent closing modal when clicking inside modal content
-            const modalBodies = document.querySelectorAll('.modal-content');
+        // Prevent closing modal when clicking inside modal content
+        const modalBodies = document.querySelectorAll('.modal-content');
             modalBodies.forEach(modalBody => {
-                modalBody.addEventListener('click', function(event) {
-                    event.stopPropagation(); // Prevent event from reaching the ".modal" click listener
-                });
+            modalBody.addEventListener('click', function (event) {
+                event.stopPropagation(); // Prevent event from reaching the ".modal" click listener
+            });
             });
 
 
@@ -332,7 +332,7 @@
             modal.classList.add('active');
             // Wait for the next frame to add the active class to the modal content to trigger the transition
             requestAnimationFrame(() => {
-                modal.querySelector('.modal-content').classList.add('active');
+            modal.querySelector('.modal-content').classList.add('active');
             });
         }
 
@@ -342,7 +342,7 @@
             modal.querySelector('.modal-content').classList.remove('active');
             // Wait for the transition to finish before hiding the background
             setTimeout(() => {
-                modal.classList.remove('active');
+            modal.classList.remove('active');
             }); // Wait for the transition duration
         }
             });
@@ -350,6 +350,6 @@
     </script>
 
 
-{% endblock %}
+    {% endblock %}
 
 

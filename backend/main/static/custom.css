@@ -347,3 +347,45 @@
 .tag-bubble:hover {
   background-color: #98ff98; /* Mint green background on hover */
 }
+
+/* Dropdown and hover transition styles */
+.dropdown {
+  position: relative;
+  margin-bottom: 1em;
+}
+
+.dropdown-toggle {
+  display: block;
+  cursor: pointer;
+  padding: 5px 10px;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  z-index: 1000;
+  width: auto;
+  padding: 10px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown:hover .dropdown-toggle {
+  background-color: #f9f9f9;
+}
+
+.dropdown-icon {
+  display: inline-block;
+  margin-left: 10px;
+  transition: transform 0.3s ease;
+}
+
+.dropdown:hover .dropdown-icon {
+  transform: rotate(45deg);
+}
