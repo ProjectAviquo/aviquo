@@ -88,7 +88,6 @@
                             <p class="subtitle is-6">{{ opportunity.description|truncatewords:20 }}</p>
                         </div>
                         <footer class="card-footer">
-                            <a href="#" class="card-footer-item details-button">Details</a>
                             <a href="#" class="card-footer-item bookmark-button" data-opportunity-id="{{ opportunity.id }}">
                                 {% if request.user in opportunity.bookmarked_users.all %}Remove Bookmark{% else %}Bookmark{% endif %}
                             </a>

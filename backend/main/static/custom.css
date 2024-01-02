@@ -19,7 +19,7 @@
   color: #333;
 }
 .card-footer-item {
-  color: #98ff98;
+  color: #67db67;
 }
 .white-bg {
   background-color: rgb(255, 255, 255);
@@ -131,6 +131,15 @@
   color: #f00; /* Red color on hover */
 }
 
+.card-footer-item.bookmark-button {
+  transition: background-color 0.3s ease; /* Smooth transition for background color */
+
+}
+
+.card-footer-item.bookmark-button:hover {
+  background-color: #98ff98; /* mint green color */
+}
+
 /* Fixed button container for clear and bookmark buttons */
 .fixed-button-container {
   position: fixed;
@@ -158,6 +167,48 @@
 #bookbutton {
   order: 3; /* Comes after the tag filter list */
   position: relative; /* Make it relative to .fixed-button-container */
+}
+
+/* Apply a transition effect to the clear button */
+.clear-button .button, .filter-clear-button .button {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Ensure the transition effect on hover for the clear button is consistent */
+.clear-button .button:hover, .filter-clear-button .button:hover {
+  background-color: #89e789; /* Adjust color if needed */
+}
+
+/* Apply a transition effect to the tag buttons (assuming they are anchor tags within .menu-list) */
+.menu-list a {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Ensure the transition effect on hover for the tag buttons is consistent */
+.menu-list a:hover {
+  background-color: #a0dbff; /* mint green color */
+  color: rgb(255, 255, 255); /* Optional: change text color on hover */
+}
+
+/* Apply a transition effect to the "Showing All Extracurriculars" button */
+#bookbutton {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Ensure the transition effect on hover for the "Showing All Extracurriculars" button is consistent */
+#bookbutton:hover {
+  background-color: #89e789; /* Adjust color if needed */
+  color: white; /* Optional: change text color on hover */
+}
+
+/* If you have active state styles, you may also want to apply the transition */
+#bookbutton.is-active {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Adjust hover styles for active state if needed */
+#bookbutton.is-active:hover {
+  background-color: darken(#98ff98, 10%); /* Example: darken the green color */
 }
 
 .menu-wrapper {
