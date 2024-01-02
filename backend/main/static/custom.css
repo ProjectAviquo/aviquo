@@ -74,6 +74,7 @@
   width: 100%; /* Ensure it's fully responsive */
   display: flex;
   justify-content: flex-end; /* Align image to the right */
+  align-items: center; /* Center image vertically */
 }
 
 .modal-img-container img {
@@ -100,7 +101,7 @@
   color: white; /* White text color */
   text-align: center;
   text-decoration: none; /* No underline */
-  border-radius: 5px; /* Rounded borders */
+  border-radius: 10px; /* Rounded borders */
   transition: background-color 0.3s ease; /* Smooth transition for background color */
 }
 
@@ -131,9 +132,60 @@
   color: #f00; /* Red color on hover */
 }
 
+.card-image {
+  width: 450px; /* Set the width of the container */
+  height: 100px; /* Set the height of the container */
+  overflow: hidden; /* Hide any overflow */
+  display: flex; /* Use flexbox for centering the image */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+.card-flex-content {
+  display: flex; /* Use flexbox to layout the content and image side by side */
+  justify-content: space-between; /* Space between content and image */
+  align-items: center; /* Vertically center-align the content and image */
+}
+
+.card-text-content {
+  padding: 10px; /* Add padding around the text */
+  padding-right: 20px; /* Additional space between text and image */
+
+}
+
+.card-image-container {
+  width: 450px; /* Width of the image container */
+  height: 100px; /* Height of the image container */
+  padding: 10px; /* Add padding around the image */
+  display: flex;
+  justify-content: center; /* Center image horizontally */
+  align-items: center; /* Center image vertically */
+  border-radius: 1px;
+}
+
+.opportunity-preview {
+  max-width: 100%; /* Max-width of image within container */
+  max-height: 100%; /* Max-height of image within container */
+  object-fit: contain; /* Maintain aspect ratio without cropping */
+  border-radius: 20px; /* Round the edges of the image */
+}
+
+.card-flex-content {
+  display: flex; /* Use flexbox to layout the content and image side by side */
+  align-items: center; /* Vertically center-align the content and image */
+  padding: 10px; /* Add padding around the entire content and image area */
+}
 .card-footer-item.bookmark-button {
   transition: background-color 0.3s ease; /* Smooth transition for background color */
 
+}
+
+.clear-button .button, #bookbutton {
+  width: 230px; /* Set same width for both buttons */
+  text-align: center; /* Center the text inside the buttons */
+}
+
+.clear-button .button {
+  width: 150px; /* Set same width for both buttons */
 }
 
 .card-footer-item.bookmark-button:hover {
@@ -143,20 +195,25 @@
 /* Fixed button container for clear and bookmark buttons */
 .fixed-button-container {
   position: fixed;
-  top: 10%;
+  top: 50%; /* Start at 50% of the viewport height */
   left: 10px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Align buttons to the left */
+  align-items: center; /* Center items horizontally within this container */
+  transform: translateY(-50%); /* Shift the container up by half of its own height */
   gap: 10px; /* Space between buttons */
   z-index: 10; /* Ensure it's above other content */
 }
-
 /* Remove fixed positioning from individual button classes, use .fixed-button-container */
 .clear-button, .filter-clear-button {
   position: relative; /* Make it relative to .fixed-button-container */
   order: 1; /* Clear button comes first */
 }
+
+.card-text-content .title.is-4 {
+  margin-bottom: 2rem; /* Add bottom margin for spacing between the title and description */
+}
+
 
 .menu-wrapper {
   order: 2; /* Comes after the clear button */
@@ -167,6 +224,7 @@
 #bookbutton {
   order: 3; /* Comes after the tag filter list */
   position: relative; /* Make it relative to .fixed-button-container */
+  left: 3px;
 }
 
 /* Apply a transition effect to the clear button */
@@ -181,7 +239,11 @@
 
 /* Apply a transition effect to the tag buttons (assuming they are anchor tags within .menu-list) */
 .menu-list a {
-  transition: background-color 0.3s ease, color 0.3s ease;
+  display: block; /* Make each link a block element */
+  text-align: center; /* Center text within each block */
+  margin: 0; /* Optional: remove any default margin */
+  padding: 0.5rem 1rem; /* Provide some padding for clickability */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Existing transition styles */
 }
 
 /* Ensure the transition effect on hover for the tag buttons is consistent */
@@ -208,12 +270,12 @@
 
 /* Adjust hover styles for active state if needed */
 #bookbutton.is-active:hover {
-  background-color: darken(#98ff98, 10%); /* Example: darken the green color */
+  background-color: darken(#98ff98, 90%); /* Example: darken the green color */
 }
 
 .menu-wrapper {
   margin: 0;
-  padding-left: 0;
+  padding-left: 3px;
 }
 
 /* Adjustments for screen sizes */
@@ -242,4 +304,46 @@
   .modal-content {
     padding: 10px; /* Less padding on very small screens */
   }
+}
+
+.columns {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.opportunity-column {
+  width: 100%; /* Full width, only one card per row */
+  padding: 20px; /* Padding around each opportunity */
+  box-sizing: border-box; /* Include padding in the width calculation */
+}
+
+/* You can also define the padding for the container of the opportunity rows if needed */
+.columns.is-multiline {
+  margin-right: -20px;
+  margin-left: -20px;
+}
+
+.tag-bubbles-container {
+  display: flex; /* Use flexbox to layout the bubbles in a row */
+  align-items: center;
+  flex-wrap: nowrap; /* Do not allow wrapping */
+  margin-left: 1em; /* Space above the tag bubbles */
+  margin-bottom: 15px; /* Space below the tag bubbles, above the bookmark button */
+}
+
+.tag-bubble {
+  background-color: #7fbfff67; /* Slightly gray background for bubbles */
+  margin-right: 5px; /* Space between bubbles */
+  padding: 5px 10px; /* Padding inside the bubbles */
+  border-radius: 15px; /* Rounded corners for bubbles */
+  font-size: 0.9em; /* Smaller font size for the bubble text */
+  white-space: nowrap; /* Keep the bubble content on one line */
+  cursor: pointer; /* Change cursor to indicate hover effect */
+  transition: background-color 0.3s ease; /* Smooth transition for background color change */
+}
+
+.tag-bubble:hover {
+  background-color: #98ff98; /* Mint green background on hover */
 }

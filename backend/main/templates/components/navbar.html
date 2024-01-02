@@ -1,7 +1,7 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/custom.css' %}">
 
-<nav class="navbar" role="navigation" aria-label="main navigation" style=>
+<nav class="navbar" role="navigation" aria-label="main navigation" style="height: 70px;">
     <div class="navbar-brand" >
       <a class="navbar-item" href="{% url 'home' %}">
         <img class="rounded" id="logo" src="{% static 'navlogo.png' %}" alt="Description of image" style="width: 70px; height: 70px; object-fit: cover;">
@@ -18,8 +18,8 @@
       </div>
 
       <div class="navbar-end">
-        <a class="navbar-item" href="{% url 'login' %}">Login</a>
-        <a class="navbar-item" href="{% url 'signup' %}">Sign Up</a>
+        <a class="navbar-item" href="{% url 'login' %}" style ="height: 70px; right: 10px;">Login</a>
+        <a class="navbar-item" href="{% url 'signup' %}" style ="height: 70px;right: 10px;">Sign Up</a>
       </div>
     </div>
   </nav>

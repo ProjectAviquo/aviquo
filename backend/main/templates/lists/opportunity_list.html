@@ -77,41 +77,57 @@
     });
     </script>
 
-      <!-- Opportunities list -->
-      <div class="columns is-multiline">
-        {% for opportunity in opportunities %}
-            <div class="column is-one-third">
-                <div class="card-modal-container">
-                    <div class="card white-bg" data-modal-target="#modal-opportunity-{{ opportunity.id }}">
-                        <div class="card-content">
-                            <p class="title is-4">{{ opportunity.name }}</p>
-                            <p class="subtitle is-6">{{ opportunity.description|truncatewords:20 }}</p>
-                        </div>
-                        <footer class="card-footer">
-                            <a href="#" class="card-footer-item bookmark-button" data-opportunity-id="{{ opportunity.id }}">
-                                {% if request.user in opportunity.bookmarked_users.all %}Remove Bookmark{% else %}Bookmark{% endif %}
-                            </a>
-                        </footer>
-                    </div>
-                    <div id="modal-opportunity-{{ opportunity.id }}" class="modal">
-                        <div class="modal-content">
-                            <span class="close">&times;</span>
-                            <div>
-                              <h2>{{ opportunity.name }}</h2>
-                              <p>{{ opportunity.description }}</p>
-                              <a href="{{ opportunity.URL }}">Visit Website</a>
+                <!-- Opportunities list -->
+        <div class="columns is-multiline">
+            {% for opportunity in opportunities %}
+                <div class="opportunity-column column">
+                    <div class="card-modal-container">
+                        <div class="card white-bg" data-modal-target="#modal-opportunity-{{ opportunity.id }}">
+                            <!-- Flex container for content and image -->
+                            <div class="card-flex-content">
+                                <!-- Content container (title and description) -->
+                                <div class="card-text-content">
+                                    <p class="title is-4">{{ opportunity.name }}</p>
+                                    <p class="subtitle is-6">{{ opportunity.description|truncatewords:50 }}</p>
+                                </div>
+                                <!-- Image container -->
+                                <div class="card-image-container">
+                                    <img class="opportunity-preview" src="{{ opportunity.profile_image.url }}" alt="Opportunity Preview">
+                                </div>
                             </div>
-                            <div class="modal-img-container">
-                              <img src="{{ opportunity.profile_image.url }}" alt="Opportunity picture" style="height: auto;" />
+
+                            <div class="tag-bubbles-container">
+                                {% for tag in opportunity.tags.all %}
+                                <span class="tag-bubble">{{ tag.name }}</span>
+                                {% endfor %}
+                            </div>
+                            <footer class="card-footer">
+                                <a href="#" class="card-footer-item bookmark-button" data-opportunity-id="{{ opportunity.id }}">
+                                    {% if request.user in opportunity.bookmarked_users.all %}Remove Bookmark{% else %}Bookmark{% endif %}
+                                </a>
+                            </footer>
+                        </div>
+                        <div id="modal-opportunity-{{ opportunity.id }}" class="modal">
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <div>
+                                  <h2>{{ opportunity.name }}</h2>
+                                  <p>{{ opportunity.description }}</p>
+                                  <a href="{{ opportunity.URL }}">Visit Website</a>
+                                </div>
+                                <div class="modal-img-container">
+                                  <img src="{{ opportunity.profile_image.url }}" alt="Opportunity picture" style="height: auto;" />
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        {% empty %}
-            <p>No opportunities to display.</p>
-        {% endfor %}
+            {% empty %}
+                <p>No opportunities to display.</p>
+            {% endfor %}
         </div>
+
+
 
 
 </section>
