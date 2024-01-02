@@ -11,4 +11,6 @@ urlpatterns = [
     path("opportunity/", opportunity_list, name="opportunity"),
     path("password_reset/", CustomPasswordResetView.as_view(),
              name="password_reset"),
+
+
 ]

@@ -3,30 +3,22 @@
   box-shadow: 0 0 0 0.125em rgba(152, 255, 152, 0.25);
 }
 
-/* Button styling */
-.button.is-primary {
+.button.is-primary, .is-active {
   background-color: #98ff98;
   color: white;
 }
 
-/* Button hover color */
 .button.is-primary:hover {
   background-color: #89e789;
 }
 
-.is-active {
-  background-color: #98ff98;
-  color: white;
-}
-
-/* Customizing Bulma card to match mint-green color theme */
 .card {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border: 1px solid #e8e8e8;
   border-radius: 10px;
 }
 
-.card-header-title {
+.card-header-title, .title.is-mint {
   color: #333;
 }
 
@@ -34,46 +26,99 @@
   color: #98ff98;
 }
 
-/* Title color */
-.title.is-mint {
-    color: #98ff98;
-}
-
-/* White color */
 .white-bg {
-  background-color: white;
+  background-color: rgb(255, 255, 255);
 }
 
-/* Modal styles */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
+  display: none;
+  position: fixed;
+  z-index: 1;
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgba(0,0,0,0.4); /* Black with opacity */
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0,0,0,0.4);
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal.active, .modal-content.visible {
+  display: flex;
+  opacity: 1;
 }
 
 .modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
+  position: relative;
+  background-color: #FFF;
+  margin: auto;
   padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  border: 2px solid #444;
+  border-radius: 10px;
+  width: 50%;
+  max-height: 80%;
+  overflow-y: auto;
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
 }
 
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
+.close:hover {
+  color: #f00;
+}
+
+/* Combine similar media queries */
+@media (max-width: 1000px), (max-height: 768px) {
+  .clear-button, .menu-wrapper, #bookbutton, .filter-clear-button {
+    position: static;
+    transform: none;
+    top: auto;
+    left: auto;
+    margin: 10px 0;
+    width: auto;
+    display: block;
+    order: 0;
+  }
+
+  .menu-wrapper {
+    order: 1;
+  }
+
+  #bookbutton {
+    order: 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .clear-button, .menu-wrapper, #bookbutton, .filter-clear-button {
+    margin: 10px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    padding: 10px;
+  }
+}
+
+.menu-wrapper {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: fit-content;
+}
+
+.menu {
+  margin: 0;
+  padding-left: 0;
 }

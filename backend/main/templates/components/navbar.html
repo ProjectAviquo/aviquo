@@ -1,7 +1,10 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+
+<nav class="navbar" role="navigation" aria-label="main navigation" style=>
+    <div class="navbar-brand" >
       <a class="navbar-item" href="{% url 'home' %}">
-        Your Brand
+        <img class="rounded" id="logo" src="{% static 'navlogo.png' %}" alt="Description of image" style="width: 70px; height: 70px; object-fit: cover;">
       </a>
 
       <!-- ...mobile hamburger menu etc -->

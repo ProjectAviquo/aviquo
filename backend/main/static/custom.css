@@ -1,86 +1,194 @@
+
 .input:focus, .is-focused .input {
   border-color: #98ff98;
   box-shadow: 0 0 0 0.125em rgba(152, 255, 152, 0.25);
 }
-
-/* Button styling */
-.button.is-primary {
+.button.is-primary, .is-active {
   background-color: #98ff98;
   color: white;
 }
-
-/* Button hover color */
 .button.is-primary:hover {
   background-color: #89e789;
 }
-
-.is-active {
-  background-color: #98ff98;
-  color: white;
-}
-
-/* Customizing Bulma card to match mint-green color theme */
 .card {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border: 1px solid #e8e8e8;
   border-radius: 10px;
 }
-
-.card-header-title {
+.card-header-title, .title.is-mint {
   color: #333;
 }
-
 .card-footer-item {
   color: #98ff98;
 }
-
-/* Title color */
-.title.is-mint {
-    color: #98ff98;
-}
-
-/* White color */
 .white-bg {
-  background-color: white;
+  background-color: rgb(255, 255, 255);
+}
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if necessary */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease; /* Smooth transition for background */
+}
+.modal.active .modal-content {
+  transform: scale(1); /* Scale up when active */
+  opacity: 1; /* Fade in content */
 }
 
-/* Modal styles */
-/* unchanged CSS... */
-
-
+.modal.active {
+  display: flex;
+  opacity: 1; /* Fade in the modal background */
+}
+/* Updated modal content styling */
 .modal-content {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: 1px solid #aaa;
-  background-color: #fff;
-  max-width: 80%;
-  width: 800px;  /* Or however wide you want the modal to be */
-  padding: 1em;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-  overflow: auto;  /* Add a scrollbar if the content is too tall */
-  max-height: 90vh;
+  position: relative;
+  background-color: #FFF;
+  margin: auto;
+  padding: 40px;
+  border: 2px solid #444;
+  border-radius: 10px;
+  width: auto;
+  max-width: 800px;
+  max-height: 80%;
+  overflow-y: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Easing out makes the transition look smoother */
+  transform: scale(0.5); /* Start scaled down (completely) for a zoom effect */
+  opacity: 0; /* Start fully transparent */
 }
 
-.modal-background {
-  background: rgba(0, 0, 0, 0.5); /* slightly dark overlay */
+/* Image container with constrained size */
+.modal-img-container {
+  max-width: 500px;
+  max-height: 500px;
+  width: 100%; /* Ensure it's fully responsive */
+  display: flex;
+  justify-content: flex-end; /* Align image to the right */
 }
 
-modal-close {
+.modal-img-container img {
+  max-width: 100%; /* Make sure the image is responsive */
+  max-height: 100%; /* Constrain height to the container */
+  border-radius: 8px; /* Optional: round corners for the image */
+}
+
+/* Title with increased size and boldness */
+.modal-content h2 {
+  font-size: 30px; /* Larger font size */
+  font-weight: bold; /* Bolder font */
+  margin-bottom: 10px; /* Space below the title */
+  align-self: flex-start;  /* Align to the top left */
+}
+
+/* Style the "Visit Website" hyperlink */
+.modal-content a {
+  /* To look like a button */
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem; /* Add some top margin */
+  background-color: #98ff98; /* Mint green background */
+  color: white; /* White text color */
+  text-align: center;
+  text-decoration: none; /* No underline */
+  border-radius: 5px; /* Rounded borders */
+  transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+/* Change color on hover */
+.modal-content a:hover {
+  background-color: #333; /* Gray background when hovered */
+  color: white; /* Ensure text color is white */
+}
+
+/* Description with proper alignment */
+.modal-content p {
+  text-align: left; /* Left align text */
+  flex: 1; /* Allow the description to take up space */
+  margin-right: 20px; /* Space between description and image */
+  margin-bottom: 1rem; /* Add padding below the description */
+}
+/* Position the close button at the top right corner of the modal */
+.close {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: transparent;
-  border: none;
-  font-size: 2em;
-  color: #aaa;
+  right: 1rem; /* 1rem from the right edge */
+  top: 0.5rem; /* 1rem from the top edge */
+  font-size: 1.5rem; /* Keep the size of the 'X' */
+  cursor: pointer;
+  transition: color 0.2s ease; /* Transition for color change on hover */
 }
 
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
+.close:hover {
+  color: #f00; /* Red color on hover */
+}
+
+/* Fixed button container for clear and bookmark buttons */
+.fixed-button-container {
+  position: fixed;
+  top: 10%;
+  left: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align buttons to the left */
+  gap: 10px; /* Space between buttons */
+  z-index: 10; /* Ensure it's above other content */
+}
+
+/* Remove fixed positioning from individual button classes, use .fixed-button-container */
+.clear-button, .filter-clear-button {
+  position: relative; /* Make it relative to .fixed-button-container */
+  order: 1; /* Clear button comes first */
+}
+
+.menu-wrapper {
+  order: 2; /* Comes after the clear button */
+  position: relative; /* Make it relative to .fixed-button-container */
+  width: fit-content;
+}
+
+#bookbutton {
+  order: 3; /* Comes after the tag filter list */
+  position: relative; /* Make it relative to .fixed-button-container */
+}
+
+.menu-wrapper {
+  margin: 0;
+  padding-left: 0;
+}
+
+/* Adjustments for screen sizes */
+@media (max-width: 1000px), (max-height: 768px) {
+  .clear-button, .menu-wrapper, #bookbutton, .filter-clear-button {
+    position: static;
+    transform: none;
+    top: auto;
+    left: auto;
+    margin: 10px 0;
+    width: auto;
+    display: block;
+    order: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  /* All the buttons will be in the normal document flow, without fixed positioning */
+  .fixed-button-container {
+    position: static;
+    display: block; /* Stack buttons and menu vertically */
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    padding: 10px; /* Less padding on very small screens */
+  }
 }
