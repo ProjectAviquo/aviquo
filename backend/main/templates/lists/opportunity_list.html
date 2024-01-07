@@ -6,14 +6,12 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'custom.css' %}">
 
-    <section class="section">
-        <div class="container">
-            <h1 class="title" style="color: #333;">Extracurricular Opportunities</h1>
 
-
-            <!-- Fixed button container for clear and bookmark buttons -->
-            <div class="fixed-button-container">
-                <!-- Clear button -->
+<section class="section">
+    <div class="columns">
+        <!-- Sidebar column for filter, clear, and bookmark buttons -->
+        <div class="column is-2"> <!-- Adjust the width of the sidebar by changing `is-2` -->
+            <div class="sidebar-centering-container"><!-- Clear button -->
                 <div class="filter-clear-button clear-button">
                     <form method="get" action="{% url 'opportunity' %}">
                         {{ form.as_p }}
@@ -27,7 +25,8 @@
                         <ul class="menu-list">
                             {% for tag in all_tags %}
                             <li>
-                                <a href="?{% if tag.name in active_tags %}remove{% else %}add{% endif %}_tag={{ tag.name }}" class="{% if tag.name in active_tags %}is-active{% endif %}">
+                                <a href="?{% if tag.name in active_tags %}remove{% else %}add{% endif %}_tag={{ tag.name }}"
+                                    class="{% if tag.name in active_tags %}is-active{% endif %}">
                                     {{ tag.name }}
                                 </a>
                             </li>
@@ -37,7 +36,8 @@
                 </div>
 
                 <!-- Book button -->
-                <a href="?show_bookmarked" id="bookbutton" class="button is-primary {% if request.session.show_bookmarked_toggle %}is-active{% endif %}">
+                <a href="?show_bookmarked" id="bookbutton"
+                    class="button is-primary {% if request.session.show_bookmarked_toggle %}is-active{% endif %}">
                     {% if request.session.show_bookmarked_toggle %}
                     Showing Bookmarked Extracurriculars
                     {% else %}
@@ -45,42 +45,15 @@
                     {% endif %}
                 </a>
             </div>
+        </div>
 
-
-
-            <!-- Include this script at the bottom of the `opportunity_list.html` file -->
-            <script>
-    document.addEventListener('DOMContentLoaded', () => {
-                    // Attach click event to tag links
-                    document.querySelectorAll('aside.menu a').forEach((tagLink) => {
-                        tagLink.addEventListener('click', (e) => {
-                            e.preventDefault(); // Prevent the default anchor link behavior
-
-                            // Parse the URL query parameters
-                            let urlParams = new URLSearchParams(window.location.search);
-
-                            // Check whether we're adding or removing a tag
-                            const tagName = e.target.getAttribute('href').split('=').pop();
-                            if (e.target.getAttribute('href').startsWith('?add_tag')) {
-                                urlParams.append('tags', tagName);
-                            } else {
-                                let tags = urlParams.getAll('tags');
-                                tags = tags.filter((tag) => tag !== tagName);
-                                urlParams.delete('tags');
-                                tags.forEach((tag) => urlParams.append('tags', tag));
-                            }
-
-                            // Redirect to the updated URL with the new set of active tags
-                            window.location.search = urlParams.toString();
-                        });
-                    });
-    });
-            </script>
-
+        <!-- Main content column for opportunity cards -->
+        <div class="column is-9">
+            <h1 class="title" style="color: #333;">Extracurricular Opportunities</h1>
             <!-- Opportunities list -->
             <div class="columns is-multiline">
                 {% for opportunity in opportunities %}
-                <div class="opportunity-column column">
+                <div class="opportunity-column column is-full">
                     <div class="card-modal-container">
                         <div class="card white-bg" data-modal-target="#modal-opportunity-{{ opportunity.id }}">
                             <!-- Flex container for content and image -->
@@ -126,11 +99,39 @@
                 <p>No opportunities to display.</p>
                 {% endfor %}
             </div>
+        </div>
+        </div>
+    </div>
+</section>
 
+                <!-- Include this script at the bottom of the `opportunity_list.html` file -->
+                <script>
+                    document.addEventListener('DOMContentLoaded', () => {
+                                    // Attach click event to tag links
+                                    document.querySelectorAll('aside.menu a').forEach((tagLink) => {
+                                        tagLink.addEventListener('click', (e) => {
+                                            e.preventDefault(); // Prevent the default anchor link behavior
 
+                                            // Parse the URL query parameters
+                                            let urlParams = new URLSearchParams(window.location.search);
 
+                                            // Check whether we're adding or removing a tag
+                                            const tagName = e.target.getAttribute('href').split('=').pop();
+                                            if (e.target.getAttribute('href').startsWith('?add_tag')) {
+                                                urlParams.append('tags', tagName);
+                                            } else {
+                                                let tags = urlParams.getAll('tags');
+                                                tags = tags.filter((tag) => tag !== tagName);
+                                                urlParams.delete('tags');
+                                                tags.forEach((tag) => urlParams.append('tags', tag));
+                                            }
 
-    </section>
+                                            // Redirect to the updated URL with the new set of active tags
+                                            window.location.search = urlParams.toString();
+                                        });
+                                    });
+                    });
+                            </script>
 
 
     <script>
@@ -157,6 +158,8 @@
             event.stopPropagation(); // Prevents the event from bubbling up to the parent elements
         showModal(modal);
             });
+
+
         });
 
 

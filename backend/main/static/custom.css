@@ -1,25 +1,25 @@
-
-.input:focus, .is-focused .input {
+.input:focus,
+.is-focused .input {
   border-color: #98ff98;
   box-shadow: 0 0 0 0.125em rgba(152, 255, 152, 0.25);
 }
-.button.is-primary, .is-active {
+.button.is-primary,
+.is-active {
   background-color: #98ff98;
   color: white;
 }
 .button.is-primary:hover {
   background-color: #89e789;
 }
-.card {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e8e8e8;
-  border-radius: 10px;
-}
-.card-header-title, .title.is-mint {
+
+.card-header-title,
+.title.is-mint {
   color: #333;
 }
 .card-footer-item {
   color: #67db67;
+  margin-top: auto; /* Push the footer to the bottom of the flex container */
+  font-size: 1.2rem;
 }
 .white-bg {
   background-color: rgb(255, 255, 255);
@@ -27,30 +27,25 @@
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 1000; /* Sit on top and sufficiently high to be above other content */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if necessary */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease; /* Smooth transition for background */
+  transition: opacity 0.3s ease; /* Smooth transition for background */
 }
-.modal.active .modal-content {
-  transform: scale(1); /* Scale up when active */
-  opacity: 1; /* Fade in content */
-}
-
 .modal.active {
-  display: flex;
+  display: flex; /* Flex display to use align-items and justify-content */
   opacity: 1; /* Fade in the modal background */
 }
-/* Updated modal content styling */
+
 .modal-content {
   position: relative;
-  background-color: #FFF;
+  background-color: #fff;
   margin: auto;
   padding: 40px;
   border: 2px solid #444;
@@ -59,296 +54,223 @@
   max-width: 800px;
   max-height: 80%;
   overflow-y: auto;
-  display: flex;
+  display: flex; /* Make sure display is not set to none */
   justify-content: space-between;
   align-items: start;
-  transition: transform 0.3s ease, opacity 0.3s ease; /* Easing out makes the transition look smoother */
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth transitions */
   transform: scale(0.5); /* Start scaled down (completely) for a zoom effect */
   opacity: 0; /* Start fully transparent */
+  z-index: 1001; /* Ensure modal content is above the modal background */
+  flex-direction: row; /* Align children in a row */
+  align-items: start; /* Align items to the start of the cross axis */
+  max-width: 1000px; /* Max width of the modal content */
+  flex-wrap: nowrap; /* Prevent wrapping to a new line */
+  justify-content: space-between; /* Space between content and image */
+  max-width: 80%; /* Allow the modal to span the full width */
 }
 
-/* Image container with constrained size */
+.modal.active .modal-content {
+  transform: scale(1); /* Scale up when active */
+  opacity: 1; /* Fade in content */
+}
+
 .modal-img-container {
   max-width: 500px;
   max-height: 500px;
-  width: 100%; /* Ensure it's fully responsive */
+  width: 100%;
   display: flex;
-  justify-content: flex-end; /* Align image to the right */
-  align-items: center; /* Center image vertically */
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .modal-img-container img {
-  max-width: 100%; /* Make sure the image is responsive */
-  max-height: 100%; /* Constrain height to the container */
-  border-radius: 8px; /* Optional: round corners for the image */
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 8px;
 }
 
-/* Title with increased size and boldness */
 .modal-content h2 {
-  font-size: 30px; /* Larger font size */
-  font-weight: bold; /* Bolder font */
-  margin-bottom: 10px; /* Space below the title */
-  align-self: flex-start;  /* Align to the top left */
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  align-self: flex-start;
 }
 
-/* Style the "Visit Website" hyperlink */
 .modal-content a {
-  /* To look like a button */
   display: inline-block;
   padding: 0.5rem 1rem;
-  margin-top: 1rem; /* Add some top margin */
-  background-color: #98ff98; /* Mint green background */
-  color: white; /* White text color */
+  margin-top: 1rem;
+  font-size: 20px;
+  background-color: #98ff98;
+  color: white;
   text-align: center;
-  text-decoration: none; /* No underline */
-  border-radius: 10px; /* Rounded borders */
-  transition: background-color 0.3s ease; /* Smooth transition for background color */
+  text-decoration: none;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
 }
 
-/* Change color on hover */
-.modal-content a:hover {
-  background-color: #333; /* Gray background when hovered */
-  color: white; /* Ensure text color is white */
+.sidebar-centering-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Aligns children to the start (left side) */
+  width: 100%;
+  padding: 0; /* Reset any default padding */
 }
 
-/* Description with proper alignment */
-.modal-content p {
-  text-align: left; /* Left align text */
-  flex: 1; /* Allow the description to take up space */
-  margin-right: 20px; /* Space between description and image */
-  margin-bottom: 1rem; /* Add padding below the description */
-}
-/* Position the close button at the top right corner of the modal */
-.close {
-  position: absolute;
-  right: 1rem; /* 1rem from the right edge */
-  top: 0.5rem; /* 1rem from the top edge */
-  font-size: 1.5rem; /* Keep the size of the 'X' */
-  cursor: pointer;
-  transition: color 0.2s ease; /* Transition for color change on hover */
+/* Remove any existing left or right margins that may have been previously set for contained elements */
+.sidebar-centering-container .button,
+.sidebar-centering-container .menu-wrapper,
+.sidebar-centering-container .filter-clear-button {
+  width: 100%; /* Let's assume you want the buttons to expand to the full width */
+  margin: 0; /* Reset margins */
+  padding-left: 0; /* Reset left padding */
+  padding-right: 0; /* Reset right padding */
 }
 
-.close:hover {
-  color: #f00; /* Red color on hover */
+/* Add padding only to the bottom of the clear button */
+.filter-clear-button {
+  padding-bottom: 10px; /* Adjust the padding as desired */
+  padding-left: 10px;
+  width: auto; /* Adjust size to content or set a specific width if needed */
+}
+/* Same for submit button, in case it's not within .filter-clear-button */
+.clear-button .button {
+  width: auto;
+  padding-left: 10px;
 }
 
-.card-image {
-  width: 450px; /* Set the width of the container */
-  height: 100px; /* Set the height of the container */
-  overflow: hidden; /* Hide any overflow */
-  display: flex; /* Use flexbox for centering the image */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-}
-.card-flex-content {
-  display: flex; /* Use flexbox to layout the content and image side by side */
-  justify-content: space-between; /* Space between content and image */
-  align-items: center; /* Vertically center-align the content and image */
+/* Adjust the bookmark button separately */
+#bookbutton {
+  width: auto; /* Adjust size to content or set a specific width if needed */
+  padding-left: calc(10px - 1rem);
 }
 
-.card-text-content {
-  padding: 10px; /* Add padding around the text */
-  padding-right: 20px; /* Additional space between text and image */
-
+/* Ensure the tag list has no additional padding affecting its alignment */
+.menu-wrapper {
+  padding-left: calc(10px - 1rem);
+  width: auto;
 }
 
-.card-image-container {
-  width: 450px; /* Width of the image container */
-  height: 100px; /* Height of the image container */
-  padding: 10px; /* Add padding around the image */
+/* Container for the description text */
+.modal-content .modal-text-container {
+  flex-grow: 1; /* Allow the text container to grow and fill available space */
+  padding-right: 20px; /* Space between text and image */
+  overflow: hidden; /* Hide overflow */
+}
+
+/* Container for the image */
+.modal-content .modal-img-container {
+  flex-shrink: 0; /* Prevents image container from shrinking */
+  flex-basis: auto; /* Allow the width of the image container to auto-adjust based on content */
+  width: 300px; /* Set a fixed width for the image container */
+  height: 300px; /* Set a fixed height for the image container */
   display: flex;
   justify-content: center; /* Center image horizontally */
   align-items: center; /* Center image vertically */
-  border-radius: 1px;
 }
 
-.opportunity-preview {
-  max-width: 100%; /* Max-width of image within container */
-  max-height: 100%; /* Max-height of image within container */
-  object-fit: contain; /* Maintain aspect ratio without cropping */
-  border-radius: 20px; /* Round the edges of the image */
+.modal-content .modal-img-container img {
+  max-width: 100%; /* Ensure the image is responsive and does not exceed its container */
+  max-height: 100%; /* Image height limited to its container */
+  object-fit: contain; /* Resize the image to maintain its aspect ratio while fitting within the element's content box */
+}
+.modal-content a:hover {
+  background-color: #333;
+  color: white;
+}
+
+.modal-content p {
+  text-align: left;
+  flex: 1;
+  margin-right: 20px;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.close {
+  position: absolute;
+  right: 1rem;
+  top: 0.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.close:hover {
+  color: #f00;
+}
+
+.card-image {
+  width: 450px;
+  height: 100px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card-flex-content {
-  display: flex; /* Use flexbox to layout the content and image side by side */
-  align-items: center; /* Vertically center-align the content and image */
-  padding: 10px; /* Add padding around the entire content and image area */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
 }
+
+.card-image-container {
+  width: 400px;
+  padding: 10px;
+  border-radius: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  align-self: center;
+}
+
+.opportunity-preview {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 15px;
+  padding-top: 10px;
+}
+
 .card-footer-item.bookmark-button {
-  transition: background-color 0.3s ease; /* Smooth transition for background color */
-
+  transition: background-color 0.3s ease;
 }
 
-.clear-button .button, #bookbutton {
-  width: 230px; /* Set same width for both buttons */
-  text-align: center; /* Center the text inside the buttons */
-}
-
-.clear-button .button {
-  width: 150px; /* Set same width for both buttons */
-}
-
-.card-footer-item.bookmark-button:hover {
+.bookmark-button:hover {
   background-color: #98ff98; /* mint green color */
 }
 
-/* Fixed button container for clear and bookmark buttons */
-.fixed-button-container {
-  position: fixed;
-  top: 50%; /* Start at 50% of the viewport height */
-  left: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Center items horizontally within this container */
-  transform: translateY(-50%); /* Shift the container up by half of its own height */
-  gap: 10px; /* Space between buttons */
-  z-index: 10; /* Ensure it's above other content */
-}
-/* Remove fixed positioning from individual button classes, use .fixed-button-container */
-.clear-button, .filter-clear-button {
-  position: relative; /* Make it relative to .fixed-button-container */
-  order: 1; /* Clear button comes first */
+.clear-button .button,
+#bookbutton {
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  position: static;
 }
 
 .card-text-content .title.is-4 {
-  margin-bottom: 2rem; /* Add bottom margin for spacing between the title and description */
+  margin-bottom: 3rem;
+  font-size: 3rem;
+  padding-left: 20px;
+  padding-top: 20px;
+}
+.card-text-content .subtitle.is-6 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  padding-left: 20px;
+  padding-top: 20px;
 }
 
-
-.menu-wrapper {
-  order: 2; /* Comes after the clear button */
-  position: relative; /* Make it relative to .fixed-button-container */
-  width: fit-content;
-}
-
-#bookbutton {
-  order: 3; /* Comes after the tag filter list */
-  position: relative; /* Make it relative to .fixed-button-container */
-  left: 3px;
-}
-
-/* Apply a transition effect to the clear button */
-.clear-button .button, .filter-clear-button .button {
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* Ensure the transition effect on hover for the clear button is consistent */
-.clear-button .button:hover, .filter-clear-button .button:hover {
-  background-color: #89e789; /* Adjust color if needed */
-}
-
-/* Apply a transition effect to the tag buttons (assuming they are anchor tags within .menu-list) */
 .menu-list a {
-  display: block; /* Make each link a block element */
-  text-align: center; /* Center text within each block */
-  margin: 0; /* Optional: remove any default margin */
-  padding: 0.5rem 1rem; /* Provide some padding for clickability */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Existing transition styles */
-}
-
-/* Ensure the transition effect on hover for the tag buttons is consistent */
-.menu-list a:hover {
-  background-color: #a0dbff; /* mint green color */
-  color: rgb(255, 255, 255); /* Optional: change text color on hover */
-}
-
-/* Apply a transition effect to the "Showing All Extracurriculars" button */
-#bookbutton {
+  display: block;
+  text-align: center;
   transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 20px;
 }
 
-/* Ensure the transition effect on hover for the "Showing All Extracurriculars" button is consistent */
-#bookbutton:hover {
-  background-color: #89e789; /* Adjust color if needed */
-  color: white; /* Optional: change text color on hover */
-}
-
-/* If you have active state styles, you may also want to apply the transition */
-#bookbutton.is-active {
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* Adjust hover styles for active state if needed */
-#bookbutton.is-active:hover {
-  background-color: darken(#98ff98, 90%); /* Example: darken the green color */
-}
-
-.menu-wrapper {
-  margin: 0;
-  padding-left: 3px;
-}
-
-/* Adjustments for screen sizes */
-@media (max-width: 1000px), (max-height: 768px) {
-  .clear-button, .menu-wrapper, #bookbutton, .filter-clear-button {
-    position: static;
-    transform: none;
-    top: auto;
-    left: auto;
-    margin: 10px 0;
-    width: auto;
-    display: block;
-    order: 0;
-  }
-}
-
-@media (max-width: 768px) {
-  /* All the buttons will be in the normal document flow, without fixed positioning */
-  .fixed-button-container {
-    position: static;
-    display: block; /* Stack buttons and menu vertically */
-  }
-}
-
-@media (max-width: 480px) {
-  .modal-content {
-    padding: 10px; /* Less padding on very small screens */
-  }
-}
-
-.columns {
-  display: flex;
-  flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
-}
-
-.opportunity-column {
-  width: 100%; /* Full width, only one card per row */
-  padding: 20px; /* Padding around each opportunity */
-  box-sizing: border-box; /* Include padding in the width calculation */
-}
-
-/* You can also define the padding for the container of the opportunity rows if needed */
-.columns.is-multiline {
-  margin-right: -20px;
-  margin-left: -20px;
-}
-
-.tag-bubbles-container {
-  display: flex; /* Use flexbox to layout the bubbles in a row */
-  align-items: center;
-  flex-wrap: nowrap; /* Do not allow wrapping */
-  margin-left: 1em; /* Space above the tag bubbles */
-  margin-bottom: 15px; /* Space below the tag bubbles, above the bookmark button */
-}
-
-.tag-bubble {
-  background-color: #7fbfff67; /* Slightly gray background for bubbles */
-  margin-right: 5px; /* Space between bubbles */
-  padding: 5px 10px; /* Padding inside the bubbles */
-  border-radius: 15px; /* Rounded corners for bubbles */
-  font-size: 0.9em; /* Smaller font size for the bubble text */
-  white-space: nowrap; /* Keep the bubble content on one line */
-  cursor: pointer; /* Change cursor to indicate hover effect */
-  transition: background-color 0.3s ease; /* Smooth transition for background color change */
-}
-
-.tag-bubble:hover {
-  background-color: #98ff98; /* Mint green background on hover */
-}
-
-/* Dropdown and hover transition styles */
 .dropdown {
   position: relative;
   margin-bottom: 1em;
@@ -365,7 +287,7 @@
   display: none;
   position: absolute;
   background-color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   z-index: 1000;
   width: auto;
@@ -388,4 +310,153 @@
 
 .dropdown:hover .dropdown-icon {
   transform: rotate(45deg);
+}
+
+/* Sidebar container positioning and spacing */
+.fixed-button-container {
+  position: static; /* Reset the position to flow with the document */
+  padding-top: 1rem; /* Push everything down by 1rem */
+}
+
+.filter-clear-button {
+  /* If padding-left was 10px; rem value assuming base font-size is 16px */
+  padding-bottom: 10px;
+  padding-left: calc(
+    10px - 1rem
+  ); /* Subtract 1rem from the current left-padding */
+}
+
+.clear-button,
+.filter-clear-button,
+.menu-wrapper {
+  position: static;
+}
+
+/* General button styling */
+.button,
+.menu-wrapper .menu-list a {
+  width: 100%; /* Full width */
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 1rem; /* Space between buttons */
+}
+
+/* New sidebar styles */
+.sidebar {
+  position: absolute; /* Position the sidebar absolutely relative to the closest positioned ancestor */
+  top: 0; /* Align with the top of the page */
+  left: 0; /* Align with the left of the page */
+  width: 200px; /* Adjust the width as needed */
+  padding: 1rem; /* Add some padding */
+  /* ... any additional styles ... */
+}
+
+.menu-wrapper {
+  order: 2;
+  position: relative;
+  width: fit-content;
+}
+
+.clear-button .button:hover,
+.filter-clear-button .button:hover {
+  background-color: #89e789;
+}
+
+#bookbutton:hover {
+  background-color: #89e789;
+  color: white;
+}
+
+.menu-wrapper {
+  margin: 0;
+}
+
+@media (max-width: 1000px), (max-height: 768px) {
+  .clear-button,
+  .menu-wrapper,
+  #bookbutton,
+  .filter-clear-button {
+    position: static;
+    transform: none;
+    top: auto;
+    left: auto;
+    margin: 10px 0;
+    width: auto;
+    order: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .fixed-button-container {
+    position: static;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    padding: 10px;
+  }
+}
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e8e8e8;
+  border-radius: 10px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.opportunity-column {
+  flex: 1;
+  max-width: 100%;
+  padding-left: 1rem; /* Add padding on the left side */
+}
+
+.columns {
+  justify-content: stretch;
+  padding-left: 5rem;
+}
+
+.columns.is-multiline .opportunity-column .card:hover {
+  transform: scale(1.06);
+}
+/* Menu list styling to match button styling */
+.menu-wrapper .menu-list {
+  padding-left: calc(10px - 3rem); /* Padding to align with other buttons */
+}
+
+/* Add padding to the left of the opportunity cards container */
+.columns.is-multiline {
+  padding-left: 1rem; /* Add space from the left of the screen */
+}
+
+.tag-bubbles-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin-left: 1em;
+  margin-bottom: 15px;
+}
+
+.tag-bubble {
+  background-color: #7fbfff67;
+  margin-right: 5px;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 0.9em;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.tag-bubble:hover {
+  background-color: #98ff98;
 }
